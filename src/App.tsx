@@ -12,8 +12,8 @@ import { LookbookDrawer } from './components/LookbookDrawer';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
 import { Footer } from './components/Footer';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v1';
-const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v1';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v2';
+const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v2';
 const STORAGE_KEY_THEME = 'fashiongraviti_theme_v1';
 
 export function App() {
