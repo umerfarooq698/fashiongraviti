@@ -91,12 +91,16 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-16">
         {/* Brand & Mission Statement (5 cols) */}
         <div className="lg:col-span-5">
-          <h2 
-            onClick={() => handleDepartmentClick('all')}
-            className="text-3xl font-serif font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer"
+          <a 
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleDepartmentClick('all');
+            }}
+            className="text-3xl font-serif font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer no-underline block"
           >
             FASHION GRAVITI
-          </h2>
+          </a>
           <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold">
             FASHION NEWS • FASHION TRENDS • CELEBRITY FASHION
           </p>
@@ -104,30 +108,46 @@ export const Footer: React.FC<FooterProps> = ({
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-[10px] font-mono uppercase text-zinc-400">
-            <button 
-              onClick={() => handleTagClick('Paris')}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            <a 
+              href="?search=Paris"
+              onClick={(e) => {
+                e.preventDefault();
+                handleTagClick('Paris');
+              }}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
             >
               PARIS // IVE ARR.
-            </button>
-            <button 
-              onClick={() => handleTagClick('Milan')}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            </a>
+            <a 
+              href="?search=Milan"
+              onClick={(e) => {
+                e.preventDefault();
+                handleTagClick('Milan');
+              }}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
             >
               MILAN // BRERA
-            </button>
-            <button 
-              onClick={() => handleTagClick('Tokyo')}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            </a>
+            <a 
+              href="?search=Tokyo"
+              onClick={(e) => {
+                e.preventDefault();
+                handleTagClick('Tokyo');
+              }}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
             >
               TOKYO // SHIBUYA
-            </button>
-            <button 
-              onClick={() => handleTagClick('Antwerp')}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            </a>
+            <a 
+              href="?search=Antwerp"
+              onClick={(e) => {
+                e.preventDefault();
+                handleTagClick('Antwerp');
+              }}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
             >
               ANTWERP // HET ZUID
-            </button>
+            </a>
           </div>
         </div>
 
@@ -139,12 +159,16 @@ export const Footer: React.FC<FooterProps> = ({
           <ul className="space-y-2.5 text-xs font-mono">
             {categories.map((cat) => (
               <li key={cat.id}>
-                <button
-                  onClick={() => handleDepartmentClick(cat.id)}
-                  className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer"
+                <a
+                  href={cat.id === 'all' ? '/' : `?category=${cat.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDepartmentClick(cat.id);
+                  }}
+                  className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
                 >
                   {cat.name}
-                </button>
+                </a>
               </li>
             ))}
           </ul>
@@ -173,28 +197,40 @@ export const Footer: React.FC<FooterProps> = ({
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleTagClick('Runway')}
-                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left"
+              <a 
+                href="?search=Runway"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleTagClick('Runway');
+                }}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left no-underline block"
               >
                 Runway Calendar '26
-              </button>
+              </a>
             </li>
             <li>
-              <button 
-                onClick={() => handleTagClick('Haute Couture')}
-                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left"
+              <a 
+                href="?search=Haute%20Couture"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleTagClick('Haute Couture');
+                }}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left no-underline block"
               >
                 Textile Monograph
-              </button>
+              </a>
             </li>
             <li>
-              <button 
-                onClick={() => handleDepartmentClick('all')}
-                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left"
+              <a 
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDepartmentClick('all');
+                }}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left no-underline block"
               >
                 Colophon & Heritage
-              </button>
+              </a>
             </li>
           </ul>
         </div>

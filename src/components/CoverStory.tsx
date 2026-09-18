@@ -29,17 +29,19 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
           <div>
             {/* Top Badges */}
             <div className="flex flex-wrap items-center gap-3 text-xs font-mono tracking-widest uppercase mb-4">
-              <button 
+              <a 
+                href={`?category=${article.category}`}
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   onSelectCategory?.(article.category);
                 }}
-                className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-colors"
+                className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-colors no-underline"
                 title={`Filter by ${article.categoryLabel}`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-gold" />
                 {article.categoryLabel}
-              </button>
+              </a>
               <span className="bg-black text-white font-bold border border-white/30 px-2.5 py-1">
                 {article.season}
               </span>
@@ -49,57 +51,67 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             </div>
 
             {/* Location Tag */}
-            <button 
+            <a 
+              href={`?search=${encodeURIComponent(article.locationTag)}`}
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 onSelectTag?.(article.locationTag);
               }}
-              className="flex items-center text-xs font-mono text-gold hover:text-white mb-3 tracking-wider font-extrabold cursor-pointer transition-colors"
+              className="flex items-center text-xs font-mono text-gold hover:text-white mb-3 tracking-wider font-extrabold cursor-pointer transition-colors no-underline"
               title={`Filter by location ${article.locationTag}`}
             >
               <MapPin className="w-4 h-4 mr-1.5 text-gold flex-shrink-0" />
               <span>{article.locationTag}</span>
-            </button>
+            </a>
 
             {/* Title */}
-            <h2 
-              onClick={() => onReadArticle(article)}
-              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white leading-[1.12] tracking-tight hover:text-gold transition-colors cursor-pointer drop-shadow-sm"
+            <a 
+              href={`?story=${article.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onReadArticle(article);
+              }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white leading-[1.12] tracking-tight hover:text-gold transition-colors cursor-pointer drop-shadow-sm block no-underline"
             >
               {article.title}
-            </h2>
+            </a>
 
             {/* Subtitle / Excerpt */}
-            <p 
-              onClick={() => onReadArticle(article)}
-              className="mt-4 text-base sm:text-lg font-sans text-zinc-100 leading-relaxed font-medium cursor-pointer hover:text-white transition-colors"
-            >
+            <p className="mt-4 text-base sm:text-lg font-sans text-zinc-100 leading-relaxed font-medium">
               {article.subtitle}
             </p>
 
             {/* Tags (Clickable) */}
             <div className="mt-6 flex flex-wrap gap-2">
               {article.tags.map((tag, idx) => (
-                <button 
+                <a 
                   key={idx}
+                  href={`?search=${encodeURIComponent(tag)}`}
                   onClick={(e) => {
                     e.stopPropagation();
+                    e.preventDefault();
                     onSelectTag?.(tag);
                   }}
-                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer"
+                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer no-underline inline-block"
                   title={`Filter articles by #${tag}`}
                 >
                   #{tag}
-                </button>
+                </a>
               ))}
             </div>
           </div>
 
           {/* Bottom Bar: Author info & Read button */}
           <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
-            <div 
-              onClick={() => onReadArticle(article)}
-              className="flex items-center space-x-3.5 cursor-pointer group"
+            <a 
+              href={`?search=${encodeURIComponent(article.author.name)}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                onSelectTag?.(article.author.name);
+              }}
+              className="flex items-center space-x-3.5 cursor-pointer group no-underline"
             >
               <img
                 src={article.author.avatar}
@@ -114,7 +126,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
                   {article.author.role} • {article.publishedAt}
                 </p>
               </div>
-            </div>
+            </a>
 
             <div className="flex items-center space-x-3">
               {/* Bookmark */}
@@ -146,21 +158,29 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
               </button>
 
               {/* Read Story CTA */}
-              <button
-                onClick={() => onReadArticle(article)}
-                className="flex items-center space-x-2 bg-white text-black hover:bg-gold hover:text-black px-6 py-2.5 font-mono text-xs uppercase tracking-widest font-black transition-all shadow-lg active:scale-95 cursor-pointer"
+              <a
+                href={`?story=${article.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onReadArticle(article);
+                }}
+                className="flex items-center space-x-2 bg-white text-black hover:bg-gold hover:text-black px-6 py-2.5 font-mono text-xs uppercase tracking-widest font-black transition-all shadow-lg active:scale-95 cursor-pointer no-underline"
               >
                 <span>Read Feature</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
         </div>
 
         {/* Right Column: Hero Full-Bleed Editorial Imagery (7 cols) */}
-        <div 
-          onClick={() => onReadArticle(article)}
-          className="lg:col-span-7 relative group cursor-pointer overflow-hidden min-h-[380px] lg:min-h-[580px] bg-black"
+        <a 
+          href={`?story=${article.id}`}
+          onClick={(e) => {
+            e.preventDefault();
+            onReadArticle(article);
+          }}
+          className="lg:col-span-7 relative group cursor-pointer overflow-hidden min-h-[380px] lg:min-h-[580px] bg-black block"
         >
           <img
             src={article.coverImage}
@@ -183,7 +203,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
               {article.coverImageCaption || article.subtitle}
             </p>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );

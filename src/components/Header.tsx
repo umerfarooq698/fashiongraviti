@@ -57,12 +57,16 @@ export const Header: React.FC<HeaderProps> = ({
           THE DEFINITIVE FASHION & RUNWAY ARCHIVE
         </div>
 
-        <h1 
-          onClick={() => onSelectCategory('all')}
-          className="cursor-pointer text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight uppercase hover:text-gold transition-colors duration-200 text-white select-none drop-shadow-md"
+        <a 
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            onSelectCategory('all');
+          }}
+          className="cursor-pointer text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight uppercase hover:text-gold transition-colors duration-200 text-white select-none drop-shadow-md no-underline"
         >
           FASHION GRAVITI
-        </h1>
+        </a>
 
         <div className="mt-2 text-xs md:text-sm font-sans font-bold tracking-widest text-zinc-200 uppercase flex items-center justify-center gap-2">
           <span>Fashion News</span>
@@ -79,18 +83,23 @@ export const Header: React.FC<HeaderProps> = ({
         <nav className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-1 flex-grow">
           {categories.map((cat) => {
             const isSelected = activeCategory === cat.id;
+            const href = cat.id === 'all' ? '/' : `?category=${cat.id}`;
             return (
-              <button
+              <a
                 key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`whitespace-nowrap px-3.5 py-2 font-mono text-xs uppercase tracking-wider font-extrabold transition-all border ${
+                href={href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectCategory(cat.id);
+                }}
+                className={`whitespace-nowrap px-3.5 py-2 font-mono text-xs uppercase tracking-wider font-extrabold transition-all border no-underline ${
                   isSelected
                     ? 'bg-white text-black border-white shadow-md'
                     : 'bg-transparent text-zinc-200 hover:text-white border-transparent hover:border-white/30 hover:bg-white/5'
                 }`}
               >
                 {cat.name}
-              </button>
+              </a>
             );
           })}
         </nav>

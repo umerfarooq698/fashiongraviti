@@ -57,22 +57,33 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         className="group flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-5 border-b-2 border-white/15 hover:bg-white/[0.06] transition-all cursor-pointer bg-noir-card active:bg-white/10"
       >
         <div className="flex items-start sm:items-center gap-4">
-          <img
-            src={article.coverImage}
-            alt={article.title}
-            className="w-20 h-20 sm:w-24 sm:h-24 object-cover flex-shrink-0 border-2 border-white/20 group-hover:border-gold transition-colors"
-          />
+          <a
+            href={`?story=${article.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              onReadArticle(article);
+            }}
+            className="flex-shrink-0"
+          >
+            <img
+              src={article.coverImage}
+              alt={article.title}
+              className="w-20 h-20 sm:w-24 sm:h-24 object-cover border-2 border-white/20 group-hover:border-gold transition-colors"
+            />
+          </a>
           <div>
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-1">
-              <button 
+              <a 
+                href={`?category=${article.category}`}
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   onSelectCategory?.(article.category);
                 }}
-                className="bg-crimson hover:bg-crimson-light text-white px-2 py-0.5 font-black transition-colors"
+                className="bg-crimson hover:bg-crimson-light text-white px-2 py-0.5 font-black transition-colors no-underline"
               >
                 {article.categoryLabel}
-              </button>
+              </a>
               <span>•</span>
               <span className="text-white font-bold">{article.season}</span>
               <span>•</span>
@@ -81,9 +92,16 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 {article.readTime}
               </span>
             </div>
-            <h4 className="text-lg sm:text-xl font-serif font-black text-white group-hover:text-gold transition-colors line-clamp-1">
+            <a
+              href={`?story=${article.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onReadArticle(article);
+              }}
+              className="text-lg sm:text-xl font-serif font-black text-white group-hover:text-gold transition-colors line-clamp-1 no-underline block"
+            >
               {article.title}
-            </h4>
+            </a>
             <p className="text-sm text-zinc-200 line-clamp-1 font-medium mt-1">
               {article.subtitle}
             </p>
@@ -92,7 +110,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
         <div className="flex items-center justify-between md:justify-end gap-4 mt-3 md:mt-0 pt-2 md:pt-0 border-t md:border-t-0 border-white/10">
           <div className="text-right hidden sm:block">
-            <p className="text-xs font-mono text-white font-bold uppercase">{article.author.name}</p>
+            <a
+              href={`?search=${encodeURIComponent(article.author.name)}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                onSelectTag?.(article.author.name);
+              }}
+              className="text-xs font-mono text-white hover:text-gold font-bold uppercase transition-colors no-underline block"
+            >
+              {article.author.name}
+            </a>
             <p className="text-xs text-zinc-300 font-medium">{article.publishedAt}</p>
           </div>
 
@@ -117,9 +145,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               <span>{article.likes}</span>
             </button>
 
-            <span className="p-2 bg-white text-black font-black group-hover:bg-gold transition-colors">
+            <a
+              href={`?story=${article.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onReadArticle(article);
+              }}
+              className="p-2 bg-white text-black font-black group-hover:bg-gold transition-colors block"
+              title="Open Story"
+            >
               <ArrowUpRight className="w-4 h-4" />
-            </span>
+            </a>
           </div>
         </div>
       </div>
@@ -136,7 +172,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         className="group relative flex flex-col justify-between bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 cursor-pointer overflow-hidden shadow-lg"
       >
         {/* Image Container with Luxury Overlay */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-black">
+        <a
+          href={`?story=${article.id}`}
+          onClick={(e) => {
+            e.preventDefault();
+            onReadArticle(article);
+          }}
+          className="relative aspect-[4/3] overflow-hidden bg-black block"
+        >
           <img
             src={article.coverImage}
             alt={article.title}
@@ -145,15 +188,16 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-t from-noir-card via-transparent to-transparent" />
           
           <div className="absolute top-3 left-3">
-            <button
+            <span
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 onSelectCategory?.(article.category);
               }}
-              className="text-xs font-mono tracking-wider uppercase px-2.5 py-1 bg-black/95 text-gold font-extrabold border border-gold/40 hover:bg-gold hover:text-black transition-all"
+              className="text-xs font-mono tracking-wider uppercase px-2.5 py-1 bg-black/95 text-gold font-extrabold border border-gold/40 hover:bg-gold hover:text-black transition-all inline-block"
             >
               {article.categoryLabel}
-            </button>
+            </span>
           </div>
 
           <div className="absolute top-3 right-3 flex items-center space-x-1.5">
@@ -168,7 +212,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               <Bookmark className="w-4 h-4 fill-current" />
             </button>
           </div>
-        </div>
+        </a>
 
         {/* Content Body */}
         <div className="p-6 flex flex-col flex-grow justify-between">
@@ -181,9 +225,16 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-serif font-black text-white group-hover:text-gold transition-colors leading-tight mb-2.5">
+            <a
+              href={`?story=${article.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onReadArticle(article);
+              }}
+              className="text-xl sm:text-2xl font-serif font-black text-white group-hover:text-gold transition-colors leading-tight mb-2.5 block no-underline"
+            >
               {article.title}
-            </h3>
+            </a>
 
             <p className="text-sm font-sans text-zinc-200 font-medium line-clamp-3 leading-relaxed">
               {article.subtitle}
@@ -192,16 +243,24 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
           {/* Bottom Card Footer */}
           <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <a
+              href={`?search=${encodeURIComponent(article.author.name)}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                onSelectTag?.(article.author.name);
+              }}
+              className="flex items-center space-x-3 no-underline group/author"
+            >
               <img
                 src={article.author.avatar}
                 alt={article.author.name}
-                className="w-8 h-8 rounded-full object-cover border-2 border-gold"
+                className="w-8 h-8 rounded-full object-cover border-2 border-gold group-hover/author:border-white transition-colors"
               />
-              <span className="text-xs font-mono text-white font-bold uppercase tracking-wider">
+              <span className="text-xs font-mono text-white group-hover/author:text-gold font-bold uppercase tracking-wider transition-colors">
                 {article.author.name}
               </span>
-            </div>
+            </a>
 
             <div className="flex items-center space-x-2">
               <button
@@ -211,7 +270,16 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 <Heart className="w-4 h-4 text-crimson fill-crimson" />
                 <span>{article.likes}</span>
               </button>
-              <ArrowUpRight className="w-5 h-5 text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <a
+                href={`?story=${article.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onReadArticle(article);
+                }}
+                className="text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform inline-block"
+              >
+                <ArrowUpRight className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
@@ -228,7 +296,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       className="group relative grid grid-cols-1 md:grid-cols-12 bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 cursor-pointer overflow-hidden shadow-xl"
     >
       {/* Image (5 cols) */}
-      <div className="md:col-span-5 relative min-h-[280px] md:min-h-[360px] overflow-hidden bg-black">
+      <a
+        href={`?story=${article.id}`}
+        onClick={(e) => {
+          e.preventDefault();
+          onReadArticle(article);
+        }}
+        className="md:col-span-5 relative min-h-[280px] md:min-h-[360px] overflow-hidden bg-black block"
+      >
         <img
           src={article.coverImage}
           alt={article.title}
@@ -238,17 +313,18 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         
         {/* Badges */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          <button
+          <span
             onClick={(e) => {
               e.stopPropagation();
+              e.preventDefault();
               onSelectCategory?.(article.category);
             }}
-            className="text-xs font-mono tracking-wider uppercase px-3 py-1 bg-black/95 text-gold font-black border border-gold/40 hover:bg-gold hover:text-black transition-all shadow-md"
+            className="text-xs font-mono tracking-wider uppercase px-3 py-1 bg-black/95 text-gold font-black border border-gold/40 hover:bg-gold hover:text-black transition-all shadow-md inline-block"
           >
             {article.categoryLabel}
-          </button>
+          </span>
         </div>
-      </div>
+      </a>
 
       {/* Content Spread (7 cols) */}
       <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
@@ -267,9 +343,16 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
 
           {/* Headline */}
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-white group-hover:text-gold transition-colors leading-tight">
+          <a
+            href={`?story=${article.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              onReadArticle(article);
+            }}
+            className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-white group-hover:text-gold transition-colors leading-tight block no-underline"
+          >
             {article.title}
-          </h3>
+          </a>
 
           {/* First Sentence Excerpt */}
           <div className="mt-3.5 text-sm sm:text-base font-sans text-zinc-200 leading-relaxed font-semibold line-clamp-3">
@@ -279,38 +362,48 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           {/* Tags (Clickable) */}
           <div className="mt-4 flex flex-wrap gap-2">
             {article.tags.map((tag, idx) => (
-              <button 
+              <a 
                 key={idx}
+                href={`?search=${encodeURIComponent(tag)}`}
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   onSelectTag?.(tag);
                 }}
-                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer"
+                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer no-underline inline-block"
                 title={`Filter articles by #${tag}`}
               >
                 #{tag}
-              </button>
+              </a>
             ))}
           </div>
         </div>
 
         {/* Bottom Details Bar */}
         <div className="mt-6 pt-4 border-t border-white/15 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center space-x-3.5">
+          <a
+            href={`?search=${encodeURIComponent(article.author.name)}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              onSelectTag?.(article.author.name);
+            }}
+            className="flex items-center space-x-3.5 no-underline group/author"
+          >
             <img
               src={article.author.avatar}
               alt={article.author.name}
-              className="w-10 h-10 rounded-full object-cover border-2 border-gold"
+              className="w-10 h-10 rounded-full object-cover border-2 border-gold group-hover/author:border-white transition-colors"
             />
             <div>
-              <p className="text-xs font-mono text-white font-extrabold uppercase tracking-wider">
+              <p className="text-xs font-mono text-white group-hover/author:text-gold font-extrabold uppercase tracking-wider transition-colors">
                 {article.author.name}
               </p>
               <p className="text-xs text-zinc-300 font-medium">
                 {article.author.role}
               </p>
             </div>
-          </div>
+          </a>
 
           <div className="flex items-center space-x-2.5">
             <button
@@ -333,10 +426,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               <span>{article.likes}</span>
             </button>
 
-            <span className="flex items-center space-x-1.5 bg-white group-hover:bg-gold text-black px-4 py-2 font-mono text-xs uppercase tracking-wider transition-colors font-black shadow-md">
+            <a
+              href={`?story=${article.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onReadArticle(article);
+              }}
+              className="flex items-center space-x-1.5 bg-white group-hover:bg-gold text-black px-4 py-2 font-mono text-xs uppercase tracking-wider transition-colors font-black shadow-md no-underline"
+            >
               <span>Read Article</span>
               <ArrowUpRight className="w-4 h-4" />
-            </span>
+            </a>
           </div>
         </div>
       </div>

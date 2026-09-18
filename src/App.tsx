@@ -69,6 +69,39 @@ export function App() {
     document.documentElement.classList.add('dark');
   }, []);
 
+  // Listen to URL parameters (?story=..., ?category=..., ?search=...) on mount & popstate
+  useEffect(() => {
+    const syncStateFromURL = () => {
+      const params = new URLSearchParams(window.location.search);
+      const storyId = params.get('story') || params.get('article');
+      const catId = params.get('category');
+      const search = params.get('search') || params.get('tag');
+
+      if (storyId) {
+        const found = articles.find((a) => a.id === storyId);
+        if (found) {
+          setSelectedArticleForReader(found);
+        }
+      } else {
+        setSelectedArticleForReader(null);
+      }
+
+      if (catId && FASHION_CATEGORIES.some((c) => c.id === catId)) {
+        setActiveCategory(catId);
+      } else if (!catId && !storyId) {
+        // default to all
+      }
+
+      if (search) {
+        setSearchQuery(search);
+      }
+    };
+
+    syncStateFromURL();
+    window.addEventListener('popstate', syncStateFromURL);
+    return () => window.removeEventListener('popstate', syncStateFromURL);
+  }, [articles]);
+
   // Dynamic Categories with updated article counts
   const dynamicCategories: FashionCategory[] = useMemo(() => {
     return FASHION_CATEGORIES.map((cat) => {
@@ -119,6 +152,37 @@ export function App() {
   }, [articles, bookmarkedIds]);
 
   // Actions
+  const handleOpenArticle = (article: FashionArticle) => {
+    setSelectedArticleForReader(article);
+    const url = new URL(window.location.href);
+    url.searchParams.set('story', article.id);
+    window.history.pushState({ storyId: article.id }, '', url.toString());
+  };
+
+  const handleCloseArticle = () => {
+    setSelectedArticleForReader(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('story');
+    url.searchParams.delete('article');
+    window.history.pushState({}, '', url.toString());
+  };
+
+  const handleSelectCategory = (catId: string) => {
+    setActiveCategory(catId);
+    setSearchQuery('');
+    const url = new URL(window.location.href);
+    if (catId === 'all') {
+      url.searchParams.delete('category');
+    } else {
+      url.searchParams.set('category', catId);
+    }
+    url.searchParams.delete('story');
+    url.searchParams.delete('search');
+    url.searchParams.delete('tag');
+    window.history.pushState({}, '', url.toString());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleToggleBookmark = (articleId: string) => {
     setBookmarkedIds((prev) =>
       prev.includes(articleId) ? prev.filter((id) => id !== articleId) : [...prev, articleId]
@@ -138,10 +202,10 @@ export function App() {
 
   const handleCreateArticle = (newArticle: FashionArticle) => {
     setArticles((prev) => [newArticle, ...prev]);
-    // Automatically select the new article's category so user sees it right away
-    setActiveCategory(newArticle.category);
+    handleSelectCategory(newArticle.category);
     setActiveMood('All Moods');
     setSearchQuery('');
+    handleOpenArticle(newArticle);
   };
 
   const handleClearAllBookmarks = () => {
@@ -152,17 +216,28 @@ export function App() {
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery('');
+    const url = new URL(window.location.href);
+    url.searchParams.delete('category');
+    url.searchParams.delete('story');
+    url.searchParams.delete('search');
+    url.searchParams.delete('tag');
+    window.history.pushState({}, '', url.toString());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectTag = (tag: string) => {
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery(tag);
+    const url = new URL(window.location.href);
+    url.searchParams.set('search', tag);
+    url.searchParams.delete('category');
+    url.searchParams.delete('story');
+    window.history.pushState({}, '', url.toString());
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectTickerItem = (tickerText: string) => {
-    // Try to find matching article by keyword
     const cleanQuery = tickerText.replace(/^[•\s]+/, '').split('//')[0].trim();
     const matched = articles.find(
       (a) =>
@@ -172,12 +247,9 @@ export function App() {
     );
 
     if (matched) {
-      setSelectedArticleForReader(matched);
+      handleOpenArticle(matched);
     } else {
-      setActiveCategory('all');
-      setActiveMood('All Moods');
-      setSearchQuery(cleanQuery);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      handleSelectTag(cleanQuery);
     }
   };
 
@@ -187,7 +259,7 @@ export function App() {
       <Header
         categories={dynamicCategories}
         activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={handleSelectCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />
@@ -200,12 +272,12 @@ export function App() {
         {activeCategory === 'all' && activeMood === 'All Moods' && !searchQuery.trim() && coverStoryArticle && (
           <CoverStory
             article={coverStoryArticle}
-            onReadArticle={setSelectedArticleForReader}
+            onReadArticle={handleOpenArticle}
             isBookmarked={bookmarkedIds.includes(coverStoryArticle.id)}
             onToggleBookmark={handleToggleBookmark}
             onToggleLike={handleToggleLike}
             onSelectTag={handleSelectTag}
-            onSelectCategory={setActiveCategory}
+            onSelectCategory={handleSelectCategory}
           />
         )}
 
@@ -213,7 +285,7 @@ export function App() {
         <CategoryFilter
           categories={dynamicCategories}
           activeCategory={activeCategory}
-          onSelectCategory={setActiveCategory}
+          onSelectCategory={handleSelectCategory}
           activeMood={activeMood}
           onSelectMood={setActiveMood}
           layoutMode={layoutMode}
@@ -225,12 +297,12 @@ export function App() {
         <ArticleGrid
           articles={filteredArticles}
           layoutMode={layoutMode}
-          onReadArticle={setSelectedArticleForReader}
+          onReadArticle={handleOpenArticle}
           bookmarkedIds={bookmarkedIds}
           onToggleBookmark={handleToggleBookmark}
           onToggleLike={handleToggleLike}
           onResetFilters={handleResetFilters}
-          onSelectCategory={setActiveCategory}
+          onSelectCategory={handleSelectCategory}
           onSelectTag={handleSelectTag}
         />
       </main>
@@ -238,7 +310,7 @@ export function App() {
       {/* 6. High-Fashion Colophon Footer */}
       <Footer
         categories={dynamicCategories}
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={handleSelectCategory}
         onOpenCreateModal={() => setIsCreateModalOpen(true)}
         onOpenLookbook={() => setIsLookbookOpen(true)}
         onSelectTag={handleSelectTag}
@@ -248,13 +320,13 @@ export function App() {
       {selectedArticleForReader && (
         <ArticleReaderModal
           article={selectedArticleForReader}
-          onClose={() => setSelectedArticleForReader(null)}
+          onClose={handleCloseArticle}
           isBookmarked={bookmarkedIds.includes(selectedArticleForReader.id)}
           onToggleBookmark={handleToggleBookmark}
           onToggleLike={handleToggleLike}
           allArticles={articles}
-          onSelectNextArticle={setSelectedArticleForReader}
-          onSelectCategory={setActiveCategory}
+          onSelectNextArticle={handleOpenArticle}
+          onSelectCategory={handleSelectCategory}
           onSelectTag={handleSelectTag}
         />
       )}
@@ -278,7 +350,7 @@ export function App() {
         isOpen={isBookmarksOpen}
         onClose={() => setIsBookmarksOpen(false)}
         bookmarkedArticles={bookmarkedArticles}
-        onReadArticle={setSelectedArticleForReader}
+        onReadArticle={handleOpenArticle}
         onRemoveBookmark={handleToggleBookmark}
         onClearAll={handleClearAllBookmarks}
       />

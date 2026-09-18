@@ -108,8 +108,23 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
     }
   };
 
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
+  const handleShare = async () => {
+    const url = `${window.location.origin}/?story=${article.id}`;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: article.title,
+          text: `${article.title} — Fashion Graviti`,
+          url: url,
+        });
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+        return;
+      } catch {
+        // Fallback to clipboard
+      }
+    }
+    navigator.clipboard.writeText(url);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -301,9 +316,15 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                     {article.author.role} • {article.author.location}
                   </p>
                   {article.author.instagram && (
-                    <span className="text-xs font-mono text-gold font-bold">
+                    <a
+                      href={`https://instagram.com/${article.author.instagram.replace('@', '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs font-mono text-gold hover:text-white underline decoration-gold/40 hover:decoration-white font-bold transition-colors block mt-0.5"
+                    >
                       {article.author.instagram}
-                    </span>
+                    </a>
                   )}
                 </div>
               </div>
@@ -453,15 +474,17 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             <span className="text-xs font-mono uppercase text-gold tracking-widest font-black block mb-3">
               NEXT STORY IN THIS ISSUE
             </span>
-            <div 
-              onClick={() => {
+            <a 
+              href={`?story=${nextArticle.id}`}
+              onClick={(e) => {
+                e.preventDefault();
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                 onSelectNextArticle(nextArticle);
                 if (scrollContainerRef.current) {
                   scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               }}
-              className="group p-6 bg-noir-card border-2 border-white/20 hover:border-gold cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all shadow-xl"
+              className="group p-6 bg-noir-card border-2 border-white/20 hover:border-gold cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all shadow-xl block no-underline"
             >
               <div>
                 <span className="text-xs font-mono text-gold uppercase font-black">{nextArticle.categoryLabel}</span>
@@ -475,7 +498,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 <span>Read Story</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
-            </div>
+            </a>
           </div>
         </article>
       </div>
