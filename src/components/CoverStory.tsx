@@ -1,0 +1,155 @@
+import React from 'react';
+import type { FashionArticle } from '../types/fashion';
+import { ArrowUpRight, Bookmark, Clock, Heart, MapPin, Sparkles } from 'lucide-react';
+
+interface CoverStoryProps {
+  article: FashionArticle;
+  onReadArticle: (article: FashionArticle) => void;
+  isBookmarked: boolean;
+  onToggleBookmark: (articleId: string) => void;
+  onToggleLike: (articleId: string) => void;
+}
+
+export const CoverStory: React.FC<CoverStoryProps> = ({
+  article,
+  onReadArticle,
+  isBookmarked,
+  onToggleBookmark,
+  onToggleLike,
+}) => {
+  return (
+    <section className="relative w-full border-b-2 border-white/20 overflow-hidden bg-black">
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[580px] lg:min-h-[640px]">
+        {/* Left Column: Bold Headline & Excerpt (5 cols) */}
+        <div className="lg:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r-2 border-white/20 z-10 bg-noir-card">
+          <div>
+            {/* Top Badges */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono tracking-widest uppercase mb-4">
+              <span className="bg-crimson px-3 py-1 text-white font-black flex items-center gap-1.5 shadow-md">
+                <Sparkles className="w-3.5 h-3.5 text-gold" />
+                COVER STORY
+              </span>
+              <span className="bg-black text-white font-bold border border-white/30 px-2.5 py-1">
+                {article.season}
+              </span>
+              <span className="text-gold font-extrabold">
+                {article.issueNumber}
+              </span>
+            </div>
+
+            {/* Location Tag */}
+            <div className="flex items-center text-xs font-mono text-gold mb-3 tracking-wider font-extrabold">
+              <MapPin className="w-4 h-4 mr-1.5 text-gold flex-shrink-0" />
+              <span>{article.locationTag}</span>
+            </div>
+
+            {/* Title */}
+            <h2 
+              onClick={() => onReadArticle(article)}
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white leading-[1.12] tracking-tight hover:text-gold transition-colors cursor-pointer drop-shadow-sm"
+            >
+              {article.title}
+            </h2>
+
+            {/* Subtitle / Excerpt */}
+            <p className="mt-4 text-base sm:text-lg font-sans text-zinc-100 leading-relaxed font-medium">
+              {article.subtitle}
+            </p>
+
+            {/* Tags */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {article.tags.map((tag, idx) => (
+                <span 
+                  key={idx}
+                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-white border border-white/20"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Bar: Author info & Read button */}
+          <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center space-x-3.5">
+              <img
+                src={article.author.avatar}
+                alt={article.author.name}
+                className="w-12 h-12 rounded-full object-cover border-2 border-gold"
+              />
+              <div>
+                <p className="text-sm font-mono font-bold text-white tracking-wider uppercase">
+                  {article.author.name}
+                </p>
+                <p className="text-xs text-zinc-300 font-medium">
+                  {article.author.role} • {article.publishedAt}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-3">
+              {/* Bookmark */}
+              <button
+                onClick={() => onToggleBookmark(article.id)}
+                className={`p-2.5 border-2 transition-all ${
+                  isBookmarked
+                    ? 'bg-gold text-black border-gold'
+                    : 'border-white/30 text-white hover:border-white'
+                }`}
+                title={isBookmarked ? 'Remove from Saved' : 'Save Cover Story'}
+              >
+                <Bookmark className="w-4 h-4 fill-current" />
+              </button>
+
+              {/* Like */}
+              <button
+                onClick={() => onToggleLike(article.id)}
+                className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light transition-all text-xs font-mono font-extrabold"
+              >
+                <Heart className="w-4 h-4 text-crimson fill-crimson" />
+                <span>{article.likes}</span>
+              </button>
+
+              {/* Read Story CTA */}
+              <button
+                onClick={() => onReadArticle(article)}
+                className="flex items-center space-x-2 bg-white text-black hover:bg-gold hover:text-black px-6 py-2.5 font-mono text-xs uppercase tracking-widest font-black transition-all shadow-lg active:scale-95"
+              >
+                <span>Read Feature</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Hero Full-Bleed Editorial Imagery (7 cols) */}
+        <div 
+          onClick={() => onReadArticle(article)}
+          className="lg:col-span-7 relative group cursor-pointer overflow-hidden min-h-[380px] lg:min-h-[580px] bg-black"
+        >
+          <img
+            src={article.coverImage}
+            alt={article.title}
+            className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out brightness-95 group-hover:brightness-100"
+          />
+          {/* Subtle gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/80 lg:via-transparent lg:to-transparent pointer-events-none" />
+
+          {/* Image Caption & Read Time Overlay */}
+          <div className="absolute bottom-4 right-4 left-4 lg:left-auto lg:max-w-md bg-black/95 border-2 border-white/20 p-4 text-xs text-white shadow-2xl">
+            <div className="flex items-center justify-between font-mono text-xs text-gold uppercase font-bold mb-1.5">
+              <span>{article.categoryLabel}</span>
+              <span className="flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-gold" />
+                {article.readTime}
+              </span>
+            </div>
+            <p className="font-sans text-xs text-zinc-200 font-semibold italic">
+              {article.coverImageCaption || article.subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
