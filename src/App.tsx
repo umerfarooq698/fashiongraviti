@@ -14,7 +14,6 @@ import { Footer } from './components/Footer';
 
 const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v2';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v2';
-const STORAGE_KEY_THEME = 'fashiongraviti_theme_v1';
 
 export function App() {
   // Articles state with localStorage hydration
@@ -43,12 +42,6 @@ export function App() {
     return ['article-01', 'article-03'];
   });
 
-  // Theme state
-  const [isDark, setIsDark] = useState<boolean>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY_THEME);
-    return saved !== null ? saved === 'true' : true;
-  });
-
   // Filter & Search states
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [activeMood, setActiveMood] = useState<FashionMood>('All Moods');
@@ -71,17 +64,10 @@ export function App() {
     localStorage.setItem(STORAGE_KEY_BOOKMARKS, JSON.stringify(bookmarkedIds));
   }, [bookmarkedIds]);
 
-  // Sync theme to root class
+  // Ensure dark class is applied
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY_THEME, String(isDark));
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-    }
-  }, [isDark]);
+    document.documentElement.classList.add('dark');
+  }, []);
 
   // Dynamic Categories with updated article counts
   const dynamicCategories: FashionCategory[] = useMemo(() => {
@@ -181,8 +167,6 @@ export function App() {
         onOpenBookmarks={() => setIsBookmarksOpen(true)}
         onOpenCreateModal={() => setIsCreateModalOpen(true)}
         onOpenLookbook={() => setIsLookbookOpen(true)}
-        isDark={isDark}
-        onToggleTheme={() => setIsDark(!isDark)}
       />
 
       {/* 2. Runway Ticker Tape */}

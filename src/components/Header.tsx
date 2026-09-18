@@ -3,8 +3,6 @@ import {
   Search, 
   Bookmark, 
   PlusCircle, 
-  Sun, 
-  Moon, 
   Compass,
   X
 } from 'lucide-react';
@@ -20,8 +18,6 @@ interface HeaderProps {
   onOpenBookmarks: () => void;
   onOpenCreateModal: () => void;
   onOpenLookbook: () => void;
-  isDark: boolean;
-  onToggleTheme: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -34,8 +30,6 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenBookmarks,
   onOpenCreateModal,
   onOpenLookbook,
-  isDark,
-  onToggleTheme,
 }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -59,22 +53,15 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Top Edition & Date Bar */}
       <div className="border-b border-white/10 px-4 lg:px-12 py-2 flex items-center justify-between text-xs font-mono tracking-wider text-zinc-300">
         <div className="flex items-center space-x-3 font-semibold">
-          <span className="text-crimson-light font-bold">FASHIONGRAVITI MAGAZINE</span>
+          <span className="text-crimson-light font-bold">FASHION GRAVITI</span>
           <span className="text-zinc-600">•</span>
           <span className="text-white font-medium">DAILY EDITORIAL EDITION</span>
           <span className="hidden md:inline text-zinc-600">•</span>
           <span className="hidden md:inline text-gold font-semibold">VOLUME 2026</span>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={onToggleTheme}
-            className="p-1.5 hover:text-white text-zinc-300 hover:bg-white/10 rounded transition-colors flex items-center gap-1.5 font-bold"
-            title="Toggle Theme (Noir / Paper)"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-gold" /> : <Moon className="w-4 h-4" />}
-            <span className="text-xs uppercase font-mono">{isDark ? 'Paper Mode' : 'Noir Mode'}</span>
-          </button>
+        <div className="text-[11px] font-mono font-bold text-zinc-400 hidden sm:block uppercase">
+          GLOBAL FASHION & RUNWAY EDITORIAL
         </div>
       </div>
 
@@ -88,17 +75,15 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => onSelectCategory('all')}
           className="cursor-pointer text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight uppercase hover:text-gold transition-colors duration-200 text-white select-none drop-shadow-md"
         >
-          FASHIONGRAVITI
+          FASHION GRAVITI
         </h1>
 
-        <div className="mt-2 text-xs md:text-sm font-sans font-bold tracking-widest text-zinc-300 uppercase flex items-center gap-2">
-          <span>Runway Reviews</span>
+        <div className="mt-2 text-xs md:text-sm font-sans font-bold tracking-widest text-zinc-200 uppercase flex items-center justify-center gap-2">
+          <span>Fashion News</span>
           <span className="text-crimson font-black">•</span>
-          <span>Street Style</span>
+          <span>Fashion Trends</span>
           <span className="text-crimson font-black">•</span>
           <span>Celebrity Fashion</span>
-          <span className="text-crimson font-black">•</span>
-          <span>Luxury Culture</span>
         </div>
       </div>
 

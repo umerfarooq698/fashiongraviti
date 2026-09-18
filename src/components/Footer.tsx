@@ -80,13 +80,13 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Brand & Mission Statement (5 cols) */}
         <div className="lg:col-span-5">
           <h2 className="text-3xl font-serif font-black tracking-tight uppercase text-alabaster">
-            Fashiongraviti
+            FASHION GRAVITI
           </h2>
-          <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase">
-            HAUTE COUTURE • AVANT-GARDE ARCHIVE • SARTORIAL CRITIQUE
+          <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold">
+            FASHION NEWS • FASHION TRENDS • CELEBRITY FASHION
           </p>
-          <p className="mt-4 text-xs font-sans text-zinc-400 font-light leading-relaxed max-w-md">
-            Fashiongraviti is an independent, non-conformist digital magazine and critical archive documenting high fashion, atelier craftsmanship, subversive youth movements, and experimental textiles across the globe.
+          <p className="mt-4 text-xs font-sans text-zinc-300 font-medium leading-relaxed max-w-md">
+            Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-[10px] font-mono uppercase text-zinc-400">
             <span className="border border-white/10 px-2 py-1">PARIS // IVE ARR.</span>
