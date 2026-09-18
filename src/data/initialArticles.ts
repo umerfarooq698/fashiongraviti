@@ -3,7 +3,7 @@ import type { FashionArticle, FashionCategory, LookbookItem } from '../types/fas
 export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'all',
-    name: 'All Stories',
+    name: 'Home',
     tagline: 'BREAKING EDITORIAL & RUNWAY FEED',
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',

@@ -90,9 +90,6 @@ export const Header: React.FC<HeaderProps> = ({
                 }`}
               >
                 {cat.name}
-                <span className={`ml-1.5 text-[10px] font-bold ${isSelected ? 'text-black' : 'text-gold'}`}>
-                  ({cat.count})
-                </span>
               </button>
             );
           })}

@@ -106,10 +106,9 @@ export const Footer: React.FC<FooterProps> = ({
               <li key={cat.id}>
                 <button
                   onClick={() => onSelectCategory(cat.id)}
-                  className="text-zinc-400 hover:text-white transition-colors uppercase flex items-center justify-between w-full"
+                  className="text-zinc-400 hover:text-white transition-colors uppercase font-bold"
                 >
-                  <span>{cat.name}</span>
-                  <span className="text-zinc-600 text-[10px]">({cat.count})</span>
+                  {cat.name}
                 </button>
               </li>
             ))}

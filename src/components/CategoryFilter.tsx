@@ -75,14 +75,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
                 </div>
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 p-3 flex flex-col justify-between">
-                  <div className="flex justify-end">
-                    <span className={`text-[10px] font-mono px-2 py-0.5 font-black uppercase ${
-                      isSelected ? 'bg-gold text-black' : 'bg-black/90 text-white border border-white/20'
-                    }`}>
-                      {cat.count} {cat.count === 1 ? 'STORY' : 'STORIES'}
-                    </span>
-                  </div>
+                <div className="absolute inset-0 p-3 flex flex-col justify-end">
 
                   <div>
                     <h4 className={`text-xs sm:text-sm font-serif font-black uppercase tracking-tight leading-snug ${
