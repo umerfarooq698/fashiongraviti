@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FashionArticle } from '../types/fashion';
-import { ArrowUpRight, Bookmark, Clock, Heart, MapPin, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Bookmark, Clock, Heart, Sparkles } from 'lucide-react';
 
 interface CoverStoryProps {
   article: FashionArticle;
@@ -49,21 +49,6 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
                 {article.issueNumber}
               </span>
             </div>
-
-            {/* Location Tag */}
-            <a 
-              href={`?search=${encodeURIComponent(article.locationTag)}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                onSelectTag?.(article.locationTag);
-              }}
-              className="flex items-center text-xs font-mono text-gold hover:text-white mb-3 tracking-wider font-extrabold cursor-pointer transition-colors no-underline"
-              title={`Filter by location ${article.locationTag}`}
-            >
-              <MapPin className="w-4 h-4 mr-1.5 text-gold flex-shrink-0" />
-              <span>{article.locationTag}</span>
-            </a>
 
             {/* Title */}
             <a 

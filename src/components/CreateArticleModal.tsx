@@ -29,12 +29,10 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [category, setCategory] = useState('fashion-news');
   const [mood, setMood] = useState<FashionMood>('Dark Romanticism');
   const [season, setSeason] = useState('AUTUMN / WINTER 2026');
-  const [locationTag, setLocationTag] = useState('PARIS // PLACE VENDÔME');
   const [readTime, setReadTime] = useState('6 MIN READ');
   
   const [authorName, setAuthorName] = useState('Guest Curator');
   const [authorRole, setAuthorRole] = useState('Independent Fashion Critic');
-  const [authorLocation, setAuthorLocation] = useState('Paris, France');
   const authorAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 
   const [coverImage, setCoverImage] = useState(PRESET_IMAGES[0].url);
@@ -77,11 +75,11 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
       categoryLabel: selectedCategoryObj.name,
       season,
       issueNumber: 'ISSUE NO. 08',
-      locationTag,
+      locationTag: '',
       author: {
         name: authorName,
         role: authorRole,
-        location: authorLocation,
+        location: '',
         avatar: authorAvatar,
       },
       publishedAt: 'JUST NOW',
@@ -208,30 +206,17 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
             </div>
           </div>
 
-          {/* Location & Read Time */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
-                Location Tag
-              </label>
-              <input
-                type="text"
-                value={locationTag}
-                onChange={(e) => setLocationTag(e.target.value)}
-                className="w-full bg-noir-card border border-white/20 p-2.5 text-white focus:outline-none focus:border-gold text-xs font-mono uppercase"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
-                Estimated Read Time
-              </label>
-              <input
-                type="text"
-                value={readTime}
-                onChange={(e) => setReadTime(e.target.value)}
-                className="w-full bg-noir-card border border-white/20 p-2.5 text-white focus:outline-none focus:border-gold text-xs font-mono uppercase"
-              />
-            </div>
+          {/* Read Time */}
+          <div>
+            <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
+              Estimated Read Time
+            </label>
+            <input
+              type="text"
+              value={readTime}
+              onChange={(e) => setReadTime(e.target.value)}
+              className="w-full bg-noir-card border border-white/20 p-2.5 text-white focus:outline-none focus:border-gold text-xs font-mono uppercase"
+            />
           </div>
 
           {/* Section 3: Cover Image Presets / Custom URL */}
@@ -284,6 +269,7 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
                 className="w-full bg-noir-card border border-white/20 p-2 text-white text-xs font-mono"
               />
             </div>
+            {/* Author Role */}
             <div>
               <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
                 Author Role
@@ -292,17 +278,6 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
                 type="text"
                 value={authorRole}
                 onChange={(e) => setAuthorRole(e.target.value)}
-                className="w-full bg-noir-card border border-white/20 p-2 text-white text-xs font-mono"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
-                Author Location
-              </label>
-              <input
-                type="text"
-                value={authorLocation}
-                onChange={(e) => setAuthorLocation(e.target.value)}
                 className="w-full bg-noir-card border border-white/20 p-2 text-white text-xs font-mono"
               />
             </div>

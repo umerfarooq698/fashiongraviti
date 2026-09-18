@@ -48,48 +48,6 @@ export const Footer: React.FC<FooterProps> = ({
           <p className="mt-4 text-xs font-sans text-zinc-300 font-medium leading-relaxed max-w-md">
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2 text-[10px] font-mono uppercase text-zinc-400">
-            <a 
-              href="?search=Paris"
-              onClick={(e) => {
-                e.preventDefault();
-                handleTagClick('Paris');
-              }}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
-            >
-              PARIS // IVE ARR.
-            </a>
-            <a 
-              href="?search=Milan"
-              onClick={(e) => {
-                e.preventDefault();
-                handleTagClick('Milan');
-              }}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
-            >
-              MILAN // BRERA
-            </a>
-            <a 
-              href="?search=Tokyo"
-              onClick={(e) => {
-                e.preventDefault();
-                handleTagClick('Tokyo');
-              }}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
-            >
-              TOKYO // SHIBUYA
-            </a>
-            <a 
-              href="?search=Antwerp"
-              onClick={(e) => {
-                e.preventDefault();
-                handleTagClick('Antwerp');
-              }}
-              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer no-underline"
-            >
-              ANTWERP // HET ZUID
-            </a>
-          </div>
         </div>
 
         {/* Departments Sitemap (3 cols) */}

@@ -5,7 +5,6 @@ import {
   Heart, 
   Share2, 
   Clock, 
-  MapPin, 
   Volume2, 
   VolumeX, 
   ArrowLeft, 
@@ -294,20 +293,6 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             </span>
           </div>
 
-          <a
-            href={`?search=${encodeURIComponent(article.locationTag)}`}
-            onClick={(e) => {
-              e.preventDefault();
-              if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-              onSelectTag?.(article.locationTag);
-            }}
-            className="flex items-center text-xs font-mono text-gold hover:text-white mb-4 font-extrabold transition-colors cursor-pointer no-underline"
-            title={`Explore stories from ${article.locationTag}`}
-          >
-            <MapPin className="w-4 h-4 mr-1.5 text-gold flex-shrink-0" />
-            <span>{article.locationTag}</span>
-          </a>
-
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-white leading-[1.12] tracking-tight">
             {article.title}
           </h1>
@@ -336,7 +321,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                   {article.author.name}
                 </h4>
                 <p className="text-xs text-zinc-300 font-medium">
-                  {article.author.role} • {article.author.location}
+                  {article.author.role}
                 </p>
                 {article.author.instagram && (
                   <a
