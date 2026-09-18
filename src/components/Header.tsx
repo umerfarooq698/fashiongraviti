@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Search, 
-  Bookmark, 
-  PlusCircle, 
-  Compass,
-  X
-} from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import type { FashionCategory } from '../types/fashion';
 
 interface HeaderProps {
@@ -14,10 +8,6 @@ interface HeaderProps {
   onSelectCategory: (id: string) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
-  bookmarkedCount: number;
-  onOpenBookmarks: () => void;
-  onOpenCreateModal: () => void;
-  onOpenLookbook: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -26,10 +16,6 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectCategory,
   searchQuery,
   onSearchChange,
-  bookmarkedCount,
-  onOpenBookmarks,
-  onOpenCreateModal,
-  onOpenLookbook,
 }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -90,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Magazine Category Navigation Bar */}
       <div className="px-4 lg:px-12 py-3.5 flex items-center justify-between gap-4 bg-noir-elevated border-b border-white/10">
         {/* News Magazine Category Tabs */}
-        <nav className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-1">
+        <nav className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-1 flex-grow">
           {categories.map((cat) => {
             const isSelected = activeCategory === cat.id;
             return (
@@ -112,77 +98,39 @@ export const Header: React.FC<HeaderProps> = ({
           })}
         </nav>
 
-        {/* Action Buttons: Search, Bookmarks, Lookbook, Submit */}
-        <div className="flex items-center space-x-2 flex-shrink-0">
-          {/* Quick Search */}
-          <div className="relative">
-            {isSearchOpen ? (
-              <div className="flex items-center bg-black border-2 border-gold px-3 py-1.5 rounded-none text-xs">
-                <Search className="w-4 h-4 text-gold mr-2" />
-                <input
-                  type="text"
-                  placeholder="Search articles, designers, topics..."
-                  value={searchQuery}
-                  onChange={(e) => onSearchChange(e.target.value)}
-                  autoFocus
-                  className="bg-transparent text-white placeholder-zinc-400 font-bold focus:outline-none w-36 sm:w-60 text-xs font-sans"
-                />
-                <button 
-                  onClick={() => {
-                    onSearchChange('');
-                    setIsSearchOpen(false);
-                  }}
-                  className="text-white hover:text-gold ml-2"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="flex items-center space-x-2 px-3 py-2 border border-white/20 hover:border-gold text-white font-bold transition-colors text-xs font-mono"
+        {/* Search Input / Button on Right */}
+        <div className="flex items-center flex-shrink-0">
+          {isSearchOpen ? (
+            <div className="flex items-center bg-black border-2 border-gold px-3 py-1.5 rounded-none text-xs shadow-lg">
+              <Search className="w-4 h-4 text-gold mr-2" />
+              <input
+                type="text"
+                placeholder="Search articles, designers, topics..."
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                autoFocus
+                className="bg-transparent text-white placeholder-zinc-400 font-bold focus:outline-none w-44 sm:w-64 text-xs font-sans"
+              />
+              <button 
+                onClick={() => {
+                  onSearchChange('');
+                  setIsSearchOpen(false);
+                }}
+                className="text-white hover:text-gold ml-2"
               >
-                <Search className="w-4 h-4 text-gold" />
-                <span className="hidden md:inline font-bold">SEARCH</span>
-                <kbd className="hidden lg:inline bg-white/20 text-white px-1.5 py-0.5 text-[10px] rounded font-mono font-bold">/</kbd>
+                <X className="w-4 h-4" />
               </button>
-            )}
-          </div>
-
-          {/* Lookbook */}
-          <button
-            onClick={onOpenLookbook}
-            className="flex items-center space-x-1.5 px-3 py-2 border border-white/20 hover:border-gold text-white hover:text-gold transition-colors text-xs font-mono font-bold uppercase"
-            title="Open Seasonal Lookbook"
-          >
-            <Compass className="w-4 h-4 text-gold" />
-            <span className="hidden sm:inline">Lookbook</span>
-          </button>
-
-          {/* Saved Vault */}
-          <button
-            onClick={onOpenBookmarks}
-            className="flex items-center space-x-1.5 px-3 py-2 border border-white/20 hover:border-white text-white transition-colors text-xs font-mono font-bold uppercase relative"
-            title="View Saved Vault"
-          >
-            <Bookmark className="w-4 h-4 fill-current text-gold" />
-            <span className="hidden sm:inline">Saved</span>
-            {bookmarkedCount > 0 && (
-              <span className="inline-flex items-center justify-center bg-crimson text-white text-[11px] w-4 h-4 rounded-full font-black ml-1">
-                {bookmarkedCount}
-              </span>
-            )}
-          </button>
-
-          {/* Submit Editorial Article */}
-          <button
-            onClick={onOpenCreateModal}
-            className="flex items-center space-x-1.5 px-4 py-2 bg-crimson hover:bg-crimson-light text-white font-mono text-xs uppercase tracking-wider font-extrabold transition-all shadow-md active:scale-95"
-          >
-            <PlusCircle className="w-4 h-4" />
-            <span className="hidden sm:inline">Post Article</span>
-            <span className="sm:hidden">Post</span>
-          </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="flex items-center space-x-2 px-3.5 py-2 border border-white/20 hover:border-gold text-white font-bold transition-colors text-xs font-mono bg-black/50"
+            >
+              <Search className="w-4 h-4 text-gold" />
+              <span className="font-bold">SEARCH</span>
+              <kbd className="hidden sm:inline bg-white/20 text-white px-1.5 py-0.5 text-[10px] rounded font-mono font-bold">/</kbd>
+            </button>
+          )}
         </div>
       </div>
     </header>

@@ -163,10 +163,6 @@ export function App() {
         onSelectCategory={setActiveCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
-        bookmarkedCount={bookmarkedIds.length}
-        onOpenBookmarks={() => setIsBookmarksOpen(true)}
-        onOpenCreateModal={() => setIsCreateModalOpen(true)}
-        onOpenLookbook={() => setIsLookbookOpen(true)}
       />
 
       {/* 2. Runway Ticker Tape */}
