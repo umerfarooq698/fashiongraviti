@@ -292,43 +292,60 @@ export function App() {
       <Ticker onSelectTickerItem={handleSelectTickerItem} />
 
       <main>
-        {/* 3. Cover Story (only shown on 'all' view with no active search query for pure magazine feel) */}
-        {activeCategory === 'all' && activeMood === 'All Moods' && !searchQuery.trim() && coverStoryArticle && (
-          <CoverStory
-            article={coverStoryArticle}
-            onReadArticle={handleOpenArticle}
-            isBookmarked={bookmarkedIds.includes(coverStoryArticle.id)}
+        {selectedArticleForReader ? (
+          /* Dedicated Article View with persistent site Header and Footer */
+          <ArticleReaderModal
+            article={selectedArticleForReader}
+            onClose={handleCloseArticle}
+            isBookmarked={bookmarkedIds.includes(selectedArticleForReader.id)}
             onToggleBookmark={handleToggleBookmark}
             onToggleLike={handleToggleLike}
-            onSelectTag={handleSelectTag}
+            allArticles={articles}
+            onSelectNextArticle={handleOpenArticle}
             onSelectCategory={handleSelectCategory}
+            onSelectTag={handleSelectTag}
           />
+        ) : (
+          <>
+            {/* 3. Cover Story (only shown on 'all' view with no active search query for pure magazine feel) */}
+            {activeCategory === 'all' && activeMood === 'All Moods' && !searchQuery.trim() && coverStoryArticle && (
+              <CoverStory
+                article={coverStoryArticle}
+                onReadArticle={handleOpenArticle}
+                isBookmarked={bookmarkedIds.includes(coverStoryArticle.id)}
+                onToggleBookmark={handleToggleBookmark}
+                onToggleLike={handleToggleLike}
+                onSelectTag={handleSelectTag}
+                onSelectCategory={handleSelectCategory}
+              />
+            )}
+
+            {/* 4. Category Showcase & Filter Bar */}
+            <CategoryFilter
+              categories={dynamicCategories}
+              activeCategory={activeCategory}
+              onSelectCategory={handleSelectCategory}
+              activeMood={activeMood}
+              onSelectMood={setActiveMood}
+              layoutMode={layoutMode}
+              onChangeLayout={setLayoutMode}
+              totalArticlesCount={filteredArticles.length}
+            />
+
+            {/* 5. Article Grid with selected layout */}
+            <ArticleGrid
+              articles={filteredArticles}
+              layoutMode={layoutMode}
+              onReadArticle={handleOpenArticle}
+              bookmarkedIds={bookmarkedIds}
+              onToggleBookmark={handleToggleBookmark}
+              onToggleLike={handleToggleLike}
+              onResetFilters={handleResetFilters}
+              onSelectCategory={handleSelectCategory}
+              onSelectTag={handleSelectTag}
+            />
+          </>
         )}
-
-        {/* 4. Category Showcase & Filter Bar */}
-        <CategoryFilter
-          categories={dynamicCategories}
-          activeCategory={activeCategory}
-          onSelectCategory={handleSelectCategory}
-          activeMood={activeMood}
-          onSelectMood={setActiveMood}
-          layoutMode={layoutMode}
-          onChangeLayout={setLayoutMode}
-          totalArticlesCount={filteredArticles.length}
-        />
-
-        {/* 5. Article Grid with selected layout */}
-        <ArticleGrid
-          articles={filteredArticles}
-          layoutMode={layoutMode}
-          onReadArticle={handleOpenArticle}
-          bookmarkedIds={bookmarkedIds}
-          onToggleBookmark={handleToggleBookmark}
-          onToggleLike={handleToggleLike}
-          onResetFilters={handleResetFilters}
-          onSelectCategory={handleSelectCategory}
-          onSelectTag={handleSelectTag}
-        />
       </main>
 
       {/* 6. High-Fashion Colophon Footer */}
@@ -339,21 +356,6 @@ export function App() {
         onOpenLookbook={() => setIsLookbookOpen(true)}
         onSelectTag={handleSelectTag}
       />
-
-      {/* 7. Fullscreen Article Reader Modal */}
-      {selectedArticleForReader && (
-        <ArticleReaderModal
-          article={selectedArticleForReader}
-          onClose={handleCloseArticle}
-          isBookmarked={bookmarkedIds.includes(selectedArticleForReader.id)}
-          onToggleBookmark={handleToggleBookmark}
-          onToggleLike={handleToggleLike}
-          allArticles={articles}
-          onSelectNextArticle={handleOpenArticle}
-          onSelectCategory={handleSelectCategory}
-          onSelectTag={handleSelectTag}
-        />
-      )}
 
       {/* 8. Curator Studio Modal (Submit Post) */}
       <CreateArticleModal
