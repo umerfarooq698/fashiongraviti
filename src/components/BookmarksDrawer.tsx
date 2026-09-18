@@ -57,10 +57,12 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
             </div>
           ) : (
             bookmarkedArticles.map((article) => (
-              <div
+              <a
                 key={article.id}
-                className="group relative bg-noir-card border border-white/10 hover:border-white/30 p-3.5 flex gap-3 transition-all cursor-pointer"
-                onClick={() => {
+                href={`/${article.slug}`}
+                className="group relative bg-noir-card border border-white/10 hover:border-white/30 p-3.5 flex gap-3 transition-all cursor-pointer block no-underline"
+                onClick={(e) => {
+                  e.preventDefault();
                   onReadArticle(article);
                   onClose();
                 }}
@@ -94,6 +96,7 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
+                        e.preventDefault();
                         onRemoveBookmark(article.id);
                       }}
                       className="text-zinc-500 hover:text-crimson-light p-1 transition-colors"
@@ -103,7 +106,7 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
                     </button>
                   </div>
                 </div>
-              </div>
+              </a>
             ))
           )}
         </div>

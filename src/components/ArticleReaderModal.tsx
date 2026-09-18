@@ -109,7 +109,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   };
 
   const handleShare = async () => {
-    const url = `${window.location.origin}/?story=${article.id}`;
+    const url = `${window.location.origin}/${article.slug}`;
     if (navigator.share) {
       try {
         await navigator.share({
@@ -174,16 +174,18 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               <span>EXIT ARTICLE</span>
             </button>
             <span className="text-zinc-600 hidden sm:inline">|</span>
-            <button
-              onClick={() => {
+            <a
+              href={`/${article.category}`}
+              onClick={(e) => {
+                e.preventDefault();
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                 onSelectCategory?.(article.category);
                 onClose();
               }}
-              className="text-xs font-mono text-gold hover:text-white font-bold uppercase hidden sm:inline transition-colors cursor-pointer"
+              className="text-xs font-mono text-gold hover:text-white font-bold uppercase hidden sm:inline transition-colors cursor-pointer no-underline"
             >
               {article.categoryLabel}
-            </button>
+            </a>
           </div>
 
           <div className="flex items-center space-x-2 sm:space-x-3">
@@ -251,16 +253,18 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           {/* Metadata Header */}
           <div className="border-b-2 border-white/20 pb-8 mb-8">
             <div className="flex flex-wrap items-center gap-3 text-xs font-mono uppercase mb-4">
-              <button
-                onClick={() => {
+              <a
+                href={`/${article.category}`}
+                onClick={(e) => {
+                  e.preventDefault();
                   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                   onSelectCategory?.(article.category);
                   onClose();
                 }}
-                className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black shadow-md transition-colors cursor-pointer"
+                className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black shadow-md transition-colors cursor-pointer no-underline inline-block"
               >
                 {article.categoryLabel}
-              </button>
+              </a>
               <span className="text-white font-bold">{article.season}</span>
               <span className="text-zinc-500">•</span>
               <span className="text-gold font-bold">{article.issueNumber}</span>
@@ -475,7 +479,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               NEXT STORY IN THIS ISSUE
             </span>
             <a 
-              href={`?story=${nextArticle.id}`}
+              href={`/${nextArticle.slug}`}
               onClick={(e) => {
                 e.preventDefault();
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();

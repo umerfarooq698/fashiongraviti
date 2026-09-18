@@ -69,27 +69,71 @@ export function App() {
     document.documentElement.classList.add('dark');
   }, []);
 
-  // Listen to URL parameters (?story=..., ?category=..., ?search=...) on mount & popstate
+  // Listen to URL path (/category or /title-slug) and search params on mount & popstate
   useEffect(() => {
     const syncStateFromURL = () => {
+      const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+      const segments = rawPath.split('/').filter(Boolean);
       const params = new URLSearchParams(window.location.search);
-      const storyId = params.get('story') || params.get('article');
-      const catId = params.get('category');
+
+      const queryStory = params.get('story') || params.get('article');
+      const queryCat = params.get('category');
       const search = params.get('search') || params.get('tag');
 
-      if (storyId) {
-        const found = articles.find((a) => a.id === storyId);
-        if (found) {
-          setSelectedArticleForReader(found);
-        }
-      } else {
-        setSelectedArticleForReader(null);
+      const categoryMap: Record<string, string> = {
+        'fashion-news': 'fashion-news',
+        'fashion-trends': 'fashion-trends',
+        'celebrity': 'celebrity',
+        'designers-brands': 'designers-brands',
+        'designers-and-brands': 'designers-brands',
+        'beauty': 'beauty',
+        'how-to-style': 'how-to-style',
+        'home': 'all',
+        'all': 'all',
+      };
+
+      let matchedArticle: FashionArticle | null = null;
+      let matchedCategory = 'all';
+
+      // 1. Direct query param fallback
+      if (queryStory) {
+        matchedArticle = articles.find((a) => a.id === queryStory || a.slug === queryStory) || null;
       }
 
-      if (catId && FASHION_CATEGORIES.some((c) => c.id === catId)) {
-        setActiveCategory(catId);
-      } else if (!catId && !storyId) {
-        // default to all
+      // 2. Direct path slug matching (/category or /title-slug or /category/title-slug)
+      if (!matchedArticle && segments.length > 0) {
+        if (segments.length === 1) {
+          const seg = segments[0].toLowerCase();
+          if (categoryMap[seg]) {
+            matchedCategory = categoryMap[seg];
+          } else {
+            matchedArticle = articles.find((a) => a.slug === seg || a.id === seg) || null;
+            if (matchedArticle) {
+              matchedCategory = matchedArticle.category;
+            }
+          }
+        } else if (segments.length >= 2) {
+          const lastSeg = segments[segments.length - 1].toLowerCase();
+          matchedArticle = articles.find((a) => a.slug === lastSeg || a.id === lastSeg) || null;
+          if (matchedArticle) {
+            matchedCategory = matchedArticle.category;
+          } else if (categoryMap[segments[0].toLowerCase()]) {
+            matchedCategory = categoryMap[segments[0].toLowerCase()];
+          }
+        }
+      }
+
+      // 3. Category query param fallback
+      if (queryCat && categoryMap[queryCat.toLowerCase()]) {
+        matchedCategory = categoryMap[queryCat.toLowerCase()];
+      }
+
+      if (matchedArticle) {
+        setSelectedArticleForReader(matchedArticle);
+        setActiveCategory(matchedArticle.category);
+      } else {
+        setSelectedArticleForReader(null);
+        setActiveCategory(matchedCategory);
       }
 
       if (search) {
@@ -154,32 +198,21 @@ export function App() {
   // Actions
   const handleOpenArticle = (article: FashionArticle) => {
     setSelectedArticleForReader(article);
-    const url = new URL(window.location.href);
-    url.searchParams.set('story', article.id);
-    window.history.pushState({ storyId: article.id }, '', url.toString());
+    window.history.pushState({ storyId: article.id, slug: article.slug }, '', `/${article.slug}`);
   };
 
   const handleCloseArticle = () => {
     setSelectedArticleForReader(null);
-    const url = new URL(window.location.href);
-    url.searchParams.delete('story');
-    url.searchParams.delete('article');
-    window.history.pushState({}, '', url.toString());
+    const targetPath = activeCategory === 'all' ? '/' : `/${activeCategory}`;
+    window.history.pushState({}, '', targetPath);
   };
 
   const handleSelectCategory = (catId: string) => {
     setActiveCategory(catId);
     setSearchQuery('');
-    const url = new URL(window.location.href);
-    if (catId === 'all') {
-      url.searchParams.delete('category');
-    } else {
-      url.searchParams.set('category', catId);
-    }
-    url.searchParams.delete('story');
-    url.searchParams.delete('search');
-    url.searchParams.delete('tag');
-    window.history.pushState({}, '', url.toString());
+    setSelectedArticleForReader(null);
+    const targetPath = catId === 'all' ? '/' : `/${catId}`;
+    window.history.pushState({}, '', targetPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -216,12 +249,7 @@ export function App() {
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery('');
-    const url = new URL(window.location.href);
-    url.searchParams.delete('category');
-    url.searchParams.delete('story');
-    url.searchParams.delete('search');
-    url.searchParams.delete('tag');
-    window.history.pushState({}, '', url.toString());
+    window.history.pushState({}, '', '/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -229,11 +257,7 @@ export function App() {
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery(tag);
-    const url = new URL(window.location.href);
-    url.searchParams.set('search', tag);
-    url.searchParams.delete('category');
-    url.searchParams.delete('story');
-    window.history.pushState({}, '', url.toString());
+    window.history.pushState({}, '', `/?search=${encodeURIComponent(tag)}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

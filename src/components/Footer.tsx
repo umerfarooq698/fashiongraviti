@@ -160,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({
             {categories.map((cat) => (
               <li key={cat.id}>
                 <a
-                  href={cat.id === 'all' ? '/' : `?category=${cat.id}`}
+                  href={cat.id === 'all' ? '/' : `/${cat.id}`}
                   onClick={(e) => {
                     e.preventDefault();
                     handleDepartmentClick(cat.id);

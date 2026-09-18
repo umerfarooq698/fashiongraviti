@@ -58,7 +58,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       >
         <div className="flex items-start sm:items-center gap-4">
           <a
-            href={`?story=${article.id}`}
+            href={`/${article.slug}`}
             onClick={(e) => {
               e.preventDefault();
               onReadArticle(article);
@@ -74,7 +74,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div>
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-1">
               <a 
-                href={`?category=${article.category}`}
+                href={`/${article.category}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
@@ -93,7 +93,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               </span>
             </div>
             <a
-              href={`?story=${article.id}`}
+              href={`/${article.slug}`}
               onClick={(e) => {
                 e.preventDefault();
                 onReadArticle(article);
@@ -146,7 +146,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             </button>
 
             <a
-              href={`?story=${article.id}`}
+              href={`/${article.slug}`}
               onClick={(e) => {
                 e.preventDefault();
                 onReadArticle(article);
@@ -173,7 +173,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       >
         {/* Image Container with Luxury Overlay */}
         <a
-          href={`?story=${article.id}`}
+          href={`/${article.slug}`}
           onClick={(e) => {
             e.preventDefault();
             onReadArticle(article);
@@ -226,7 +226,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             </div>
 
             <a
-              href={`?story=${article.id}`}
+              href={`/${article.slug}`}
               onClick={(e) => {
                 e.preventDefault();
                 onReadArticle(article);
@@ -271,7 +271,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 <span>{article.likes}</span>
               </button>
               <a
-                href={`?story=${article.id}`}
+                href={`/${article.slug}`}
                 onClick={(e) => {
                   e.preventDefault();
                   onReadArticle(article);
@@ -297,7 +297,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     >
       {/* Image (5 cols) */}
       <a
-        href={`?story=${article.id}`}
+        href={`/${article.slug}`}
         onClick={(e) => {
           e.preventDefault();
           onReadArticle(article);
@@ -344,7 +344,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
           {/* Headline */}
           <a
-            href={`?story=${article.id}`}
+            href={`/${article.slug}`}
             onClick={(e) => {
               e.preventDefault();
               onReadArticle(article);
@@ -427,7 +427,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             </button>
 
             <a
-              href={`?story=${article.id}`}
+              href={`/${article.slug}`}
               onClick={(e) => {
                 e.preventDefault();
                 onReadArticle(article);

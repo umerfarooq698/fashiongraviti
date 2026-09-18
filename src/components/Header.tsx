@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
         <nav className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-1 flex-grow">
           {categories.map((cat) => {
             const isSelected = activeCategory === cat.id;
-            const href = cat.id === 'all' ? '/' : `?category=${cat.id}`;
+            const href = cat.id === 'all' ? '/' : `/${cat.id}`;
             return (
               <a
                 key={cat.id}

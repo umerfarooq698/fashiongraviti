@@ -55,10 +55,14 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
           {categories.map((cat) => {
             const isSelected = activeCategory === cat.id;
             return (
-              <div
+              <a
                 key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`relative group cursor-pointer overflow-hidden border-2 transition-all duration-300 ${
+                href={cat.id === 'all' ? '/' : `/${cat.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectCategory(cat.id);
+                }}
+                className={`relative group cursor-pointer overflow-hidden border-2 transition-all duration-300 block no-underline ${
                   isSelected
                     ? 'border-gold shadow-xl scale-[1.02] bg-noir'
                     : 'border-white/20 hover:border-white bg-noir-pure'
@@ -88,7 +92,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>

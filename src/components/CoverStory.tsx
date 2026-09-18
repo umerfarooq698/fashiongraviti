@@ -30,7 +30,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             {/* Top Badges */}
             <div className="flex flex-wrap items-center gap-3 text-xs font-mono tracking-widest uppercase mb-4">
               <a 
-                href={`?category=${article.category}`}
+                href={`/${article.category}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
@@ -67,7 +67,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
 
             {/* Title */}
             <a 
-              href={`?story=${article.id}`}
+              href={`/${article.slug}`}
               onClick={(e) => {
                 e.preventDefault();
                 onReadArticle(article);
@@ -159,7 +159,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
 
               {/* Read Story CTA */}
               <a
-                href={`?story=${article.id}`}
+                href={`/${article.slug}`}
                 onClick={(e) => {
                   e.preventDefault();
                   onReadArticle(article);
@@ -175,7 +175,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
 
         {/* Right Column: Hero Full-Bleed Editorial Imagery (7 cols) */}
         <a 
-          href={`?story=${article.id}`}
+          href={`/${article.slug}`}
           onClick={(e) => {
             e.preventDefault();
             onReadArticle(article);
