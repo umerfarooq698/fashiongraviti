@@ -154,6 +154,33 @@ export function App() {
     setSearchQuery('');
   };
 
+  const handleSelectTag = (tag: string) => {
+    setActiveCategory('all');
+    setActiveMood('All Moods');
+    setSearchQuery(tag);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectTickerItem = (tickerText: string) => {
+    // Try to find matching article by keyword
+    const cleanQuery = tickerText.replace(/^[•\s]+/, '').split('//')[0].trim();
+    const matched = articles.find(
+      (a) =>
+        a.title.toLowerCase().includes(cleanQuery.toLowerCase()) ||
+        a.subtitle.toLowerCase().includes(cleanQuery.toLowerCase()) ||
+        a.tags.some((t) => cleanQuery.toLowerCase().includes(t.toLowerCase()))
+    );
+
+    if (matched) {
+      setSelectedArticleForReader(matched);
+    } else {
+      setActiveCategory('all');
+      setActiveMood('All Moods');
+      setSearchQuery(cleanQuery);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-noir text-alabaster selection:bg-crimson selection:text-white transition-colors duration-300 font-sans">
       {/* 1. Header Masthead & Navigation */}
@@ -166,7 +193,7 @@ export function App() {
       />
 
       {/* 2. Runway Ticker Tape */}
-      <Ticker />
+      <Ticker onSelectTickerItem={handleSelectTickerItem} />
 
       <main>
         {/* 3. Cover Story (only shown on 'all' view with no active search query for pure magazine feel) */}
@@ -177,6 +204,8 @@ export function App() {
             isBookmarked={bookmarkedIds.includes(coverStoryArticle.id)}
             onToggleBookmark={handleToggleBookmark}
             onToggleLike={handleToggleLike}
+            onSelectTag={handleSelectTag}
+            onSelectCategory={setActiveCategory}
           />
         )}
 
@@ -201,6 +230,8 @@ export function App() {
           onToggleBookmark={handleToggleBookmark}
           onToggleLike={handleToggleLike}
           onResetFilters={handleResetFilters}
+          onSelectCategory={setActiveCategory}
+          onSelectTag={handleSelectTag}
         />
       </main>
 
@@ -210,6 +241,7 @@ export function App() {
         onSelectCategory={setActiveCategory}
         onOpenCreateModal={() => setIsCreateModalOpen(true)}
         onOpenLookbook={() => setIsLookbookOpen(true)}
+        onSelectTag={handleSelectTag}
       />
 
       {/* 7. Fullscreen Article Reader Modal */}
@@ -222,6 +254,8 @@ export function App() {
           onToggleLike={handleToggleLike}
           allArticles={articles}
           onSelectNextArticle={setSelectedArticleForReader}
+          onSelectCategory={setActiveCategory}
+          onSelectTag={handleSelectTag}
         />
       )}
 

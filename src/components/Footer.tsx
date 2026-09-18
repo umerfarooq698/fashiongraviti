@@ -7,6 +7,7 @@ interface FooterProps {
   onSelectCategory: (id: string) => void;
   onOpenCreateModal: () => void;
   onOpenLookbook: () => void;
+  onSelectTag?: (tag: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -14,6 +15,7 @@ export const Footer: React.FC<FooterProps> = ({
   onSelectCategory,
   onOpenCreateModal,
   onOpenLookbook,
+  onSelectTag,
 }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -26,6 +28,16 @@ export const Footer: React.FC<FooterProps> = ({
       setEmail('');
       setSubscribed(false);
     }, 4000);
+  };
+
+  const handleDepartmentClick = (catId: string) => {
+    onSelectCategory(catId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleTagClick = (tag: string) => {
+    onSelectTag?.(tag);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -56,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({
               />
               <button
                 type="submit"
-                className="bg-alabaster hover:bg-white text-noir font-mono text-xs uppercase tracking-widest font-bold px-6 py-3 transition-colors flex items-center justify-center space-x-2 flex-shrink-0"
+                className="bg-alabaster hover:bg-white text-noir font-mono text-xs uppercase tracking-widest font-bold px-6 py-3 transition-colors flex items-center justify-center space-x-2 flex-shrink-0 cursor-pointer"
               >
                 {subscribed ? (
                   <>
@@ -79,7 +91,10 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-16">
         {/* Brand & Mission Statement (5 cols) */}
         <div className="lg:col-span-5">
-          <h2 className="text-3xl font-serif font-black tracking-tight uppercase text-alabaster">
+          <h2 
+            onClick={() => handleDepartmentClick('all')}
+            className="text-3xl font-serif font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer"
+          >
             FASHION GRAVITI
           </h2>
           <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold">
@@ -89,10 +104,30 @@ export const Footer: React.FC<FooterProps> = ({
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-[10px] font-mono uppercase text-zinc-400">
-            <span className="border border-white/10 px-2 py-1">PARIS // IVE ARR.</span>
-            <span className="border border-white/10 px-2 py-1">MILAN // BRERA</span>
-            <span className="border border-white/10 px-2 py-1">TOKYO // SHIBUYA</span>
-            <span className="border border-white/10 px-2 py-1">ANTWERP // HET ZUID</span>
+            <button 
+              onClick={() => handleTagClick('Paris')}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            >
+              PARIS // IVE ARR.
+            </button>
+            <button 
+              onClick={() => handleTagClick('Milan')}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            >
+              MILAN // BRERA
+            </button>
+            <button 
+              onClick={() => handleTagClick('Tokyo')}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            >
+              TOKYO // SHIBUYA
+            </button>
+            <button 
+              onClick={() => handleTagClick('Antwerp')}
+              className="border border-white/15 hover:border-gold hover:text-white px-2.5 py-1 transition-colors cursor-pointer"
+            >
+              ANTWERP // HET ZUID
+            </button>
           </div>
         </div>
 
@@ -105,8 +140,8 @@ export const Footer: React.FC<FooterProps> = ({
             {categories.map((cat) => (
               <li key={cat.id}>
                 <button
-                  onClick={() => onSelectCategory(cat.id)}
-                  className="text-zinc-400 hover:text-white transition-colors uppercase font-bold"
+                  onClick={() => handleDepartmentClick(cat.id)}
+                  className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer"
                 >
                   {cat.name}
                 </button>
@@ -124,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({
             <li>
               <button
                 onClick={onOpenLookbook}
-                className="text-zinc-400 hover:text-gold transition-colors uppercase"
+                className="text-zinc-400 hover:text-gold transition-colors uppercase cursor-pointer"
               >
                 Seasonal Lookbook
               </button>
@@ -132,25 +167,34 @@ export const Footer: React.FC<FooterProps> = ({
             <li>
               <button
                 onClick={onOpenCreateModal}
-                className="text-crimson-light hover:text-white transition-colors uppercase font-bold"
+                className="text-crimson-light hover:text-white transition-colors uppercase font-bold cursor-pointer"
               >
                 Submit Editorial
               </button>
             </li>
             <li>
-              <span className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer">
+              <button 
+                onClick={() => handleTagClick('Runway')}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left"
+              >
                 Runway Calendar '26
-              </span>
+              </button>
             </li>
             <li>
-              <span className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer">
+              <button 
+                onClick={() => handleTagClick('Haute Couture')}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left"
+              >
                 Textile Monograph
-              </span>
+              </button>
             </li>
             <li>
-              <span className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer">
-                Colophon & Ethics
-              </span>
+              <button 
+                onClick={() => handleDepartmentClick('all')}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer text-left"
+              >
+                Colophon & Heritage
+              </button>
             </li>
           </ul>
         </div>
@@ -175,9 +219,24 @@ export const Footer: React.FC<FooterProps> = ({
           © 2026 FASHIONGRAVITI PUBLISHING GROUP. ALL RIGHTS RESERVED.
         </div>
         <div className="flex items-center space-x-6 text-[10px]">
-          <span className="hover:text-white cursor-pointer transition-colors">TERMS OF CRITIQUE</span>
-          <span className="hover:text-white cursor-pointer transition-colors">ARCHIVE RIGHTS</span>
-          <span className="hover:text-white cursor-pointer transition-colors">EDITORIAL INDEPENDENCE</span>
+          <button 
+            onClick={() => handleDepartmentClick('all')}
+            className="hover:text-white cursor-pointer transition-colors uppercase"
+          >
+            TERMS OF CRITIQUE
+          </button>
+          <button 
+            onClick={() => handleDepartmentClick('all')}
+            className="hover:text-white cursor-pointer transition-colors uppercase"
+          >
+            ARCHIVE RIGHTS
+          </button>
+          <button 
+            onClick={() => handleDepartmentClick('all')}
+            className="hover:text-white cursor-pointer transition-colors uppercase"
+          >
+            EDITORIAL INDEPENDENCE
+          </button>
         </div>
       </div>
     </footer>

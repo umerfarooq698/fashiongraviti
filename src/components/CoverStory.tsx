@@ -8,6 +8,8 @@ interface CoverStoryProps {
   isBookmarked: boolean;
   onToggleBookmark: (articleId: string) => void;
   onToggleLike: (articleId: string) => void;
+  onSelectTag?: (tag: string) => void;
+  onSelectCategory?: (categoryId: string) => void;
 }
 
 export const CoverStory: React.FC<CoverStoryProps> = ({
@@ -16,6 +18,8 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
   isBookmarked,
   onToggleBookmark,
   onToggleLike,
+  onSelectTag,
+  onSelectCategory,
 }) => {
   return (
     <section className="relative w-full border-b-2 border-white/20 overflow-hidden bg-black">
@@ -25,10 +29,17 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
           <div>
             {/* Top Badges */}
             <div className="flex flex-wrap items-center gap-3 text-xs font-mono tracking-widest uppercase mb-4">
-              <span className="bg-crimson px-3 py-1 text-white font-black flex items-center gap-1.5 shadow-md">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectCategory?.(article.category);
+                }}
+                className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-colors"
+                title={`Filter by ${article.categoryLabel}`}
+              >
                 <Sparkles className="w-3.5 h-3.5 text-gold" />
-                COVER STORY
-              </span>
+                {article.categoryLabel}
+              </button>
               <span className="bg-black text-white font-bold border border-white/30 px-2.5 py-1">
                 {article.season}
               </span>
@@ -38,10 +49,17 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             </div>
 
             {/* Location Tag */}
-            <div className="flex items-center text-xs font-mono text-gold mb-3 tracking-wider font-extrabold">
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelectTag?.(article.locationTag);
+              }}
+              className="flex items-center text-xs font-mono text-gold hover:text-white mb-3 tracking-wider font-extrabold cursor-pointer transition-colors"
+              title={`Filter by location ${article.locationTag}`}
+            >
               <MapPin className="w-4 h-4 mr-1.5 text-gold flex-shrink-0" />
               <span>{article.locationTag}</span>
-            </div>
+            </button>
 
             {/* Title */}
             <h2 
@@ -52,33 +70,44 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             </h2>
 
             {/* Subtitle / Excerpt */}
-            <p className="mt-4 text-base sm:text-lg font-sans text-zinc-100 leading-relaxed font-medium">
+            <p 
+              onClick={() => onReadArticle(article)}
+              className="mt-4 text-base sm:text-lg font-sans text-zinc-100 leading-relaxed font-medium cursor-pointer hover:text-white transition-colors"
+            >
               {article.subtitle}
             </p>
 
-            {/* Tags */}
+            {/* Tags (Clickable) */}
             <div className="mt-6 flex flex-wrap gap-2">
               {article.tags.map((tag, idx) => (
-                <span 
+                <button 
                   key={idx}
-                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-white border border-white/20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectTag?.(tag);
+                  }}
+                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer"
+                  title={`Filter articles by #${tag}`}
                 >
                   #{tag}
-                </span>
+                </button>
               ))}
             </div>
           </div>
 
           {/* Bottom Bar: Author info & Read button */}
           <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center space-x-3.5">
+            <div 
+              onClick={() => onReadArticle(article)}
+              className="flex items-center space-x-3.5 cursor-pointer group"
+            >
               <img
                 src={article.author.avatar}
                 alt={article.author.name}
-                className="w-12 h-12 rounded-full object-cover border-2 border-gold"
+                className="w-12 h-12 rounded-full object-cover border-2 border-gold group-hover:scale-105 transition-transform"
               />
               <div>
-                <p className="text-sm font-mono font-bold text-white tracking-wider uppercase">
+                <p className="text-sm font-mono font-bold text-white group-hover:text-gold transition-colors tracking-wider uppercase">
                   {article.author.name}
                 </p>
                 <p className="text-xs text-zinc-300 font-medium">
@@ -90,11 +119,14 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             <div className="flex items-center space-x-3">
               {/* Bookmark */}
               <button
-                onClick={() => onToggleBookmark(article.id)}
-                className={`p-2.5 border-2 transition-all ${
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleBookmark(article.id);
+                }}
+                className={`p-2.5 border-2 transition-all cursor-pointer ${
                   isBookmarked
                     ? 'bg-gold text-black border-gold'
-                    : 'border-white/30 text-white hover:border-white'
+                    : 'border-white/30 text-white hover:border-white hover:bg-white/10'
                 }`}
                 title={isBookmarked ? 'Remove from Saved' : 'Save Cover Story'}
               >
@@ -103,8 +135,11 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
 
               {/* Like */}
               <button
-                onClick={() => onToggleLike(article.id)}
-                className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light transition-all text-xs font-mono font-extrabold"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleLike(article.id);
+                }}
+                className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light transition-all text-xs font-mono font-extrabold cursor-pointer hover:bg-crimson/10"
               >
                 <Heart className="w-4 h-4 text-crimson fill-crimson" />
                 <span>{article.likes}</span>
@@ -113,7 +148,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
               {/* Read Story CTA */}
               <button
                 onClick={() => onReadArticle(article)}
-                className="flex items-center space-x-2 bg-white text-black hover:bg-gold hover:text-black px-6 py-2.5 font-mono text-xs uppercase tracking-widest font-black transition-all shadow-lg active:scale-95"
+                className="flex items-center space-x-2 bg-white text-black hover:bg-gold hover:text-black px-6 py-2.5 font-mono text-xs uppercase tracking-widest font-black transition-all shadow-lg active:scale-95 cursor-pointer"
               >
                 <span>Read Feature</span>
                 <ArrowUpRight className="w-4 h-4" />

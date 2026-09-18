@@ -11,6 +11,8 @@ interface ArticleGridProps {
   onToggleBookmark: (articleId: string) => void;
   onToggleLike: (articleId: string) => void;
   onResetFilters: () => void;
+  onSelectCategory?: (categoryId: string) => void;
+  onSelectTag?: (tag: string) => void;
 }
 
 export const ArticleGrid: React.FC<ArticleGridProps> = ({
@@ -21,6 +23,8 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
   onToggleBookmark,
   onToggleLike,
   onResetFilters,
+  onSelectCategory,
+  onSelectTag,
 }) => {
   if (articles.length === 0) {
     return (
@@ -59,6 +63,8 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
               isBookmarked={bookmarkedIds.includes(article.id)}
               onToggleBookmark={onToggleBookmark}
               onToggleLike={onToggleLike}
+              onSelectCategory={onSelectCategory}
+              onSelectTag={onSelectTag}
             />
           ))}
         </div>
@@ -73,6 +79,8 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
               isBookmarked={bookmarkedIds.includes(article.id)}
               onToggleBookmark={onToggleBookmark}
               onToggleLike={onToggleLike}
+              onSelectCategory={onSelectCategory}
+              onSelectTag={onSelectTag}
             />
           ))}
         </div>
@@ -88,6 +96,8 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
                 isBookmarked={bookmarkedIds.includes(article.id)}
                 onToggleBookmark={onToggleBookmark}
                 onToggleLike={onToggleLike}
+                onSelectCategory={onSelectCategory}
+                onSelectTag={onSelectTag}
               />
 
               {/* Intermittent Editorial Quotation Break (after 3rd article) */}

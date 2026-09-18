@@ -10,6 +10,8 @@ interface ArticleCardProps {
   isBookmarked: boolean;
   onToggleBookmark: (articleId: string) => void;
   onToggleLike: (articleId: string) => void;
+  onSelectCategory?: (categoryId: string) => void;
+  onSelectTag?: (tag: string) => void;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -19,6 +21,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   isBookmarked,
   onToggleBookmark,
   onToggleLike,
+  onSelectCategory,
+  onSelectTag,
 }) => {
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -50,17 +54,25 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     return (
       <div 
         onClick={() => onReadArticle(article)}
-        className="group flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-5 border-b-2 border-white/15 hover:bg-white/[0.06] transition-colors cursor-pointer bg-noir-card"
+        className="group flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-5 border-b-2 border-white/15 hover:bg-white/[0.06] transition-all cursor-pointer bg-noir-card active:bg-white/10"
       >
         <div className="flex items-start sm:items-center gap-4">
           <img
             src={article.coverImage}
             alt={article.title}
-            className="w-20 h-20 sm:w-24 sm:h-24 object-cover flex-shrink-0 border-2 border-white/20"
+            className="w-20 h-20 sm:w-24 sm:h-24 object-cover flex-shrink-0 border-2 border-white/20 group-hover:border-gold transition-colors"
           />
           <div>
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-1">
-              <span className="bg-crimson text-white px-2 py-0.5 font-black">{article.categoryLabel}</span>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectCategory?.(article.category);
+                }}
+                className="bg-crimson hover:bg-crimson-light text-white px-2 py-0.5 font-black transition-colors"
+              >
+                {article.categoryLabel}
+              </button>
               <span>•</span>
               <span className="text-white font-bold">{article.season}</span>
               <span>•</span>
@@ -87,10 +99,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div className="flex items-center space-x-2">
             <button
               onClick={handleBookmark}
-              className={`p-2 border-2 transition-all ${
+              className={`p-2 border-2 transition-all cursor-pointer ${
                 isBookmarked 
                   ? 'bg-gold text-black border-gold' 
-                  : 'border-white/30 text-white hover:border-white'
+                  : 'border-white/30 text-white hover:border-white hover:bg-white/10'
               }`}
               title="Save to Vault"
             >
@@ -99,7 +111,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
             <button
               onClick={handleLike}
-              className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light text-xs font-mono font-black"
+              className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light text-xs font-mono font-black cursor-pointer hover:bg-crimson/10"
             >
               <Heart className="w-4 h-4 text-crimson fill-crimson" />
               <span>{article.likes}</span>
@@ -133,15 +145,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-t from-noir-card via-transparent to-transparent" />
           
           <div className="absolute top-3 left-3">
-            <span className="text-xs font-mono tracking-wider uppercase px-2.5 py-1 bg-black/90 text-gold font-extrabold border border-gold/40">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelectCategory?.(article.category);
+              }}
+              className="text-xs font-mono tracking-wider uppercase px-2.5 py-1 bg-black/95 text-gold font-extrabold border border-gold/40 hover:bg-gold hover:text-black transition-all"
+            >
               {article.categoryLabel}
-            </span>
+            </button>
           </div>
 
           <div className="absolute top-3 right-3 flex items-center space-x-1.5">
             <button
               onClick={handleBookmark}
-              className={`p-2 backdrop-blur-md transition-all ${
+              className={`p-2 backdrop-blur-md transition-all cursor-pointer ${
                 isBookmarked 
                   ? 'bg-gold text-black font-bold' 
                   : 'bg-black/90 text-white border border-white/30 hover:border-white'
@@ -188,7 +206,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             <div className="flex items-center space-x-2">
               <button
                 onClick={handleLike}
-                className="flex items-center space-x-1 text-xs font-mono text-white font-bold hover:text-crimson transition-colors"
+                className="flex items-center space-x-1 text-xs font-mono text-white font-bold hover:text-crimson transition-colors p-1"
               >
                 <Heart className="w-4 h-4 text-crimson fill-crimson" />
                 <span>{article.likes}</span>
@@ -220,9 +238,15 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         
         {/* Badges */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          <span className="text-xs font-mono tracking-wider uppercase px-3 py-1 bg-black/95 text-gold font-black border border-gold/40 shadow-md">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelectCategory?.(article.category);
+            }}
+            className="text-xs font-mono tracking-wider uppercase px-3 py-1 bg-black/95 text-gold font-black border border-gold/40 hover:bg-gold hover:text-black transition-all shadow-md"
+          >
             {article.categoryLabel}
-          </span>
+          </button>
         </div>
       </div>
 
@@ -252,15 +276,20 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             {article.content.dropCapText || article.subtitle}
           </div>
 
-          {/* Tags */}
+          {/* Tags (Clickable) */}
           <div className="mt-4 flex flex-wrap gap-2">
             {article.tags.map((tag, idx) => (
-              <span 
+              <button 
                 key={idx}
-                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-white border border-white/20"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectTag?.(tag);
+                }}
+                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer"
+                title={`Filter articles by #${tag}`}
               >
                 #{tag}
-              </span>
+              </button>
             ))}
           </div>
         </div>
@@ -286,10 +315,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div className="flex items-center space-x-2.5">
             <button
               onClick={handleBookmark}
-              className={`p-2.5 border-2 transition-all ${
+              className={`p-2.5 border-2 transition-all cursor-pointer ${
                 isBookmarked 
                   ? 'bg-gold text-black border-gold' 
-                  : 'border-white/30 text-white hover:border-white'
+                  : 'border-white/30 text-white hover:border-white hover:bg-white/10'
               }`}
               title="Save to Vault"
             >
@@ -298,7 +327,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
             <button
               onClick={handleLike}
-              className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light text-xs font-mono font-black transition-colors"
+              className="flex items-center space-x-1.5 px-3 py-2 border-2 border-white/30 hover:border-crimson text-white hover:text-crimson-light text-xs font-mono font-black transition-colors cursor-pointer hover:bg-crimson/10"
             >
               <Heart className="w-4 h-4 text-crimson fill-crimson" />
               <span>{article.likes}</span>

@@ -24,6 +24,8 @@ interface ArticleReaderModalProps {
   onToggleLike: (articleId: string) => void;
   allArticles: FashionArticle[];
   onSelectNextArticle: (article: FashionArticle) => void;
+  onSelectCategory?: (categoryId: string) => void;
+  onSelectTag?: (tag: string) => void;
 }
 
 export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
@@ -34,11 +36,22 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   onToggleLike,
   allArticles,
   onSelectNextArticle,
+  onSelectCategory,
+  onSelectTag,
 }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Stop speech when modal closes or article changes
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [article]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +74,9 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
         onClose();
       }
     };
@@ -69,6 +85,28 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   }, [onClose]);
 
   if (!article) return null;
+
+  const handleToggleAudio = () => {
+    if (!('speechSynthesis' in window)) {
+      alert('Speech synthesis is not supported in this browser.');
+      return;
+    }
+
+    if (isPlayingAudio) {
+      window.speechSynthesis.cancel();
+      setIsPlayingAudio(false);
+    } else {
+      window.speechSynthesis.cancel(); // clear previous
+      const textToRead = `${article.title}. ${article.subtitle}. By ${article.author.name}. ${article.content.dropCapText} ${article.content.bodyParagraphs.slice(0, 3).join(' ')}`;
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      utterance.rate = 0.95;
+      utterance.pitch = 1.0;
+      utterance.onend = () => setIsPlayingAudio(false);
+      utterance.onerror = () => setIsPlayingAudio(false);
+      window.speechSynthesis.speak(utterance);
+      setIsPlayingAudio(true);
+    }
+  };
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -111,37 +149,47 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
         <div className="sticky top-0 z-40 bg-black/95 backdrop-blur-md border-b-2 border-white/20 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <button
-              onClick={onClose}
-              className="flex items-center space-x-1.5 text-xs font-mono font-extrabold text-white hover:text-gold transition-colors"
+              onClick={() => {
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                onClose();
+              }}
+              className="flex items-center space-x-1.5 text-xs font-mono font-extrabold text-white hover:text-gold transition-colors cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4 mr-1 text-gold" />
               <span>EXIT ARTICLE</span>
             </button>
             <span className="text-zinc-600 hidden sm:inline">|</span>
-            <span className="text-xs font-mono text-gold font-bold uppercase hidden sm:inline">
+            <button
+              onClick={() => {
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                onSelectCategory?.(article.category);
+                onClose();
+              }}
+              className="text-xs font-mono text-gold hover:text-white font-bold uppercase hidden sm:inline transition-colors cursor-pointer"
+            >
               {article.categoryLabel}
-            </span>
+            </button>
           </div>
 
           <div className="flex items-center space-x-2 sm:space-x-3">
-            {/* Audio Narrative Mock */}
+            {/* Audio Narrative using Web Speech API */}
             <button
-              onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-bold border-2 transition-colors ${
+              onClick={handleToggleAudio}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-bold border-2 transition-colors cursor-pointer ${
                 isPlayingAudio 
-                  ? 'border-gold text-gold bg-gold/15' 
-                  : 'border-white/20 text-white hover:border-white'
+                  ? 'border-gold text-gold bg-gold/20' 
+                  : 'border-white/20 text-white hover:border-white hover:bg-white/10'
               }`}
-              title="Simulate Audio Editorial Narration"
+              title="Narrate Article using Web Speech"
             >
               {isPlayingAudio ? <Volume2 className="w-4 h-4 animate-pulse text-gold" /> : <VolumeX className="w-4 h-4" />}
-              <span className="text-xs hidden md:inline">{isPlayingAudio ? 'NARRATING...' : 'LISTEN'}</span>
+              <span className="text-xs hidden md:inline">{isPlayingAudio ? 'STOP NARRATING' : 'LISTEN TO STORY'}</span>
             </button>
 
             {/* Like */}
             <button
               onClick={handleLike}
-              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-black border-2 border-white/20 hover:border-crimson text-white hover:text-crimson-light transition-colors"
+              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-black border-2 border-white/20 hover:border-crimson text-white hover:text-crimson-light transition-colors cursor-pointer hover:bg-crimson/10"
             >
               <Heart className="w-4 h-4 text-crimson fill-crimson" />
               <span>{article.likes}</span>
@@ -150,10 +198,10 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             {/* Bookmark */}
             <button
               onClick={() => onToggleBookmark(article.id)}
-              className={`p-2 border-2 transition-all ${
+              className={`p-2 border-2 transition-all cursor-pointer ${
                 isBookmarked 
                   ? 'bg-gold text-black border-gold' 
-                  : 'border-white/20 text-white hover:border-white'
+                  : 'border-white/20 text-white hover:border-white hover:bg-white/10'
               }`}
               title="Save to Vault"
             >
@@ -163,7 +211,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             {/* Share */}
             <button
               onClick={handleShare}
-              className="p-2 border-2 border-white/20 text-white hover:border-white transition-colors"
+              className="p-2 border-2 border-white/20 text-white hover:border-white hover:bg-white/10 transition-colors cursor-pointer"
               title="Copy Story Link"
             >
               {isCopied ? <Check className="w-4 h-4 text-green-400" /> : <Share2 className="w-4 h-4" />}
@@ -171,8 +219,11 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
             {/* Close */}
             <button
-              onClick={onClose}
-              className="p-2 bg-white text-black hover:bg-gold transition-colors font-black"
+              onClick={() => {
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                onClose();
+              }}
+              className="p-2 bg-white text-black hover:bg-gold transition-colors font-black cursor-pointer"
               title="Close (Esc)"
             >
               <X className="w-4 h-4" />
@@ -185,9 +236,16 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           {/* Metadata Header */}
           <div className="border-b-2 border-white/20 pb-8 mb-8">
             <div className="flex flex-wrap items-center gap-3 text-xs font-mono uppercase mb-4">
-              <span className="bg-crimson px-3 py-1 text-white font-black shadow-md">
+              <button
+                onClick={() => {
+                  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                  onSelectCategory?.(article.category);
+                  onClose();
+                }}
+                className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black shadow-md transition-colors cursor-pointer"
+              >
                 {article.categoryLabel}
-              </span>
+              </button>
               <span className="text-white font-bold">{article.season}</span>
               <span className="text-zinc-500">•</span>
               <span className="text-gold font-bold">{article.issueNumber}</span>
@@ -198,10 +256,18 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               </span>
             </div>
 
-            <div className="flex items-center text-xs font-mono text-gold mb-4 font-extrabold">
+            <button
+              onClick={() => {
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                onSelectTag?.(article.locationTag);
+                onClose();
+              }}
+              className="flex items-center text-xs font-mono text-gold hover:text-white mb-4 font-extrabold transition-colors cursor-pointer"
+              title={`Explore stories from ${article.locationTag}`}
+            >
               <MapPin className="w-4 h-4 mr-1.5 text-gold flex-shrink-0" />
               <span>{article.locationTag}</span>
-            </div>
+            </button>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-white leading-[1.12] tracking-tight">
               {article.title}
@@ -213,14 +279,22 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
             {/* Author Byline */}
             <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center space-x-4">
+              <div 
+                onClick={() => {
+                  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                  onSelectTag?.(article.author.name);
+                  onClose();
+                }}
+                className="flex items-center space-x-4 cursor-pointer group"
+                title={`Explore curations by ${article.author.name}`}
+              >
                 <img
                   src={article.author.avatar}
                   alt={article.author.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-gold"
+                  className="w-14 h-14 rounded-full object-cover border-2 border-gold group-hover:border-white transition-colors"
                 />
                 <div>
-                  <h4 className="text-base font-mono text-white font-black uppercase tracking-wider">
+                  <h4 className="text-base font-mono text-white group-hover:text-gold font-black uppercase tracking-wider transition-colors">
                     {article.author.name}
                   </h4>
                   <p className="text-xs text-zinc-300 font-medium">
@@ -319,7 +393,16 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               <div className="divide-y divide-white/15">
                 {article.content.designerCredits.map((credit, idx) => (
                   <div key={idx} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm font-mono gap-1">
-                    <span className="text-white font-black uppercase">{credit.house}</span>
+                    <button
+                      onClick={() => {
+                        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                        onSelectTag?.(credit.house);
+                        onClose();
+                      }}
+                      className="text-white hover:text-gold font-black uppercase text-left transition-colors cursor-pointer"
+                    >
+                      {credit.house}
+                    </button>
                     <span className="text-zinc-200 font-sans font-medium">{credit.garment}</span>
                     {credit.materials && (
                       <span className="text-gold font-bold italic">{credit.materials}</span>
@@ -335,18 +418,33 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-mono uppercase text-white font-bold mr-1">ARTICLE TAGS:</span>
               {article.tags.map((tag, idx) => (
-                <span
+                <button
                   key={idx}
-                  className="text-xs font-mono uppercase font-bold px-3 py-1 bg-black text-white border border-white/30"
+                  onClick={() => {
+                    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                    onSelectTag?.(tag);
+                    onClose();
+                  }}
+                  className="text-xs font-mono uppercase font-bold px-3 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/30 transition-all cursor-pointer"
+                  title={`Filter articles by #${tag}`}
                 >
                   #{tag}
-                </span>
+                </button>
               ))}
             </div>
 
             <div className="flex items-center space-x-2 text-xs font-mono text-white font-bold">
               <span>AESTHETIC:</span>
-              <span className="text-gold font-black uppercase">{article.mood}</span>
+              <button
+                onClick={() => {
+                  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                  onSelectTag?.(article.mood);
+                  onClose();
+                }}
+                className="text-gold hover:text-white font-black uppercase transition-colors cursor-pointer"
+              >
+                {article.mood}
+              </button>
             </div>
           </div>
 
@@ -356,7 +454,13 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               NEXT STORY IN THIS ISSUE
             </span>
             <div 
-              onClick={() => onSelectNextArticle(nextArticle)}
+              onClick={() => {
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                onSelectNextArticle(nextArticle);
+                if (scrollContainerRef.current) {
+                  scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
               className="group p-6 bg-noir-card border-2 border-white/20 hover:border-gold cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all shadow-xl"
             >
               <div>
