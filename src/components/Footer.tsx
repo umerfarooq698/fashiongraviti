@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { FashionCategory } from '../types/fashion';
-import { Sparkles, ArrowRight, Check } from 'lucide-react';
 
 interface FooterProps {
   categories: FashionCategory[];
@@ -17,19 +16,6 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenLookbook,
   onSelectTag,
 }) => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes('@')) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setEmail('');
-      setSubscribed(false);
-    }, 4000);
-  };
-
   const handleDepartmentClick = (catId: string) => {
     onSelectCategory(catId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41,54 +27,9 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-16 pb-12 transition-colors">
-      {/* Newsletter Dispatch Marquee Box */}
-      <div className="max-w-6xl mx-auto px-4 lg:px-12 mb-16">
-        <div className="p-8 sm:p-12 bg-noir-card border border-white/10 relative overflow-hidden">
-          <div className="max-w-2xl">
-            <div className="flex items-center space-x-2 text-xs font-mono uppercase text-gold tracking-widest mb-3">
-              <Sparkles className="w-4 h-4 text-gold" />
-              <span>THE GRAVITI DISPATCH // PRINT & DIGITAL</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-alabaster leading-tight">
-              Receive the Avant-Garde Sartorial Intelligence
-            </h3>
-            <p className="mt-3 text-sm text-zinc-400 font-sans font-light leading-relaxed">
-              Every Sunday at 08:00 CET: In-depth runway critique, undisclosed archive auctions, biomaterial developments, and atelier monographs directly from Paris and Tokyo.
-            </p>
-
-            <form onSubmit={handleSubscribe} className="mt-6 flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                placeholder="Enter your confidential email..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-noir border border-white/20 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-gold font-mono flex-grow"
-              />
-              <button
-                type="submit"
-                className="bg-alabaster hover:bg-white text-noir font-mono text-xs uppercase tracking-widest font-bold px-6 py-3 transition-colors flex items-center justify-center space-x-2 flex-shrink-0 cursor-pointer"
-              >
-                {subscribed ? (
-                  <>
-                    <Check className="w-4 h-4 text-green-700" />
-                    <span>ENROLLED</span>
-                  </>
-                ) : (
-                  <>
-                    <span>ENROLL DISPATCH</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
+    <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-12 pb-12 transition-colors">
       {/* Main Footer Links & Colophon Grid */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-12">
         {/* Brand & Mission Statement (5 cols) */}
         <div className="lg:col-span-5">
           <a 
