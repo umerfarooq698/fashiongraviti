@@ -16,8 +16,8 @@ import { LookbookDrawer } from './components/LookbookDrawer';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
 import { Footer } from './components/Footer';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v3';
-const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v3';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v4';
+const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v4';
 
 export function App() {
   // Articles state with localStorage hydration
