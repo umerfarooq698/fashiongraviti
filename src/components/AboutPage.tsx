@@ -49,7 +49,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     {
       icon: <Feather className="w-6 h-6 text-gold" />,
       title: 'Independent Fashion Journalism',
-      description: 'Uncompromising runway critique, analytical fashion week dispatches, and in-depth profiles untouched by commercial compromises.',
+      description: 'Uncompromising runway critique, analytical fashion week dispatches, and monographic profiles untouched by commercial compromises.',
     },
     {
       icon: <Sparkles className="w-6 h-6 text-gold" />,

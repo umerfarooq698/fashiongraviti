@@ -55,34 +55,39 @@ MANDATORY EDITORIAL & SEO GUIDELINES:
    - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters, spaces, and punctuation).
    - ZERO AI CLICHÉS: Never use words like 'AI', 'Artificial Intelligence', 'algorithm', 'revolutionize', 'unlocking', 'delving', 'tapestry', 'next-gen', 'game-changing', 'navigating', 'testament'.
    - NATURAL KEYWORD PLACEMENT: Seamlessly place the keyword in a natural editorial flow (start, center, or right/end).
-2. WRITE FOR REAL READERS FIRST (ENGAGING & ACCESSIBLE):
+2. META DESCRIPTION ("subtitle"):
+   - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count precisely.
+   - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use words like 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
+   - Write a direct, authoritative fashion statement summarizing the article.
+3. WRITE FOR REAL READERS FIRST (ENGAGING & ACCESSIBLE):
    - Keep content useful, engaging, and easy to understand.
    - Stay strictly relevant to the keyword and search intent.
    - Provide practical styling advice, wardrobe formulas, silhouette analysis, fabric recommendations, and buying guidance.
-3. CLEAR FOCUS & NATURAL FLOW:
+4. CLEAR FOCUS & NATURAL FLOW:
    - Keep every section focused on one clear idea. Do not mix unrelated points in the same paragraph or section.
    - Maintain a smooth, natural flow from one section to the next.
-4. SENTENCE & PARAGRAPH STRUCTURE:
+5. SENTENCE & PARAGRAPH STRUCTURE:
    - Use short and medium-length sentences. Avoid long, complicated run-on sentences.
    - Keep paragraphs short (usually 2–4 sentences per paragraph).
-5. FRESH STRUCTURE & HEADINGS (1000–1200 WORDS):
+6. FRESH STRUCTURE & HEADINGS (1000–1200 WORDS):
    - Use a fresh, original structure and writing style every time. Never follow a fixed template or repeat previous patterns.
    - Use natural markdown H2 ("## Section Title") and H3 ("### Subsection Title") in "bodyParagraphs" to structure the article.
    - Use mostly paragraphs and occasional clean bullet points ("* Bullet point") when listing styling tips or materials.
    - Total article length must be in the 1000–1200 word range.
-6. FORBIDDEN PHRASES (ZERO AI/SEO JARGON):
+7. FORBIDDEN PHRASES & WORDS (ZERO AI/SEO JARGON ACROSS ENTIRE ARTICLE):
    - Never mention AI, SEO, algorithms, prompts, or content generation.
-   - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", or "delve".
-7. CONCLUSION & 3–4 FAQS:
+   - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", "it is worth noting that".
+   - Never use the forbidden words: 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth'.
+8. CONCLUSION & 3–4 FAQS:
    - Include a concise, impactful "conclusion" summary (3-4 sentences).
    - Provide 3–4 practical, highly relevant "faqs" that directly answer real reader questions about the keyword.
-8. VISUAL SEARCH PHRASE:
+9. VISUAL SEARCH PHRASE:
    - Provide a short, precise 3-5 word "visualSearchPhrase" describing the ideal runway/editorial photo to fetch via Unsplash API.
 
 JSON Schema:
 {
   "title": "Strictly 55-60 chars luxury headline with keyword naturally placed",
-  "subtitle": "High-CTR SEO meta excerpt / subtitle (strictly 140-160 chars)",
+  "subtitle": "Direct authoritative summary (EXACTLY 140 chars, NO forbidden words)",
   "category": "fashion-news | fashion-trends | celebrity | designers-brands | beauty | how-to-style",
   "categoryLabel": "Fashion News | Fashion Trends | Celebrity | Designers And Brands | Beauty | How to Style",
   "authorName": "Eleanora Vane | Massimo Dellacorte | Kenji Takahashi | Felix Van Der Bilt",
