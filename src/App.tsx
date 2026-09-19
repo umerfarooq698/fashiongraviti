@@ -7,6 +7,8 @@ import { CoverStory } from './components/CoverStory';
 import { CategoryFilter } from './components/CategoryFilter';
 import { ArticleGrid } from './components/ArticleGrid';
 import { ArticleReaderModal } from './components/ArticleReaderModal';
+import { AboutPage } from './components/AboutPage';
+import { ContactPage } from './components/ContactPage';
 import { CreateArticleModal } from './components/CreateArticleModal';
 import { LookbookDrawer } from './components/LookbookDrawer';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
@@ -48,8 +50,9 @@ export function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [layoutMode, setLayoutMode] = useState<ViewLayoutMode>('editorial');
 
-  // Modals & Drawers states
+  // Modals & Static Pages states
   const [selectedArticleForReader, setSelectedArticleForReader] = useState<FashionArticle | null>(null);
+  const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
@@ -69,7 +72,7 @@ export function App() {
     document.documentElement.classList.add('dark');
   }, []);
 
-  // Listen to URL path (/category or /title-slug) and search params on mount & popstate
+  // Listen to URL path (/category or /title-slug or /about-us or /contact-us) and search params on mount & popstate
   useEffect(() => {
     const syncStateFromURL = () => {
       const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
@@ -79,6 +82,25 @@ export function App() {
       const queryStory = params.get('story') || params.get('article');
       const queryCat = params.get('category');
       const search = params.get('search') || params.get('tag');
+
+      // Check static pages first
+      if (segments.length === 1) {
+        const seg = segments[0].toLowerCase();
+        if (seg === 'about-us' || seg === 'about') {
+          setActiveStaticPage('about');
+          setSelectedArticleForReader(null);
+          setActiveCategory('all');
+          return;
+        }
+        if (seg === 'contact-us' || seg === 'contact') {
+          setActiveStaticPage('contact');
+          setSelectedArticleForReader(null);
+          setActiveCategory('all');
+          return;
+        }
+      }
+
+      setActiveStaticPage(null);
 
       const categoryMap: Record<string, string> = {
         'fashion-news': 'fashion-news',
@@ -180,9 +202,8 @@ export function App() {
         const matchesSubtitle = article.subtitle.toLowerCase().includes(query);
         const matchesAuthor = article.author.name.toLowerCase().includes(query);
         const matchesTags = article.tags.some((t) => t.toLowerCase().includes(query));
-        const matchesLocation = article.locationTag.toLowerCase().includes(query);
         const matchesCategory = article.categoryLabel.toLowerCase().includes(query);
-        if (!matchesTitle && !matchesSubtitle && !matchesAuthor && !matchesTags && !matchesLocation && !matchesCategory) {
+        if (!matchesTitle && !matchesSubtitle && !matchesAuthor && !matchesTags && !matchesCategory) {
           return false;
         }
       }
@@ -197,22 +218,41 @@ export function App() {
 
   // Actions
   const handleOpenArticle = (article: FashionArticle) => {
+    setActiveStaticPage(null);
     setSelectedArticleForReader(article);
     window.history.pushState({ storyId: article.id, slug: article.slug }, '', `/${article.slug}`);
   };
 
   const handleCloseArticle = () => {
     setSelectedArticleForReader(null);
+    setActiveStaticPage(null);
     const targetPath = activeCategory === 'all' ? '/' : `/${activeCategory}`;
     window.history.pushState({}, '', targetPath);
   };
 
   const handleSelectCategory = (catId: string) => {
+    setActiveStaticPage(null);
     setActiveCategory(catId);
     setSearchQuery('');
     setSelectedArticleForReader(null);
     const targetPath = catId === 'all' ? '/' : `/${catId}`;
     window.history.pushState({}, '', targetPath);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateAbout = () => {
+    setActiveStaticPage('about');
+    setSelectedArticleForReader(null);
+    setSearchQuery('');
+    window.history.pushState({}, '', '/about-us');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateContact = () => {
+    setActiveStaticPage('contact');
+    setSelectedArticleForReader(null);
+    setSearchQuery('');
+    window.history.pushState({}, '', '/contact-us');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -246,6 +286,7 @@ export function App() {
   };
 
   const handleResetFilters = () => {
+    setActiveStaticPage(null);
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery('');
@@ -254,6 +295,7 @@ export function App() {
   };
 
   const handleSelectTag = (tag: string) => {
+    setActiveStaticPage(null);
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery(tag);
@@ -292,7 +334,20 @@ export function App() {
       <Ticker onSelectTickerItem={handleSelectTickerItem} />
 
       <main>
-        {selectedArticleForReader ? (
+        {activeStaticPage === 'about' ? (
+          /* About Us Page */
+          <AboutPage
+            onNavigateHome={handleResetFilters}
+            onNavigateContact={handleNavigateContact}
+            onNavigateCategory={handleSelectCategory}
+          />
+        ) : activeStaticPage === 'contact' ? (
+          /* Contact Us Page */
+          <ContactPage
+            onNavigateHome={handleResetFilters}
+            onNavigateCategory={handleSelectCategory}
+          />
+        ) : selectedArticleForReader ? (
           /* Dedicated Article View with persistent site Header and Footer */
           <ArticleReaderModal
             article={selectedArticleForReader}
@@ -352,6 +407,8 @@ export function App() {
       <Footer
         categories={dynamicCategories}
         onSelectCategory={handleSelectCategory}
+        onNavigateAbout={handleNavigateAbout}
+        onNavigateContact={handleNavigateContact}
         onOpenCreateModal={() => setIsCreateModalOpen(true)}
         onOpenLookbook={() => setIsLookbookOpen(true)}
         onSelectTag={handleSelectTag}

@@ -4,6 +4,8 @@ import type { FashionCategory } from '../types/fashion';
 interface FooterProps {
   categories: FashionCategory[];
   onSelectCategory: (id: string) => void;
+  onNavigateAbout?: () => void;
+  onNavigateContact?: () => void;
   onOpenCreateModal?: () => void;
   onOpenLookbook?: () => void;
   onSelectTag?: (tag: string) => void;
@@ -12,18 +14,42 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({
   categories,
   onSelectCategory,
+  onNavigateAbout,
+  onNavigateContact,
 }) => {
   const handleDepartmentClick = (catId: string) => {
     onSelectCategory(catId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleAboutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateAbout) {
+      onNavigateAbout();
+    } else {
+      window.history.pushState({}, '', '/about-us');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateContact) {
+      onNavigateContact();
+    } else {
+      window.history.pushState({}, '', '/contact-us');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-12 pb-12 transition-colors">
       {/* Main Footer Links Grid */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-white/10 pb-12">
-        {/* Brand & Mission Statement (7 cols) */}
-        <div className="md:col-span-7 lg:col-span-8">
+      <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-12">
+        {/* Brand & Mission Statement (5 cols) */}
+        <div className="lg:col-span-5">
           <a 
             href="/"
             onClick={(e) => {
@@ -37,13 +63,13 @@ export const Footer: React.FC<FooterProps> = ({
           <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold">
             FASHION NEWS • FASHION TRENDS • CELEBRITY FASHION
           </p>
-          <p className="mt-4 text-xs font-sans text-zinc-300 font-medium leading-relaxed max-w-lg">
+          <p className="mt-4 text-xs font-sans text-zinc-300 font-medium leading-relaxed max-w-md">
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
         </div>
 
-        {/* Departments Sitemap (5 cols) */}
-        <div className="md:col-span-5 lg:col-span-4">
+        {/* Departments Sitemap (4 cols) */}
+        <div className="lg:col-span-4">
           <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-300 font-bold mb-4">
             DEPARTMENTS
           </h4>
@@ -64,6 +90,60 @@ export const Footer: React.FC<FooterProps> = ({
             ))}
           </ul>
         </div>
+
+        {/* Company / Pages (3 cols) */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-300 font-bold mb-4">
+            COMPANY & EDITORIAL
+          </h4>
+          <ul className="space-y-2.5 text-xs font-mono">
+            <li>
+              <a
+                href="/about-us"
+                onClick={handleAboutClick}
+                className="text-zinc-300 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+              >
+                About Us
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact-us"
+                onClick={handleContactClick}
+                className="text-zinc-300 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact-us"
+                onClick={handleContactClick}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
+              >
+                Editorial Inquiries
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact-us"
+                onClick={handleContactClick}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
+              >
+                Press & Media
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact-us"
+                onClick={handleContactClick}
+                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
+              >
+                Luxury Partnerships
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* Bottom Legal & Copyright Bar */}
@@ -72,23 +152,25 @@ export const Footer: React.FC<FooterProps> = ({
           © 2026 FASHIONGRAVITI PUBLISHING GROUP. ALL RIGHTS RESERVED.
         </div>
         <div className="flex items-center space-x-6 text-[10px]">
+          <a
+            href="/about-us"
+            onClick={handleAboutClick}
+            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
+          >
+            EDITORIAL INDEPENDENCE
+          </a>
+          <a
+            href="/contact-us"
+            onClick={handleContactClick}
+            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
+          >
+            CONTACT DESK
+          </a>
           <button 
             onClick={() => handleDepartmentClick('all')}
             className="hover:text-white cursor-pointer transition-colors uppercase"
           >
             TERMS OF CRITIQUE
-          </button>
-          <button 
-            onClick={() => handleDepartmentClick('all')}
-            className="hover:text-white cursor-pointer transition-colors uppercase"
-          >
-            ARCHIVE RIGHTS
-          </button>
-          <button 
-            onClick={() => handleDepartmentClick('all')}
-            className="hover:text-white cursor-pointer transition-colors uppercase"
-          >
-            EDITORIAL INDEPENDENCE
           </button>
         </div>
       </div>
