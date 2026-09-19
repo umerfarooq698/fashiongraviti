@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { FashionArticle, FashionCategory, FashionMood } from '../types/fashion';
-import { X, Sparkles, Send, RefreshCw, Wand2 } from 'lucide-react';
+import { X, Sparkles, Send, RefreshCw, Wand2, Search, Camera } from 'lucide-react';
 import { generateFashionArticleWithGemini } from '../services/gemini';
+import { searchUnsplashPhotos, type UnsplashPhoto } from '../services/unsplash';
 
 interface CreateArticleModalProps {
   isOpen: boolean;
@@ -10,13 +11,14 @@ interface CreateArticleModalProps {
   onCreateArticle: (newArticle: FashionArticle) => void;
 }
 
-const PRESET_IMAGES = [
-  { label: 'Obsidian Haute Draping', url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Alabaster Minimalist Coat', url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Harajuku Subculture Vault', url: 'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Bio-Loom Experimental', url: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Brutalist Titanium Mules', url: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1200&q=80' },
-  { label: 'Neo-Baroque Silk Cape', url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80' },
+const QUICK_UNSPLASH_TERMS = [
+  'Haute Couture',
+  'Runway Model',
+  'Atelier Craft',
+  'Dark Fashion',
+  'Quiet Luxury',
+  'Streetwear Avant-Garde',
+  'Editorial Beauty',
 ];
 
 export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
@@ -39,8 +41,13 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [authorRole, setAuthorRole] = useState('Chief Fashion Editor');
   const authorAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 
-  const [coverImage, setCoverImage] = useState(PRESET_IMAGES[0].url);
-  const [coverImageCaption, setCoverImageCaption] = useState('');
+  // Unsplash Image state
+  const [unsplashQuery, setUnsplashQuery] = useState('haute couture runway');
+  const [unsplashPhotos, setUnsplashPhotos] = useState<UnsplashPhoto[]>([]);
+  const [isSearchingUnsplash, setIsSearchingUnsplash] = useState(false);
+
+  const [coverImage, setCoverImage] = useState('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85');
+  const [coverImageCaption, setCoverImageCaption] = useState('Photo by Laura Chouette on Unsplash');
   
   const [dropCapText, setDropCapText] = useState('');
   const [bodyText, setBodyText] = useState('');
@@ -48,6 +55,32 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [pullQuoteAttribution, setPullQuoteAttribution] = useState('');
 
   const [tagsInput, setTagsInput] = useState('Haute Couture, Runway, Editorial, Atelier');
+
+  // Load initial Unsplash photos when modal opens
+  useEffect(() => {
+    if (isOpen && unsplashPhotos.length === 0) {
+      handleSearchUnsplash('haute couture runway');
+    }
+  }, [isOpen]);
+
+  const handleSearchUnsplash = async (queryToSearch?: string) => {
+    const q = queryToSearch || unsplashQuery;
+    if (!q.trim()) return;
+    setIsSearchingUnsplash(true);
+    try {
+      const results = await searchUnsplashPhotos(q, 8);
+      setUnsplashPhotos(results);
+    } catch (err) {
+      console.error('Error searching Unsplash:', err);
+    } finally {
+      setIsSearchingUnsplash(false);
+    }
+  };
+
+  const handleSelectUnsplashPhoto = (photo: UnsplashPhoto) => {
+    setCoverImage(photo.url);
+    setCoverImageCaption(photo.caption);
+  };
 
   if (!isOpen) return null;
 
@@ -180,7 +213,7 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
             </div>
 
             <p className="text-xs text-zinc-300 font-sans mb-3 font-medium">
-              Enter any fashion theme, runway review topic, or designer trend, and Gemini AI will draft the entire editorial with drop-caps, pull quotes, and atelier credits.
+              Enter any fashion theme, runway review topic, or designer trend, and Gemini AI will draft the entire editorial with drop-caps, pull quotes, atelier credits, and live Unsplash editorial photography.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-2.5">
@@ -314,45 +347,134 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
             />
           </div>
 
-          {/* Section 3: Cover Image Presets / Custom URL */}
-          <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">
-              Select Editorial Imagery Preset or Enter Custom Image URL
-            </label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3">
-              {PRESET_IMAGES.map((preset, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setCoverImage(preset.url)}
-                  className={`relative cursor-pointer h-16 border overflow-hidden ${
-                    coverImage === preset.url ? 'border-gold ring-1 ring-gold' : 'border-white/10 opacity-70 hover:opacity-100'
-                  }`}
+          {/* Section 3: Live Unsplash Image Curation */}
+          <div className="p-4 bg-noir-card border border-white/20 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Camera className="w-4 h-4 text-gold" />
+                <label className="text-xs font-mono uppercase tracking-wider text-alabaster font-bold">
+                  UNSPLASH LIVE EDITORIAL PHOTO CURATOR
+                </label>
+              </div>
+              <span className="text-[10px] font-mono text-zinc-400 bg-white/5 px-2 py-0.5 border border-white/10">
+                POWERED BY UNSPLASH API
+              </span>
+            </div>
+
+            {/* Search Input & Button */}
+            <div className="flex gap-2">
+              <div className="relative flex-grow">
+                <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search Unsplash (e.g., Haute Couture, Silk Draping, Paris Fashion Week)..."
+                  value={unsplashQuery}
+                  onChange={(e) => setUnsplashQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleSearchUnsplash();
+                    }
+                  }}
+                  className="w-full bg-black border border-white/20 pl-8 pr-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-gold font-sans"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => handleSearchUnsplash()}
+                disabled={isSearchingUnsplash}
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs uppercase font-bold transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              >
+                {isSearchingUnsplash ? (
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Search className="w-3.5 h-3.5" />
+                )}
+                <span>Search</span>
+              </button>
+            </div>
+
+            {/* Quick Keyword Chips */}
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {QUICK_UNSPLASH_TERMS.map((term) => (
+                <button
+                  key={term}
+                  type="button"
+                  onClick={() => {
+                    setUnsplashQuery(term);
+                    handleSearchUnsplash(term);
+                  }}
+                  className="px-2 py-1 bg-black border border-white/10 hover:border-gold/60 text-[10px] font-mono text-zinc-300 hover:text-gold transition-colors"
                 >
-                  <img src={preset.url} alt={preset.label} className="w-full h-full object-cover" />
-                  <span className="absolute bottom-0 inset-x-0 bg-noir/80 text-[9px] font-mono px-1 py-0.5 truncate text-zinc-300">
-                    {preset.label}
-                  </span>
-                </div>
+                  + {term}
+                </button>
               ))}
             </div>
-            <input
-              type="url"
-              placeholder="Or paste custom image URL (https://...)"
-              value={coverImage}
-              onChange={(e) => setCoverImage(e.target.value)}
-              className="w-full bg-noir-card border border-white/20 p-2.5 text-zinc-300 focus:outline-none focus:border-gold text-xs font-mono"
-            />
-            <input
-              type="text"
-              placeholder="Optional photo caption..."
-              value={coverImageCaption}
-              onChange={(e) => setCoverImageCaption(e.target.value)}
-              className="w-full bg-noir-card border border-white/20 p-2 text-zinc-300 focus:outline-none focus:border-gold text-xs font-sans mt-2"
-            />
+
+            {/* Photo Results Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
+              {unsplashPhotos.map((photo) => {
+                const isSelected = coverImage === photo.url;
+                return (
+                  <div
+                    key={photo.id}
+                    onClick={() => handleSelectUnsplashPhoto(photo)}
+                    className={`relative cursor-pointer h-24 border overflow-hidden transition-all group ${
+                      isSelected ? 'border-gold ring-2 ring-gold/80' : 'border-white/10 hover:border-white/40'
+                    }`}
+                  >
+                    <img
+                      src={photo.thumbUrl}
+                      alt={photo.altDescription}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1.5">
+                      <span className="text-[9px] font-mono text-zinc-300 truncate w-full">
+                        {photo.photographerName}
+                      </span>
+                    </div>
+                    {isSelected && (
+                      <div className="absolute top-1 right-1 bg-gold text-black text-[9px] font-mono font-bold px-1 rounded-none">
+                        SELECTED
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Custom Image URL & Caption */}
+            <div className="pt-2 border-t border-white/10 space-y-2">
+              <div>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-zinc-400 mb-1">
+                  Selected Image URL
+                </label>
+                <input
+                  type="url"
+                  placeholder="Selected image URL or custom https://..."
+                  value={coverImage}
+                  onChange={(e) => setCoverImage(e.target.value)}
+                  className="w-full bg-black border border-white/20 p-2 text-zinc-300 focus:outline-none focus:border-gold text-xs font-mono"
+                />
+              </div>
+              <div>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-zinc-400 mb-1">
+                  Photo Caption & Attribution
+                </label>
+                <input
+                  type="text"
+                  placeholder="Photo caption (e.g. Photo by Photographer on Unsplash)..."
+                  value={coverImageCaption}
+                  onChange={(e) => setCoverImageCaption(e.target.value)}
+                  className="w-full bg-black border border-white/20 p-2 text-zinc-300 focus:outline-none focus:border-gold text-xs font-sans"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Section 4: Author Credentials */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
             <div>
               <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
                 Author Name

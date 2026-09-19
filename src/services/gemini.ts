@@ -1,49 +1,11 @@
 import type { FashionArticle } from '../types/fashion';
 import { getAuthorProfile } from '../data/authors';
+import { getRandomUnsplashFashionPhoto, searchUnsplashPhotos } from './unsplash';
 
 const GEMINI_API_KEY = (import.meta.env.VITE_GEMINI_API_KEY as string) || '';
 
 const getApiUrl = () =>
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-// High-fashion curated image library for fallback and dynamic matching
-const CURATED_FASHION_IMAGES: Record<string, string[]> = {
-  'fashion-news': [
-    'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=85',
-  ],
-  'fashion-trends': [
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1600&q=85',
-  ],
-  'celebrity': [
-    'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=85',
-  ],
-  'designers-brands': [
-    'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85',
-  ],
-  'beauty': [
-    'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1600&q=85',
-  ],
-  'how-to-style': [
-    'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=85',
-  ],
-};
-
-function getRandomImage(category: string): string {
-  const list = CURATED_FASHION_IMAGES[category] || CURATED_FASHION_IMAGES['fashion-news'];
-  return list[Math.floor(Math.random() * list.length)];
-}
 
 const AUTHORS_LIST = [
   'Eleanora Vane',
@@ -70,7 +32,7 @@ export interface GeminiGeneratedArticle {
 }
 
 /**
- * Generates a full high-fashion editorial article using Gemini 3.6 Flash
+ * Generates a full high-fashion editorial article using Gemini 3.6 Flash & Live Unsplash Imagery
  */
 export async function generateFashionArticleWithGemini(
   promptOrTopic?: string,
@@ -161,7 +123,18 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
 
-    const coverImg = getRandomImage(parsed.category);
+    // Fetch live Unsplash imagery tailored to the topic and category
+    const searchKeywords = promptOrTopic
+      ? `${parsed.category} ${promptOrTopic}`
+      : `${parsed.category} ${parsed.tags?.[0] || 'runway'}`;
+    
+    let photos = await searchUnsplashPhotos(searchKeywords, 4);
+    if (!photos || photos.length === 0) {
+      photos = await searchUnsplashPhotos(parsed.category, 4);
+    }
+
+    const coverPhoto = photos[0] || (await getRandomUnsplashFashionPhoto(parsed.category));
+    const secondaryPhoto = photos[1] || photos[0] || (await getRandomUnsplashFashionPhoto('designers-brands'));
 
     const article: FashionArticle = {
       id: articleId,
@@ -186,8 +159,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
         year: 'numeric',
       }).toUpperCase(),
       readTime: '5 MIN READ',
-      coverImage: coverImg,
-      coverImageCaption: parsed.secondaryImageCaption || `Editorial showcase for ${parsed.title}`,
+      coverImage: coverPhoto.url,
+      coverImageCaption: coverPhoto.caption || parsed.secondaryImageCaption || `Editorial showcase for ${parsed.title}`,
       content: {
         dropCapText: parsed.dropCapText,
         bodyParagraphs: parsed.bodyParagraphs || [],
@@ -196,8 +169,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
           attribution: parsed.pullQuoteAttribution,
         },
         secondaryImage: {
-          url: coverImg,
-          caption: parsed.secondaryImageCaption || 'Atelier fabrication and finish details.',
+          url: secondaryPhoto.url,
+          caption: secondaryPhoto.caption || parsed.secondaryImageCaption || 'Atelier fabrication and finish details.',
         },
         closingParagraphs: parsed.closingParagraphs || [],
         designerCredits: parsed.designerCredits || [],
@@ -212,7 +185,10 @@ Output ONLY valid JSON without markdown wrapping or backticks.
   } catch (err) {
     console.error('Failed to generate with Gemini API, generating fallback editorial:', err);
     
-    // Fallback dynamic high quality article
+    // Live Unsplash photo for fallback
+    const fallbackPhoto = await getRandomUnsplashFashionPhoto(targetCategory || 'fashion-news');
+    const fallbackSecondary = await getRandomUnsplashFashionPhoto('designers-brands');
+
     const fallbackAuthor = getAuthorProfile(AUTHORS_LIST[0]);
     const articleId = `gemini-story-${Date.now()}`;
     return {
@@ -234,8 +210,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       },
       publishedAt: 'SEPTEMBER 19, 2026',
       readTime: '5 MIN READ',
-      coverImage: getRandomImage(targetCategory || 'fashion-news'),
-      coverImageCaption: 'Runway showcase spotlighting architectural double-breasted tailoring.',
+      coverImage: fallbackPhoto.url,
+      coverImageCaption: fallbackPhoto.caption || 'Runway showcase spotlighting architectural double-breasted tailoring.',
       content: {
         dropCapText: 'The contemporary runway season has unveiled a bold re-evaluation of classic tailoring traditions and modern silhouettes.',
         bodyParagraphs: [
@@ -247,8 +223,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
           attribution: 'Editorial Review Board',
         },
         secondaryImage: {
-          url: getRandomImage('designers-brands'),
-          caption: 'Backstage atelier preparation and garment detailing.',
+          url: fallbackSecondary.url,
+          caption: fallbackSecondary.caption || 'Backstage atelier preparation and garment detailing.',
         },
         closingParagraphs: [
           'These collections reinforce that genuine elegance lies in restraint and immaculate construction.'
