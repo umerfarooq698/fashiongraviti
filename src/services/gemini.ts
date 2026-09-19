@@ -47,9 +47,14 @@ export async function generateFashionArticleWithGemini(
 You are the Chief Fashion Editor of "Fashion Graviti", an ultra-luxury digital fashion magazine (like Vogue, Harper's Bazaar, or The Gentlewoman).
 Generate a sophisticated, highly articulate fashion article in strict JSON format.
 
+CRITICAL HEADLINE RULES:
+1. "title": MUST BE EXACTLY 55 TO 60 CHARACTERS LONG (including spaces and punctuation). Count characters precisely.
+2. ZERO AI BUZZWORDS: Never use words like 'AI', 'Artificial Intelligence', 'algorithm', 'revolutionize', 'unlocking', 'delving', 'tapestry', 'next-gen', 'game-changing'.
+3. NATURAL KEYWORD PLACEMENT: Seamlessly position the target keyword in a natural editorial flow (start, center, or right/end) so it reads like authentic luxury journalism.
+
 JSON Schema:
 {
-  "title": "Dramatic, elegant, and catchy high-fashion headline (60-90 chars)",
+  "title": "Strictly 55-60 characters luxury headline with keyword naturally placed",
   "subtitle": "Poetic and informative excerpt / subtitle (120-180 chars)",
   "category": "fashion-news | fashion-trends | celebrity | designers-brands | beauty | how-to-style",
   "categoryLabel": "Fashion News | Fashion Trends | Celebrity | Designers And Brands | Beauty | How to Style",
