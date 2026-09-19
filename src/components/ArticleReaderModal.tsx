@@ -286,10 +286,6 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               <Sparkles className="w-3.5 h-3.5 text-gold" />
               {article.categoryLabel}
             </a>
-            <span className="text-white font-bold bg-black border border-white/20 px-2.5 py-1">{article.season}</span>
-            <span className="text-zinc-500">•</span>
-            <span className="text-gold font-extrabold">{article.issueNumber}</span>
-            <span className="text-zinc-500">•</span>
             <span className="flex items-center gap-1 text-gold font-black">
               <Clock className="w-4 h-4" />
               {article.readTime}

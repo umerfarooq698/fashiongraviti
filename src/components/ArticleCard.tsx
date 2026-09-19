@@ -88,8 +88,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 {article.categoryLabel}
               </a>
               <span>•</span>
-              <span className="text-white font-bold">{article.season}</span>
-              <span>•</span>
               <span className="flex items-center gap-1 text-gold font-bold">
                 <Clock className="w-3.5 h-3.5" />
                 {article.readTime}
@@ -221,8 +219,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         {/* Content Body */}
         <div className="p-6 flex flex-col flex-grow justify-between">
           <div>
-            <div className="flex items-center justify-between text-xs font-mono uppercase text-zinc-300 font-bold mb-2">
-              <span className="text-white font-extrabold">{article.season}</span>
+            <div className="flex items-center justify-end text-xs font-mono uppercase text-zinc-300 font-bold mb-2">
               <span className="flex items-center gap-1 text-gold font-bold">
                 <Clock className="w-3.5 h-3.5" />
                 {article.readTime}
@@ -335,12 +332,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
         <div>
           {/* Metadata Row */}
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono uppercase mb-3">
-            <div className="flex items-center space-x-2 font-bold">
-              <span className="text-crimson-light font-black">{article.season}</span>
-              <span className="text-white">/</span>
-              <span className="text-white font-bold">{article.issueNumber}</span>
-            </div>
+          <div className="flex items-center justify-end gap-2 text-xs font-mono uppercase mb-3">
             <span className="flex items-center gap-1 text-gold font-extrabold">
               <Clock className="w-3.5 h-3.5" />
               {article.readTime}

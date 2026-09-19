@@ -45,12 +45,6 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
                 <Sparkles className="w-3.5 h-3.5 text-gold" />
                 {article.categoryLabel}
               </a>
-              <span className="bg-black text-white font-bold border border-white/30 px-2.5 py-1">
-                {article.season}
-              </span>
-              <span className="text-gold font-extrabold">
-                {article.issueNumber}
-              </span>
             </div>
 
             {/* Title */}
