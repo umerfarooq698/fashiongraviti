@@ -160,7 +160,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
         >
           <img
             src={article.coverImage}
-            alt={article.title}
+            alt={article.coverImageAlt || article.title}
             className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out brightness-95 group-hover:brightness-100"
           />
           {/* Subtle gradient */}

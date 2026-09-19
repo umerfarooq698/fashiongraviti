@@ -352,11 +352,11 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
         <div className="my-8 overflow-hidden bg-black border-2 border-white/20 shadow-2xl">
           <img
             src={article.coverImage}
-            alt={article.title}
+            alt={article.coverImageAlt || article.title}
             className="w-full max-h-[600px] object-cover object-center"
           />
           {article.coverImageCaption && (
-            <div className="p-4 bg-noir-card border-t border-white/15 text-sm font-sans text-zinc-200 font-semibold italic">
+            <div className="px-3.5 py-1.5 bg-black/90 border-t border-white/10 text-[11px] font-mono text-zinc-400">
               {article.coverImageCaption}
             </div>
           )}
@@ -423,10 +423,10 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             <div className="my-8 border border-white/20 overflow-hidden bg-black shadow-xl">
               <img
                 src={article.content.secondaryImage.url}
-                alt="Editorial Detail"
+                alt={article.content.secondaryImage.alt || article.content.secondaryImage.caption || "Editorial Detail"}
                 className="w-full max-h-[500px] object-cover"
               />
-              <p className="p-3.5 bg-noir-card text-xs sm:text-sm font-sans text-zinc-300 font-medium italic border-t border-white/15">
+              <p className="px-3.5 py-1.5 bg-black/90 text-[11px] font-mono text-zinc-400 border-t border-white/10">
                 {article.content.secondaryImage.caption}
               </p>
             </div>

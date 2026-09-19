@@ -88,7 +88,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     publishedAt: 'SEPTEMBER 19, 2026',
     readTime: '8 MIN READ',
     coverImage: 'https://images.unsplash.com/photo-1779406275908-1dabe4083373?auto=format&fit=crop&w=1600&q=85',
-    coverImageCaption: 'Clean proportions and monochrome restraint: The enduring aesthetic of 90s fashion minimalism. Photo by Ola Szkolda on Unsplash.',
+    coverImageCaption: 'Photo by Ola Szkolda on Unsplash',
+    coverImageAlt: 'Minimalist 90s monochrome black dress and gold chain belt silhouette',
     content: {
       dropCapText: 'The enduring power of 90s fashion lies in its unapologetic devotion to simplicity, immaculate tailoring, and effortless personal attitude. Three decades after its debut on international runways, the decade continues to define how modern women and men assemble their everyday wardrobes.',
       bodyParagraphs: [
@@ -125,7 +126,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
       },
       secondaryImage: {
         url: 'https://images.unsplash.com/photo-1779406337904-b9c606ae8802?auto=format&fit=crop&w=1600&q=85',
-        caption: 'Atelier leather tailoring and relaxed posture reminiscent of nineties editorial campaigns. Photo by Ola Szkolda on Unsplash.',
+        caption: 'Photo by Ola Szkolda on Unsplash',
+        alt: 'Vintage 90s relaxed leather tailoring sitting pose',
       },
       conclusion: 'The lasting relevance of 90s fashion proves that immaculate tailoring, premium natural fabrics, and unpretentious simplicity never go out of style. By investing in versatile staple garments and focusing on clean proportions, you create a timeless wardrobe that feels effortlessly modern in any setting.',
       faqs: [

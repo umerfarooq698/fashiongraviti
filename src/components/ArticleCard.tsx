@@ -70,7 +70,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           >
             <img
               src={article.coverImage}
-              alt={article.title}
+              alt={article.coverImageAlt || article.title}
               className="w-20 h-20 sm:w-24 sm:h-24 object-cover border-2 border-white/20 group-hover:border-gold transition-colors"
             />
           </a>
@@ -184,7 +184,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         >
           <img
             src={article.coverImage}
-            alt={article.title}
+            alt={article.coverImageAlt || article.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-noir-card via-transparent to-transparent" />
@@ -318,7 +318,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       >
         <img
           src={article.coverImage}
-          alt={article.title}
+          alt={article.coverImageAlt || article.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-noir-card/80 via-transparent to-transparent" />

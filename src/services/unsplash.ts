@@ -160,7 +160,7 @@ export async function getFashionPhotosByCategory(
  */
 export async function getRandomUnsplashFashionPhoto(
   queryOrCategory?: string
-): Promise<{ url: string; caption: string; photographer: string }> {
+): Promise<{ url: string; caption: string; photographer: string; altDescription: string }> {
   const query = queryOrCategory
     ? (CATEGORY_SEARCH_QUERIES[queryOrCategory] || queryOrCategory)
     : 'haute couture fashion runway editorial';
@@ -172,6 +172,7 @@ export async function getRandomUnsplashFashionPhoto(
       url: randomPhoto.url,
       caption: randomPhoto.caption,
       photographer: randomPhoto.photographerName,
+      altDescription: randomPhoto.altDescription || 'Editorial high fashion runway model look',
     };
   }
 
@@ -180,5 +181,6 @@ export async function getRandomUnsplashFashionPhoto(
     url: fallback.url,
     caption: fallback.caption,
     photographer: fallback.photographerName,
+    altDescription: fallback.altDescription || 'Editorial high fashion runway model look',
   };
 }

@@ -54,6 +54,7 @@ export interface FashionArticle {
   readTime: string;
   coverImage: string;
   coverImageCaption?: string;
+  coverImageAlt?: string;
   gallery?: string[];
   content: {
     dropCapText: string;
@@ -66,6 +67,7 @@ export interface FashionArticle {
     secondaryImage?: {
       url: string;
       caption: string;
+      alt?: string;
     };
     closingParagraphs?: string[];
     conclusion?: string;
