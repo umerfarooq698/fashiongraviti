@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { FashionArticle, FashionCategory, FashionMood } from '../types/fashion';
-import { X, Sparkles, Send } from 'lucide-react';
+import { X, Sparkles, Send, RefreshCw, Wand2 } from 'lucide-react';
+import { generateFashionArticleWithGemini } from '../services/gemini';
 
 interface CreateArticleModalProps {
   isOpen: boolean;
@@ -24,6 +25,9 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   categories,
   onCreateArticle,
 }) => {
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [isGeneratingAI, setIsGeneratingAI] = useState(false);
+
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('fashion-news');
@@ -31,8 +35,8 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [season, setSeason] = useState('AUTUMN / WINTER 2026');
   const [readTime, setReadTime] = useState('6 MIN READ');
   
-  const [authorName, setAuthorName] = useState('Guest Curator');
-  const [authorRole, setAuthorRole] = useState('Independent Fashion Critic');
+  const [authorName, setAuthorName] = useState('Eleanora Vane');
+  const [authorRole, setAuthorRole] = useState('Chief Fashion Editor');
   const authorAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 
   const [coverImage, setCoverImage] = useState(PRESET_IMAGES[0].url);
@@ -46,6 +50,40 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [tagsInput, setTagsInput] = useState('Haute Couture, Runway, Editorial, Atelier');
 
   if (!isOpen) return null;
+
+  const handleGenerateWithGemini = async (directPublish = false) => {
+    setIsGeneratingAI(true);
+    try {
+      const generated = await generateFashionArticleWithGemini(aiPrompt, category);
+      
+      if (directPublish) {
+        onCreateArticle(generated);
+        onClose();
+        return;
+      }
+
+      // Auto-fill all fields
+      setTitle(generated.title);
+      setSubtitle(generated.subtitle);
+      setCategory(generated.category);
+      setMood(generated.mood);
+      setAuthorName(generated.author.name);
+      setAuthorRole(generated.author.role);
+      setCoverImage(generated.coverImage);
+      setCoverImageCaption(generated.coverImageCaption || '');
+      setDropCapText(generated.content.dropCapText);
+      setBodyText(generated.content.bodyParagraphs.join('\n\n'));
+      if (generated.content.pullQuote) {
+        setPullQuoteText(generated.content.pullQuote.text);
+        setPullQuoteAttribution(generated.content.pullQuote.attribution || '');
+      }
+      setTagsInput(generated.tags.join(', '));
+    } catch (err) {
+      console.error('Error in Gemini generation:', err);
+    } finally {
+      setIsGeneratingAI(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,6 +165,63 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
 
         {/* Scrollable Form Body */}
         <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6 overflow-y-auto flex-grow">
+          {/* Gemini AI Auto-Writer Box */}
+          <div className="p-5 bg-noir-card border-2 border-gold/40 relative overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-2">
+                <Sparkles className="w-4 h-4 text-gold animate-pulse" />
+                <span className="text-xs font-mono font-black uppercase text-gold tracking-wider">
+                  GEMINI AI EDITORIAL AUTO-GENERATOR
+                </span>
+              </div>
+              <span className="text-[10px] font-mono text-zinc-400 font-bold bg-black px-2 py-0.5 border border-white/20">
+                GEMINI 3.6 FLASH
+              </span>
+            </div>
+
+            <p className="text-xs text-zinc-300 font-sans mb-3 font-medium">
+              Enter any fashion theme, runway review topic, or designer trend, and Gemini AI will draft the entire editorial with drop-caps, pull quotes, and atelier credits.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-2.5">
+              <input
+                type="text"
+                placeholder="e.g., Paris Haute Couture Dark Romanticism, Quiet Luxury Cashmere, Met Gala..."
+                value={aiPrompt}
+                onChange={(e) => setAiPrompt(e.target.value)}
+                disabled={isGeneratingAI}
+                className="flex-grow bg-black border border-white/20 p-2.5 text-xs text-white placeholder-zinc-500 font-sans focus:outline-none focus:border-gold"
+              />
+              <button
+                type="button"
+                onClick={() => handleGenerateWithGemini(false)}
+                disabled={isGeneratingAI}
+                className="px-4 py-2.5 bg-gold hover:bg-gold-light text-black font-mono text-xs uppercase font-black transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 flex-shrink-0"
+              >
+                {isGeneratingAI ? (
+                  <>
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin text-black" />
+                    <span>Drafting with Gemini...</span>
+                  </>
+                ) : (
+                  <>
+                    <Wand2 className="w-3.5 h-3.5 text-black" />
+                    <span>Generate Editorial</span>
+                  </>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleGenerateWithGemini(true)}
+                disabled={isGeneratingAI}
+                className="px-3.5 py-2.5 bg-crimson hover:bg-crimson-light text-white font-mono text-xs uppercase font-black transition-all flex items-center justify-center gap-1 cursor-pointer disabled:opacity-50 flex-shrink-0"
+                title="Generate with Gemini and publish immediately to feed"
+              >
+                <span>⚡ Instant Publish</span>
+              </button>
+            </div>
+          </div>
+
           {/* Section 1: Core Article Headline */}
           <div>
             <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5">

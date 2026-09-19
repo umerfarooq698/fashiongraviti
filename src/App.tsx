@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { Sparkles } from 'lucide-react';
 import type { FashionArticle, FashionCategory, FashionMood, ViewLayoutMode } from './types/fashion';
 import { FASHION_CATEGORIES, INITIAL_ARTICLES } from './data/initialArticles';
 import { getAuthorProfile, getAuthorSlug } from './data/authors';
@@ -14,6 +15,7 @@ import { ContactPage } from './components/ContactPage';
 import { CreateArticleModal } from './components/CreateArticleModal';
 import { LookbookDrawer } from './components/LookbookDrawer';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
+import { AIFashionStylistDrawer } from './components/AIFashionStylistDrawer';
 import { Footer } from './components/Footer';
 
 const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v3';
@@ -59,6 +61,7 @@ export function App() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
+  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
   // Sync articles to localStorage
   useEffect(() => {
@@ -487,6 +490,23 @@ export function App() {
         onRemoveBookmark={handleToggleBookmark}
         onClearAll={handleClearAllBookmarks}
       />
+
+      {/* 11. Gemini AI Fashion Stylist Drawer */}
+      <AIFashionStylistDrawer
+        isOpen={isAIAssistantOpen}
+        onClose={() => setIsAIAssistantOpen(false)}
+        onSelectTag={handleSelectTag}
+      />
+
+      {/* Floating Gemini AI Stylist Trigger Button */}
+      <button
+        onClick={() => setIsAIAssistantOpen(true)}
+        className="fixed bottom-6 right-6 z-40 bg-black/95 hover:bg-gold text-white hover:text-black border-2 border-gold px-4 py-2.5 shadow-2xl transition-all duration-300 flex items-center space-x-2.5 font-mono text-xs uppercase font-black tracking-wider cursor-pointer group hover:scale-105 active:scale-95"
+        title="Open Gemini AI Sartorial Stylist"
+      >
+        <Sparkles className="w-4 h-4 text-gold group-hover:text-black animate-pulse" />
+        <span>Gemini AI Stylist</span>
+      </button>
     </div>
   );
 }
