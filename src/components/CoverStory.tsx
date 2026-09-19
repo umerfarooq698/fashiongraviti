@@ -64,22 +64,15 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
               {article.subtitle}
             </p>
 
-            {/* Tags (Clickable) */}
+            {/* Tags (Unclickable Badges) */}
             <div className="mt-6 flex flex-wrap gap-2">
               {article.tags.map((tag, idx) => (
-                <a 
+                <span 
                   key={idx}
-                  href={`?search=${encodeURIComponent(tag)}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    onSelectTag?.(tag);
-                  }}
-                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer no-underline inline-block"
-                  title={`Filter articles by #${tag}`}
+                  className="text-xs font-mono font-bold uppercase px-3 py-1 bg-black text-zinc-300 border border-white/20 select-none inline-block"
                 >
                   #{tag}
-                </a>
+                </span>
               ))}
             </div>
           </div>

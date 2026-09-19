@@ -219,7 +219,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         {/* Content Body */}
         <div className="p-6 flex flex-col flex-grow justify-between">
           <div>
-            <div className="flex items-center justify-end text-xs font-mono uppercase text-zinc-300 font-bold mb-2">
+            <div className="flex items-center justify-between text-xs font-mono uppercase text-zinc-300 font-bold mb-2">
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  onSelectCategory?.(article.category);
+                }}
+                className="text-gold hover:text-white font-extrabold uppercase transition-colors"
+              >
+                {article.categoryLabel}
+              </span>
               <span className="flex items-center gap-1 text-gold font-bold">
                 <Clock className="w-3.5 h-3.5" />
                 {article.readTime}
@@ -312,27 +322,23 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-noir-card/80 via-transparent to-transparent" />
-        
-        {/* Badges */}
-        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          <span
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              onSelectCategory?.(article.category);
-            }}
-            className="text-xs font-mono tracking-wider uppercase px-3 py-1 bg-black/95 text-gold font-black border border-gold/40 hover:bg-gold hover:text-black transition-all shadow-md inline-block"
-          >
-            {article.categoryLabel}
-          </span>
-        </div>
       </a>
 
       {/* Content Spread (7 cols) */}
       <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
         <div>
           {/* Metadata Row */}
-          <div className="flex items-center justify-end gap-2 text-xs font-mono uppercase mb-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono uppercase mb-3">
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                onSelectCategory?.(article.category);
+              }}
+              className="text-xs font-mono tracking-wider uppercase px-2.5 py-1 bg-crimson text-white font-black hover:bg-crimson-light transition-all shadow-md inline-block cursor-pointer"
+            >
+              {article.categoryLabel}
+            </span>
             <span className="flex items-center gap-1 text-gold font-extrabold">
               <Clock className="w-3.5 h-3.5" />
               {article.readTime}
@@ -356,22 +362,15 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             {article.content.dropCapText || article.subtitle}
           </div>
 
-          {/* Tags (Clickable) */}
+          {/* Tags (Unclickable Badges) */}
           <div className="mt-4 flex flex-wrap gap-2">
             {article.tags.map((tag, idx) => (
-              <a 
+              <span 
                 key={idx}
-                href={`?search=${encodeURIComponent(tag)}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  onSelectTag?.(tag);
-                }}
-                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/20 transition-all cursor-pointer no-underline inline-block"
-                title={`Filter articles by #${tag}`}
+                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-zinc-300 border border-white/20 select-none inline-block"
               >
                 #{tag}
-              </a>
+              </span>
             ))}
           </div>
         </div>

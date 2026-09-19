@@ -452,19 +452,12 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-mono uppercase text-white font-bold mr-1">ARTICLE TAGS:</span>
             {article.tags.map((tag, idx) => (
-              <a
+              <span
                 key={idx}
-                href={`?search=${encodeURIComponent(tag)}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-                  onSelectTag?.(tag);
-                }}
-                className="text-xs font-mono uppercase font-bold px-3 py-1 bg-black text-white hover:bg-gold hover:text-black border border-white/30 transition-all cursor-pointer no-underline inline-block"
-                title={`Filter articles by #${tag}`}
+                className="text-xs font-mono uppercase font-bold px-3 py-1 bg-black text-zinc-300 border border-white/30 select-none inline-block"
               >
                 #{tag}
-              </a>
+              </span>
             ))}
           </div>
 
