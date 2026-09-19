@@ -68,6 +68,11 @@ export interface FashionArticle {
       caption: string;
     };
     closingParagraphs?: string[];
+    conclusion?: string;
+    faqs?: Array<{
+      question: string;
+      answer: string;
+    }>;
     designerCredits?: {
       house: string;
       garment: string;

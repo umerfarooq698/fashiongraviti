@@ -25,8 +25,11 @@ export interface GeminiGeneratedArticle {
   pullQuoteText: string;
   pullQuoteAttribution: string;
   secondaryImageCaption: string;
+  conclusion?: string;
+  faqs?: Array<{ question: string; answer: string }>;
   closingParagraphs: string[];
   designerCredits: Array<{ house: string; garment: string; materials: string }>;
+  visualSearchPhrase?: string;
   tags: string[];
   mood: 'Dark Romanticism' | 'Quiet Luxury' | 'Opulent Minimalism' | 'Avant-Garde' | 'Sustainable Tech';
 }
@@ -40,50 +43,79 @@ export async function generateFashionArticleWithGemini(
 ): Promise<FashionArticle> {
   const categoryConstraint = targetCategory ? `For the category: "${targetCategory}".` : '';
   const topicPrompt = promptOrTopic
-    ? `Write a detailed, high-fashion runway editorial article about: "${promptOrTopic}". ${categoryConstraint}`
-    : `Write a breaking, cutting-edge high-fashion editorial article on a runway trend, haute couture showcase, or designer innovation. ${categoryConstraint}`;
+    ? `Write a comprehensive, completely unique 1000–1200 word high-fashion editorial article based on the keyword: "${promptOrTopic}". ${categoryConstraint}`
+    : `Write a comprehensive, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
 
   const systemInstruction = `
-You are the Chief Fashion Editor & Senior SEO Editorial Strategist of "Fashion Graviti", an elite digital fashion magazine (like Vogue, Harper's Bazaar, or The Gentlewoman).
-Generate a sophisticated, highly articulate fashion article optimized for top organic ranking on Google Search & Bing Search in strict JSON format.
+You are the Chief Fashion Editor & Senior Luxury Columnist of "Fashion Graviti", an elite high-fashion publication (like Vogue, Harper's Bazaar, or The Gentlewoman).
+Generate a completely unique, comprehensive 1000–1200 word fashion article based strictly on the provided keyword in strict JSON format.
 
-CRITICAL GOOGLE PENALTY PROTECTION & SEO RANKING RULES (HCU-COMPLIANT):
+MANDATORY EDITORIAL & SEO GUIDELINES:
 1. HEADLINE ("title"):
    - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters, spaces, and punctuation).
    - ZERO AI CLICHÉS: Never use words like 'AI', 'Artificial Intelligence', 'algorithm', 'revolutionize', 'unlocking', 'delving', 'tapestry', 'next-gen', 'game-changing', 'navigating', 'testament'.
-   - NATURAL KEYWORD INTEGRATION: Position the target keyword in a natural, elegant editorial flow (start, center, or right) without sounding forced.
-2. ZERO FLUFF & GENERIC FILLER (ANTI-PENALTY):
-   - Never start with generic AI intros like "In today's fast-paced world...", "Fashion has always been...", "Let's dive into...", "In the ever-evolving world...".
-   - Start directly with sharp, authoritative journalistic observations, runway evidence, and design critique.
-3. SEARCH EEAT & SEMANTIC LSI CONTENT:
-   - Deep domain expertise: Detail specific fabrics (e.g. Mulberry silk, double-faced cashmere, organza), tailoring cuts, silhouettes, runway lighting, and atelier techniques.
-   - Varied human sentence length, natural vocabulary burstiness, and authentic fashion critique tone.
-   - Natural keyword distribution (around 1% density) — absolutely NO keyword stuffing.
-4. META DESCRIPTION & SUBTITLE ("subtitle"):
-   - LENGTH: Exactly 140 to 160 characters.
-   - HIGH SEARCH INTENT: Compelling, click-worthy hook answering search intent.
+   - NATURAL KEYWORD PLACEMENT: Seamlessly place the keyword in a natural editorial flow (start, center, or right/end).
+2. WRITE FOR REAL READERS FIRST (ENGAGING & ACCESSIBLE):
+   - Keep content useful, engaging, and easy to understand.
+   - Stay strictly relevant to the keyword and search intent.
+   - Provide practical styling advice, wardrobe formulas, silhouette analysis, fabric recommendations, and buying guidance.
+3. CLEAR FOCUS & NATURAL FLOW:
+   - Keep every section focused on one clear idea. Do not mix unrelated points in the same paragraph or section.
+   - Maintain a smooth, natural flow from one section to the next.
+4. SENTENCE & PARAGRAPH STRUCTURE:
+   - Use short and medium-length sentences. Avoid long, complicated run-on sentences.
+   - Keep paragraphs short (usually 2–4 sentences per paragraph).
+5. FRESH STRUCTURE & HEADINGS (1000–1200 WORDS):
+   - Use a fresh, original structure and writing style every time. Never follow a fixed template or repeat previous patterns.
+   - Use natural markdown H2 ("## Section Title") and H3 ("### Subsection Title") in "bodyParagraphs" to structure the article.
+   - Use mostly paragraphs and occasional clean bullet points ("* Bullet point") when listing styling tips or materials.
+   - Total article length must be in the 1000–1200 word range.
+6. FORBIDDEN PHRASES (ZERO AI/SEO JARGON):
+   - Never mention AI, SEO, algorithms, prompts, or content generation.
+   - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", or "delve".
+7. CONCLUSION & 3–4 FAQS:
+   - Include a concise, impactful "conclusion" summary (3-4 sentences).
+   - Provide 3–4 practical, highly relevant "faqs" that directly answer real reader questions about the keyword.
+8. VISUAL SEARCH PHRASE:
+   - Provide a short, precise 3-5 word "visualSearchPhrase" describing the ideal runway/editorial photo to fetch via Unsplash API.
 
 JSON Schema:
 {
-  "title": "Strictly 55-60 characters luxury headline with keyword naturally placed",
+  "title": "Strictly 55-60 chars luxury headline with keyword naturally placed",
   "subtitle": "High-CTR SEO meta excerpt / subtitle (strictly 140-160 chars)",
   "category": "fashion-news | fashion-trends | celebrity | designers-brands | beauty | how-to-style",
   "categoryLabel": "Fashion News | Fashion Trends | Celebrity | Designers And Brands | Beauty | How to Style",
   "authorName": "Eleanora Vane | Massimo Dellacorte | Kenji Takahashi | Felix Van Der Bilt",
   "dropCapText": "First sentence of the article, powerful and poetic (1-2 sentences)",
   "bodyParagraphs": [
-    "Detailed analytical paragraph detailing fabrics, silhouette architecture, and runway setting",
-    "Second paragraph discussing cultural impact, craftsmanship, and fashion week reception"
+    "## First Major Heading",
+    "Detailed analytical paragraph (2-4 sentences).",
+    "Second focused paragraph with styling insight.",
+    "## Second Major Heading",
+    "Practical fashion advice paragraph.",
+    "* Styling rule or outfit combination",
+    "* Fabric or accessory detail",
+    "### Nuanced Subheading",
+    "Atelier construction and trend analysis paragraph.",
+    "## Third Major Heading",
+    "Buying guidance and modern wardrobe integration paragraph."
   ],
   "pullQuoteText": "Inspiring, quotable statement from the review",
   "pullQuoteAttribution": "Designer, Critic, or Atelier Council",
   "secondaryImageCaption": "Backstage / Atelier description caption",
+  "conclusion": "A short, sharp takeaway on the aesthetic and future styling trajectory.",
+  "faqs": [
+    { "question": "Clear reader question regarding the keyword?", "answer": "Practical, concise answer (2-3 sentences)." },
+    { "question": "Second relevant fashion question?", "answer": "Actionable advice and tip." },
+    { "question": "Third practical question?", "answer": "Fabric or styling guidance." }
+  ],
   "closingParagraphs": [
-    "Closing takeaway on where modern luxury is headed next"
+    "Closing reflection on modern elegance and timeless design."
   ],
   "designerCredits": [
     { "house": "Luxury Atelier Name", "garment": "Garment Description", "materials": "Silk, Cashmere, Obsidian Hardware, etc." }
   ],
+  "visualSearchPhrase": "runway couture silk tailoring",
   "tags": ["SEO_Tag1", "SEO_Tag2", "SEO_Tag3", "SEO_Tag4"],
   "mood": "Dark Romanticism | Quiet Luxury | Opulent Minimalism | Avant-Garde | Sustainable Tech"
 }
@@ -139,14 +171,16 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
 
-    // Fetch live Unsplash imagery tailored to the topic and category
-    const searchKeywords = promptOrTopic
+    // Fetch live Unsplash imagery tailored to the topic, visualSearchPhrase, and category
+    const searchKeywords = parsed.visualSearchPhrase
+      ? parsed.visualSearchPhrase
+      : promptOrTopic
       ? `${parsed.category} ${promptOrTopic}`
       : `${parsed.category} ${parsed.tags?.[0] || 'runway'}`;
     
-    let photos = await searchUnsplashPhotos(searchKeywords, 4);
+    let photos = await searchUnsplashPhotos(searchKeywords, 6);
     if (!photos || photos.length === 0) {
-      photos = await searchUnsplashPhotos(parsed.category, 4);
+      photos = await searchUnsplashPhotos(parsed.category, 6);
     }
 
     const coverPhoto = photos[0] || (await getRandomUnsplashFashionPhoto(parsed.category));
@@ -174,7 +208,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
         day: 'numeric',
         year: 'numeric',
       }).toUpperCase(),
-      readTime: '5 MIN READ',
+      readTime: '7 MIN READ',
       coverImage: coverPhoto.url,
       coverImageCaption: coverPhoto.caption || parsed.secondaryImageCaption || `Editorial showcase for ${parsed.title}`,
       content: {
@@ -189,6 +223,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
           caption: secondaryPhoto.caption || parsed.secondaryImageCaption || 'Atelier fabrication and finish details.',
         },
         closingParagraphs: parsed.closingParagraphs || [],
+        conclusion: parsed.conclusion,
+        faqs: parsed.faqs || [],
         designerCredits: parsed.designerCredits || [],
       },
       tags: parsed.tags || ['Fashion', 'Runway', 'Haute Couture'],

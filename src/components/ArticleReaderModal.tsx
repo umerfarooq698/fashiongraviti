@@ -362,18 +362,42 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           )}
         </div>
 
-        {/* Editorial Content Paragraphs */}
+        {/* Editorial Content Paragraphs & Structured Headings */}
         <div className="space-y-6 text-lg sm:text-xl font-sans text-zinc-100 leading-relaxed font-medium">
           {/* First paragraph with Drop-Cap */}
           <p className="drop-cap text-xl sm:text-2xl leading-relaxed text-white font-semibold">
             {article.content.dropCapText}
           </p>
 
-          {article.content.bodyParagraphs.map((paragraph, index) => (
-            <p key={index} className="leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
+          {article.content.bodyParagraphs.map((paragraph, index) => {
+            const trimmed = paragraph.trim();
+            if (trimmed.startsWith('### ')) {
+              return (
+                <h3 key={index} className="text-xl sm:text-2xl font-serif font-bold text-gold mt-8 mb-3 tracking-wide">
+                  {trimmed.replace(/^###\s+/, '')}
+                </h3>
+              );
+            }
+            if (trimmed.startsWith('## ')) {
+              return (
+                <h2 key={index} className="text-2xl sm:text-3xl md:text-4xl font-serif font-black text-white mt-10 mb-4 pt-4 border-t border-white/10 tracking-tight">
+                  {trimmed.replace(/^##\s+/, '')}
+                </h2>
+              );
+            }
+            if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+              return (
+                <li key={index} className="list-disc list-inside text-zinc-200 ml-2 font-normal leading-relaxed">
+                  {trimmed.replace(/^[*•-]\s+/, '')}
+                </li>
+              );
+            }
+            return (
+              <p key={index} className="leading-relaxed">
+                {paragraph}
+              </p>
+            );
+          })}
 
           {/* Pull Quote */}
           {article.content.pullQuote && (
@@ -408,12 +432,59 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             </div>
           )}
 
-          {/* Closing Paragraphs */}
-          {article.content.closingParagraphs?.map((paragraph, index) => (
-            <p key={index} className="leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
+          {/* Closing Paragraphs / Summary */}
+          {article.content.closingParagraphs?.map((paragraph, index) => {
+            const trimmed = paragraph.trim();
+            if (trimmed.startsWith('## ')) {
+              return (
+                <h2 key={index} className="text-2xl sm:text-3xl font-serif font-black text-white mt-10 mb-4 pt-4 border-t border-white/10">
+                  {trimmed.replace(/^##\s+/, '')}
+                </h2>
+              );
+            }
+            return (
+              <p key={index} className="leading-relaxed">
+                {paragraph}
+              </p>
+            );
+          })}
+
+          {/* Dedicated Conclusion Section */}
+          {article.content.conclusion && (
+            <div className="my-10 p-6 sm:p-8 bg-noir-card border border-gold/40 relative">
+              <span className="text-xs font-mono text-gold uppercase tracking-widest font-black block mb-2">
+                EDITORIAL SUMMARY // CONCLUSION
+              </span>
+              <p className="text-lg font-serif text-zinc-100 leading-relaxed italic">
+                {article.content.conclusion}
+              </p>
+            </div>
+          )}
+
+          {/* Dedicated FAQs Section */}
+          {article.content.faqs && article.content.faqs.length > 0 && (
+            <div className="my-12 pt-8 border-t-2 border-white/20 space-y-6">
+              <div className="flex items-center space-x-2">
+                <Sparkles className="w-4 h-4 text-gold" />
+                <h3 className="text-lg sm:text-xl font-mono uppercase tracking-widest text-white font-black">
+                  FREQUENTLY ASKED QUESTIONS
+                </h3>
+              </div>
+              <div className="space-y-4">
+                {article.content.faqs.map((faq, idx) => (
+                  <div key={idx} className="p-5 bg-noir-card border border-white/15 hover:border-gold/50 transition-colors">
+                    <h4 className="text-base sm:text-lg font-serif font-bold text-alabaster mb-2 flex items-start gap-2">
+                      <span className="text-gold font-mono text-sm font-black">Q{idx + 1}.</span>
+                      <span>{faq.question}</span>
+                    </h4>
+                    <p className="text-sm sm:text-base font-sans text-zinc-300 leading-relaxed pl-6">
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Designer Credits & Fabrication Breakdown */}
