@@ -11,9 +11,11 @@ export type FashionMood =
 export interface Author {
   name: string;
   role: string;
-  location: string;
+  location?: string;
   avatar: string;
   instagram?: string;
+  bio?: string;
+  slug?: string;
 }
 
 export interface LookbookItem {

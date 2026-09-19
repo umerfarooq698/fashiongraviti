@@ -1,12 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import type { FashionArticle, FashionCategory, FashionMood, ViewLayoutMode } from './types/fashion';
 import { FASHION_CATEGORIES, INITIAL_ARTICLES } from './data/initialArticles';
+import { getAuthorProfile, getAuthorSlug } from './data/authors';
 import { Header } from './components/Header';
 import { Ticker } from './components/Ticker';
 import { CoverStory } from './components/CoverStory';
 import { CategoryFilter } from './components/CategoryFilter';
 import { ArticleGrid } from './components/ArticleGrid';
 import { ArticleReaderModal } from './components/ArticleReaderModal';
+import { AuthorProfilePage } from './components/AuthorProfilePage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 import { CreateArticleModal } from './components/CreateArticleModal';
@@ -52,6 +54,7 @@ export function App() {
 
   // Modals & Static Pages states
   const [selectedArticleForReader, setSelectedArticleForReader] = useState<FashionArticle | null>(null);
+  const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
   const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
@@ -72,7 +75,7 @@ export function App() {
     document.documentElement.classList.add('dark');
   }, []);
 
-  // Listen to URL path (/category or /title-slug or /about-us or /contact-us) and search params on mount & popstate
+  // Listen to URL path (/category, /author/:slug, /title-slug, /about-us, /contact-us) and search params on mount & popstate
   useEffect(() => {
     const syncStateFromURL = () => {
       const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
@@ -83,7 +86,18 @@ export function App() {
       const queryCat = params.get('category');
       const search = params.get('search') || params.get('tag');
 
-      // Check static pages first
+      // Check author profile page first
+      if (segments.length >= 2 && segments[0].toLowerCase() === 'author') {
+        setSelectedAuthorSlug(segments[1].toLowerCase());
+        setActiveStaticPage(null);
+        setSelectedArticleForReader(null);
+        setActiveCategory('all');
+        return;
+      }
+
+      setSelectedAuthorSlug(null);
+
+      // Check static pages
       if (segments.length === 1) {
         const seg = segments[0].toLowerCase();
         if (seg === 'about-us' || seg === 'about') {
@@ -219,12 +233,14 @@ export function App() {
   // Actions
   const handleOpenArticle = (article: FashionArticle) => {
     setActiveStaticPage(null);
+    setSelectedAuthorSlug(null);
     setSelectedArticleForReader(article);
     window.history.pushState({ storyId: article.id, slug: article.slug }, '', `/${article.slug}`);
   };
 
   const handleCloseArticle = () => {
     setSelectedArticleForReader(null);
+    setSelectedAuthorSlug(null);
     setActiveStaticPage(null);
     const targetPath = activeCategory === 'all' ? '/' : `/${activeCategory}`;
     window.history.pushState({}, '', targetPath);
@@ -232,6 +248,7 @@ export function App() {
 
   const handleSelectCategory = (catId: string) => {
     setActiveStaticPage(null);
+    setSelectedAuthorSlug(null);
     setActiveCategory(catId);
     setSearchQuery('');
     setSelectedArticleForReader(null);
@@ -240,8 +257,19 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSelectAuthor = (authorNameOrSlug: string) => {
+    const slug = getAuthorSlug(authorNameOrSlug);
+    setSelectedAuthorSlug(slug);
+    setSelectedArticleForReader(null);
+    setActiveStaticPage(null);
+    setSearchQuery('');
+    window.history.pushState({ authorSlug: slug }, '', `/author/${slug}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleNavigateAbout = () => {
     setActiveStaticPage('about');
+    setSelectedAuthorSlug(null);
     setSelectedArticleForReader(null);
     setSearchQuery('');
     window.history.pushState({}, '', '/about-us');
@@ -250,6 +278,7 @@ export function App() {
 
   const handleNavigateContact = () => {
     setActiveStaticPage('contact');
+    setSelectedAuthorSlug(null);
     setSelectedArticleForReader(null);
     setSearchQuery('');
     window.history.pushState({}, '', '/contact-us');
@@ -287,6 +316,7 @@ export function App() {
 
   const handleResetFilters = () => {
     setActiveStaticPage(null);
+    setSelectedAuthorSlug(null);
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery('');
@@ -296,6 +326,7 @@ export function App() {
 
   const handleSelectTag = (tag: string) => {
     setActiveStaticPage(null);
+    setSelectedAuthorSlug(null);
     setActiveCategory('all');
     setActiveMood('All Moods');
     setSearchQuery(tag);
@@ -340,12 +371,28 @@ export function App() {
             onNavigateHome={handleResetFilters}
             onNavigateContact={handleNavigateContact}
             onNavigateCategory={handleSelectCategory}
+            onSelectAuthor={handleSelectAuthor}
           />
         ) : activeStaticPage === 'contact' ? (
           /* Contact Us Page */
           <ContactPage
             onNavigateHome={handleResetFilters}
             onNavigateCategory={handleSelectCategory}
+          />
+        ) : selectedAuthorSlug ? (
+          /* Author Profile Page */
+          <AuthorProfilePage
+            author={getAuthorProfile(selectedAuthorSlug)}
+            authorArticles={articles.filter(
+              (a) => getAuthorSlug(a.author.name) === selectedAuthorSlug
+            )}
+            layoutMode={layoutMode}
+            onReadArticle={handleOpenArticle}
+            bookmarkedIds={bookmarkedIds}
+            onToggleBookmark={handleToggleBookmark}
+            onToggleLike={handleToggleLike}
+            onSelectCategory={handleSelectCategory}
+            onNavigateHome={handleResetFilters}
           />
         ) : selectedArticleForReader ? (
           /* Dedicated Article View with persistent site Header and Footer */
@@ -359,6 +406,7 @@ export function App() {
             onSelectNextArticle={handleOpenArticle}
             onSelectCategory={handleSelectCategory}
             onSelectTag={handleSelectTag}
+            onSelectAuthor={handleSelectAuthor}
           />
         ) : (
           <>
@@ -372,6 +420,7 @@ export function App() {
                 onToggleLike={handleToggleLike}
                 onSelectTag={handleSelectTag}
                 onSelectCategory={handleSelectCategory}
+                onSelectAuthor={handleSelectAuthor}
               />
             )}
 
@@ -398,6 +447,7 @@ export function App() {
               onResetFilters={handleResetFilters}
               onSelectCategory={handleSelectCategory}
               onSelectTag={handleSelectTag}
+              onSelectAuthor={handleSelectAuthor}
             />
           </>
         )}

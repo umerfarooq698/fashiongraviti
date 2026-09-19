@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { Sparkles, ShieldCheck, Compass, Award, Feather } from 'lucide-react';
+import { getAuthorSlug } from '../data/authors';
 
 interface AboutPageProps {
   onNavigateHome: () => void;
   onNavigateContact: () => void;
   onNavigateCategory?: (categoryId: string) => void;
+  onSelectAuthor?: (authorName: string) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({
   onNavigateHome,
   onNavigateContact,
+  onSelectAuthor,
 }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -19,30 +22,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     {
       name: 'Eleanora Vane',
       role: 'Chief Fashion Editor',
-      location: 'Paris',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
-      bio: 'Former Vogue and L’Officiel contributor with 15 years presiding over Paris Haute Couture and Milan fashion weeks.',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      bio: 'Senior fashion critic and editor with 15 years presiding over Paris Haute Couture and Milan fashion weeks, specializing in architectural tailoring, runway dispatches, and atelier crafts.',
     },
     {
-      name: 'Julian Sterling',
-      role: 'Head of Runway Critique',
-      location: 'London',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-      bio: 'Specialist in tailoring architecture, silhouette evolutions, and contemporary British luxury tailoring.',
+      name: 'Massimo Dellacorte',
+      role: 'Senior Style Editor',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+      bio: 'Milan-based menswear scholar and tailoring critic documenting quiet luxury, rare cashmere fibers, and seasonal wardrobe proportions.',
     },
     {
-      name: 'Aurelia Vance',
-      role: 'Haute Couture & Heritage Director',
-      location: 'Milan',
-      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
-      bio: 'Archival scholar documenting historical atelier techniques, Italian craftsmanship, and high jewelry provenance.',
+      name: 'Kenji Takahashi',
+      role: 'Celebrity & Culture Editor',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+      bio: 'Archival fashion curator and culture correspondent reporting on celebrity red carpet iconography and avant-garde street style across Tokyo and New York.',
     },
     {
-      name: 'Marcus Thorne',
-      role: 'Culture & Streetwear Editor',
-      location: 'Tokyo',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
-      bio: 'Chronicling avant-garde Japanese aesthetics, biomaterial textile sciences, and cyber-luxe street silhouettes.',
+      name: 'Felix Van Der Bilt',
+      role: 'Brand Historian & Critic',
+      avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80',
+      bio: 'Antwerp-trained design critic exploring the structural history, atelier craftsmanship, and timeless legacies of iconic luxury fashion houses.',
     },
   ];
 
@@ -164,9 +163,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {editorialBoard.map((member, idx) => (
-            <div
+            <a
               key={idx}
-              className="bg-noir-card border border-white/20 p-5 flex flex-col items-center text-center group hover:border-gold transition-all"
+              href={`/author/${getAuthorSlug(member.name)}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectAuthor?.(member.name);
+              }}
+              className="bg-noir-card border border-white/20 p-5 flex flex-col items-center text-center group hover:border-gold transition-all no-underline cursor-pointer block"
+              title={`View ${member.name}'s author profile`}
             >
               <img
                 src={member.avatar}
@@ -182,7 +187,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <p className="text-xs text-zinc-300 font-sans mt-3 leading-relaxed">
                 {member.bio}
               </p>
-            </div>
+              <span className="mt-4 text-[11px] font-mono text-gold uppercase tracking-wider font-extrabold group-hover:underline inline-flex items-center gap-1">
+                View Author Profile &rarr;
+              </span>
+            </a>
           ))}
         </div>
       </section>

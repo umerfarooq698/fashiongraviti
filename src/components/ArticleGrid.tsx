@@ -13,6 +13,7 @@ interface ArticleGridProps {
   onResetFilters: () => void;
   onSelectCategory?: (categoryId: string) => void;
   onSelectTag?: (tag: string) => void;
+  onSelectAuthor?: (authorName: string) => void;
 }
 
 export const ArticleGrid: React.FC<ArticleGridProps> = ({
@@ -25,6 +26,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
   onResetFilters,
   onSelectCategory,
   onSelectTag,
+  onSelectAuthor,
 }) => {
   if (articles.length === 0) {
     return (
@@ -65,6 +67,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
               onToggleLike={onToggleLike}
               onSelectCategory={onSelectCategory}
               onSelectTag={onSelectTag}
+              onSelectAuthor={onSelectAuthor}
             />
           ))}
         </div>
@@ -81,6 +84,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
               onToggleLike={onToggleLike}
               onSelectCategory={onSelectCategory}
               onSelectTag={onSelectTag}
+              onSelectAuthor={onSelectAuthor}
             />
           ))}
         </div>
@@ -98,6 +102,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
                 onToggleLike={onToggleLike}
                 onSelectCategory={onSelectCategory}
                 onSelectTag={onSelectTag}
+                onSelectAuthor={onSelectAuthor}
               />
 
               {/* Intermittent Editorial Quotation Break (after 3rd article) */}

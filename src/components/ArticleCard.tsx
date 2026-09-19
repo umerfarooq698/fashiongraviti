@@ -2,6 +2,7 @@ import React from 'react';
 import type { FashionArticle, ViewLayoutMode } from '../types/fashion';
 import { ArrowUpRight, Bookmark, Clock, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getAuthorSlug } from '../data/authors';
 
 interface ArticleCardProps {
   article: FashionArticle;
@@ -12,6 +13,7 @@ interface ArticleCardProps {
   onToggleLike: (articleId: string) => void;
   onSelectCategory?: (categoryId: string) => void;
   onSelectTag?: (tag: string) => void;
+  onSelectAuthor?: (authorName: string) => void;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -23,6 +25,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   onToggleLike,
   onSelectCategory,
   onSelectTag,
+  onSelectAuthor,
 }) => {
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -111,13 +114,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         <div className="flex items-center justify-between md:justify-end gap-4 mt-3 md:mt-0 pt-2 md:pt-0 border-t md:border-t-0 border-white/10">
           <div className="text-right hidden sm:block">
             <a
-              href={`?search=${encodeURIComponent(article.author.name)}`}
+              href={`/author/${getAuthorSlug(article.author.name)}`}
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                onSelectTag?.(article.author.name);
+                onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
               }}
               className="text-xs font-mono text-white hover:text-gold font-bold uppercase transition-colors no-underline block"
+              title={`View ${article.author.name}'s profile`}
             >
               {article.author.name}
             </a>
@@ -244,13 +248,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           {/* Bottom Card Footer */}
           <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between">
             <a
-              href={`?search=${encodeURIComponent(article.author.name)}`}
+              href={`/author/${getAuthorSlug(article.author.name)}`}
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                onSelectTag?.(article.author.name);
+                onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
               }}
               className="flex items-center space-x-3 no-underline group/author"
+              title={`View ${article.author.name}'s profile`}
             >
               <img
                 src={article.author.avatar}
@@ -382,13 +387,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         {/* Bottom Details Bar */}
         <div className="mt-6 pt-4 border-t border-white/15 flex flex-wrap items-center justify-between gap-3">
           <a
-            href={`?search=${encodeURIComponent(article.author.name)}`}
+            href={`/author/${getAuthorSlug(article.author.name)}`}
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              onSelectTag?.(article.author.name);
+              onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
             }}
             className="flex items-center space-x-3.5 no-underline group/author"
+            title={`View ${article.author.name}'s profile`}
           >
             <img
               src={article.author.avatar}

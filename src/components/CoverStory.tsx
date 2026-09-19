@@ -1,6 +1,7 @@
 import React from 'react';
 import type { FashionArticle } from '../types/fashion';
 import { ArrowUpRight, Bookmark, Clock, Heart, Sparkles } from 'lucide-react';
+import { getAuthorSlug } from '../data/authors';
 
 interface CoverStoryProps {
   article: FashionArticle;
@@ -10,6 +11,7 @@ interface CoverStoryProps {
   onToggleLike: (articleId: string) => void;
   onSelectTag?: (tag: string) => void;
   onSelectCategory?: (categoryId: string) => void;
+  onSelectAuthor?: (authorName: string) => void;
 }
 
 export const CoverStory: React.FC<CoverStoryProps> = ({
@@ -20,6 +22,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
   onToggleLike,
   onSelectTag,
   onSelectCategory,
+  onSelectAuthor,
 }) => {
   return (
     <section className="relative w-full border-b-2 border-white/20 overflow-hidden bg-black">
@@ -90,13 +93,14 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
           {/* Bottom Bar: Author info & Read button */}
           <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
             <a 
-              href={`?search=${encodeURIComponent(article.author.name)}`}
+              href={`/author/${getAuthorSlug(article.author.name)}`}
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                onSelectTag?.(article.author.name);
+                onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
               }}
               className="flex items-center space-x-3.5 cursor-pointer group no-underline"
+              title={`View ${article.author.name}'s profile & curations`}
             >
               <img
                 src={article.author.avatar}

@@ -15,6 +15,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getAuthorSlug } from '../data/authors';
 
 interface ArticleReaderModalProps {
   article: FashionArticle | null;
@@ -26,6 +27,7 @@ interface ArticleReaderModalProps {
   onSelectNextArticle: (article: FashionArticle) => void;
   onSelectCategory?: (categoryId: string) => void;
   onSelectTag?: (tag: string) => void;
+  onSelectAuthor?: (authorName: string) => void;
 }
 
 export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
@@ -38,6 +40,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   onSelectNextArticle,
   onSelectCategory,
   onSelectTag,
+  onSelectAuthor,
 }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -303,13 +306,15 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {/* Author Byline */}
           <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
-            <div 
-              onClick={() => {
+            <a 
+              href={`/author/${getAuthorSlug(article.author.name)}`}
+              onClick={(e) => {
+                e.preventDefault();
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-                onSelectTag?.(article.author.name);
+                onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
               }}
-              className="flex items-center space-x-4 cursor-pointer group"
-              title={`Explore curations by ${article.author.name}`}
+              className="flex items-center space-x-4 cursor-pointer group no-underline"
+              title={`View ${article.author.name}'s profile & curations`}
             >
               <img
                 src={article.author.avatar}
@@ -324,18 +329,21 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                   {article.author.role}
                 </p>
                 {article.author.instagram && (
-                  <a
-                    href={`https://instagram.com/${article.author.instagram.replace('@', '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
+                  <span
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const igHandle = article.author.instagram ? article.author.instagram.replace('@', '') : '';
+                      if (igHandle) {
+                        window.open(`https://instagram.com/${igHandle}`, '_blank');
+                      }
+                    }}
                     className="text-xs font-mono text-gold hover:text-white underline decoration-gold/40 hover:decoration-white font-bold transition-colors block mt-0.5"
                   >
                     {article.author.instagram}
-                  </a>
+                  </span>
                 )}
               </div>
-            </div>
+            </a>
 
             <div className="text-right text-xs font-mono text-zinc-300">
               <span className="text-gold font-bold">PUBLISHED DATE</span>
