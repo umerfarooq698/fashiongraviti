@@ -363,9 +363,9 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
         </div>
 
         {/* Editorial Content Paragraphs & Structured Headings */}
-        <div className="space-y-6 text-lg sm:text-xl font-sans text-zinc-100 leading-relaxed font-medium">
+        <div className="space-y-6 text-base sm:text-lg font-sans text-zinc-200 leading-relaxed font-normal">
           {/* First paragraph with Drop-Cap */}
-          <p className="drop-cap text-xl sm:text-2xl leading-relaxed text-white font-semibold">
+          <p className="drop-cap text-base sm:text-lg leading-relaxed text-zinc-100 font-normal">
             {article.content.dropCapText}
           </p>
 
@@ -373,21 +373,21 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             const trimmed = paragraph.trim();
             if (trimmed.startsWith('### ')) {
               return (
-                <h3 key={index} className="text-xl sm:text-2xl font-serif font-bold text-gold mt-8 mb-3 tracking-wide">
+                <h3 key={index} className="text-lg sm:text-xl font-serif font-semibold text-gold mt-6 mb-2 tracking-wide">
                   {trimmed.replace(/^###\s+/, '')}
                 </h3>
               );
             }
             if (trimmed.startsWith('## ')) {
               return (
-                <h2 key={index} className="text-2xl sm:text-3xl md:text-4xl font-serif font-black text-white mt-10 mb-4 pt-4 border-t border-white/10 tracking-tight">
+                <h2 key={index} className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10 tracking-tight">
                   {trimmed.replace(/^##\s+/, '')}
                 </h2>
               );
             }
             if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
               return (
-                <li key={index} className="list-disc list-inside text-zinc-200 ml-2 font-normal leading-relaxed">
+                <li key={index} className="list-disc list-inside text-zinc-300 ml-2 font-normal leading-relaxed">
                   {trimmed.replace(/^[*•-]\s+/, '')}
                 </li>
               );
@@ -401,15 +401,15 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {/* Pull Quote */}
           {article.content.pullQuote && (
-            <div className="my-10 p-8 sm:p-10 border-l-8 border-gold bg-noir-card text-white shadow-xl">
-              <blockquote className="text-2xl sm:text-3xl font-editorial italic leading-relaxed text-white font-bold">
+            <div className="my-8 p-6 sm:p-8 border-l-4 border-gold bg-noir-card text-white shadow-xl">
+              <blockquote className="text-xl sm:text-2xl font-editorial italic leading-relaxed text-white font-semibold">
                 "{article.content.pullQuote.text}"
               </blockquote>
               {article.content.pullQuote.attribution && (
-                <cite className="block mt-4 text-sm font-mono uppercase tracking-widest text-gold not-italic font-black">
+                <cite className="block mt-3 text-xs font-mono uppercase tracking-widest text-gold not-italic font-bold">
                   — {article.content.pullQuote.attribution}
                   {article.content.pullQuote.role && (
-                    <span className="text-zinc-300 ml-2 font-medium">
+                    <span className="text-zinc-400 ml-2 font-normal">
                       ({article.content.pullQuote.role})
                     </span>
                   )}
@@ -420,13 +420,13 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {/* Secondary Backstage / Studio Image */}
           {article.content.secondaryImage && (
-            <div className="my-10 border-2 border-white/20 overflow-hidden bg-black shadow-xl">
+            <div className="my-8 border border-white/20 overflow-hidden bg-black shadow-xl">
               <img
                 src={article.content.secondaryImage.url}
                 alt="Editorial Detail"
                 className="w-full max-h-[500px] object-cover"
               />
-              <p className="p-4 bg-noir-card text-xs sm:text-sm font-sans text-zinc-200 font-semibold italic border-t border-white/15">
+              <p className="p-3.5 bg-noir-card text-xs sm:text-sm font-sans text-zinc-300 font-medium italic border-t border-white/15">
                 {article.content.secondaryImage.caption}
               </p>
             </div>
@@ -437,7 +437,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             const trimmed = paragraph.trim();
             if (trimmed.startsWith('## ')) {
               return (
-                <h2 key={index} className="text-2xl sm:text-3xl font-serif font-black text-white mt-10 mb-4 pt-4 border-t border-white/10">
+                <h2 key={index} className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10">
                   {trimmed.replace(/^##\s+/, '')}
                 </h2>
               );
@@ -451,11 +451,11 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {/* Dedicated Conclusion Section */}
           {article.content.conclusion && (
-            <div className="my-10 p-6 sm:p-8 bg-noir-card border border-gold/40 relative">
-              <span className="text-xs font-mono text-gold uppercase tracking-widest font-black block mb-2">
+            <div className="my-8 p-5 sm:p-6 bg-noir-card border border-gold/30 relative">
+              <span className="text-[11px] font-mono text-gold uppercase tracking-widest font-black block mb-2">
                 EDITORIAL SUMMARY // CONCLUSION
               </span>
-              <p className="text-lg font-serif text-zinc-100 leading-relaxed italic">
+              <p className="text-base sm:text-lg font-serif text-zinc-200 leading-relaxed italic">
                 {article.content.conclusion}
               </p>
             </div>
@@ -463,21 +463,21 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {/* Dedicated FAQs Section */}
           {article.content.faqs && article.content.faqs.length > 0 && (
-            <div className="my-12 pt-8 border-t-2 border-white/20 space-y-6">
+            <div className="my-10 pt-6 border-t border-white/20 space-y-4">
               <div className="flex items-center space-x-2">
                 <Sparkles className="w-4 h-4 text-gold" />
-                <h3 className="text-lg sm:text-xl font-mono uppercase tracking-widest text-white font-black">
+                <h3 className="text-base sm:text-lg font-mono uppercase tracking-widest text-white font-bold">
                   FREQUENTLY ASKED QUESTIONS
                 </h3>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {article.content.faqs.map((faq, idx) => (
-                  <div key={idx} className="p-5 bg-noir-card border border-white/15 hover:border-gold/50 transition-colors">
-                    <h4 className="text-base sm:text-lg font-serif font-bold text-alabaster mb-2 flex items-start gap-2">
-                      <span className="text-gold font-mono text-sm font-black">Q{idx + 1}.</span>
+                  <div key={idx} className="p-4 bg-noir-card border border-white/10 hover:border-gold/40 transition-colors">
+                    <h4 className="text-sm sm:text-base font-serif font-bold text-alabaster mb-1.5 flex items-start gap-2">
+                      <span className="text-gold font-mono text-xs font-black">Q{idx + 1}.</span>
                       <span>{faq.question}</span>
                     </h4>
-                    <p className="text-sm sm:text-base font-sans text-zinc-300 leading-relaxed pl-6">
+                    <p className="text-xs sm:text-sm font-sans text-zinc-300 leading-relaxed pl-5">
                       {faq.answer}
                     </p>
                   </div>
