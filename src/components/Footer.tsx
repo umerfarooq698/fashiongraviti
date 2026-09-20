@@ -56,24 +56,16 @@ export const Footer: React.FC<FooterProps> = ({
               e.preventDefault();
               handleDepartmentClick('all');
             }}
-            className="text-3xl font-serif font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer no-underline block"
+            className="text-3xl font-mono font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer no-underline block"
           >
             FASHION GRAVITI
           </a>
           <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold">
             FASHION NEWS • FASHION TRENDS • CELEBRITY FASHION
           </p>
-          <p className="mt-4 text-xs font-sans text-zinc-300 font-medium leading-relaxed max-w-md">
+          <p className="mt-4 text-xs font-mono text-zinc-400 leading-relaxed max-w-md uppercase">
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
-          <div className="mt-4">
-            <a
-              href="mailto:info.fashiongraviti@gmail.com"
-              className="text-xs font-mono text-gold hover:text-white transition-colors underline"
-            >
-              info.fashiongraviti@gmail.com
-            </a>
-          </div>
         </div>
 
         {/* Departments Sitemap (4 cols) */}
@@ -109,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({
               <a
                 href="/about-us"
                 onClick={handleAboutClick}
-                className="text-zinc-300 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+                className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
               >
                 About Us
               </a>
@@ -118,7 +110,7 @@ export const Footer: React.FC<FooterProps> = ({
               <a
                 href="/contact-us"
                 onClick={handleContactClick}
-                className="text-zinc-300 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+                className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
               >
                 Contact Us
               </a>
