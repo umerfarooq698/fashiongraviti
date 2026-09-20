@@ -167,12 +167,12 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
           <img
             src={article.coverImage}
             alt={article.coverImageAlt || article.title}
-            className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out brightness-95 group-hover:brightness-100"
+            className="w-full h-full object-cover object-top lg:object-[center_10%] transform group-hover:scale-105 transition-transform duration-1000 ease-out brightness-95 group-hover:brightness-100"
           />
           {/* Subtle gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/80 lg:via-transparent lg:to-transparent pointer-events-none" />
 
-          {/* Image Caption & Read Time Overlay */}
+          {/* Editorial Excerpt & Read Time Overlay */}
           <div className="absolute bottom-4 right-4 left-4 lg:left-auto lg:max-w-md bg-black/95 border-2 border-white/20 p-4 text-xs text-white shadow-2xl">
             <div className="flex items-center justify-between font-mono text-xs text-gold uppercase font-bold mb-1.5">
               <span>{article.categoryLabel}</span>
@@ -181,8 +181,8 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
                 {article.readTime}
               </span>
             </div>
-            <p className="font-sans text-xs text-zinc-200 font-semibold italic">
-              {article.coverImageCaption || article.subtitle}
+            <p className="font-sans text-xs text-zinc-200 font-medium line-clamp-3">
+              {article.subtitle}
             </p>
           </div>
         </a>

@@ -88,9 +88,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 20, 2026',
     readTime: '7 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=85',
-    coverImageCaption: 'Photo by Aliona Gumeniuk on Unsplash',
-    coverImageAlt: 'Model wearing a soft summer color palette layered cashmere coat in muted dusty sage and slate grey',
+    coverImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&crop=top&w=1600&q=85',
+    coverImageAlt: 'Editorial model showcasing a soft summer color palette in a tailored dusty slate cashmere coat and cool muted silk layers',
     content: {
       dropCapText: 'The soft summer color palette represents the pinnacle of quiet luxury, celebrating subdued hues that whisper rather than shout. Situated at the harmonious intersection of coolness and delicate desaturation, this seasonal spectrum offers a serene approach to personal dressing that resonates deeply with timeless tailoring.',
       bodyParagraphs: [
@@ -114,8 +113,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
       },
       secondaryImage: {
         url: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=85',
-        caption: 'Photo by Clem Onojeghuo on Unsplash',
-        alt: 'Textile atelier swatches featuring cool muted pastels and lavender wool fibers for soft summer styling',
+        alt: 'Atelier fabric swatches illustrating the soft summer color palette with heather wool and desaturated silk fabrics',
       },
       conclusion: 'Adopting a soft summer color palette is an investment in sartorial longevity. By prioritizing cool undertones, matte textiles, and harmonious pairings across slate grey, dusty rose, and muted sage, one builds a wardrobe that transcends fleeting fads and exudes lasting grace.',
       faqs: [
@@ -179,9 +177,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 19, 2026',
     readTime: '8 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1779406275908-1dabe4083373?auto=format&fit=crop&w=1600&q=85',
-    coverImageCaption: 'Photo by Ola Szkolda on Unsplash',
-    coverImageAlt: 'Minimalist 90s monochrome black dress and gold chain belt silhouette',
+    coverImage: 'https://images.unsplash.com/photo-1779406275908-1dabe4083373?auto=format&fit=crop&crop=top&w=1600&q=85',
+    coverImageAlt: 'Editorial model in authentic 1990s minimal tailoring featuring black column dress and leather blazer architecture',
     content: {
       dropCapText: 'The enduring power of 90s fashion lies in its unapologetic devotion to simplicity, immaculate tailoring, and effortless personal attitude. Three decades after its debut on international runways, the decade continues to define how modern women and men assemble their everyday wardrobes.',
       bodyParagraphs: [
@@ -217,9 +214,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         role: 'Atelier Review',
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1779406337904-b9c606ae8802?auto=format&fit=crop&w=1600&q=85',
-        caption: 'Photo by Ola Szkolda on Unsplash',
-        alt: 'Vintage 90s relaxed leather tailoring sitting pose',
+        url: 'https://images.unsplash.com/photo-1779406337904-b9c606ae8802?auto=format&fit=crop&crop=top&w=1600&q=85',
+        alt: 'Archival 1990s inspired relaxed brown leather jacket and straight-leg trousers editorial portrait',
       },
       conclusion: 'The lasting relevance of 90s fashion proves that immaculate tailoring, premium natural fabrics, and unpretentious simplicity never go out of style. By investing in versatile staple garments and focusing on clean proportions, you create a timeless wardrobe that feels effortlessly modern in any setting.',
       faqs: [

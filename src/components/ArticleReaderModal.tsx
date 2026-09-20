@@ -348,15 +348,18 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           </div>
         </div>
 
-        {/* Full Bleed Hero Cover Image */}
-        <div className="my-8 overflow-hidden bg-black border-2 border-white/20 shadow-2xl">
+        {/* Full Bleed Hero Cover Image (Auto-Adjusted) */}
+        <div className="my-8 overflow-hidden bg-black/90 border-2 border-white/20 shadow-2xl flex flex-col items-center justify-center">
           <img
             src={article.coverImage}
             alt={article.coverImageAlt || article.title}
-            className="w-full max-h-[600px] object-cover object-center"
+            className="w-full h-auto max-h-[750px] object-contain mx-auto"
+            loading="eager"
           />
-          {article.coverImageCaption && (
-            <div className="px-3.5 py-1.5 bg-black/90 border-t border-white/10 text-[11px] font-mono text-zinc-400">
+          {article.coverImageCaption && 
+           !article.coverImageCaption.toLowerCase().includes('unsplash') && 
+           !article.coverImageCaption.toLowerCase().includes('photo by') && (
+            <div className="w-full px-3.5 py-1.5 bg-black/95 border-t border-white/10 text-[11px] font-mono text-zinc-400">
               {article.coverImageCaption}
             </div>
           )}
@@ -418,17 +421,22 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             </div>
           )}
 
-          {/* Secondary Backstage / Studio Image */}
+          {/* Secondary Backstage / Studio Image (Auto-Adjusted) */}
           {article.content.secondaryImage && (
-            <div className="my-8 border border-white/20 overflow-hidden bg-black shadow-xl">
+            <div className="my-8 border border-white/20 overflow-hidden bg-black/90 shadow-xl flex flex-col items-center justify-center">
               <img
                 src={article.content.secondaryImage.url}
-                alt={article.content.secondaryImage.alt || article.content.secondaryImage.caption || "Editorial Detail"}
-                className="w-full max-h-[500px] object-cover"
+                alt={article.content.secondaryImage.alt || "Editorial Atelier Detail"}
+                className="w-full h-auto max-h-[650px] object-contain mx-auto"
+                loading="lazy"
               />
-              <p className="px-3.5 py-1.5 bg-black/90 text-[11px] font-mono text-zinc-400 border-t border-white/10">
-                {article.content.secondaryImage.caption}
-              </p>
+              {article.content.secondaryImage.caption && 
+               !article.content.secondaryImage.caption.toLowerCase().includes('unsplash') && 
+               !article.content.secondaryImage.caption.toLowerCase().includes('photo by') && (
+                <p className="w-full px-3.5 py-1.5 bg-black/95 text-[11px] font-mono text-zinc-400 border-t border-white/10">
+                  {article.content.secondaryImage.caption}
+                </p>
+              )}
             </div>
           )}
 

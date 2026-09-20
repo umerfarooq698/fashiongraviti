@@ -66,7 +66,7 @@ export interface FashionArticle {
     };
     secondaryImage?: {
       url: string;
-      caption: string;
+      caption?: string;
       alt?: string;
     };
     closingParagraphs?: string[];

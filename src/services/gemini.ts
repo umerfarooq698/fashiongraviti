@@ -266,8 +266,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       }).toUpperCase(),
       readTime: '7 MIN READ',
       coverImage: coverPhoto.url,
-      coverImageCaption: coverPhoto.caption || 'Photo on Unsplash',
-      coverImageAlt: coverPhoto.altDescription || parsed.title,
+      coverImageCaption: coverPhoto.altDescription ? `Editorial Runway Presentation: ${coverPhoto.altDescription}` : undefined,
+      coverImageAlt: coverPhoto.altDescription || `Curated high-fashion editorial styling for ${finalTitle}`,
       content: {
         dropCapText: parsed.dropCapText,
         bodyParagraphs: parsed.bodyParagraphs || [],
@@ -277,8 +277,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
         },
         secondaryImage: {
           url: secondaryPhoto.url,
-          caption: secondaryPhoto.caption || 'Photo on Unsplash',
-          alt: secondaryPhoto.altDescription || `${parsed.title} editorial detail`,
+          caption: secondaryPhoto.altDescription ? `Atelier Detail: ${secondaryPhoto.altDescription}` : undefined,
+          alt: secondaryPhoto.altDescription || `Atelier construction and craftsmanship detail for ${finalTitle}`,
         },
         closingParagraphs: parsed.closingParagraphs || [],
         conclusion: parsed.conclusion,
@@ -321,8 +321,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       publishedAt: 'SEPTEMBER 19, 2026',
       readTime: '5 MIN READ',
       coverImage: fallbackPhoto.url,
-      coverImageCaption: fallbackPhoto.caption || 'Photo by Laura Chouette on Unsplash',
-      coverImageAlt: fallbackPhoto.altDescription || 'Dark Romantic Haute Couture Silhouette',
+      coverImageCaption: undefined,
+      coverImageAlt: fallbackPhoto.altDescription || 'Haute couture sculptural wool coat runway silhouette',
       content: {
         dropCapText: 'The contemporary runway season has unveiled a bold re-evaluation of classic tailoring traditions and modern silhouettes.',
         bodyParagraphs: [
@@ -335,8 +335,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
         },
         secondaryImage: {
           url: fallbackSecondary.url,
-          caption: fallbackSecondary.caption || 'Photo by Alena Ozerova on Unsplash',
-          alt: fallbackSecondary.altDescription || 'Sculptural Minimalist Tailoring',
+          caption: undefined,
+          alt: fallbackSecondary.altDescription || 'Atelier structural tailoring and fine textile craftsmanship',
         },
         closingParagraphs: [
           'These collections reinforce that genuine elegance lies in restraint and immaculate construction.'

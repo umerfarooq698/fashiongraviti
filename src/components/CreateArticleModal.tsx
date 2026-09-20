@@ -47,7 +47,7 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [isSearchingUnsplash, setIsSearchingUnsplash] = useState(false);
 
   const [coverImage, setCoverImage] = useState('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85');
-  const [coverImageCaption, setCoverImageCaption] = useState('Photo by Laura Chouette on Unsplash');
+  const [coverImageCaption, setCoverImageCaption] = useState('');
   
   const [dropCapText, setDropCapText] = useState('');
   const [bodyText, setBodyText] = useState('');
