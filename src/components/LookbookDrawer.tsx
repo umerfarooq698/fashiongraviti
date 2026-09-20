@@ -6,11 +6,13 @@ import { X, Compass, Eye } from 'lucide-react';
 interface LookbookDrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  onSelectTag?: (tag: string) => void;
 }
 
 export const LookbookDrawer: React.FC<LookbookDrawerProps> = ({
   isOpen,
   onClose,
+  onSelectTag,
 }) => {
   const [selectedLook, setSelectedLook] = useState<LookbookItem | null>(null);
 
@@ -107,15 +109,32 @@ export const LookbookDrawer: React.FC<LookbookDrawerProps> = ({
               <h4 className="text-sm font-serif font-bold text-alabaster group-hover:text-gold transition-colors mt-0.5 line-clamp-1">
                 {item.title}
               </h4>
-              <p className="text-[11px] font-mono text-zinc-400 uppercase truncate mt-0.5">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectTag?.(item.designer);
+                  onClose();
+                }}
+                className="text-[11px] font-mono text-zinc-400 hover:text-gold transition-colors uppercase truncate mt-0.5 cursor-pointer text-left block"
+                title={`Search for ${item.designer}`}
+              >
                 {item.designer}
-              </p>
+              </button>
 
               <div className="mt-2 pt-2 border-t border-white/5 flex flex-wrap gap-1">
                 {item.tags.map((t, idx) => (
-                  <span key={idx} className="text-[9px] font-mono uppercase text-zinc-400 bg-white/5 px-1.5 py-0.5">
-                    {t}
-                  </span>
+                  <button
+                    key={idx}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectTag?.(t);
+                      onClose();
+                    }}
+                    className="text-[9px] font-mono uppercase text-zinc-300 hover:text-gold hover:border-gold border border-white/10 bg-white/5 px-1.5 py-0.5 transition-colors cursor-pointer"
+                    title={`Explore #${t}`}
+                  >
+                    #{t}
+                  </button>
                 ))}
               </div>
             </div>

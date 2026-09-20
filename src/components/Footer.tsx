@@ -20,6 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateContact,
   onNavigatePrivacy,
   onNavigateTerms,
+  onOpenLookbook,
 }) => {
   const handleDepartmentClick = (catId: string) => {
     onSelectCategory(catId);
@@ -86,8 +87,39 @@ export const Footer: React.FC<FooterProps> = ({
           >
             FASHION GRAVITI
           </a>
-          <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold">
-            FASHION NEWS • FASHION TRENDS • CELEBRITY FASHION
+          <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold flex flex-wrap items-center gap-1.5">
+            <a
+              href="/fashion-news"
+              onClick={(e) => {
+                e.preventDefault();
+                handleDepartmentClick('fashion-news');
+              }}
+              className="hover:text-white transition-colors no-underline cursor-pointer"
+            >
+              FASHION NEWS
+            </a>
+            <span>•</span>
+            <a
+              href="/fashion-trends"
+              onClick={(e) => {
+                e.preventDefault();
+                handleDepartmentClick('fashion-trends');
+              }}
+              className="hover:text-white transition-colors no-underline cursor-pointer"
+            >
+              FASHION TRENDS
+            </a>
+            <span>•</span>
+            <a
+              href="/celebrity"
+              onClick={(e) => {
+                e.preventDefault();
+                handleDepartmentClick('celebrity');
+              }}
+              className="hover:text-white transition-colors no-underline cursor-pointer"
+            >
+              CELEBRITY FASHION
+            </a>
           </p>
           <p className="mt-4 text-xs font-mono text-zinc-400 leading-relaxed max-w-md uppercase">
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
@@ -159,6 +191,16 @@ export const Footer: React.FC<FooterProps> = ({
                 Terms and Conditions
               </a>
             </li>
+            {onOpenLookbook && (
+              <li>
+                <button
+                  onClick={onOpenLookbook}
+                  className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer text-left font-mono text-xs block"
+                >
+                  Lookbook Archive
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -175,6 +217,13 @@ export const Footer: React.FC<FooterProps> = ({
             className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
           >
             EDITORIAL INDEPENDENCE
+          </a>
+          <a
+            href="/contact-us"
+            onClick={handleContactClick}
+            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
+          >
+            CONTACT DESK
           </a>
           <a
             href="/privacy-policy"

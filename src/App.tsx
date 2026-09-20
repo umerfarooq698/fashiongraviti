@@ -391,6 +391,11 @@ export function App() {
         onSelectCategory={handleSelectCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        bookmarksCount={bookmarkedIds.length}
+        onOpenBookmarks={() => setIsBookmarksOpen(true)}
+        onOpenLookbook={() => setIsLookbookOpen(true)}
+        onNavigateAbout={handleNavigateAbout}
+        onNavigateContact={handleNavigateContact}
       />
 
       {/* 2. Runway Ticker Tape */}
@@ -431,6 +436,8 @@ export function App() {
             onToggleLike={handleToggleLike}
             onSelectCategory={handleSelectCategory}
             onNavigateHome={handleResetFilters}
+            onSelectTag={handleSelectTag}
+            onSelectAuthor={handleSelectAuthor}
           />
         ) : selectedArticleForReader ? (
           /* Dedicated Article View with persistent site Header and Footer */
@@ -516,6 +523,7 @@ export function App() {
       <LookbookDrawer
         isOpen={isLookbookOpen}
         onClose={() => setIsLookbookOpen(false)}
+        onSelectTag={handleSelectTag}
       />
 
       {/* 10. Bookmarks / Vault Drawer */}

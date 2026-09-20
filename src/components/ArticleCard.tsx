@@ -362,15 +362,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             {article.content.dropCapText || article.subtitle}
           </div>
 
-          {/* Tags (Unclickable Badges) */}
+          {/* Tags (Clickable Badges) */}
           <div className="mt-4 flex flex-wrap gap-2">
             {article.tags.map((tag, idx) => (
-              <span 
+              <button 
                 key={idx}
-                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-zinc-300 border border-white/20 select-none inline-block"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  onSelectTag?.(tag);
+                }}
+                className="text-xs font-mono font-bold uppercase px-2.5 py-1 bg-black text-zinc-300 hover:text-gold hover:border-gold border border-white/20 transition-colors inline-block cursor-pointer"
+                title={`Explore #${tag}`}
               >
                 #{tag}
-              </span>
+              </button>
             ))}
           </div>
         </div>

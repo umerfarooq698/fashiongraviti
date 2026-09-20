@@ -14,6 +14,8 @@ interface AuthorProfilePageProps {
   onToggleLike: (articleId: string) => void;
   onSelectCategory: (categoryId: string) => void;
   onNavigateHome: () => void;
+  onSelectTag?: (tag: string) => void;
+  onSelectAuthor?: (authorName: string) => void;
 }
 
 export const AuthorProfilePage: React.FC<AuthorProfilePageProps> = ({
@@ -26,6 +28,8 @@ export const AuthorProfilePage: React.FC<AuthorProfilePageProps> = ({
   onToggleLike,
   onSelectCategory,
   onNavigateHome,
+  onSelectTag,
+  onSelectAuthor,
 }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -159,6 +163,8 @@ export const AuthorProfilePage: React.FC<AuthorProfilePageProps> = ({
                 onToggleBookmark={onToggleBookmark}
                 onToggleLike={onToggleLike}
                 onSelectCategory={onSelectCategory}
+                onSelectTag={onSelectTag}
+                onSelectAuthor={onSelectAuthor}
               />
             ))}
           </div>

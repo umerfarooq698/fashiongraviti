@@ -12,6 +12,7 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = ({
   onNavigateHome,
   onNavigateContact,
+  onNavigateCategory,
   onSelectAuthor,
 }) => {
   useEffect(() => {
@@ -53,21 +54,25 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     {
       icon: <Feather className="w-6 h-6 text-gold" />,
       title: 'Independent Runway Critique',
+      category: 'fashion-news',
       description: 'Firsthand reporting directly from international fashion week shows in Paris, Milan, London, and New York, uninfluenced by commercial bias.',
     },
     {
       icon: <Sparkles className="w-6 h-6 text-gold" />,
       title: 'Haute Couture and Atelier Focus',
+      category: 'designers-brands',
       description: 'Dedicated examination of artisanal metiers, textile provenance, and bespoke craftsmanship from the world’s leading luxury fashion houses.',
     },
     {
       icon: <Compass className="w-6 h-6 text-gold" />,
       title: 'Trend Intelligence and Forecasting',
+      category: 'fashion-trends',
       description: 'Decoding seasonal shifts, silhouette evolutions, and color palettes transitioning from runway presentations to everyday wardrobes.',
     },
     {
       icon: <Award className="w-6 h-6 text-gold" />,
       title: 'Celebrity and Red Carpet Culture',
+      category: 'celebrity',
       description: 'Authoritative analysis of iconic red carpet moments, Met Gala couture, styling breakdowns, and archival vintage revivals.',
     },
   ];
@@ -177,22 +182,31 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {editorialPillars.map((pillar, idx) => (
-            <div
+            <a
               key={idx}
-              className="p-6 bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 flex flex-col justify-between"
+              href={`/${pillar.category}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigateCategory?.(pillar.category);
+              }}
+              className="p-6 bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 flex flex-col justify-between cursor-pointer no-underline group block"
+              title={`Explore ${pillar.title}`}
             >
               <div>
-                <div className="p-3 bg-black border border-white/20 w-fit mb-4">
+                <div className="p-3 bg-black border border-white/20 group-hover:border-gold w-fit mb-4 transition-colors">
                   {pillar.icon}
                 </div>
-                <h3 className="text-lg font-serif font-bold text-white uppercase mb-2">
+                <h3 className="text-lg font-serif font-bold text-white group-hover:text-gold uppercase mb-2 transition-colors">
                   {pillar.title}
                 </h3>
                 <p className="text-xs sm:text-sm font-sans text-zinc-300 font-medium leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
-            </div>
+              <span className="mt-4 text-[11px] font-mono text-gold uppercase tracking-wider font-extrabold group-hover:underline inline-flex items-center gap-1">
+                Explore Department →
+              </span>
+            </a>
           ))}
         </div>
       </section>
@@ -274,7 +288,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 {member.bio}
               </p>
               <span className="mt-4 text-[11px] font-mono text-gold uppercase tracking-wider font-extrabold group-hover:underline inline-flex items-center gap-1">
-                View Author Profile &rarr;
+                View Author Profile →
               </span>
             </a>
           ))}

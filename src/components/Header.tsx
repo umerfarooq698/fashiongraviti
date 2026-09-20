@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, Bookmark, Compass } from 'lucide-react';
 import type { FashionCategory } from '../types/fashion';
 
 interface HeaderProps {
@@ -8,6 +8,11 @@ interface HeaderProps {
   onSelectCategory: (id: string) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
+  bookmarksCount?: number;
+  onOpenBookmarks?: () => void;
+  onOpenLookbook?: () => void;
+  onNavigateAbout?: () => void;
+  onNavigateContact?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -16,6 +21,11 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectCategory,
   searchQuery,
   onSearchChange,
+  bookmarksCount = 0,
+  onOpenBookmarks,
+  onOpenLookbook,
+  onNavigateAbout,
+  onNavigateContact,
 }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -36,18 +46,66 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="w-full bg-noir-pure text-white border-b-2 border-white/20 relative">
-      {/* Top Edition & Date Bar */}
+      {/* Top Edition and Quick Actions Bar */}
       <div className="border-b border-white/10 px-4 lg:px-12 py-2 flex items-center justify-between text-xs font-mono tracking-wider text-zinc-300">
         <div className="flex items-center space-x-3 font-semibold">
-          <span className="text-crimson-light font-bold">FASHION GRAVITI</span>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onSelectCategory('all');
+            }}
+            className="text-crimson-light font-bold hover:text-white transition-colors no-underline cursor-pointer"
+          >
+            FASHION GRAVITI
+          </a>
           <span className="text-zinc-600">•</span>
           <span className="text-white font-medium">DAILY EDITORIAL EDITION</span>
           <span className="hidden md:inline text-zinc-600">•</span>
           <span className="hidden md:inline text-gold font-semibold">VOLUME 2026</span>
         </div>
 
-        <div className="text-[11px] font-mono font-bold text-zinc-400 hidden sm:block uppercase">
-          GLOBAL FASHION AND RUNWAY EDITORIAL
+        {/* Header Right Action Links */}
+        <div className="flex items-center space-x-3 sm:space-x-4 text-[11px] font-mono font-bold">
+          {onOpenBookmarks && (
+            <button
+              onClick={onOpenBookmarks}
+              className="text-zinc-300 hover:text-gold flex items-center gap-1.5 transition-colors cursor-pointer"
+              title="Open Saved Articles Vault"
+            >
+              <Bookmark className="w-3.5 h-3.5 text-gold" />
+              <span>VAULT ({bookmarksCount})</span>
+            </button>
+          )}
+
+          {onOpenLookbook && (
+            <button
+              onClick={onOpenLookbook}
+              className="text-zinc-300 hover:text-gold flex items-center gap-1.5 transition-colors cursor-pointer hidden sm:flex"
+              title="Open Lookbook Archive"
+            >
+              <Compass className="w-3.5 h-3.5 text-gold" />
+              <span>LOOKBOOK</span>
+            </button>
+          )}
+
+          {onNavigateAbout && (
+            <button
+              onClick={onNavigateAbout}
+              className="text-zinc-400 hover:text-white transition-colors cursor-pointer hidden md:inline uppercase"
+            >
+              ABOUT
+            </button>
+          )}
+
+          {onNavigateContact && (
+            <button
+              onClick={onNavigateContact}
+              className="text-zinc-400 hover:text-white transition-colors cursor-pointer hidden md:inline uppercase"
+            >
+              CONTACT
+            </button>
+          )}
         </div>
       </div>
 
@@ -68,12 +126,40 @@ export const Header: React.FC<HeaderProps> = ({
           FASHION GRAVITI
         </a>
 
+        {/* Clickable Department Links */}
         <div className="mt-2 text-xs md:text-sm font-sans font-bold tracking-widest text-zinc-200 uppercase flex items-center justify-center gap-2">
-          <span>Fashion News</span>
+          <a
+            href="/fashion-news"
+            onClick={(e) => {
+              e.preventDefault();
+              onSelectCategory('fashion-news');
+            }}
+            className="text-zinc-200 hover:text-gold transition-colors no-underline cursor-pointer"
+          >
+            Fashion News
+          </a>
           <span className="text-crimson font-black">•</span>
-          <span>Fashion Trends</span>
+          <a
+            href="/fashion-trends"
+            onClick={(e) => {
+              e.preventDefault();
+              onSelectCategory('fashion-trends');
+            }}
+            className="text-zinc-200 hover:text-gold transition-colors no-underline cursor-pointer"
+          >
+            Fashion Trends
+          </a>
           <span className="text-crimson font-black">•</span>
-          <span>Celebrity Fashion</span>
+          <a
+            href="/celebrity"
+            onClick={(e) => {
+              e.preventDefault();
+              onSelectCategory('celebrity');
+            }}
+            className="text-zinc-200 hover:text-gold transition-colors no-underline cursor-pointer"
+          >
+            Celebrity Fashion
+          </a>
         </div>
       </div>
 
