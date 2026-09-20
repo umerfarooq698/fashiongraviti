@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Send, CheckCircle2, MessageSquare, Building2, HelpCircle } from 'lucide-react';
+import { Mail, Send, CheckCircle2, MessageSquare, Building2, HelpCircle, ShieldAlert, Clock, Copy, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface ContactPageProps {
@@ -14,10 +14,17 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('info.fashiongraviti@gmail.com');
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2500);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,14 +59,19 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
       description: 'Lookbooks, accreditation inquiries, and official house press releases.',
     },
     {
-      title: 'Luxury Partnerships',
+      title: 'Luxury Partnerships and Sponsorships',
       email: 'info.fashiongraviti@gmail.com',
       description: 'Bespoke editorial campaigns, brand sponsorships, and curated events.',
     },
     {
+      title: 'Corrections and Fact-Checking',
+      email: 'info.fashiongraviti@gmail.com',
+      description: 'Factual corrections, textile provenance inquiries, and attribution updates.',
+    },
+    {
       title: 'General Inquiries and Letters',
       email: 'info.fashiongraviti@gmail.com',
-      description: 'Reader feedback, corrections, and inquiries to the editor-in-chief.',
+      description: 'Reader feedback and direct communication with the editor-in-chief.',
     },
   ];
 
@@ -67,22 +79,26 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
     {
       city: 'PARIS',
       address: 'Place Vendôme, 75001 Paris, France',
-      focus: 'Haute Couture and Heritage Houses',
+      hours: 'Mon - Fri: 09:00 - 18:00 CET',
+      focus: 'Haute Couture and Heritage Luxury Houses',
     },
     {
       city: 'MILAN',
       address: 'Via Montenapoleone, 20121 Milano, Italy',
-      focus: 'Leathercraft, Tailoring and Luxury Goods',
+      hours: 'Mon - Fri: 09:00 - 18:00 CET',
+      focus: 'Menswear, Cashmere, and Tailoring Ateliers',
     },
     {
       city: 'NEW YORK',
       address: 'Madison Avenue, New York, NY 10022, USA',
+      hours: 'Mon - Fri: 09:00 - 17:30 EST',
       focus: 'Contemporary Luxury and Celebrity Styling',
     },
     {
       city: 'TOKYO',
       address: 'Shibuya-ku, Tokyo 150-0001, Japan',
-      focus: 'Avant-Garde and Textile Innovation',
+      hours: 'Mon - Fri: 09:30 - 18:30 JST',
+      focus: 'Avant-Garde Design and Textile Engineering',
     },
   ];
 
@@ -101,8 +117,38 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Have an editorial tip, collection pitch, press release, or partnership inquiry? Reach out directly to our dedicated desks.
+            Have an editorial tip, collection pitch, press release, or fact-checking inquiry? Reach out directly to our central newsroom desk.
           </p>
+
+          {/* Central Email Card */}
+          <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-3 p-3.5 bg-black border-2 border-gold/50 shadow-xl">
+            <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider font-bold">
+              Official Central Newsroom Desk:
+            </span>
+            <a
+              href="mailto:info.fashiongraviti@gmail.com"
+              className="font-mono text-sm sm:text-base text-gold hover:text-white font-bold transition-colors underline"
+            >
+              info.fashiongraviti@gmail.com
+            </a>
+            <button
+              onClick={handleCopyEmail}
+              className="px-3 py-1.5 bg-noir-card border border-white/20 hover:border-gold text-xs font-mono uppercase tracking-wider text-white hover:text-gold transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+              title="Copy Email to Clipboard"
+            >
+              {isCopied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-gold" />
+                  <span>Copied</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>Copy</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -116,9 +162,12 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
               <span>TRANSMIT DISPATCH</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-serif font-black text-white uppercase mb-6">
-              Direct Desk Inquiries
+            <h2 className="text-2xl sm:text-3xl font-serif font-black text-white uppercase mb-2">
+              Direct Desk Inquiry Form
             </h2>
+            <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-6">
+              Average newsroom response window: 24 to 48 business hours
+            </p>
 
             {isSubmitted ? (
               <div className="py-12 text-center animate-fadeIn">
@@ -129,6 +178,12 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                 <p className="text-sm font-sans text-zinc-300 max-w-md mx-auto leading-relaxed">
                   Thank you for contacting Fashion Graviti. Your message has been forwarded to the {department} desk. Our editors will review and respond shortly.
                 </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="mt-6 px-6 py-2.5 bg-white text-black font-mono text-xs uppercase tracking-widest font-black hover:bg-gold transition-colors cursor-pointer"
+                >
+                  Send Another Inquiry
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -174,7 +229,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <option value="Editorial Pitch and Features">Editorial Pitch and Features</option>
                     <option value="Press and Media Relations">Press and Media Relations</option>
                     <option value="Luxury Partnerships and Advertising">Luxury Partnerships and Advertising</option>
-                    <option value="Corrections and Letters to Editor">Corrections and Letters to Editor</option>
+                    <option value="Corrections and Fact-Checking">Corrections and Fact-Checking</option>
                     <option value="General Inquiries">General Inquiries</option>
                   </select>
                 </div>
@@ -199,7 +254,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                   <textarea
                     rows={5}
                     required
-                    placeholder="Provide details of your pitch, press inquiry, or collaboration proposal..."
+                    placeholder="Provide details of your pitch, press inquiry, correction, or collaboration proposal..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-sans placeholder-zinc-600"
@@ -217,8 +272,9 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
             )}
           </div>
 
-          {/* Right Column: Direct Desks & Bureau Details (5 cols) */}
+          {/* Right Column: Direct Desks and Bureau Details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
+            {/* Direct Desks */}
             <div className="bg-noir-card border-2 border-white/20 p-6 sm:p-8">
               <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-4">
                 <Mail className="w-4 h-4 text-gold" />
@@ -257,6 +313,10 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                   <div key={idx} className="p-3 bg-black border border-white/10">
                     <span className="text-gold font-black block">{b.city} BUREAU</span>
                     <p className="text-zinc-300 mt-1 font-sans text-[11px]">{b.address}</p>
+                    <span className="text-[10px] text-zinc-400 flex items-center gap-1 mt-1">
+                      <Clock className="w-3 h-3 text-gold" />
+                      {b.hours}
+                    </span>
                     <span className="text-[10px] text-zinc-500 block mt-1 uppercase">{b.focus}</span>
                   </div>
                 ))}
@@ -266,35 +326,46 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
         </div>
       </section>
 
-      {/* Guidelines & FAQ Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-12 border-t border-white/10">
+      {/* Guidelines and Fact-Checking Policy Section */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-12 border-t border-white/10">
         <div className="text-center max-w-xl mx-auto mb-8">
           <div className="flex items-center justify-center gap-1.5 text-xs font-mono text-gold uppercase font-bold mb-1">
             <HelpCircle className="w-4 h-4 text-gold" />
-            <span>SUBMISSION GUIDELINES</span>
+            <span>SUBMISSION AND EDITORIAL PROTOCOL</span>
           </div>
           <h3 className="text-2xl font-serif font-bold uppercase text-white">
-            Pitching to Fashion Graviti
+            Pitching and Accountability Guidelines
           </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs font-mono">
           <div className="p-5 bg-noir-card border border-white/15">
-            <span className="text-gold font-black uppercase block mb-1">1. HIGH-RES ASSETS</span>
+            <div className="flex items-center gap-2 text-gold font-black uppercase mb-2">
+              <CheckCircle2 className="w-4 h-4 text-gold" />
+              <span>1. PRESS ACCREDITATION</span>
+            </div>
             <p className="text-zinc-300 font-sans leading-relaxed">
-              Ensure all runway imagery and atelier photography is minimum 300 DPI with full styling and photographer credits included.
+              For runway and fashion week press access, please provide formal accreditation details, atelier name, and collection dates in your initial email.
             </p>
           </div>
+
           <div className="p-5 bg-noir-card border border-white/15">
-            <span className="text-gold font-black uppercase block mb-1">2. EMBARGO TIMELINES</span>
+            <div className="flex items-center gap-2 text-gold font-black uppercase mb-2">
+              <ShieldAlert className="w-4 h-4 text-gold" />
+              <span>2. CORRECTIONS AND PROVENANCE</span>
+            </div>
             <p className="text-zinc-300 font-sans leading-relaxed">
-              For exclusive collection unveils, specify exact embargo date and time in Paris time (CET) in your subject line.
+              To request a correction on garment materials, designer credits, or historical dates, please email info.fashiongraviti@gmail.com with specific article reference.
             </p>
           </div>
+
           <div className="p-5 bg-noir-card border border-white/15">
-            <span className="text-gold font-black uppercase block mb-1">3. RESPONSE WINDOW</span>
+            <div className="flex items-center gap-2 text-gold font-black uppercase mb-2">
+              <Clock className="w-4 h-4 text-gold" />
+              <span>3. RESPONSE SLA</span>
+            </div>
             <p className="text-zinc-300 font-sans leading-relaxed">
-              Due to high volume during Fashion Week seasons, please allow 48 hours before sending a follow-up inquiry.
+              Our central editorial team reviews all submissions within 24 to 48 business hours. Urgent fashion week updates receive expedited priority.
             </p>
           </div>
         </div>
