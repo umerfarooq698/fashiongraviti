@@ -50,9 +50,11 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
           </span>
         </div>
 
-        {/* Magazine Category Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3.5">
-          {categories.map((cat) => {
+        {/* Magazine Category Cards Grid (Editorial Desks Only) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+          {categories
+            .filter((cat) => cat.id !== 'all')
+            .map((cat) => {
             const isSelected = activeCategory === cat.id;
             return (
               <a
