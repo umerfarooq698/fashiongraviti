@@ -122,7 +122,7 @@ export const AuthorProfilePage: React.FC<AuthorProfilePageProps> = ({
           <div className="flex items-center space-x-2">
             <Sparkles className="w-4 h-4 text-gold" />
             <h2 className="text-sm font-mono uppercase tracking-widest text-white font-extrabold">
-              CURATIONS & ESSAYS BY {author.name.toUpperCase()}
+              CURATIONS AND ESSAYS BY {author.name.toUpperCase()}
             </h2>
           </div>
 

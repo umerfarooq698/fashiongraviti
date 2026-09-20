@@ -87,7 +87,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
                 onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
               }}
               className="flex items-center space-x-3.5 cursor-pointer group no-underline"
-              title={`View ${article.author.name}'s profile & curations`}
+              title={`View ${article.author.name}'s profile and curations`}
             >
               <img
                 src={article.author.avatar}

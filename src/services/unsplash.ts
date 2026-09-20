@@ -72,7 +72,7 @@ const FALLBACK_EDITORIAL_PHOTOS: UnsplashPhoto[] = [
     url: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1600&q=85',
     fullUrl: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=2400&q=90',
     thumbUrl: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=400&q=80',
-    altDescription: 'Atelier Leather & Titanium Accessory Focus',
+    altDescription: 'Atelier Leather and Titanium Accessory Focus',
     photographerName: 'Apostolos Vamvouras',
     photographerUsername: 'avamvouras',
     photographerUrl: 'https://unsplash.com/@avamvouras',

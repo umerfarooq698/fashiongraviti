@@ -42,7 +42,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
           <div className="flex items-center space-x-2">
             <Sparkles className="w-4 h-4 text-gold" />
             <h3 className="text-sm font-mono uppercase tracking-widest text-white font-extrabold">
-              MAGAZINE DESKS & EDITORIAL CATEGORIES
+              MAGAZINE DESKS AND EDITORIAL CATEGORIES
             </h3>
           </div>
           <span className="text-xs font-mono font-bold text-gold uppercase bg-black px-3 py-1 border border-gold/40">

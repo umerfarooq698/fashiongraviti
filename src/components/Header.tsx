@@ -47,14 +47,14 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         <div className="text-[11px] font-mono font-bold text-zinc-400 hidden sm:block uppercase">
-          GLOBAL FASHION & RUNWAY EDITORIAL
+          GLOBAL FASHION AND RUNWAY EDITORIAL
         </div>
       </div>
 
       {/* Main Bold Magazine Masthead */}
       <div className="px-4 lg:px-12 py-6 md:py-8 text-center border-b-2 border-white/15 flex flex-col items-center justify-center bg-noir">
         <div className="text-[11px] font-mono tracking-mega-wide uppercase text-gold font-bold mb-2">
-          THE DEFINITIVE FASHION & RUNWAY ARCHIVE
+          THE DEFINITIVE FASHION AND RUNWAY ARCHIVE
         </div>
 
         <a 

@@ -10,7 +10,7 @@ interface ContactPageProps {
 export const ContactPage: React.FC<ContactPageProps> = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [department, setDepartment] = useState('Editorial Pitch & Features');
+  const [department, setDepartment] = useState('Editorial Pitch and Features');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -42,12 +42,12 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
 
   const contactDesks = [
     {
-      title: 'Editorial & Story Pitches',
+      title: 'Editorial and Story Pitches',
       email: 'editorial@fashiongraviti.com',
       description: 'Runway pitches, essays, designer monographs, and photo submissions.',
     },
     {
-      title: 'Press & Media Relations',
+      title: 'Press and Media Relations',
       email: 'press@fashiongraviti.com',
       description: 'Lookbooks, accreditation inquiries, and official house press releases.',
     },
@@ -57,7 +57,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
       description: 'Bespoke editorial campaigns, brand sponsorships, and curated events.',
     },
     {
-      title: 'General Inquiries & Letters',
+      title: 'General Inquiries and Letters',
       email: 'letters@fashiongraviti.com',
       description: 'Reader feedback, corrections, and inquiries to the editor-in-chief.',
     },
@@ -67,22 +67,22 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
     {
       city: 'PARIS',
       address: 'Place Vendôme, 75001 Paris, France',
-      focus: 'Haute Couture & Heritage Houses',
+      focus: 'Haute Couture and Heritage Houses',
     },
     {
       city: 'MILAN',
       address: 'Via Montenapoleone, 20121 Milano, Italy',
-      focus: 'Leathercraft, Tailoring & Luxury Goods',
+      focus: 'Leathercraft, Tailoring and Luxury Goods',
     },
     {
       city: 'NEW YORK',
       address: 'Madison Avenue, New York, NY 10022, USA',
-      focus: 'Contemporary Luxury & Celebrity Styling',
+      focus: 'Contemporary Luxury and Celebrity Styling',
     },
     {
       city: 'TOKYO',
       address: 'Shibuya-ku, Tokyo 150-0001, Japan',
-      focus: 'Avant-Garde & Textile Innovation',
+      focus: 'Avant-Garde and Textile Innovation',
     },
   ];
 
@@ -97,7 +97,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white uppercase leading-[1.1]">
-            Contact The Newsroom & Atelier
+            Contact The Newsroom and Atelier
           </h1>
 
           <p className="mt-4 text-base sm:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
@@ -106,10 +106,10 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
         </div>
       </section>
 
-      {/* Main Content Grid: Form + Desks */}
+      {/* Main Content Grid */}
       <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column: Direct Inquiries Form (7 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Direct Message Form (7 cols) */}
           <div className="lg:col-span-7 bg-noir-card border-2 border-white/20 p-6 sm:p-10 shadow-2xl">
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-2">
               <MessageSquare className="w-4 h-4 text-gold" />
@@ -117,36 +117,30 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-serif font-black text-white uppercase mb-6">
-              Send a Direct Message
+              Direct Desk Inquiries
             </h2>
 
             {isSubmitted ? (
-              <div className="py-12 px-6 bg-black border-2 border-gold/40 text-center animate-fadeIn">
-                <CheckCircle2 className="w-12 h-12 text-gold mx-auto mb-4" />
-                <h3 className="text-xl font-serif font-bold text-white uppercase">
-                  Message Dispatched Successfully
+              <div className="py-12 text-center animate-fadeIn">
+                <CheckCircle2 className="w-16 h-16 text-gold mx-auto mb-4" />
+                <h3 className="text-2xl font-serif font-bold text-white uppercase mb-2">
+                  Dispatch Received
                 </h3>
-                <p className="text-sm font-sans text-zinc-300 mt-2 max-w-md mx-auto leading-relaxed">
-                  Thank you for reaching out. Our editorial desk will review your inquiry and respond within 24 to 48 business hours.
+                <p className="text-sm font-sans text-zinc-300 max-w-md mx-auto leading-relaxed">
+                  Thank you for contacting Fashion Graviti. Your message has been forwarded to the {department} desk. Our editors will review and respond shortly.
                 </p>
-                <button
-                  onClick={() => setIsSubmitted(false)}
-                  className="mt-6 px-6 py-2.5 bg-white text-black font-mono text-xs uppercase tracking-widest font-black hover:bg-gold transition-colors cursor-pointer"
-                >
-                  Send Another Inquiry
-                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 font-bold">
-                      Your Name *
+                      Your Full Name *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Eleanor Vance"
+                      placeholder="e.g. Jacqueline De Laurent"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-mono placeholder-zinc-600"
@@ -160,7 +154,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <input
                       type="email"
                       required
-                      placeholder="eleanor@atelier.com"
+                      placeholder="e.g. editor@atelier.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-mono placeholder-zinc-600"
@@ -177,10 +171,10 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     onChange={(e) => setDepartment(e.target.value)}
                     className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-xs font-mono uppercase cursor-pointer"
                   >
-                    <option value="Editorial Pitch & Features">Editorial Pitch & Features</option>
-                    <option value="Press & Media Relations">Press & Media Relations</option>
-                    <option value="Luxury Partnerships & Advertising">Luxury Partnerships & Advertising</option>
-                    <option value="Corrections & Letters to Editor">Corrections & Letters to Editor</option>
+                    <option value="Editorial Pitch and Features">Editorial Pitch and Features</option>
+                    <option value="Press and Media Relations">Press and Media Relations</option>
+                    <option value="Luxury Partnerships and Advertising">Luxury Partnerships and Advertising</option>
+                    <option value="Corrections and Letters to Editor">Corrections and Letters to Editor</option>
                     <option value="General Inquiries">General Inquiries</option>
                   </select>
                 </div>

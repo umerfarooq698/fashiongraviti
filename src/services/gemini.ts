@@ -35,7 +35,7 @@ export interface GeminiGeneratedArticle {
 }
 
 /**
- * Generates a full high-fashion editorial article using Gemini 3.6 Flash & Live Unsplash Imagery
+ * Generates a full high-fashion editorial article using Gemini 3.6 Flash and Live Unsplash Imagery
  */
 export async function generateFashionArticleWithGemini(
   promptOrTopic?: string,
@@ -47,10 +47,10 @@ export async function generateFashionArticleWithGemini(
     : `Write a comprehensive, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
 
   const systemInstruction = `
-You are the Chief Fashion Editor & Senior Luxury Columnist of "Fashion Graviti", an elite high-fashion publication (like Vogue, Harper's Bazaar, or The Gentlewoman).
+You are the Chief Fashion Editor and Senior Luxury Columnist of "Fashion Graviti", an elite high-fashion publication (like Vogue, Harper's Bazaar, or The Gentlewoman).
 Generate a completely unique, comprehensive 1000–1200 word fashion article based strictly on the provided keyword in strict JSON format.
 
-MANDATORY EDITORIAL & SEO GUIDELINES:
+MANDATORY EDITORIAL AND SEO GUIDELINES:
 1. HEADLINE ("title"):
    - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters, spaces, and punctuation).
    - ZERO AI CLICHÉS: Never use words like 'AI', 'Artificial Intelligence', 'algorithm', 'revolutionize', 'unlocking', 'delving', 'tapestry', 'next-gen', 'game-changing', 'navigating', 'testament'.
@@ -59,26 +59,27 @@ MANDATORY EDITORIAL & SEO GUIDELINES:
    - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count precisely.
    - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use words like 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
    - Write a direct, authoritative fashion statement summarizing the article.
-3. WRITE FOR REAL READERS FIRST (ENGAGING & ACCESSIBLE):
+3. WRITE FOR REAL READERS FIRST (ENGAGING AND ACCESSIBLE):
    - Keep content useful, engaging, and easy to understand.
    - Stay strictly relevant to the keyword and search intent.
    - Provide practical styling advice, wardrobe formulas, silhouette analysis, fabric recommendations, and buying guidance.
-4. CLEAR FOCUS & NATURAL FLOW:
+4. CLEAR FOCUS AND NATURAL FLOW:
    - Keep every section focused on one clear idea. Do not mix unrelated points in the same paragraph or section.
    - Maintain a smooth, natural flow from one section to the next.
-5. SENTENCE & PARAGRAPH STRUCTURE:
+5. SENTENCE AND PARAGRAPH STRUCTURE:
    - Use short and medium-length sentences. Avoid long, complicated run-on sentences.
    - Keep paragraphs short (usually 2–4 sentences per paragraph).
-6. FRESH STRUCTURE & HEADINGS (1000–1200 WORDS):
+6. FRESH STRUCTURE AND HEADINGS (1000–1200 WORDS):
    - Use a fresh, original structure and writing style every time. Never follow a fixed template or repeat previous patterns.
    - Use natural markdown H2 ("## Section Title") and H3 ("### Subsection Title") in "bodyParagraphs" to structure the article.
    - Use mostly paragraphs and occasional clean bullet points ("* Bullet point") when listing styling tips or materials.
    - Total article length must be in the 1000–1200 word range.
-7. FORBIDDEN PHRASES & WORDS (ZERO AI/SEO JARGON ACROSS ENTIRE ARTICLE):
+7. FORBIDDEN PHRASES, WORDS AND SYMBOLS:
+   - Never use the ampersand symbol ('&'). Always spell out the word 'and' in all titles, subtitles, headings, body text, image captions, designer credits, and FAQs.
    - Never mention AI, SEO, algorithms, prompts, or content generation.
    - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", "it is worth noting that".
    - Never use the forbidden words: 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth'.
-8. CONCLUSION & 3–4 FAQS (SHORT & CONCISE):
+8. CONCLUSION AND 3–4 FAQS (SHORT AND CONCISE):
    - Include a concise, impactful "conclusion" summary (2-3 sentences).
    - Provide 3–4 practical, highly relevant "faqs". Keep BOTH questions and answers very short, punchy, and direct (question: 5–9 words; answer: strictly 1–2 short sentences / under 25 words).
 9. VISUAL SEARCH PHRASE:
@@ -252,7 +253,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     const articleId = `gemini-story-${Date.now()}`;
     return {
       id: articleId,
-      title: promptOrTopic ? `${promptOrTopic}: Editorial Runway Analysis` : 'Autumn Runway Bulletin: Modern Proportions & Atelier Craftsmanship',
+      title: promptOrTopic ? `${promptOrTopic}: Editorial Runway Analysis` : 'Autumn Runway Bulletin: Modern Proportions and Atelier Craftsmanship',
       subtitle: 'Inside the newest couture collections exploring sculptural tailoring, rare natural fibers, and contemporary luxury.',
       slug: `editorial-analysis-${Date.now()}`,
       category: (targetCategory as any) || 'fashion-news',

@@ -28,7 +28,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
   'kenji-takahashi': {
     name: 'Kenji Takahashi',
     slug: 'kenji-takahashi',
-    role: 'Celebrity & Culture Editor',
+    role: 'Celebrity and Culture Editor',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
     instagram: '@kenji_archive_tokyo',
     bio: 'Archival fashion curator and culture correspondent reporting on celebrity red carpet iconography and avant-garde street style across Tokyo and New York.',
@@ -36,7 +36,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
   'felix-van-der-bilt': {
     name: 'Felix Van Der Bilt',
     slug: 'felix-van-der-bilt',
-    role: 'Brand Historian & Critic',
+    role: 'Brand Historian and Critic',
     avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80',
     instagram: '@felix_form_lab',
     bio: 'Antwerp-trained design critic exploring the structural history, atelier craftsmanship, and timeless legacies of iconic luxury fashion houses.',

@@ -310,7 +310,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 onSelectAuthor ? onSelectAuthor(article.author.name) : onSelectTag?.(article.author.name);
               }}
               className="flex items-center space-x-4 cursor-pointer group no-underline"
-              title={`View ${article.author.name}'s profile & curations`}
+              title={`View ${article.author.name}'s profile and curations`}
             >
               <img
                 src={article.author.avatar}
@@ -492,7 +492,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           <div className="mt-12 p-6 bg-noir-card border-2 border-white/20">
             <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gold font-black mb-4">
               <Scissors className="w-4 h-4 text-gold" />
-              <span>ATELIER CREDITS & MATERIAL PROVENANCE</span>
+              <span>ATELIER CREDITS AND MATERIAL PROVENANCE</span>
             </div>
             <div className="divide-y divide-white/15">
               {article.content.designerCredits.map((credit, idx) => (

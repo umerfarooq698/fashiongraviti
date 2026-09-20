@@ -29,7 +29,7 @@ export const LookbookDrawer: React.FC<LookbookDrawerProps> = ({
                 FASHIONGRAVITI LOOKBOOK ARCHIVE
               </h2>
               <p className="text-[11px] text-zinc-400 font-mono">
-                SEASONAL SILHOUETTES & RUNWAY ATELIER SPECIFICATIONS
+                SEASONAL SILHOUETTES AND RUNWAY ATELIER SPECIFICATIONS
               </p>
             </div>
           </div>

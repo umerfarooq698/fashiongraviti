@@ -4,7 +4,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'all',
     name: 'Home',
-    tagline: 'BREAKING EDITORIAL & RUNWAY FEED',
+    tagline: 'BREAKING EDITORIAL AND RUNWAY FEED',
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
     accent: '#8f121d',
@@ -13,7 +13,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'fashion-news',
     name: 'Fashion News',
-    tagline: 'BREAKING INDUSTRY & RUNWAY HEADLINES',
+    tagline: 'BREAKING INDUSTRY AND RUNWAY HEADLINES',
     description: 'Global fashion week bulletins, creative director announcements, and major industry movements.',
     image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80',
     accent: '#c59d54',
@@ -22,7 +22,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'fashion-trends',
     name: 'Fashion Trends',
-    tagline: 'SEASONAL SILHOUETTES & FORECASTS',
+    tagline: 'SEASONAL SILHOUETTES AND FORECASTS',
     description: 'The biggest runway-to-street trends, color palettes, and must-have wardrobe shifts.',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
     accent: '#8f121d',
@@ -31,7 +31,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'celebrity',
     name: 'Celebrity',
-    tagline: 'RED CARPET, MET GALA & ICONS',
+    tagline: 'RED CARPET, MET GALA AND ICONS',
     description: 'Celebrity street style, film festival red carpets, cover star profiles, and stylist breakdowns.',
     image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80',
     accent: '#c59d54',
@@ -40,7 +40,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'designers-brands',
     name: 'Designers And Brands',
-    tagline: 'HERITAGE ATELIERS & ICONIC HOUSES',
+    tagline: 'HERITAGE ATELIERS AND ICONIC HOUSES',
     description: 'Behind-the-scenes monographs, brand histories, haute couture ateliers, and designer profiles.',
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80',
     accent: '#8f121d',
@@ -49,7 +49,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'beauty',
     name: 'Beauty',
-    tagline: 'BACKSTAGE GLAMOUR, SKIN & SCENTS',
+    tagline: 'BACKSTAGE GLAMOUR, SKIN AND SCENTS',
     description: 'Runway makeup secrets, signature fragrances, skincare science, and hair trends.',
     image: 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80',
     accent: '#c59d54',
@@ -58,7 +58,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   {
     id: 'how-to-style',
     name: 'How to Style',
-    tagline: 'EXPERT WARDROBE & STYLING GUIDES',
+    tagline: 'EXPERT WARDROBE AND STYLING GUIDES',
     description: 'Practical luxury styling formulas, capsule wardrobes, layering techniques, and fit advice.',
     image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80',
     accent: '#5d6b5c',
@@ -149,7 +149,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         },
       ],
       designerCredits: [
-        { house: 'Helmut Lang Archive', garment: 'Minimalist Raw Denim & Silk Cami', materials: '100% Unwashed Cotton & Mulberry Silk' },
+        { house: 'Helmut Lang Archive', garment: 'Minimalist Raw Denim and Silk Cami', materials: '100% Unwashed Cotton and Mulberry Silk' },
         { house: 'Calvin Klein Heritage', garment: 'Bias-Cut Slip Dress', materials: 'Sand-Washed Silk Charmeuse' },
         { house: 'Jil Sander Atelier', garment: 'Boxy Menswear Wool Blazer', materials: 'Double-Faced Virgin Wool' },
       ],
@@ -204,8 +204,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         'The finale received an immediate standing ovation from international buyers, cementing this show as one of the defining fashion news moments of the year.'
       ],
       designerCredits: [
-        { house: 'Maison Noir Atelier', garment: 'Asymmetrical Wool Trench & Basalt Silk Trousers', materials: 'Italian Merino Wool & Mulberry Silk' },
-        { house: 'Kuroda Studio', garment: 'Sculpted Silver Choker & Ring Armor', materials: 'Oxidized 925 Sterling' },
+        { house: 'Maison Noir Atelier', garment: 'Asymmetrical Wool Trench and Basalt Silk Trousers', materials: 'Italian Merino Wool and Mulberry Silk' },
+        { house: 'Kuroda Studio', garment: 'Sculpted Silver Choker and Ring Armor', materials: 'Oxidized 925 Sterling' },
       ],
     },
     tags: ['Fashion News', 'Paris Fashion Week', 'Haute Couture', 'Runway', 'Breaking'],
@@ -215,7 +215,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-02',
-    title: 'The "Quiet Luxury" Trend: Why Understated Cashmere & Tailoring are Dominating 2026',
+    title: 'The "Quiet Luxury" Trend: Why Understated Cashmere and Tailoring are Dominating 2026',
     subtitle: 'From double-faced oatmeal alpaca coats to unbranded wool trousers, tactile luxury and minimalist proportions dominate modern styling trends.',
     slug: 'quiet-luxury-fashion-trends-cashmere-tailoring',
     category: 'fashion-trends',
@@ -259,7 +259,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-03',
-    title: 'Celebrity Style Iconography: The Most Daring Met Gala & Red Carpet Moments',
+    title: 'Celebrity Style Iconography: The Most Daring Met Gala and Red Carpet Moments',
     subtitle: 'From vintage archival couture revivals to custom sculptural gowns, how iconic cultural celebrities define timeless red carpet fashion looks.',
     slug: 'celebrity-style-met-gala-red-carpet-iconography',
     category: 'celebrity',
@@ -269,8 +269,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     locationTag: 'NEW YORK // METROPOLITAN MUSEUM',
     author: {
       name: 'Kenji Takahashi',
-      role: 'Celebrity & Culture Editor',
-      location: 'New York & Tokyo',
+      role: 'Celebrity and Culture Editor',
+      location: 'New York and Tokyo',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
       instagram: '@kenji_archive_tokyo',
     },
@@ -306,10 +306,10 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     categoryLabel: 'Designers And Brands',
     season: 'AUTUMN / WINTER 2026',
     issueNumber: 'ISSUE NO. 08',
-    locationTag: 'PARIS & ANTWERP',
+    locationTag: 'PARIS AND ANTWERP',
     author: {
       name: 'Felix Van Der Bilt',
-      role: 'Brand Historian & Critic',
+      role: 'Brand Historian and Critic',
       location: 'Antwerp, Belgium',
       avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80',
       instagram: '@felix_form_lab',
@@ -340,7 +340,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-05',
-    title: 'Backstage Beauty Secrets: The Glowing Skin & Runway Lip Trends to Know',
+    title: 'Backstage Beauty Secrets: The Glowing Skin and Runway Lip Trends to Know',
     subtitle: 'Master makeup artists and skincare directors present backstage beauty prep, luminous glass skin finishes, and signature seasonal fragrances.',
     slug: 'beauty-backstage-runway-skincare-makeup-trends',
     category: 'beauty',
@@ -380,14 +380,14 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-06',
-    title: 'How to Style: The Master Guide to Autumn Layering, Tailored Coats & Proportions',
+    title: 'How to Style: The Master Guide to Autumn Layering, Tailored Coats and Proportions',
     subtitle: 'Balancing oversized double-breasted coats with slim trousers and subtle monochrome layering creates an impeccably tailored sartorial finish.',
     slug: 'how-to-style-autumn-layering-tailored-coats-guide',
     category: 'how-to-style',
     categoryLabel: 'How to Style',
     season: 'AUTUMN / WINTER 2026',
     issueNumber: 'ISSUE NO. 08',
-    locationTag: 'LONDON & MILAN',
+    locationTag: 'LONDON AND MILAN',
     author: {
       name: 'Massimo Dellacorte',
       role: 'Senior Style Editor',
@@ -506,9 +506,9 @@ export const LOOKBOOK_ITEMS: LookbookItem[] = [
 
 export const RUNWAY_TICKER_ITEMS = [
   'FASHION NEWS: PARIS HAUTE COUTURE WEEK UNVEILS 42 NEW SILHOUETTES AT GRAND PALAIS',
-  'FASHION TRENDS: DOUBLE-FACED CASHMERE & NEUTRAL TAILORING DOMINATE GLOBAL RUNWAYS',
-  'CELEBRITY: VINTAGE ARCHIVAL COUTURE TAKES OVER THE RED CARPET IN VENICE & NEW YORK',
-  'DESIGNERS & BRANDS: HISTORIC ATELIERS EMBRACE 3D ARCHITECTURAL HARDWARE',
-  'BEAUTY: LUMINOUS GLASS SKIN & SCULPTED BROWS SET THE NEW BACKSTAGE STANDARD',
-  'HOW TO STYLE: MASTERING CAPSULE WARDROBES & EFFORTLESS COAT LAYERING THIS SEASON'
+  'FASHION TRENDS: DOUBLE-FACED CASHMERE AND NEUTRAL TAILORING DOMINATE GLOBAL RUNWAYS',
+  'CELEBRITY: VINTAGE ARCHIVAL COUTURE TAKES OVER THE RED CARPET IN VENICE AND NEW YORK',
+  'DESIGNERS AND BRANDS: HISTORIC ATELIERS EMBRACE 3D ARCHITECTURAL HARDWARE',
+  'BEAUTY: LUMINOUS GLASS SKIN AND SCULPTED BROWS SET THE NEW BACKSTAGE STANDARD',
+  'HOW TO STYLE: MASTERING CAPSULE WARDROBES AND EFFORTLESS COAT LAYERING THIS SEASON'
 ];

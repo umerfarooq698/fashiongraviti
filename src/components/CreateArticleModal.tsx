@@ -460,7 +460,7 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
               </div>
               <div>
                 <label className="block text-[11px] font-mono uppercase tracking-wider text-zinc-400 mb-1">
-                  Photo Caption & Attribution
+                  Photo Caption and Attribution
                 </label>
                 <input
                   type="text"

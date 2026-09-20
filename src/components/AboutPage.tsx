@@ -33,13 +33,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     },
     {
       name: 'Kenji Takahashi',
-      role: 'Celebrity & Culture Editor',
+      role: 'Celebrity and Culture Editor',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
       bio: 'Archival fashion curator and culture correspondent reporting on celebrity red carpet iconography and avant-garde street style across Tokyo and New York.',
     },
     {
       name: 'Felix Van Der Bilt',
-      role: 'Brand Historian & Critic',
+      role: 'Brand Historian and Critic',
       avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80',
       bio: 'Antwerp-trained design critic exploring the structural history, atelier craftsmanship, and timeless legacies of iconic luxury fashion houses.',
     },
@@ -53,17 +53,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     },
     {
       icon: <Sparkles className="w-6 h-6 text-gold" />,
-      title: 'Haute Couture & Atelier Focus',
+      title: 'Haute Couture and Atelier Focus',
       description: 'Celebrating master craftsmanship, textile innovation, and heritage houses shaping the pinnacle of global luxury.',
     },
     {
       icon: <Compass className="w-6 h-6 text-gold" />,
-      title: 'Trend Intelligence & Forecasting',
+      title: 'Trend Intelligence and Forecasting',
       description: 'Decoding seasonal shifts, silhouette revolutions, and aesthetic currents moving from runway showcases to everyday style.',
     },
     {
       icon: <Award className="w-6 h-6 text-gold" />,
-      title: 'Celebrity & Red Carpet Culture',
+      title: 'Celebrity and Red Carpet Culture',
       description: 'Authoritative analysis of iconic red carpet moments, Met Gala couture, award season styling, and celebrity wardrobes.',
     },
   ];
@@ -79,7 +79,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.1] uppercase">
-            The Definitive Authority on High Fashion & Runway Culture
+            The Definitive Authority on High Fashion and Runway Culture
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl font-editorial italic text-zinc-200 max-w-3xl mx-auto leading-relaxed">
@@ -151,7 +151,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
       <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
-            MASTHEAD & CRITICS
+            MASTHEAD AND CRITICS
           </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
             The Editorial Board

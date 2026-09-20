@@ -43,7 +43,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
           className="inline-flex items-center space-x-2 px-4 py-2 border border-white/20 hover:border-gold text-alabaster font-mono text-xs uppercase tracking-widest transition-colors"
         >
           <RefreshCcw className="w-3.5 h-3.5 mr-1 text-gold" />
-          <span>Reset All Department & Aesthetic Filters</span>
+          <span>Reset All Department and Aesthetic Filters</span>
         </button>
       </div>
     );

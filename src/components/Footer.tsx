@@ -94,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Company / Pages (3 cols) */}
         <div className="lg:col-span-3">
           <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-300 font-bold mb-4">
-            COMPANY & EDITORIAL
+            COMPANY AND EDITORIAL
           </h4>
           <ul className="space-y-2.5 text-xs font-mono">
             <li>
@@ -130,7 +130,7 @@ export const Footer: React.FC<FooterProps> = ({
                 onClick={handleContactClick}
                 className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
               >
-                Press & Media
+                Press and Media
               </a>
             </li>
             <li>
