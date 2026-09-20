@@ -15,6 +15,8 @@ import { CreateArticleModal } from './components/CreateArticleModal';
 import { LookbookDrawer } from './components/LookbookDrawer';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
 import { Footer } from './components/Footer';
+import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
+import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 
 const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v4';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v4';
@@ -55,7 +57,7 @@ export function App() {
   // Modals & Static Pages states
   const [selectedArticleForReader, setSelectedArticleForReader] = useState<FashionArticle | null>(null);
   const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
-  const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | null>(null);
+  const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | 'privacy' | 'terms' | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
@@ -108,6 +110,18 @@ export function App() {
         }
         if (seg === 'contact-us' || seg === 'contact') {
           setActiveStaticPage('contact');
+          setSelectedArticleForReader(null);
+          setActiveCategory('all');
+          return;
+        }
+        if (seg === 'privacy-policy' || seg === 'privacy') {
+          setActiveStaticPage('privacy');
+          setSelectedArticleForReader(null);
+          setActiveCategory('all');
+          return;
+        }
+        if (seg === 'terms-and-conditions' || seg === 'terms') {
+          setActiveStaticPage('terms');
           setSelectedArticleForReader(null);
           setActiveCategory('all');
           return;
@@ -285,6 +299,24 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigatePrivacy = () => {
+    setActiveStaticPage('privacy');
+    setSelectedAuthorSlug(null);
+    setSelectedArticleForReader(null);
+    setSearchQuery('');
+    window.history.pushState({}, '', '/privacy-policy');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateTerms = () => {
+    setActiveStaticPage('terms');
+    setSelectedAuthorSlug(null);
+    setSelectedArticleForReader(null);
+    setSearchQuery('');
+    window.history.pushState({}, '', '/terms-and-conditions');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleToggleBookmark = (articleId: string) => {
     setBookmarkedIds((prev) =>
       prev.includes(articleId) ? prev.filter((id) => id !== articleId) : [...prev, articleId]
@@ -379,6 +411,12 @@ export function App() {
             onNavigateHome={handleResetFilters}
             onNavigateCategory={handleSelectCategory}
           />
+        ) : activeStaticPage === 'privacy' ? (
+          /* Privacy Policy Page */
+          <PrivacyPolicyPage onNavigateHome={handleResetFilters} />
+        ) : activeStaticPage === 'terms' ? (
+          /* Terms and Conditions Page */
+          <TermsAndConditionsPage onNavigateHome={handleResetFilters} />
         ) : selectedAuthorSlug ? (
           /* Author Profile Page */
           <AuthorProfilePage
@@ -459,6 +497,8 @@ export function App() {
         onSelectCategory={handleSelectCategory}
         onNavigateAbout={handleNavigateAbout}
         onNavigateContact={handleNavigateContact}
+        onNavigatePrivacy={handleNavigatePrivacy}
+        onNavigateTerms={handleNavigateTerms}
         onOpenCreateModal={() => setIsCreateModalOpen(true)}
         onOpenLookbook={() => setIsLookbookOpen(true)}
         onSelectTag={handleSelectTag}

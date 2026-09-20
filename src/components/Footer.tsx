@@ -6,6 +6,8 @@ interface FooterProps {
   onSelectCategory: (id: string) => void;
   onNavigateAbout?: () => void;
   onNavigateContact?: () => void;
+  onNavigatePrivacy?: () => void;
+  onNavigateTerms?: () => void;
   onOpenCreateModal?: () => void;
   onOpenLookbook?: () => void;
   onSelectTag?: (tag: string) => void;
@@ -16,6 +18,8 @@ export const Footer: React.FC<FooterProps> = ({
   onSelectCategory,
   onNavigateAbout,
   onNavigateContact,
+  onNavigatePrivacy,
+  onNavigateTerms,
 }) => {
   const handleDepartmentClick = (catId: string) => {
     onSelectCategory(catId);
@@ -44,13 +48,35 @@ export const Footer: React.FC<FooterProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handlePrivacyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigatePrivacy) {
+      onNavigatePrivacy();
+    } else {
+      window.history.pushState({}, '', '/privacy-policy');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleTermsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateTerms) {
+      onNavigateTerms();
+    } else {
+      window.history.pushState({}, '', '/terms-and-conditions');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-12 pb-12 transition-colors">
       {/* Main Footer Links Grid */}
       <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-12">
-        {/* Brand & Mission Statement (5 cols) */}
+        {/* Brand and Mission Statement (5 cols) */}
         <div className="lg:col-span-5">
-          <a 
+          <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
@@ -115,16 +141,34 @@ export const Footer: React.FC<FooterProps> = ({
                 Contact Us
               </a>
             </li>
+            <li>
+              <a
+                href="/privacy-policy"
+                onClick={handlePrivacyClick}
+                className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+              >
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a
+                href="/terms-and-conditions"
+                onClick={handleTermsClick}
+                className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+              >
+                Terms and Conditions
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom Legal & Copyright Bar */}
+      {/* Bottom Legal and Copyright Bar */}
       <div className="max-w-7xl mx-auto px-4 lg:px-12 mt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-400 gap-4">
         <div>
           © 2026 FASHIONGRAVITI PUBLISHING GROUP. ALL RIGHTS RESERVED.
         </div>
-        <div className="flex items-center space-x-6 text-[10px]">
+        <div className="flex items-center flex-wrap justify-center gap-x-6 gap-y-2 text-[10px]">
           <a
             href="/about-us"
             onClick={handleAboutClick}
@@ -133,18 +177,19 @@ export const Footer: React.FC<FooterProps> = ({
             EDITORIAL INDEPENDENCE
           </a>
           <a
-            href="/contact-us"
-            onClick={handleContactClick}
+            href="/privacy-policy"
+            onClick={handlePrivacyClick}
             className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
           >
-            CONTACT DESK
+            PRIVACY POLICY
           </a>
-          <button 
-            onClick={() => handleDepartmentClick('all')}
-            className="hover:text-white cursor-pointer transition-colors uppercase"
+          <a
+            href="/terms-and-conditions"
+            onClick={handleTermsClick}
+            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
           >
-            TERMS OF CRITIQUE
-          </button>
+            TERMS AND CONDITIONS
+          </a>
         </div>
       </div>
     </footer>
