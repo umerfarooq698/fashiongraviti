@@ -449,16 +449,11 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             );
           })}
 
-          {/* Dedicated Conclusion Section */}
+          {/* Conclusion */}
           {article.content.conclusion && (
-            <div className="my-8 p-5 sm:p-6 bg-noir-card border border-gold/30 relative">
-              <span className="text-[11px] font-mono text-gold uppercase tracking-widest font-black block mb-2">
-                EDITORIAL SUMMARY // CONCLUSION
-              </span>
-              <p className="text-base sm:text-lg font-serif text-zinc-200 leading-relaxed italic">
-                {article.content.conclusion}
-              </p>
-            </div>
+            <p className="leading-relaxed">
+              {article.content.conclusion}
+            </p>
           )}
 
           {/* Dedicated FAQs Section */}
