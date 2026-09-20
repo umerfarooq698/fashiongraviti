@@ -125,7 +125,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
           </p>
 
           <p className="mt-6 text-base sm:text-lg font-sans text-zinc-200 max-w-3xl leading-relaxed font-medium">
-            Fashion Graviti ("we", "our", or "us") operates the fashion editorial publication at fashiongraviti.vercel.app. This Privacy Policy explains what data we collect, why we collect it, and how we protect it. We are committed to full transparency and your right to privacy.
+            Fashion Graviti ("we", "our", or "us") operates the fashion editorial publication at fashiongraviti.com. This Privacy Policy explains what data we collect, why we collect it, and how we protect it. We are committed to full transparency and your right to privacy.
           </p>
         </div>
       </section>

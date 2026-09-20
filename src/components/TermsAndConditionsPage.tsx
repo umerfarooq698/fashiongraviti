@@ -23,7 +23,7 @@ export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHom
       icon: <BookOpen className="w-5 h-5 text-gold" />,
       title: '1. Acceptance of Terms',
       content: [
-        'By accessing and using fashiongraviti.vercel.app ("the Site"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to all of these Terms, you must not use or access this Site.',
+        'By accessing and using fashiongraviti.com ("the Site"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to all of these Terms, you must not use or access this Site.',
         'Fashion Graviti ("we", "our", or "us") reserves the right to modify these Terms at any time. Continued use of the Site after changes are posted constitutes your acceptance of the revised Terms.',
         'These Terms apply to all visitors, readers, contributors, and others who access or use the Site.',
       ],
