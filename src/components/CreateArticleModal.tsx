@@ -37,9 +37,9 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
   const [season, setSeason] = useState('AUTUMN / WINTER 2026');
   const [readTime, setReadTime] = useState('6 MIN READ');
   
-  const [authorName, setAuthorName] = useState('Eleanora Vane');
-  const [authorRole, setAuthorRole] = useState('Chief Fashion Editor');
-  const authorAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
+  const [authorName, setAuthorName] = useState('Aurelia Vance-Sterling');
+  const [authorRole, setAuthorRole] = useState('Editor-in-Chief and Haute Couture Critic');
+  const authorAvatar = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';
 
   // Unsplash Image state
   const [unsplashQuery, setUnsplashQuery] = useState('haute couture runway');

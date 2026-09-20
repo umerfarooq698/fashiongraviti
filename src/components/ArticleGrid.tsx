@@ -115,7 +115,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
                     "Style is a language spoken before the voice is ever heard. To craft a silhouette is to sculpt human presence in three-dimensional time."
                   </blockquote>
                   <cite className="block mt-4 text-xs font-mono uppercase tracking-widest text-zinc-400 not-italic">
-                    — Eleanora Vane, Chief Editor
+                    — Aurelia Vance-Sterling, Editor-in-Chief
                   </cite>
                 </div>
               )}

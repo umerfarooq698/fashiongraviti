@@ -9,47 +9,57 @@ export interface AuthorProfile {
 }
 
 export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
-  'eleanora-vane': {
-    name: 'Eleanora Vane',
-    slug: 'eleanora-vane',
-    role: 'Chief Fashion Editor',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-    instagram: '@eleanoravane_edit',
-    bio: 'Senior fashion critic and editor with 15 years presiding over Paris Haute Couture and Milan fashion weeks, specializing in architectural tailoring, runway dispatches, and atelier crafts.',
+  'aurelia-vance-sterling': {
+    name: 'Aurelia Vance-Sterling',
+    slug: 'aurelia-vance-sterling',
+    role: 'Editor-in-Chief and Haute Couture Critic',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    instagram: '@aurelia_vance',
+    bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure, and the legacy of international fashion houses.',
   },
-  'massimo-dellacorte': {
-    name: 'Massimo Dellacorte',
-    slug: 'massimo-dellacorte',
-    role: 'Senior Style Editor',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-    instagram: '@massimo_tessile',
-    bio: 'Milan-based menswear scholar and tailoring critic documenting quiet luxury, rare cashmere fibers, and seasonal wardrobe proportions.',
+  'julian-thorne-dumont': {
+    name: 'Julian Thorne-Dumont',
+    slug: 'julian-thorne-dumont',
+    role: 'Senior Sartorial and Tailoring Critic',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    instagram: '@julian_sartorial',
+    bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction, and understated menswear silhouettes.',
   },
-  'kenji-takahashi': {
-    name: 'Kenji Takahashi',
-    slug: 'kenji-takahashi',
-    role: 'Celebrity and Culture Editor',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
-    instagram: '@kenji_archive_tokyo',
-    bio: 'Archival fashion curator and culture correspondent reporting on celebrity red carpet iconography and avant-garde street style across Tokyo and New York.',
+  'renata-moreau-kroll': {
+    name: 'Renata Moreau-Kroll',
+    slug: 'renata-moreau-kroll',
+    role: 'Celebrity Style and Red Carpet Columnist',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+    instagram: '@renata_moreau',
+    bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing, and modern gala aesthetics.',
   },
-  'felix-van-der-bilt': {
-    name: 'Felix Van Der Bilt',
-    slug: 'felix-van-der-bilt',
-    role: 'Brand Historian and Critic',
-    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80',
-    instagram: '@felix_form_lab',
-    bio: 'Antwerp-trained design critic exploring the structural history, atelier craftsmanship, and timeless legacies of iconic luxury fashion houses.',
+  'soren-lindqvist-kovac': {
+    name: 'Soren Lindqvist-Kovac',
+    slug: 'soren-lindqvist-kovac',
+    role: 'Avant-Garde and Heritage Brand Scholar',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+    instagram: '@soren_fashionarch',
+    bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism, and sustainable luxury innovation.',
   },
 };
 
+// Aliases for historical backwards compatibility
+const AUTHOR_ALIASES: Record<string, string> = {
+  'eleanora-vane': 'aurelia-vance-sterling',
+  'massimo-dellacorte': 'julian-thorne-dumont',
+  'kenji-takahashi': 'renata-moreau-kroll',
+  'felix-van-der-bilt': 'soren-lindqvist-kovac',
+};
+
 export function getAuthorSlug(nameOrSlug: string): string {
-  return nameOrSlug
+  const normalized = nameOrSlug
     .toLowerCase()
     .replace(/^author\//, '')
     .replace(/^author-/, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
+
+  return AUTHOR_ALIASES[normalized] || normalized;
 }
 
 export function getAuthorProfile(nameOrSlug: string): AuthorProfile {
@@ -61,7 +71,7 @@ export function getAuthorProfile(nameOrSlug: string): AuthorProfile {
     name: nameOrSlug,
     slug: slug,
     role: 'Independent Fashion Critic',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
     bio: 'Contributing fashion journalist and sartorial commentator reporting on contemporary runway showcases and luxury aesthetics.',
   };
 }

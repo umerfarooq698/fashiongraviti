@@ -8,10 +8,10 @@ const getApiUrl = () =>
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 const AUTHORS_LIST = [
-  'Eleanora Vane',
-  'Massimo Dellacorte',
-  'Kenji Takahashi',
-  'Felix Van Der Bilt',
+  'Aurelia Vance-Sterling',
+  'Julian Thorne-Dumont',
+  'Renata Moreau-Kroll',
+  'Soren Lindqvist-Kovac',
 ];
 
 export interface GeminiGeneratedArticle {
@@ -91,7 +91,7 @@ JSON Schema:
   "subtitle": "Direct authoritative summary (EXACTLY 140 chars, NO forbidden words)",
   "category": "fashion-news | fashion-trends | celebrity | designers-brands | beauty | how-to-style",
   "categoryLabel": "Fashion News | Fashion Trends | Celebrity | Designers And Brands | Beauty | How to Style",
-  "authorName": "Eleanora Vane | Massimo Dellacorte | Kenji Takahashi | Felix Van Der Bilt",
+  "authorName": "Aurelia Vance-Sterling | Julian Thorne-Dumont | Renata Moreau-Kroll | Soren Lindqvist-Kovac",
   "dropCapText": "First sentence of the article, powerful and poetic (1-2 sentences)",
   "bodyParagraphs": [
     "## First Major Heading",
