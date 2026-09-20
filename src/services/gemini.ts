@@ -35,8 +35,13 @@ export interface GeminiGeneratedArticle {
 }
 
 export function enforceTitle55to60(rawTitle: string): string {
-  let title = (rawTitle || '').replace(/\s+/g, ' ').replace(/&/g, 'and').trim();
-  if (title.length >= 55 && title.length <= 60) {
+  let title = (rawTitle || '')
+    .replace(/:/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/&/g, 'and')
+    .trim();
+
+  if (title.length >= 55 && title.length <= 60 && !title.includes(':')) {
     return title;
   }
   if (title.length > 60) {
@@ -46,32 +51,34 @@ export function enforceTitle55to60(rawTitle: string): string {
       truncated = truncated.slice(0, lastSpace);
     }
     if (truncated.length < 55) {
-      const candidates = [' Style', ' Notes', ' Trends', ' Report', ' Mode'];
+      const candidates = [' Style', ' Notes', ' Trends', ' Report', ' Mode', ' Looks'];
       for (const c of candidates) {
         if ((truncated + c).length >= 55 && (truncated + c).length <= 60) {
-          return truncated + c;
+          return (truncated + c).replace(/:/g, '');
         }
       }
-      return title.slice(0, 60);
+      return title.slice(0, 60).replace(/:/g, '');
     }
-    return truncated;
+    return truncated.replace(/:/g, '');
   }
   if (title.length < 55) {
     const candidates = [
-      ': Modern Proportions and Runway Style',
-      ': Sartorial Proportions and Trends',
-      ': Runway Notes and Modern Proportions',
-      ': Modern Atelier and Styling Notes',
-      ': Editorial Luxury and Runway Notes',
+      ' in Modern Luxury Style',
+      ' for Timeless Sartorial Poise',
+      ' in Contemporary Fashion',
+      ' for Understated Luxury',
+      ' in Modern Haute Couture',
+      ' and Modern Styling Notes',
+      ' for Refined Wardrobes',
     ];
     for (const c of candidates) {
-      const combo = `${title}${c}`;
+      const combo = `${title} ${c.trim()}`.replace(/\s+/g, ' ');
       if (combo.length >= 55 && combo.length <= 60) {
-        return combo;
+        return combo.replace(/:/g, '');
       }
     }
   }
-  return title;
+  return title.replace(/:/g, '');
 }
 
 /**
@@ -92,9 +99,10 @@ Generate a completely unique, thorough 1000–1200 word fashion article based st
 
 MANDATORY EDITORIAL AND SEO GUIDELINES:
 1. HEADLINE ("title"):
-   - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters, spaces, and punctuation).
+   - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters and spaces). Count characters precisely!
+   - NO COLONS (ABSOLUTE RULE): NEVER use a colon (':') in the headline. Write a seamless, fluid headline without any colons.
+   - NATURAL KEYWORD PLACEMENT: Seamlessly place the keyword anywhere in the title (beginning, middle, or end). Do NOT force it to start with the keyword.
    - ZERO AI CLICHÉS: Never use words like 'AI', 'Artificial Intelligence', 'algorithm', 'revolutionize', 'unlocking', 'delving', 'tapestry', 'next-gen', 'game-changing', 'navigating', 'testament'.
-   - NATURAL KEYWORD PLACEMENT: Seamlessly place the keyword in a natural editorial flow (start, center, or right/end).
 2. META DESCRIPTION ("subtitle"):
    - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count precisely.
    - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use words like 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
@@ -116,6 +124,7 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - Total article length must be in the 1000–1200 word range.
 7. FORBIDDEN PHRASES, WORDS AND SYMBOLS:
    - Never use the ampersand symbol ('&'). Always spell out the word 'and' in all titles, subtitles, headings, body text, image captions, designer credits, and FAQs.
+   - Never use a colon (':') in article titles.
    - Never mention AI, SEO, algorithms, prompts, or content generation.
    - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", "it is worth noting that".
    - Never use the forbidden words: 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth'.
@@ -127,7 +136,7 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
 
 JSON Schema:
 {
-  "title": "Strictly 55-60 chars luxury headline with keyword naturally placed",
+  "title": "Strictly 55-60 chars luxury headline with keyword and NO colon",
   "subtitle": "Direct authoritative summary (EXACTLY 140 chars, NO forbidden words)",
   "category": "fashion-news | fashion-trends | celebrity | designers-brands | beauty | how-to-style",
   "categoryLabel": "Fashion News | Fashion Trends | Celebrity | Designers And Brands | Beauty | How to Style",
