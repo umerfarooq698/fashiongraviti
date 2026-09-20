@@ -122,7 +122,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
             <span>CONTACT FASHION GRAVITI</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white uppercase leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white uppercase leading-[1.1]">
             Connect with The Newsroom and Atelier
           </h1>
 

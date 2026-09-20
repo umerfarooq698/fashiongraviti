@@ -116,15 +116,15 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
             <span>LEGAL AND PRIVACY</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-mono font-black tracking-tight text-white uppercase leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white uppercase leading-[1.1]">
             Privacy Policy
           </h1>
 
-          <p className="mt-4 text-sm font-mono text-zinc-400 uppercase tracking-wider">
+          <p className="mt-4 text-xs font-mono text-zinc-400 uppercase tracking-wider">
             Effective Date: September 20, 2026 — Last Updated: September 20, 2026
           </p>
 
-          <p className="mt-6 text-sm font-mono text-zinc-300 max-w-2xl leading-relaxed">
+          <p className="mt-6 text-base sm:text-lg font-sans text-zinc-200 max-w-3xl leading-relaxed font-medium">
             Fashion Graviti ("we", "our", or "us") operates the fashion editorial publication at fashiongraviti.vercel.app. This Privacy Policy explains what data we collect, why we collect it, and how we protect it. We are committed to full transparency and your right to privacy.
           </p>
         </div>
@@ -139,13 +139,13 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
                 <div className="p-2 bg-black border border-white/20 flex-shrink-0">
                   {section.icon}
                 </div>
-                <h2 className="text-lg sm:text-xl font-mono font-black text-white uppercase tracking-wide">
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-white uppercase tracking-tight">
                   {section.title}
                 </h2>
               </div>
               <div className="space-y-3">
                 {section.content.map((para, pIdx) => (
-                  <p key={pIdx} className="text-sm font-mono text-zinc-300 leading-relaxed">
+                  <p key={pIdx} className="text-sm sm:text-base font-sans text-zinc-300 leading-relaxed font-normal">
                     {para}
                   </p>
                 ))}
@@ -162,7 +162,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
             <p className="text-xs font-mono text-gold uppercase tracking-widest font-bold mb-1">
               QUESTIONS ABOUT THIS POLICY?
             </p>
-            <p className="text-sm font-mono text-zinc-300">
+            <p className="text-sm sm:text-base font-sans text-zinc-300 font-medium">
               Contact our editorial team at{' '}
               <a href="mailto:info.fashiongraviti@gmail.com" className="text-gold underline hover:text-white transition-colors">
                 info.fashiongraviti@gmail.com
