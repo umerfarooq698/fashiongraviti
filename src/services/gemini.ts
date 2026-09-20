@@ -43,12 +43,12 @@ export async function generateFashionArticleWithGemini(
 ): Promise<FashionArticle> {
   const categoryConstraint = targetCategory ? `For the category: "${targetCategory}".` : '';
   const topicPrompt = promptOrTopic
-    ? `Write a comprehensive, completely unique 1000–1200 word high-fashion editorial article based on the keyword: "${promptOrTopic}". ${categoryConstraint}`
-    : `Write a comprehensive, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
+    ? `Write a detailed, completely unique 1000–1200 word high-fashion editorial article based on the keyword: "${promptOrTopic}". ${categoryConstraint}`
+    : `Write a detailed, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
 
   const systemInstruction = `
 You are the Chief Fashion Editor and Senior Luxury Columnist of "Fashion Graviti", an elite high-fashion publication (like Vogue, Harper's Bazaar, or The Gentlewoman).
-Generate a completely unique, comprehensive 1000–1200 word fashion article based strictly on the provided keyword in strict JSON format.
+Generate a completely unique, thorough 1000–1200 word fashion article based strictly on the provided keyword in strict JSON format.
 
 MANDATORY EDITORIAL AND SEO GUIDELINES:
 1. HEADLINE ("title"):

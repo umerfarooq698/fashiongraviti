@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Send, CheckCircle2, MessageSquare, Building2, HelpCircle, ShieldAlert, Clock, Copy, Check } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Mail, Building2, ShieldAlert, Clock, Copy, Check, Sparkles, Feather, Camera, FileText, CheckCircle2 } from 'lucide-react';
 
 interface ContactPageProps {
   onNavigateHome?: () => void;
   onNavigateCategory?: (categoryId: string) => void;
 }
 
-export const ContactPage: React.FC<ContactPageProps> = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [department, setDepartment] = useState('Editorial Pitch and Features');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'Contact Fashion Graviti — Newsroom and Editorial Desks';
+    
+    // Set 140-character Google-compliant meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        'Contact the Fashion Graviti newsroom for runway pitches, collection lookbooks, press relations, fact checking, and editorial collaborations.'
+      );
+    }
   }, []);
 
   const handleCopyEmail = () => {
@@ -26,52 +29,41 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
     setTimeout(() => setIsCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !email || !message) return;
-
-    setIsSubmitted(true);
-
-    confetti({
-      particleCount: 40,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#8f121d', '#c59d54', '#ffffff'],
-    });
-
-    setTimeout(() => {
-      setName('');
-      setEmail('');
-      setSubject('');
-      setMessage('');
-    }, 4000);
-  };
-
-  const contactDesks = [
+  const editorialDesks = [
     {
-      title: 'Editorial and Story Pitches',
+      icon: <Feather className="w-5 h-5 text-gold" />,
+      title: 'Editorial Pitches and Essays',
       email: 'info.fashiongraviti@gmail.com',
-      description: 'Runway pitches, essays, designer monographs, and photo submissions.',
+      description: 'Proposals for runway critiques, designer monographs, fashion history retrospectives, and cultural style essays.',
+      guidelines: 'Include a 200-word synopsis, proposed word count (1000–1200 words), and samples of previous sartorial writing.',
     },
     {
-      title: 'Press and Media Relations',
+      icon: <Camera className="w-5 h-5 text-gold" />,
+      title: 'Press Releases and Lookbooks',
       email: 'info.fashiongraviti@gmail.com',
-      description: 'Lookbooks, accreditation inquiries, and official house press releases.',
+      description: 'Official luxury atelier announcements, seasonal lookbooks, campaign previews, and Paris/Milan fashion week invitations.',
+      guidelines: 'Attach high-resolution imagery links (300 DPI minimum), complete garment credits, and embargo dates if applicable.',
     },
     {
-      title: 'Luxury Partnerships and Sponsorships',
-      email: 'info.fashiongraviti@gmail.com',
-      description: 'Bespoke editorial campaigns, brand sponsorships, and curated events.',
-    },
-    {
+      icon: <ShieldAlert className="w-5 h-5 text-gold" />,
       title: 'Corrections and Fact-Checking',
       email: 'info.fashiongraviti@gmail.com',
-      description: 'Factual corrections, textile provenance inquiries, and attribution updates.',
+      description: 'Requests for factual corrections, material composition updates, designer provenance verifications, and historical date clarifications.',
+      guidelines: 'Include the specific article title, URL, exact line of text, and primary reference documentation.',
     },
     {
-      title: 'General Inquiries and Letters',
+      icon: <Sparkles className="w-5 h-5 text-gold" />,
+      title: 'Luxury Partnerships and Projects',
       email: 'info.fashiongraviti@gmail.com',
-      description: 'Reader feedback and direct communication with the editor-in-chief.',
+      description: 'Inquiries regarding bespoke editorial curations, exhibition partnerships, and institutional cultural collaborations.',
+      guidelines: 'All commercial collaborations remain strictly delineated from our independent runway critique.',
+    },
+    {
+      icon: <FileText className="w-5 h-5 text-gold" />,
+      title: 'Letters to the Editor-in-Chief',
+      email: 'info.fashiongraviti@gmail.com',
+      description: 'Direct commentary, critical responses to published essays, and general correspondence with our editorial board.',
+      guidelines: 'Letters may be selected for publication in upcoming seasonal digital issues with reader consent.',
     },
   ];
 
@@ -102,271 +94,235 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
     },
   ];
 
+  const submissionSteps = [
+    {
+      step: '01',
+      title: 'Subject Line Precision',
+      detail: 'Label your email clearly (e.g., "[Pitch] Modern Tailoring in Paris AW26" or "[Correction] Article Title"). This ensures immediate routing to the relevant editor.',
+    },
+    {
+      step: '02',
+      title: 'Editorial Review',
+      detail: 'Our senior editors evaluate submissions based on critical depth, originality of voice, and strict alignment with our luxury editorial standards.',
+    },
+    {
+      step: '03',
+      title: 'Response and Follow-Up',
+      detail: 'You will receive a formal response within 24 to 48 business hours. During major Fashion Week seasons, please allow up to 72 hours for collection pitches.',
+    },
+  ];
+
   return (
     <div className="w-full bg-noir text-white animate-fadeIn">
-      {/* Hero Header */}
-      <section className="relative border-b-2 border-white/20 bg-noir-pure py-16 md:py-20 px-4 sm:px-8 lg:px-12">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Hero Header Section */}
+      <section className="relative border-b-2 border-white/20 bg-noir-pure py-16 md:py-24 px-4 sm:px-8 lg:px-12 overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-xs font-mono uppercase tracking-widest font-extrabold mb-6">
             <Mail className="w-4 h-4 text-gold" />
             <span>CONTACT FASHION GRAVITI</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white uppercase leading-[1.1]">
-            Contact The Newsroom and Atelier
+            Connect with The Newsroom and Atelier
           </h1>
 
           <p className="mt-4 text-base sm:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
             Have an editorial tip, collection pitch, press release, or fact-checking inquiry? Reach out directly to our central newsroom desk.
           </p>
 
-          {/* Central Email Card */}
-          <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-3 p-3.5 bg-black border-2 border-gold/50 shadow-xl">
-            <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider font-bold">
-              Official Central Newsroom Desk:
-            </span>
+          {/* Central Email Action Card */}
+          <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-4 p-5 bg-black border-2 border-gold/50 shadow-2xl">
+            <div className="text-left">
+              <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider font-bold block">
+                Official Central Newsroom Desk
+              </span>
+              <a
+                href="mailto:info.fashiongraviti@gmail.com"
+                className="font-mono text-lg sm:text-xl text-gold hover:text-white font-bold transition-colors underline"
+              >
+                info.fashiongraviti@gmail.com
+              </a>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleCopyEmail}
+                className="px-4 py-2 bg-noir-card border border-white/20 hover:border-gold text-xs font-mono uppercase tracking-wider text-white hover:text-gold transition-colors inline-flex items-center gap-2 cursor-pointer"
+                title="Copy Email to Clipboard"
+              >
+                {isCopied ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-gold" />
+                    <span>Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy Address</span>
+                  </>
+                )}
+              </button>
+
+              <a
+                href="mailto:info.fashiongraviti@gmail.com"
+                className="px-4 py-2 bg-white text-black hover:bg-gold hover:text-black text-xs font-mono uppercase tracking-wider font-black transition-colors inline-flex items-center gap-2 no-underline"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Send Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial Desks Directory */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
+            NEWSROOM DIRECTORY
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
+            Dedicated Department Desks
+          </h2>
+          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
+            Direct your correspondence to the appropriate editorial desk for rapid review
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {editorialDesks.map((desk, idx) => (
+            <div
+              key={idx}
+              className="p-6 bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="p-3 bg-black border border-white/20 w-fit mb-4">
+                  {desk.icon}
+                </div>
+                <h3 className="text-lg font-serif font-bold text-white uppercase mb-1.5">
+                  {desk.title}
+                </h3>
+                <a
+                  href={`mailto:${desk.email}`}
+                  className="text-xs font-mono text-gold hover:text-white font-bold transition-colors underline block mb-3"
+                >
+                  {desk.email}
+                </a>
+                <p className="text-xs sm:text-sm font-sans text-zinc-300 font-medium leading-relaxed mb-4">
+                  {desk.description}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                <span className="text-gold uppercase font-bold block mb-1">Submission Notes:</span>
+                {desk.guidelines}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Global Bureaux and Operating Hours */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
+            GLOBAL LOCATIONS
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
+            Editorial Bureaux and Office Desks
+          </h2>
+          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
+            Our permanent presence across international luxury fashion capitals
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {bureaus.map((bureau, idx) => (
+            <div key={idx} className="p-6 bg-noir-card border border-white/15 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-gold font-mono text-xs font-black uppercase tracking-wider mb-2">
+                  <Building2 className="w-4 h-4 text-gold" />
+                  <span>{bureau.city} BUREAU</span>
+                </div>
+                <p className="text-xs font-mono text-white mb-2">
+                  {bureau.address}
+                </p>
+                <p className="text-xs font-sans text-zinc-400 leading-relaxed mb-3">
+                  {bureau.focus}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-400 flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-gold flex-shrink-0" />
+                <span>{bureau.hours}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Submission Protocol & Response SLA */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
+            EDITORIAL PROCESS
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
+            How We Handle Incoming Dispatches
+          </h2>
+          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
+            Transparent submission evaluation and fact-checking protocols
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {submissionSteps.map((step, idx) => (
+            <div key={idx} className="p-6 bg-noir-card border-2 border-white/15 relative">
+              <span className="text-3xl font-serif font-black text-gold/30 block mb-2">
+                {step.step}
+              </span>
+              <h3 className="text-base font-serif font-bold text-white uppercase mb-2">
+                {step.title}
+              </h3>
+              <p className="text-xs sm:text-sm font-sans text-zinc-300 leading-relaxed">
+                {step.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Bottom CTA Banner */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16">
+        <div className="p-8 sm:p-12 bg-noir-card border-2 border-white/20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-2">
+              <CheckCircle2 className="w-4 h-4 text-gold" />
+              <span>COMMUNICATION COMMITMENT</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white uppercase">
+              Rigorous and Accessible Fashion Journalism
+            </h3>
+            <p className="text-sm font-sans text-zinc-300 mt-2 leading-relaxed font-medium">
+              We value thoughtful dialogue with designers, readers, and critics worldwide. All communications are handled with strict journalistic confidentiality.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0">
             <a
               href="mailto:info.fashiongraviti@gmail.com"
-              className="font-mono text-sm sm:text-base text-gold hover:text-white font-bold transition-colors underline"
+              className="px-6 py-3 bg-white text-black hover:bg-gold hover:text-black font-mono text-xs uppercase tracking-widest font-black transition-all text-center no-underline shadow-lg"
             >
-              info.fashiongraviti@gmail.com
+              Email Central Desk
             </a>
-            <button
-              onClick={handleCopyEmail}
-              className="px-3 py-1.5 bg-noir-card border border-white/20 hover:border-gold text-xs font-mono uppercase tracking-wider text-white hover:text-gold transition-colors inline-flex items-center gap-1.5 cursor-pointer"
-              title="Copy Email to Clipboard"
-            >
-              {isCopied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-gold" />
-                  <span>Copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>Copy</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content Grid */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Direct Message Form (7 cols) */}
-          <div className="lg:col-span-7 bg-noir-card border-2 border-white/20 p-6 sm:p-10 shadow-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-2">
-              <MessageSquare className="w-4 h-4 text-gold" />
-              <span>TRANSMIT DISPATCH</span>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl font-serif font-black text-white uppercase mb-2">
-              Direct Desk Inquiry Form
-            </h2>
-            <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-6">
-              Average newsroom response window: 24 to 48 business hours
-            </p>
-
-            {isSubmitted ? (
-              <div className="py-12 text-center animate-fadeIn">
-                <CheckCircle2 className="w-16 h-16 text-gold mx-auto mb-4" />
-                <h3 className="text-2xl font-serif font-bold text-white uppercase mb-2">
-                  Dispatch Received
-                </h3>
-                <p className="text-sm font-sans text-zinc-300 max-w-md mx-auto leading-relaxed">
-                  Thank you for contacting Fashion Graviti. Your message has been forwarded to the {department} desk. Our editors will review and respond shortly.
-                </p>
-                <button
-                  onClick={() => setIsSubmitted(false)}
-                  className="mt-6 px-6 py-2.5 bg-white text-black font-mono text-xs uppercase tracking-widest font-black hover:bg-gold transition-colors cursor-pointer"
-                >
-                  Send Another Inquiry
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 font-bold">
-                      Your Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Jacqueline De Laurent"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-mono placeholder-zinc-600"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 font-bold">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="e.g. editor@atelier.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-mono placeholder-zinc-600"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 font-bold">
-                    Target Department / Desk *
-                  </label>
-                  <select
-                    value={department}
-                    onChange={(e) => setDepartment(e.target.value)}
-                    className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-xs font-mono uppercase cursor-pointer"
-                  >
-                    <option value="Editorial Pitch and Features">Editorial Pitch and Features</option>
-                    <option value="Press and Media Relations">Press and Media Relations</option>
-                    <option value="Luxury Partnerships and Advertising">Luxury Partnerships and Advertising</option>
-                    <option value="Corrections and Fact-Checking">Corrections and Fact-Checking</option>
-                    <option value="General Inquiries">General Inquiries</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 font-bold">
-                    Subject Line
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Haute Couture AW26 Lookbook Submission"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-mono placeholder-zinc-600"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 font-bold">
-                    Detailed Message *
-                  </label>
-                  <textarea
-                    rows={5}
-                    required
-                    placeholder="Provide details of your pitch, press inquiry, correction, or collaboration proposal..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-noir border border-white/20 p-3 text-white focus:outline-none focus:border-gold text-sm font-sans placeholder-zinc-600"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 bg-white text-black hover:bg-gold hover:text-black font-mono text-xs uppercase tracking-widest font-black transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-lg active:scale-98"
-                >
-                  <span>Submit Editorial Dispatch</span>
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
+            {onNavigateHome && (
+              <button
+                onClick={onNavigateHome}
+                className="px-6 py-3 border-2 border-white/30 text-white hover:border-gold hover:text-gold font-mono text-xs uppercase tracking-widest font-black transition-all text-center cursor-pointer"
+              >
+                Front Page
+              </button>
             )}
-          </div>
-
-          {/* Right Column: Direct Desks and Bureau Details (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Direct Desks */}
-            <div className="bg-noir-card border-2 border-white/20 p-6 sm:p-8">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-4">
-                <Mail className="w-4 h-4 text-gold" />
-                <span>DIRECT EDITORIAL DESKS</span>
-              </div>
-
-              <div className="space-y-4 divide-y divide-white/10">
-                {contactDesks.map((desk, idx) => (
-                  <div key={idx} className={idx > 0 ? 'pt-4' : ''}>
-                    <h4 className="text-sm font-serif font-bold text-white uppercase">
-                      {desk.title}
-                    </h4>
-                    <a
-                      href={`mailto:${desk.email}`}
-                      className="text-xs font-mono text-gold hover:text-white font-bold transition-colors block mt-0.5"
-                    >
-                      {desk.email}
-                    </a>
-                    <p className="text-xs text-zinc-400 font-sans mt-1">
-                      {desk.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Editorial Bureaus */}
-            <div className="bg-noir-card border-2 border-white/20 p-6 sm:p-8">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-4">
-                <Building2 className="w-4 h-4 text-gold" />
-                <span>GLOBAL EDITORIAL BUREAUS</span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
-                {bureaus.map((b, idx) => (
-                  <div key={idx} className="p-3 bg-black border border-white/10">
-                    <span className="text-gold font-black block">{b.city} BUREAU</span>
-                    <p className="text-zinc-300 mt-1 font-sans text-[11px]">{b.address}</p>
-                    <span className="text-[10px] text-zinc-400 flex items-center gap-1 mt-1">
-                      <Clock className="w-3 h-3 text-gold" />
-                      {b.hours}
-                    </span>
-                    <span className="text-[10px] text-zinc-500 block mt-1 uppercase">{b.focus}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Guidelines and Fact-Checking Policy Section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-12 border-t border-white/10">
-        <div className="text-center max-w-xl mx-auto mb-8">
-          <div className="flex items-center justify-center gap-1.5 text-xs font-mono text-gold uppercase font-bold mb-1">
-            <HelpCircle className="w-4 h-4 text-gold" />
-            <span>SUBMISSION AND EDITORIAL PROTOCOL</span>
-          </div>
-          <h3 className="text-2xl font-serif font-bold uppercase text-white">
-            Pitching and Accountability Guidelines
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs font-mono">
-          <div className="p-5 bg-noir-card border border-white/15">
-            <div className="flex items-center gap-2 text-gold font-black uppercase mb-2">
-              <CheckCircle2 className="w-4 h-4 text-gold" />
-              <span>1. PRESS ACCREDITATION</span>
-            </div>
-            <p className="text-zinc-300 font-sans leading-relaxed">
-              For runway and fashion week press access, please provide formal accreditation details, atelier name, and collection dates in your initial email.
-            </p>
-          </div>
-
-          <div className="p-5 bg-noir-card border border-white/15">
-            <div className="flex items-center gap-2 text-gold font-black uppercase mb-2">
-              <ShieldAlert className="w-4 h-4 text-gold" />
-              <span>2. CORRECTIONS AND PROVENANCE</span>
-            </div>
-            <p className="text-zinc-300 font-sans leading-relaxed">
-              To request a correction on garment materials, designer credits, or historical dates, please email info.fashiongraviti@gmail.com with specific article reference.
-            </p>
-          </div>
-
-          <div className="p-5 bg-noir-card border border-white/15">
-            <div className="flex items-center gap-2 text-gold font-black uppercase mb-2">
-              <Clock className="w-4 h-4 text-gold" />
-              <span>3. RESPONSE SLA</span>
-            </div>
-            <p className="text-zinc-300 font-sans leading-relaxed">
-              Our central editorial team reviews all submissions within 24 to 48 business hours. Urgent fashion week updates receive expedited priority.
-            </p>
           </div>
         </div>
       </section>
