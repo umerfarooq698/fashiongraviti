@@ -116,11 +116,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         caption: 'Photo by Clem Onojeghuo on Unsplash',
         alt: 'Textile atelier swatches featuring cool muted pastels and lavender wool fibers for soft summer styling',
       },
-      closingParagraphs: [
-        '## Summary and Conclusion',
-        'Adopting a soft summer color palette is an investment in sartorial longevity. It shifts the focus from rapid trend cycles toward enduring nuance, fabric provenance, and tonal harmony. By embracing misty greys, muted roses, and cool blues, one cultivates a personal aesthetic defined by poise, tranquility, and understated luxury.',
-      ],
-      conclusion: 'Mastering the soft summer color palette requires patience, an appreciation for subtlety, and an eye for tone. By prioritizing cool undertones, matte textiles, and harmonious pairings, one builds a wardrobe that transcends fleeting fads and exudes lasting grace.',
+      conclusion: 'Adopting a soft summer color palette is an investment in sartorial longevity. By prioritizing cool undertones, matte textiles, and harmonious pairings across slate grey, dusty rose, and muted sage, one builds a wardrobe that transcends fleeting fads and exudes lasting grace.',
       faqs: [
         {
           question: 'What is a soft summer color palette?',
