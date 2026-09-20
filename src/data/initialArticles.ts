@@ -78,6 +78,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     issueNumber: 'ISSUE NO. 09',
     locationTag: 'STOCKHOLM // ÖSTERMALM',
     featured: true,
+    coverStory: true,
     author: {
       name: 'Soren Lindqvist-Kovac',
       role: 'Avant-Garde and Heritage Brand Scholar',
@@ -260,7 +261,6 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     season: 'AUTUMN / WINTER 2026',
     issueNumber: 'ISSUE NO. 08',
     locationTag: 'PARIS // GRAND PALAIS',
-    coverStory: true,
     author: {
       name: 'Aurelia Vance-Sterling',
       role: 'Editor-in-Chief and Haute Couture Critic',

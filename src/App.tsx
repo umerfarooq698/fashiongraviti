@@ -18,7 +18,7 @@ import { Footer } from './components/Footer';
 import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v8';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v9';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v4';
 
 export function App() {
@@ -207,9 +207,9 @@ export function App() {
     });
   }, [articles]);
 
-  // Featured Cover Story article
+  // Featured Cover Story article: The latest/newest article is always the top hero story
   const coverStoryArticle = useMemo(() => {
-    return articles.find((a) => a.coverStory) || articles[0];
+    return articles[0];
   }, [articles]);
 
   // Filtered articles list
