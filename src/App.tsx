@@ -391,11 +391,6 @@ export function App() {
         onSelectCategory={handleSelectCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
-        bookmarksCount={bookmarkedIds.length}
-        onOpenBookmarks={() => setIsBookmarksOpen(true)}
-        onOpenLookbook={() => setIsLookbookOpen(true)}
-        onNavigateAbout={handleNavigateAbout}
-        onNavigateContact={handleNavigateContact}
       />
 
       {/* 2. Runway Ticker Tape */}

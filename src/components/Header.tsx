@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, Bookmark, Compass } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import type { FashionCategory } from '../types/fashion';
 
 interface HeaderProps {
@@ -8,11 +8,6 @@ interface HeaderProps {
   onSelectCategory: (id: string) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
-  bookmarksCount?: number;
-  onOpenBookmarks?: () => void;
-  onOpenLookbook?: () => void;
-  onNavigateAbout?: () => void;
-  onNavigateContact?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -21,11 +16,6 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectCategory,
   searchQuery,
   onSearchChange,
-  bookmarksCount = 0,
-  onOpenBookmarks,
-  onOpenLookbook,
-  onNavigateAbout,
-  onNavigateContact,
 }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -65,47 +55,8 @@ export const Header: React.FC<HeaderProps> = ({
           <span className="hidden md:inline text-gold font-semibold">VOLUME 2026</span>
         </div>
 
-        {/* Header Right Action Links */}
-        <div className="flex items-center space-x-3 sm:space-x-4 text-[11px] font-mono font-bold">
-          {onOpenBookmarks && (
-            <button
-              onClick={onOpenBookmarks}
-              className="text-zinc-300 hover:text-gold flex items-center gap-1.5 transition-colors cursor-pointer"
-              title="Open Saved Articles Vault"
-            >
-              <Bookmark className="w-3.5 h-3.5 text-gold" />
-              <span>VAULT ({bookmarksCount})</span>
-            </button>
-          )}
-
-          {onOpenLookbook && (
-            <button
-              onClick={onOpenLookbook}
-              className="text-zinc-300 hover:text-gold flex items-center gap-1.5 transition-colors cursor-pointer hidden sm:flex"
-              title="Open Lookbook Archive"
-            >
-              <Compass className="w-3.5 h-3.5 text-gold" />
-              <span>LOOKBOOK</span>
-            </button>
-          )}
-
-          {onNavigateAbout && (
-            <button
-              onClick={onNavigateAbout}
-              className="text-zinc-400 hover:text-white transition-colors cursor-pointer hidden md:inline uppercase"
-            >
-              ABOUT
-            </button>
-          )}
-
-          {onNavigateContact && (
-            <button
-              onClick={onNavigateContact}
-              className="text-zinc-400 hover:text-white transition-colors cursor-pointer hidden md:inline uppercase"
-            >
-              CONTACT
-            </button>
-          )}
+        <div className="text-[11px] font-mono font-bold text-zinc-400 hidden sm:block uppercase">
+          GLOBAL FASHION AND RUNWAY EDITORIAL
         </div>
       </div>
 
