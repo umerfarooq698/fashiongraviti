@@ -34,6 +34,46 @@ export interface GeminiGeneratedArticle {
   mood: 'Dark Romanticism' | 'Quiet Luxury' | 'Opulent Minimalism' | 'Avant-Garde' | 'Sustainable Tech';
 }
 
+export function enforceTitle55to60(rawTitle: string): string {
+  let title = (rawTitle || '').replace(/\s+/g, ' ').replace(/&/g, 'and').trim();
+  if (title.length >= 55 && title.length <= 60) {
+    return title;
+  }
+  if (title.length > 60) {
+    let truncated = title.slice(0, 60);
+    const lastSpace = truncated.lastIndexOf(' ');
+    if (lastSpace >= 45) {
+      truncated = truncated.slice(0, lastSpace);
+    }
+    if (truncated.length < 55) {
+      const candidates = [' Style', ' Notes', ' Trends', ' Report', ' Mode'];
+      for (const c of candidates) {
+        if ((truncated + c).length >= 55 && (truncated + c).length <= 60) {
+          return truncated + c;
+        }
+      }
+      return title.slice(0, 60);
+    }
+    return truncated;
+  }
+  if (title.length < 55) {
+    const candidates = [
+      ': Modern Proportions and Runway Style',
+      ': Sartorial Proportions and Trends',
+      ': Runway Notes and Modern Proportions',
+      ': Modern Atelier and Styling Notes',
+      ': Editorial Luxury and Runway Notes',
+    ];
+    for (const c of candidates) {
+      const combo = `${title}${c}`;
+      if (combo.length >= 55 && combo.length <= 60) {
+        return combo;
+      }
+    }
+  }
+  return title;
+}
+
 /**
  * Generates a full high-fashion editorial article using Gemini 3.6 Flash and Live Unsplash Imagery
  */
@@ -172,7 +212,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     const authorProfile = getAuthorProfile(chosenAuthorName);
 
     const articleId = `gemini-story-${Date.now()}`;
-    const slug = parsed.title
+    const finalTitle = enforceTitle55to60(parsed.title);
+    const slug = finalTitle
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
@@ -194,7 +235,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
 
     const article: FashionArticle = {
       id: articleId,
-      title: parsed.title,
+      title: finalTitle,
       subtitle: parsed.subtitle,
       slug: slug || articleId,
       category: parsed.category || 'fashion-news',
@@ -253,7 +294,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     const articleId = `gemini-story-${Date.now()}`;
     return {
       id: articleId,
-      title: promptOrTopic ? `${promptOrTopic}: Editorial Runway Analysis` : 'Autumn Runway Bulletin: Modern Proportions and Atelier Craftsmanship',
+      title: enforceTitle55to60(promptOrTopic ? `${promptOrTopic}: Editorial Runway Analysis` : 'Autumn Runway Bulletin: Modern Proportions and Atelier Art'),
       subtitle: 'Inside the newest couture collections exploring sculptural tailoring, rare natural fibers, and contemporary luxury.',
       slug: `editorial-analysis-${Date.now()}`,
       category: (targetCategory as any) || 'fashion-news',

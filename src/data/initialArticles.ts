@@ -69,7 +69,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
     id: 'article-soft-summer-color-palette',
-    title: 'The Art of the Soft Summer Color Palette: Curating Cool and Muted Elegance',
+    title: 'The Soft Summer Color Palette: Cool Tones and Muted Luxury',
     subtitle: 'Soft summer color palette pairs cool muted tones dusty rose slate blue and sage green for effortless understated luxury wardrobes every day.',
     slug: 'soft-summer-color-palette',
     category: 'fashion-trends',
@@ -252,7 +252,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-01',
-    title: 'Paris Fashion Week News: Dramatic Architectural Silhouettes Redefine Haute Couture',
+    title: 'Paris Fashion Week: Architectural Haute Couture Runway News',
     subtitle: 'Inside the Grand Palais: A masterclass in sculpted double-faced wool, obsidian silk faille, and architectural draping on Paris runway shows.',
     slug: 'paris-fashion-week-news-haute-couture-grand-palais',
     category: 'fashion-news',
@@ -306,7 +306,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-02',
-    title: 'The "Quiet Luxury" Trend: Why Understated Cashmere and Tailoring are Dominating 2026',
+    title: 'Quiet Luxury Fashion: Cashmere and Tailoring Dominance 2026',
     subtitle: 'From double-faced oatmeal alpaca coats to unbranded wool trousers, tactile luxury and minimalist proportions dominate modern styling trends.',
     slug: 'quiet-luxury-fashion-trends-cashmere-tailoring',
     category: 'fashion-trends',
@@ -350,7 +350,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-03',
-    title: 'Celebrity Style Iconography: The Most Daring Met Gala and Red Carpet Moments',
+    title: 'Celebrity Red Carpet Style: Defining Iconic Runway Moments',
     subtitle: 'From vintage archival couture revivals to custom sculptural gowns, how iconic cultural celebrities define timeless red carpet fashion looks.',
     slug: 'celebrity-style-met-gala-red-carpet-iconography',
     category: 'celebrity',
@@ -390,7 +390,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-04',
-    title: 'Inside Designers And Brands: How Iconic Fashion Houses Build Eternal Legacy',
+    title: 'Inside Designers And Brands: Fashion Houses and Atelier Art',
     subtitle: 'From Maison Margiela deconstruction to Rick Owens structuralism, how heritage ateliers maintain supreme mastery over pure luxury silhouette.',
     slug: 'inside-designers-and-brands-fashion-houses-legacy',
     category: 'designers-brands',
@@ -431,7 +431,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-05',
-    title: 'Backstage Beauty Secrets: The Glowing Skin and Runway Lip Trends to Know',
+    title: 'Backstage Beauty Secrets: Glowing Skin and Runway Lip Trends',
     subtitle: 'Master makeup artists and skincare directors present backstage beauty prep, luminous glass skin finishes, and signature seasonal fragrances.',
     slug: 'beauty-backstage-runway-skincare-makeup-trends',
     category: 'beauty',
@@ -472,7 +472,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-06',
-    title: 'How to Style: The Master Guide to Autumn Layering, Tailored Coats and Proportions',
+    title: 'How to Style Autumn Coats: Tailored Layering and Proportions',
     subtitle: 'Balancing oversized double-breasted coats with slim trousers and subtle monochrome layering creates an impeccably tailored sartorial finish.',
     slug: 'how-to-style-autumn-layering-tailored-coats-guide',
     category: 'how-to-style',
@@ -513,7 +513,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-07',
-    title: 'Breaking Fashion News: Next-Generation Circular Textiles Adopted by Luxury Giants',
+    title: 'Breaking Fashion News: Circular Textiles in Luxury Ateliers',
     subtitle: 'European luxury houses officially integrate lab-grown bio-silk fabrics and mycelium leather alternatives into modern runway collections now.',
     slug: 'fashion-news-circular-textiles-luxury-conglomerates',
     category: 'fashion-news',
