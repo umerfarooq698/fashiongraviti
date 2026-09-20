@@ -132,20 +132,20 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
       conclusion: 'The lasting relevance of 90s fashion proves that immaculate tailoring, premium natural fabrics, and unpretentious simplicity never go out of style. By investing in versatile staple garments and focusing on clean proportions, you create a timeless wardrobe that feels effortlessly modern in any setting.',
       faqs: [
         {
-          question: 'What are the first three pieces to buy when starting a 90s fashion wardrobe?',
-          answer: 'Begin with a high-quality oversized menswear blazer in neutral wool, a pair of rigid high-rise straight-leg jeans, and a bias-cut silk slip dress. These three foundational pieces can be styled in dozens of versatile ways.',
+          question: 'Which key pieces define 90s fashion?',
+          answer: 'An oversized menswear blazer, rigid straight-leg jeans, and a bias-cut silk slip dress.',
         },
         {
-          question: 'How can I wear a 90s slip dress in colder seasons?',
-          answer: 'Layer a fine-gauge cashmere turtleneck underneath the slip dress, or pair the dress with an oversized chunky knit sweater and knee-high leather boots for a warm, textural contrast.',
+          question: 'How to wear a slip dress in winter?',
+          answer: 'Layer a fine-knit turtleneck underneath and pair with an oversized wool coat and boots.',
         },
         {
-          question: 'What footwear works best with 90s straight-leg denim?',
-          answer: 'Straight-leg jeans pair effortlessly with square-toe ankle boots, classic leather loafers, and minimalist low-profile sneakers. For evening, swap for kitten-heel mules.',
+          question: 'What footwear best matches 90s straight-leg jeans?',
+          answer: 'Square-toe boots, classic leather loafers, and minimalist low-profile sneakers.',
         },
         {
-          question: 'How do I care for 100% rigid cotton vintage denim?',
-          answer: 'Wash rigid denim inside out in cold water on a gentle cycle, using mild detergent, and always air dry flat to preserve the fabric structure and authentic color wash.',
+          question: 'How should rigid cotton denim be washed?',
+          answer: 'Wash inside-out in cold water on a gentle cycle and air dry flat to preserve fit.',
         },
       ],
       designerCredits: [

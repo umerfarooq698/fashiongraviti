@@ -78,9 +78,9 @@ MANDATORY EDITORIAL & SEO GUIDELINES:
    - Never mention AI, SEO, algorithms, prompts, or content generation.
    - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", "it is worth noting that".
    - Never use the forbidden words: 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth'.
-8. CONCLUSION & 3–4 FAQS:
-   - Include a concise, impactful "conclusion" summary (3-4 sentences).
-   - Provide 3–4 practical, highly relevant "faqs" that directly answer real reader questions about the keyword.
+8. CONCLUSION & 3–4 FAQS (SHORT & CONCISE):
+   - Include a concise, impactful "conclusion" summary (2-3 sentences).
+   - Provide 3–4 practical, highly relevant "faqs". Keep BOTH questions and answers very short, punchy, and direct (question: 5–9 words; answer: strictly 1–2 short sentences / under 25 words).
 9. VISUAL SEARCH PHRASE:
    - Provide a short, precise 3-5 word "visualSearchPhrase" describing the ideal runway/editorial photo to fetch via Unsplash API.
 
@@ -110,9 +110,9 @@ JSON Schema:
   "secondaryImageCaption": "Backstage / Atelier description caption",
   "conclusion": "A short, sharp takeaway on the aesthetic and future styling trajectory.",
   "faqs": [
-    { "question": "Clear reader question regarding the keyword?", "answer": "Practical, concise answer (2-3 sentences)." },
-    { "question": "Second relevant fashion question?", "answer": "Actionable advice and tip." },
-    { "question": "Third practical question?", "answer": "Fabric or styling guidance." }
+    { "question": "Short direct question (under 10 words)?", "answer": "Crisp direct answer (1-2 short sentences)." },
+    { "question": "Second short question?", "answer": "Brief actionable fashion tip." },
+    { "question": "Third short question?", "answer": "Short fabric or styling advice." }
   ],
   "closingParagraphs": [
     "Closing reflection on modern elegance and timeless design."
