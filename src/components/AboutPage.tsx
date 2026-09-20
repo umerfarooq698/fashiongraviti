@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Sparkles, ShieldCheck, Compass, Award, Feather } from 'lucide-react';
+import { Sparkles, ShieldCheck, Compass, Award, Feather, Mail, Building2, Scale, BookOpen } from 'lucide-react';
 import { getAuthorSlug } from '../data/authors';
 
 interface AboutPageProps {
@@ -22,55 +22,105 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     {
       name: 'Eleanora Vane',
       role: 'Chief Fashion Editor',
+      location: 'Paris, France',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
       bio: 'Senior fashion critic and editor with 15 years presiding over Paris Haute Couture and Milan fashion weeks, specializing in architectural tailoring, runway dispatches, and atelier crafts.',
     },
     {
       name: 'Massimo Dellacorte',
       role: 'Senior Style Editor',
+      location: 'Milan, Italy',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
       bio: 'Milan-based menswear scholar and tailoring critic documenting quiet luxury, rare cashmere fibers, and seasonal wardrobe proportions.',
     },
     {
       name: 'Kenji Takahashi',
       role: 'Celebrity and Culture Editor',
+      location: 'Tokyo and New York',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
       bio: 'Archival fashion curator and culture correspondent reporting on celebrity red carpet iconography and avant-garde street style across Tokyo and New York.',
     },
     {
       name: 'Felix Van Der Bilt',
       role: 'Brand Historian and Critic',
+      location: 'Antwerp, Belgium',
       avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80',
       bio: 'Antwerp-trained design critic exploring the structural history, atelier craftsmanship, and timeless legacies of iconic luxury fashion houses.',
     },
   ];
 
-  const pillars = [
+  const editorialPillars = [
     {
       icon: <Feather className="w-6 h-6 text-gold" />,
-      title: 'Independent Fashion Journalism',
-      description: 'Uncompromising runway critique, analytical fashion week dispatches, and monographic profiles untouched by commercial compromises.',
+      title: 'Independent Runway Critique',
+      description: 'Firsthand reporting directly from international fashion week shows in Paris, Milan, London, and New York, uninfluenced by commercial bias.',
     },
     {
       icon: <Sparkles className="w-6 h-6 text-gold" />,
       title: 'Haute Couture and Atelier Focus',
-      description: 'Celebrating master craftsmanship, textile innovation, and heritage houses shaping the pinnacle of global luxury.',
+      description: 'Dedicated examination of artisanal metiers, textile provenance, and bespoke craftsmanship from the world’s leading luxury fashion houses.',
     },
     {
       icon: <Compass className="w-6 h-6 text-gold" />,
       title: 'Trend Intelligence and Forecasting',
-      description: 'Decoding seasonal shifts, silhouette revolutions, and aesthetic currents moving from runway showcases to everyday style.',
+      description: 'Decoding seasonal shifts, silhouette evolutions, and color palettes transitioning from runway presentations to everyday wardrobes.',
     },
     {
       icon: <Award className="w-6 h-6 text-gold" />,
       title: 'Celebrity and Red Carpet Culture',
-      description: 'Authoritative analysis of iconic red carpet moments, Met Gala couture, award season styling, and celebrity wardrobes.',
+      description: 'Authoritative analysis of iconic red carpet moments, Met Gala couture, styling breakdowns, and archival vintage revivals.',
+    },
+  ];
+
+  const journalisticStandards = [
+    {
+      icon: <Scale className="w-5 h-5 text-gold" />,
+      title: 'Editorial Independence',
+      description: 'We maintain a strict firewall between editorial critiques and commercial advertisements. Garments, collections, and designers featured on Fashion Graviti are chosen purely on artistic merit and cultural relevance.',
+    },
+    {
+      icon: <ShieldCheck className="w-5 h-5 text-gold" />,
+      title: 'Factual Accuracy and Provenance',
+      description: 'Our writers and editors verify fabric compositions, collection season histories, designer credits, and runway dates prior to publication. Errors are corrected promptly with full transparency.',
+    },
+    {
+      icon: <BookOpen className="w-5 h-5 text-gold" />,
+      title: 'Original Commentary and Insight',
+      description: 'Every article reflects genuine perspective, historical fashion context, and professional analysis from writers with deep domain experience in luxury fashion and textile arts.',
+    },
+    {
+      icon: <Mail className="w-5 h-5 text-gold" />,
+      title: 'Reader Feedback and Accountability',
+      description: 'We welcome inquiries, feedback, and corrections directly from readers, designers, and industry professionals at info.fashiongraviti@gmail.com.',
+    },
+  ];
+
+  const bureaus = [
+    {
+      city: 'PARIS',
+      address: 'Place Vendôme, 75001 Paris, France',
+      focus: 'Haute Couture and Heritage Luxury Houses',
+    },
+    {
+      city: 'MILAN',
+      address: 'Via Montenapoleone, 20121 Milano, Italy',
+      focus: 'Menswear, Cashmere, and Tailoring Ateliers',
+    },
+    {
+      city: 'NEW YORK',
+      address: 'Madison Avenue, New York, NY 10022, USA',
+      focus: 'Celebrity Styling and Red Carpet Culture',
+    },
+    {
+      city: 'TOKYO',
+      address: 'Shibuya-ku, Tokyo 150-0001, Japan',
+      focus: 'Avant-Garde Design and Textile Engineering',
     },
   ];
 
   return (
     <div className="w-full bg-noir text-white animate-fadeIn">
-      {/* Hero Section */}
+      {/* Hero Header Section */}
       <section className="relative border-b-2 border-white/20 bg-noir-pure py-16 md:py-24 px-4 sm:px-8 lg:px-12 overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-xs font-mono uppercase tracking-widest font-extrabold mb-6">
@@ -79,7 +129,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.1] uppercase">
-            The Definitive Authority on High Fashion and Runway Culture
+            The Independent Authority on Global Fashion and Runway Critique
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl font-editorial italic text-zinc-200 max-w-3xl mx-auto leading-relaxed">
@@ -88,37 +138,37 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         </div>
       </section>
 
-      {/* Manifesto Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
+      {/* Manifesto and Origin Section */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-4">
             <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
-              OUR MANIFESTO
+              OUR MISSION
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white uppercase tracking-tight">
-              A New Era of Sartorial Critique
+              A Modern Standard for Fashion Journalism
             </h2>
           </div>
 
           <div className="md:col-span-8 space-y-5 text-base sm:text-lg font-sans text-zinc-200 leading-relaxed font-medium">
             <p className="drop-cap text-xl sm:text-2xl text-white font-semibold leading-relaxed">
-              Founded in 2026, <strong>FASHION GRAVITI</strong> was established to restore depth, aesthetic reverence, and critical rigor to digital fashion journalism.
+              Founded in 2026, <strong>FASHION GRAVITI</strong> was established to bring critical rigor, textile analysis, and aesthetic reverence back to modern fashion publishing.
             </p>
             <p>
-              In an era of fleeting micro-trends and surface-level soundbites, we stand as a dedicated digital sanctuary for true sartorial connoisseurs. From the historic Grand Palais ateliers in Paris to the avant-garde underground studios of Tokyo, our editorial correspondents deliver firsthand perspectives on the creators and collections shaping modern luxury.
+              In a digital environment saturated with superficial noise and fast-fashion consumerism, Fashion Graviti serves as an independent publication for discerning individuals who appreciate the artistry, history, and craft of tailoring. Our correspondents attend premier runway showcases from Paris to Tokyo, reporting directly on the collections, designers, and cultural movements shaping modern luxury.
             </p>
             <p>
-              Every essay, monograph, and review published on Fashion Graviti undergoes meticulous curation by seasoned fashion critics, textile researchers, and visual directors committed to honoring the artistry of dress.
+              Every critique, review, and trend dispatch published on our platform adheres to strict journalistic principles, providing readers with accurate analysis, practical wardrobe guidance, and authentic sartorial critique.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Editorial Pillars Grid */}
+      {/* Editorial Scope Pillars */}
       <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
-            EDITORIAL SCOPE
+            EDITORIAL COVERAGE
           </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
             What We Document
@@ -126,7 +176,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillars.map((pillar, idx) => (
+          {editorialPillars.map((pillar, idx) => (
             <div
               key={idx}
               className="p-6 bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 flex flex-col justify-between"
@@ -147,7 +197,40 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         </div>
       </section>
 
-      {/* Editorial Board / Team Section */}
+      {/* Journalistic Integrity and E-E-A-T Standards */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
+            TRUST AND TRANSPARENCY
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
+            Our Journalistic Standards
+          </h2>
+          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
+            Built on editorial rigor, verified sourcing, and complete independence
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {journalisticStandards.map((standard, idx) => (
+            <div key={idx} className="p-6 bg-noir-card border border-white/15">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-black border border-white/20">
+                  {standard.icon}
+                </div>
+                <h3 className="text-base sm:text-lg font-serif font-bold text-white uppercase">
+                  {standard.title}
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm font-sans text-zinc-300 font-medium leading-relaxed">
+                {standard.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Editorial Masthead and Authors */}
       <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
@@ -157,7 +240,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             The Editorial Board
           </h2>
           <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
-            Correspondents stationed across Paris, London, Milan, and Tokyo
+            Fashion critics and historians stationed across major fashion capitals
           </p>
         </div>
 
@@ -184,6 +267,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <p className="text-xs font-mono text-gold uppercase font-bold mt-0.5">
                 {member.role}
               </p>
+              <p className="text-[11px] font-mono text-zinc-400 uppercase mt-0.5">
+                {member.location}
+              </p>
               <p className="text-xs text-zinc-300 font-sans mt-3 leading-relaxed">
                 {member.bio}
               </p>
@@ -195,20 +281,60 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         </div>
       </section>
 
-      {/* Editorial Standards & Ethics Banner */}
+      {/* Global Bureaux and Contact Details */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
+            GLOBAL PRESENCE
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
+            Editorial Bureaux and Desks
+          </h2>
+          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
+            Our teams operate across four key luxury fashion hubs
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {bureaus.map((bureau, idx) => (
+            <div key={idx} className="p-6 bg-noir-card border border-white/15 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-gold font-mono text-xs font-black uppercase tracking-wider mb-2">
+                  <Building2 className="w-4 h-4 text-gold" />
+                  <span>{bureau.city} BUREAU</span>
+                </div>
+                <p className="text-xs font-mono text-white mb-2">
+                  {bureau.address}
+                </p>
+                <p className="text-xs font-sans text-zinc-400 leading-relaxed">
+                  {bureau.focus}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact and Direct Channel */}
       <section className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16">
         <div className="p-8 sm:p-12 bg-noir-card border-2 border-white/20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl">
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-2">
-              <ShieldCheck className="w-4 h-4 text-gold" />
-              <span>EDITORIAL INTEGRITY GUARANTEE</span>
+              <Mail className="w-4 h-4 text-gold" />
+              <span>DIRECT EDITORIAL CONTACT</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white uppercase">
-              Independent. Rigorous. Unfiltered.
+              Get in Touch with Our Newsroom
             </h3>
             <p className="text-sm font-sans text-zinc-300 mt-2 leading-relaxed font-medium">
-              We maintain strict separation between editorial critique and commercial partnerships. Our reviews reflect authentic sartorial evaluation by dedicated fashion scholars.
+              For story pitches, press credentials, corrections, and editorial feedback, email our central newsroom desk directly:
             </p>
+            <a
+              href="mailto:info.fashiongraviti@gmail.com"
+              className="mt-3 inline-block font-mono text-base sm:text-lg text-gold hover:text-white font-bold transition-colors underline"
+            >
+              info.fashiongraviti@gmail.com
+            </a>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0">
@@ -222,7 +348,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               onClick={onNavigateHome}
               className="px-6 py-3 border-2 border-white/30 text-white hover:border-gold hover:text-gold font-mono text-xs uppercase tracking-widest font-black transition-all text-center cursor-pointer"
             >
-              Explore Feed
+              Front Page
             </button>
           </div>
         </div>

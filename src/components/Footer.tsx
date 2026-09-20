@@ -66,6 +66,14 @@ export const Footer: React.FC<FooterProps> = ({
           <p className="mt-4 text-xs font-sans text-zinc-300 font-medium leading-relaxed max-w-md">
             Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
+          <div className="mt-4">
+            <a
+              href="mailto:info.fashiongraviti@gmail.com"
+              className="text-xs font-mono text-gold hover:text-white transition-colors underline"
+            >
+              info.fashiongraviti@gmail.com
+            </a>
+          </div>
         </div>
 
         {/* Departments Sitemap (4 cols) */}

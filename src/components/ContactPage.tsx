@@ -43,22 +43,22 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
   const contactDesks = [
     {
       title: 'Editorial and Story Pitches',
-      email: 'editorial@fashiongraviti.com',
+      email: 'info.fashiongraviti@gmail.com',
       description: 'Runway pitches, essays, designer monographs, and photo submissions.',
     },
     {
       title: 'Press and Media Relations',
-      email: 'press@fashiongraviti.com',
+      email: 'info.fashiongraviti@gmail.com',
       description: 'Lookbooks, accreditation inquiries, and official house press releases.',
     },
     {
       title: 'Luxury Partnerships',
-      email: 'partnerships@fashiongraviti.com',
+      email: 'info.fashiongraviti@gmail.com',
       description: 'Bespoke editorial campaigns, brand sponsorships, and curated events.',
     },
     {
       title: 'General Inquiries and Letters',
-      email: 'letters@fashiongraviti.com',
+      email: 'info.fashiongraviti@gmail.com',
       description: 'Reader feedback, corrections, and inquiries to the editor-in-chief.',
     },
   ];
