@@ -451,9 +451,14 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {/* Conclusion */}
           {article.content.conclusion && (
-            <p className="leading-relaxed">
-              {article.content.conclusion}
-            </p>
+            <div>
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10 tracking-tight">
+                Conclusion
+              </h2>
+              <p className="leading-relaxed">
+                {article.content.conclusion}
+              </p>
+            </div>
           )}
 
           {/* Dedicated FAQs Section */}
