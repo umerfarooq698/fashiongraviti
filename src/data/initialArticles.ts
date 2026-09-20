@@ -68,6 +68,101 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
+    id: 'article-soft-summer-color-palette',
+    title: 'The Art of the Soft Summer Color Palette: Curating Cool and Muted Elegance',
+    subtitle: 'Soft summer color palette pairs cool muted tones dusty rose slate blue and sage green for effortless understated luxury wardrobes every day.',
+    slug: 'soft-summer-color-palette',
+    category: 'fashion-trends',
+    categoryLabel: 'Fashion Trends',
+    season: 'SPRING / SUMMER 2026',
+    issueNumber: 'ISSUE NO. 09',
+    locationTag: 'STOCKHOLM // ÖSTERMALM',
+    featured: true,
+    author: {
+      name: 'Soren Lindqvist-Kovac',
+      role: 'Avant-Garde and Heritage Brand Scholar',
+      location: 'Stockholm, Sweden',
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+      instagram: '@soren_lindqvist',
+    },
+    publishedAt: 'SEPTEMBER 20, 2026',
+    readTime: '7 MIN READ',
+    coverImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=85',
+    coverImageCaption: 'Photo by Aliona Gumeniuk on Unsplash',
+    coverImageAlt: 'Model wearing a soft summer color palette layered cashmere coat in muted dusty sage and slate grey',
+    content: {
+      dropCapText: 'The soft summer color palette represents the pinnacle of quiet luxury, celebrating subdued hues that whisper rather than shout. Situated at the harmonious intersection of coolness and delicate desaturation, this seasonal spectrum offers a serene approach to personal dressing that resonates deeply with timeless tailoring.',
+      bodyParagraphs: [
+        '## Understanding the Cool and Muted Harmony',
+        'Seasonal color analysis categorizes soft summer as the bridge between the breezy coolness of summer and the grounded earthiness of autumn. Unlike true summer, which favors icy clarity, soft summer embraces a dusty grey undertone that softens every pigment. The result is a misty, watercolor effect that flatters cool-to-neutral complexions without creating harsh visual contrast.',
+        'In an era where vibrant synthetic brights often dominate digital feeds, the soft summer spectrum acts as an antidote. International couture houses have embraced this contemplative mood, crafting collections centered on washed slate, vintage lavender, seafoam grey, and powdered rose. These colors convey thoughtful sophistication because they require precise dyeing techniques and high-grade natural textiles to realize properly.',
+        '## Signature Shades: From Dusty Rose to Slate Blue',
+        'Building a capsule around this palette begins with identifying the primary chromatic anchors. The dominant base colors are charcoal grey, soft navy, cool taupe, and stone grey, completely replacing stark black. Black can overpower soft summer features, whereas a rich graphite or slate creates an equally formal foundation with far greater subtlety.',
+        'Accent colors within this family provide gentle luminescence without jarring the eye. Dusty rose, antique mauve, soft heather, smoky teal, and muted sage function as chromatic highlights. When layered together, these shades create an effortless visual rhythm reminiscent of Scandinavian mist or morning dew on limestone architecture.',
+        '## Fabric Selection and Tactile Dimensions',
+        'Because soft summer tones lack harsh saturation, the tactile quality of the garment becomes paramount. Texture introduces shadow, drape, and dimension, preventing monochromatic outfits from appearing flat or washed out.',
+        'Matte fabrics perform best within this palette. Brushed cashmere, washed Belgian linen, raw silk noil, virgin wool flannel, and fine cotton poplin absorb light gently, enhancing the delicate smokiness of the dyes. Shiny or high-gloss synthetics can distort these nuanced pigments, so opting for natural, textured weaves ensures maximum sartorial poise.',
+        '## Styling Monochromatic and Tonal Ensembles',
+        'The most effective method for wearing a soft summer palette is tonal dressing. Rather than pairing contrasting opposites, assemble an outfit through closely related variations of a single hue. A charcoal wool trouser paired with a heather-grey cashmere crewneck and a pale slate trench coat yields a refined silhouette that feels cohesive and intentional.',
+        'Accessorizing requires a similar delicacy. Jewelry should feature cool metals such as brushed silver, white gold, or antiqued platinum, as yellow gold can disrupt the cool undertones. Footwear in mushroom suede, grey pebble-grain leather, or muted taupe grounds the look without introducing jarring color breaks.',
+      ],
+      pullQuote: {
+        text: 'The beauty of soft summer lies in its gentleness. It proves that color does not need high saturation to command attention and convey supreme elegance.',
+        attribution: 'Soren Lindqvist-Kovac',
+        role: 'Avant-Garde and Heritage Brand Scholar',
+      },
+      secondaryImage: {
+        url: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=85',
+        caption: 'Photo by Clem Onojeghuo on Unsplash',
+        alt: 'Textile atelier swatches featuring cool muted pastels and lavender wool fibers for soft summer styling',
+      },
+      closingParagraphs: [
+        '## Summary and Conclusion',
+        'Adopting a soft summer color palette is an investment in sartorial longevity. It shifts the focus from rapid trend cycles toward enduring nuance, fabric provenance, and tonal harmony. By embracing misty greys, muted roses, and cool blues, one cultivates a personal aesthetic defined by poise, tranquility, and understated luxury.',
+      ],
+      conclusion: 'Mastering the soft summer color palette requires patience, an appreciation for subtlety, and an eye for tone. By prioritizing cool undertones, matte textiles, and harmonious pairings, one builds a wardrobe that transcends fleeting fads and exudes lasting grace.',
+      faqs: [
+        {
+          question: 'What is a soft summer color palette?',
+          answer: 'It features cool, muted shades with grey undertones such as slate, mauve, and dusty sage.',
+        },
+        {
+          question: 'Which neutral colors work best?',
+          answer: 'Cool taupe, slate grey, soft navy, and off-white provide the most flattering neutral bases.',
+        },
+        {
+          question: 'Can black be worn with this palette?',
+          answer: 'Stark black is often too harsh; deep charcoal and soft slate navy work much better.',
+        },
+        {
+          question: 'What jewelry metals match best?',
+          answer: 'Brushed silver, white gold, and platinum harmonize naturally with cool muted tones.',
+        },
+      ],
+      designerCredits: [
+        {
+          house: 'THE ROW',
+          garment: 'Double-Faced Cashmere Overcoat',
+          materials: '100% Mongolian Cashmere in Slate Grey',
+        },
+        {
+          house: 'LEMAIRE',
+          garment: 'Fluid Silk Poplin Blouse',
+          materials: 'Washed Silk in Muted Sage',
+        },
+        {
+          house: 'JIL SANDER',
+          garment: 'Tailored Flannel Trousers',
+          materials: 'Virgin Wool in Soft Heather',
+        },
+      ],
+    },
+    tags: ['Soft Summer', 'Color Palette', 'Quiet Luxury', 'Cashmere', 'Tonal Dressing'],
+    mood: 'Quiet Luxury',
+    likes: 248,
+    bookmarksCount: 64,
+  },
+  {
     id: 'article-90s-fashion',
     title: 'Why 90s Fashion Remains the Blueprint for Modern Elegance',
     subtitle: 'Nineties fashion minimalism, fluid slip dresses, boxy blazers, and clean lines shape modern luxury collections and daily personal wardrobes.',
