@@ -123,33 +123,6 @@ export const Footer: React.FC<FooterProps> = ({
                 Contact Us
               </a>
             </li>
-            <li>
-              <a
-                href="/contact-us"
-                onClick={handleContactClick}
-                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
-              >
-                Editorial Inquiries
-              </a>
-            </li>
-            <li>
-              <a
-                href="/contact-us"
-                onClick={handleContactClick}
-                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
-              >
-                Press and Media
-              </a>
-            </li>
-            <li>
-              <a
-                href="/contact-us"
-                onClick={handleContactClick}
-                className="text-zinc-400 hover:text-white transition-colors uppercase cursor-pointer no-underline block"
-              >
-                Luxury Partnerships
-              </a>
-            </li>
           </ul>
         </div>
       </div>
