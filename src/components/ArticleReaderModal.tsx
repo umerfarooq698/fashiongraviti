@@ -449,7 +449,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               </blockquote>
               {article.content.pullQuote.attribution && (
                 <cite className="block mt-3 text-xs font-mono uppercase tracking-widest text-gold not-italic font-bold">
-                  — {article.content.pullQuote.attribution}
+                  {article.content.pullQuote.attribution}
                   {article.content.pullQuote.role && (
                     <span className="text-zinc-400 ml-2 font-normal">
                       ({article.content.pullQuote.role})

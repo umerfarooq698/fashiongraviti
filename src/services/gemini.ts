@@ -34,8 +34,23 @@ export interface GeminiGeneratedArticle {
   mood: 'Dark Romanticism' | 'Quiet Luxury' | 'Opulent Minimalism' | 'Avant-Garde' | 'Sustainable Tech';
 }
 
+/**
+ * Strips hyphens, en-dashes, and em-dashes from editorial text to avoid artificial or AI-sounding prose.
+ * Converts compound words (e.g. "quick-dry" -> "quick dry", "high-fashion" -> "high fashion")
+ * and converts em-dashes / spaced dashes into natural flow.
+ */
+export function stripHyphensAndDashes(text: string): string {
+  if (!text) return '';
+  let cleaned = text
+    .replace(/[—–]/g, ' ')
+    .replace(/\s+-\s+/g, ' ')
+    .replace(/(\b\w+)-(\w+\b)/g, '$1 $2')
+    .replace(/(\b\w+)-(\w+\b)/g, '$1 $2');
+  return cleaned.replace(/  +/g, ' ').trim();
+}
+
 export function enforceTitle55to60(rawTitle: string): string {
-  let title = (rawTitle || '')
+  let title = stripHyphensAndDashes(rawTitle || '')
     .replace(/:/g, '')
     .replace(/\s+/g, ' ')
     .replace(/&/g, 'and')
@@ -134,11 +149,12 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - Use mostly paragraphs and occasional clean bullet points ("* Bullet point") when listing styling tips or materials.
    - Total article length must be in the 1000–1200 word range.
 7. FORBIDDEN PHRASES, WORDS AND SYMBOLS:
+   - ZERO HYPHENS OR DASHES (ABSOLUTE RULE): NEVER use the hyphen or dash symbol ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, designer credits, conclusions, or FAQs. Hyphens and dashes look artificial and AI-generated. Spell all words unhyphenated or with spaces (e.g. write 'quick dry' instead of 'quick-dry', 'high fashion' instead of 'high-fashion', 'ultrathin' or 'ultra thin' instead of 'ultra-thin', 'multilayer' or 'multi layer' instead of 'multi-layer', 'one piece' instead of 'one-piece', 'high waisted' instead of 'high-waisted', 'full grain' instead of 'full-grain'). Never use dashes to separate clauses in sentences; use commas, periods, or natural connective words instead.
    - Never use the ampersand symbol ('&'). Always spell out the word 'and' in all titles, subtitles, headings, body text, image captions, designer credits, and FAQs.
    - Never use a colon (':') in article titles.
    - Never mention AI, SEO, algorithms, prompts, or content generation.
    - Never use meta phrases like "in this article", "this guide will", "as we have seen", "in conclusion", "it is worth noting that".
-   - Never use the forbidden words: 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth'.
+   - Never use the forbidden words: 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
 8. CONCLUSION AND 3–4 FAQS (SHORT AND CONCISE):
    - Include a concise, impactful "conclusion" summary (2-3 sentences).
    - Provide 3–4 practical, highly relevant "faqs". Keep BOTH questions and answers very short, punchy, and direct (question: 5–9 words; answer: strictly 1–2 short sentences / under 25 words).
@@ -256,7 +272,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     const article: FashionArticle = {
       id: articleId,
       title: finalTitle,
-      subtitle: parsed.subtitle,
+      subtitle: stripHyphensAndDashes(parsed.subtitle),
       slug: slug || articleId,
       category: parsed.category || 'fashion-news',
       categoryLabel: parsed.categoryLabel || 'Fashion News',
@@ -264,10 +280,10 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       issueNumber: 'ISSUE NO. 08',
       locationTag: '',
       author: {
-        name: authorProfile.name,
-        role: authorProfile.role,
+        name: stripHyphensAndDashes(authorProfile.name),
+        role: stripHyphensAndDashes(authorProfile.role),
         avatar: authorProfile.avatar,
-        bio: authorProfile.bio,
+        bio: stripHyphensAndDashes(authorProfile.bio),
         instagram: authorProfile.instagram,
       },
       publishedAt: new Date().toLocaleDateString('en-US', {
@@ -277,26 +293,46 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       }).toUpperCase(),
       readTime: '7 MIN READ',
       coverImage: formatUnsplash16x9(coverPhoto.url),
-      coverImageCaption: coverPhoto.altDescription ? `Editorial Runway Presentation: ${coverPhoto.altDescription}` : undefined,
-      coverImageAlt: coverPhoto.altDescription || `Curated high-fashion editorial styling for ${finalTitle}`,
+      coverImageCaption: coverPhoto.altDescription ? stripHyphensAndDashes(`Editorial Runway Presentation: ${coverPhoto.altDescription}`) : undefined,
+      coverImageAlt: stripHyphensAndDashes(coverPhoto.altDescription || `Curated high fashion editorial styling for ${finalTitle}`),
       content: {
-        dropCapText: parsed.dropCapText,
-        bodyParagraphs: parsed.bodyParagraphs || [],
+        dropCapText: stripHyphensAndDashes(parsed.dropCapText),
+        bodyParagraphs: (parsed.bodyParagraphs || []).map((p: string) => {
+          const trimmed = p.trim();
+          const normalized = trimmed.startsWith('- ') ? `* ${trimmed.slice(2)}` : trimmed;
+          if (normalized.startsWith('## ')) {
+            return `## ${stripHyphensAndDashes(normalized.slice(3))}`;
+          }
+          if (normalized.startsWith('### ')) {
+            return `### ${stripHyphensAndDashes(normalized.slice(4))}`;
+          }
+          if (normalized.startsWith('* ')) {
+            return `* ${stripHyphensAndDashes(normalized.slice(2))}`;
+          }
+          return stripHyphensAndDashes(normalized);
+        }),
         pullQuote: {
-          text: parsed.pullQuoteText,
-          attribution: parsed.pullQuoteAttribution,
+          text: stripHyphensAndDashes(parsed.pullQuoteText),
+          attribution: stripHyphensAndDashes(parsed.pullQuoteAttribution),
         },
         secondaryImage: {
           url: formatUnsplash16x9(secondaryPhoto.url),
-          caption: secondaryPhoto.altDescription ? `Atelier Detail: ${secondaryPhoto.altDescription}` : undefined,
-          alt: secondaryPhoto.altDescription || `Atelier construction and craftsmanship detail for ${finalTitle}`,
+          caption: secondaryPhoto.altDescription ? stripHyphensAndDashes(`Atelier Detail: ${secondaryPhoto.altDescription}`) : undefined,
+          alt: stripHyphensAndDashes(secondaryPhoto.altDescription || `Atelier construction and craftsmanship detail for ${finalTitle}`),
         },
-        closingParagraphs: parsed.closingParagraphs || [],
-        conclusion: parsed.conclusion,
-        faqs: parsed.faqs || [],
-        designerCredits: parsed.designerCredits || [],
+        closingParagraphs: (parsed.closingParagraphs || []).map((p: string) => stripHyphensAndDashes(p)),
+        conclusion: parsed.conclusion ? stripHyphensAndDashes(parsed.conclusion) : undefined,
+        faqs: (parsed.faqs || []).map((faq: any) => ({
+          question: stripHyphensAndDashes(faq.question),
+          answer: stripHyphensAndDashes(faq.answer),
+        })),
+        designerCredits: (parsed.designerCredits || []).map((credit: any) => ({
+          house: stripHyphensAndDashes(credit.house),
+          garment: stripHyphensAndDashes(credit.garment),
+          materials: stripHyphensAndDashes(credit.materials),
+        })),
       },
-      tags: parsed.tags || ['Fashion', 'Runway', 'Haute Couture'],
+      tags: (parsed.tags || ['Fashion', 'Runway', 'Haute Couture']).map((t: string) => stripHyphensAndDashes(t)),
       mood: parsed.mood || 'Quiet Luxury',
       likes: Math.floor(Math.random() * 200) + 120,
       bookmarksCount: Math.floor(Math.random() * 80) + 40,
@@ -314,7 +350,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     const articleId = `gemini-story-${Date.now()}`;
     return {
       id: articleId,
-      title: enforceTitle55to60(promptOrTopic ? `${promptOrTopic}: Editorial Runway Analysis` : 'Autumn Runway Bulletin: Modern Proportions and Atelier Art'),
+      title: enforceTitle55to60(promptOrTopic ? `${promptOrTopic} Editorial Runway Analysis` : 'Autumn Runway Bulletin Modern Proportions and Atelier Art'),
       subtitle: 'Inside the newest couture collections exploring sculptural tailoring, rare natural fibers, and contemporary luxury.',
       slug: `editorial-analysis-${Date.now()}`,
       category: (targetCategory as any) || 'fashion-news',
@@ -323,7 +359,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       issueNumber: 'ISSUE NO. 08',
       locationTag: '',
       author: {
-        name: fallbackAuthor.name,
+        name: stripHyphensAndDashes(fallbackAuthor.name),
         role: fallbackAuthor.role,
         avatar: fallbackAuthor.avatar,
         bio: fallbackAuthor.bio,
