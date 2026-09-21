@@ -111,6 +111,7 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
 1. HEADLINE ("title"):
    - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters and spaces). Count characters precisely!
    - NO COLONS (ABSOLUTE RULE): NEVER use a colon (':') in the headline. Write a seamless, fluid headline without any colons.
+   - BAN REPETITIVE FORMULAS (NEVER START WITH "Why..." OR "How..."): Avoid formulaic, repetitive titles! Do NOT start every article with "Why [Keyword]..." or "How [Keyword]...". Every headline must have a completely unique, fresh structure, distinct starting word, and varied rhythm (e.g. bold statements, active verbs, material focus, cultural perspectives, or atelier insights).
    - NATURAL KEYWORD PLACEMENT: Seamlessly place the keyword anywhere in the title (beginning, middle, or end). Do NOT force it to start with the keyword.
    - ZERO AI CLICHÉS: Never use words like 'AI', 'Artificial Intelligence', 'algorithm', 'revolutionize', 'unlocking', 'delving', 'tapestry', 'next-gen', 'game-changing', 'navigating', 'testament'.
 2. META DESCRIPTION ("subtitle"):

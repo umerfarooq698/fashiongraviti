@@ -69,7 +69,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
     id: 'article-period-swimwear',
-    title: 'Why Modern Period Swimwear Delivers Flawless Coastal Style',
+    title: 'Waterproof Freedom Meets High Fashion In Period Swimwear',
     subtitle: 'Engineered with discreet leakproof membranes and quick-dry fabrics, period swimwear brings stylish security and freedom to every summer dip.',
     slug: 'period-swimwear',
     category: 'how-to-style',
@@ -174,7 +174,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-mens-leather-jackets',
-    title: 'Why Mens Leather Jackets Remain Modern Wardrobe Essentials',
+    title: 'Mastering The Anatomy Of Full Grain Mens Leather Jackets',
     subtitle: 'Mens leather jackets deliver timeless sophistication through supple full-grain hides, sharp tailoring, and understated luxury craftsmanship.',
     slug: 'mens-leather-jackets',
     category: 'how-to-style',
@@ -270,7 +270,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-soft-summer-color-palette',
-    title: 'Why the Soft Summer Color Palette Defines Effortless Luxury',
+    title: 'The Soft Summer Color Palette Brings Pure Serenity To Style',
     subtitle: 'Soft summer color palette pairs cool muted tones dusty rose slate blue and sage green for effortless understated luxury wardrobes every day.',
     slug: 'soft-summer-color-palette',
     category: 'fashion-trends',
@@ -359,7 +359,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     id: 'article-90s-fashion',
-    title: 'Why 90s Fashion Remains the Blueprint for Modern Elegance',
+    title: 'Archival 90s Fashion Serves As The Blueprint For Elegance',
     subtitle: 'Nineties fashion minimalism, fluid slip dresses, boxy blazers, and clean lines shape modern luxury collections and daily personal wardrobes.',
     slug: 'why-90s-fashion-remains-the-blueprint-for-modern-elegance',
     category: 'fashion-trends',
