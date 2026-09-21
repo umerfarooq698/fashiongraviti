@@ -1,5 +1,6 @@
 import React from 'react';
 import type { FashionCategory } from '../types/fashion';
+import { FashionGravitiLogo } from './FashionGravitiLogo';
 
 interface FooterProps {
   categories: FashionCategory[];
@@ -75,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({
     <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-8 sm:pt-12 pb-8 sm:pb-12 transition-colors">
       {/* Main Footer Links Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 border-b border-white/10 pb-8 sm:pb-12">
-        {/* Brand and Mission Statement (5 cols) */}
+        {/* Brand and Mission Statement with VIP Logo (5 cols) */}
         <div className="lg:col-span-5">
           <a
             href="/"
@@ -83,11 +84,11 @@ export const Footer: React.FC<FooterProps> = ({
               e.preventDefault();
               handleDepartmentClick('all');
             }}
-            className="text-2xl sm:text-3xl font-mono font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer no-underline block"
+            className="no-underline block mb-3"
           >
-            FASHION GRAVITI
+            <FashionGravitiLogo variant="footer" />
           </a>
-          <p className="mt-2 text-xs font-mono text-gold tracking-widest uppercase font-bold flex flex-wrap items-center gap-1.5">
+          <p className="mt-3 text-xs font-mono text-gold tracking-widest uppercase font-bold flex flex-wrap items-center gap-1.5">
             <a
               href="/fashion-news"
               onClick={(e) => {
@@ -120,9 +121,6 @@ export const Footer: React.FC<FooterProps> = ({
             >
               CELEBRITY FASHION
             </a>
-          </p>
-          <p className="mt-4 text-xs font-mono text-zinc-400 leading-relaxed max-w-md uppercase">
-            Fashion Graviti is an independent digital fashion publication documenting runway showcases, celebrity style, luxury brands, and contemporary fashion trends.
           </p>
         </div>
 

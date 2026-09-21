@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, X, Menu, Bookmark, Compass, Sparkles, ChevronRight, Info, Mail } from 'lucide-react';
 import type { FashionCategory } from '../types/fashion';
+import { FashionGravitiLogo, FashionGravitiEmblem } from './FashionGravitiLogo';
 
 interface HeaderProps {
   categories: FashionCategory[];
@@ -74,9 +75,10 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               onSelectCategory('all');
             }}
-            className="text-crimson-light font-bold hover:text-white transition-colors no-underline cursor-pointer flex-shrink-0"
+            className="flex items-center space-x-1.5 text-crimson-light font-bold hover:text-white transition-colors no-underline cursor-pointer flex-shrink-0"
           >
-            FASHION GRAVITI
+            <FashionGravitiEmblem size={18} className="flex-shrink-0" />
+            <span>FASHION GRAVITI</span>
           </a>
           <span className="text-zinc-600">•</span>
           <span className="text-white font-medium truncate">
@@ -109,10 +111,10 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* 2. Main Magazine Masthead */}
-      <div className="px-3 sm:px-6 lg:px-12 py-5 sm:py-7 md:py-8 text-center border-b-2 border-white/15 flex flex-col items-center justify-center bg-noir relative">
+      {/* 2. Main Magazine Masthead with VIP Logo */}
+      <div className="px-3 sm:px-6 lg:px-12 py-6 sm:py-8 md:py-10 text-center border-b-2 border-white/15 flex flex-col items-center justify-center bg-noir relative">
         {/* Mobile Hamburger Toggle on Left */}
-        <div className="lg:hidden absolute left-3 sm:left-6 top-1/2 -translate-y-1/2">
+        <div className="lg:hidden absolute left-3 sm:left-6 top-6 sm:top-8">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2 sm:p-2.5 border border-white/20 hover:border-gold bg-black/60 text-white hover:text-gold transition-colors flex items-center justify-center active:scale-95"
@@ -122,23 +124,20 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        <div className="text-[9px] sm:text-[11px] font-mono tracking-ultra-wide sm:tracking-mega-wide uppercase text-gold font-bold mb-1.5 sm:mb-2">
-          THE DEFINITIVE FASHION AND RUNWAY ARCHIVE
-        </div>
-
+        {/* VIP Masthead Logo Lockup */}
         <a 
           href="/"
           onClick={(e) => {
             e.preventDefault();
             onSelectCategory('all');
           }}
-          className="cursor-pointer text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight uppercase hover:text-gold transition-colors duration-200 text-white select-none drop-shadow-md no-underline leading-none"
+          className="cursor-pointer no-underline block"
         >
-          FASHION GRAVITI
+          <FashionGravitiLogo variant="masthead" />
         </a>
 
         {/* Clickable Department Links */}
-        <div className="mt-2 text-[11px] sm:text-xs md:text-sm font-sans font-bold tracking-wider sm:tracking-widest text-zinc-200 uppercase flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
+        <div className="mt-4 sm:mt-5 text-[11px] sm:text-xs md:text-sm font-sans font-bold tracking-wider sm:tracking-widest text-zinc-200 uppercase flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
           <a
             href="/fashion-news"
             onClick={(e) => {
@@ -243,6 +242,24 @@ export const Header: React.FC<HeaderProps> = ({
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[120px] sm:top-[140px] bottom-0 z-50 bg-black/95 backdrop-blur-xl border-b border-white/20 overflow-y-auto animate-fadeIn flex flex-col justify-between">
           <div className="p-4 sm:p-6 space-y-6">
+            {/* VIP Logo Lockup in Mobile Drawer */}
+            <div className="pb-3 border-b border-white/10 flex items-center justify-between">
+              <FashionGravitiLogo
+                variant="compact"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onSelectCategory('all');
+                }}
+              />
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-1 text-zinc-400 hover:text-white"
+                aria-label="Close Navigation Menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
             {/* Quick Search on Mobile Drawer */}
             <div className="bg-noir-card border-2 border-white/20 p-2 flex items-center gap-2">
               <Search className="w-4 h-4 text-gold ml-1 flex-shrink-0" />
