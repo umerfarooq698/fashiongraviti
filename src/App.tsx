@@ -17,6 +17,7 @@ import { BookmarksDrawer } from './components/BookmarksDrawer';
 import { Footer } from './components/Footer';
 import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
+import { updateDocumentSEO } from './utils/seo';
 
 const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v20';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
@@ -206,6 +207,106 @@ export function App() {
     window.addEventListener('popstate', syncStateFromURL);
     return () => window.removeEventListener('popstate', syncStateFromURL);
   }, [articles]);
+
+  // Dynamic SEO for Pages, Categories, Authors, and Home (when Reader modal is closed)
+  useEffect(() => {
+    if (selectedArticleForReader) {
+      // Reader modal handles article-specific SEO
+      return;
+    }
+
+    if (selectedAuthorSlug) {
+      const author = getAuthorProfile(selectedAuthorSlug);
+      updateDocumentSEO({
+        title: `${author.name} — Author Profile | FASHION GRAVITI`,
+        description: `Editorial profile and archive of fashion reviews and articles by ${author.name}, ${author.role} at Fashion Graviti.`,
+        canonicalPath: `/author/${selectedAuthorSlug}`,
+        image: author.avatar,
+        type: 'profile',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Authors', path: '/' },
+          { name: author.name, path: `/author/${selectedAuthorSlug}` },
+        ],
+      });
+      return;
+    }
+
+    if (activeStaticPage === 'about') {
+      updateDocumentSEO({
+        title: 'About Us — FASHION GRAVITI Editorial Archive',
+        description: 'Discover the vision, editorial standards, and critics behind Fashion Graviti — the premier archive for haute couture and runway critique.',
+        canonicalPath: '/about-us',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'About Us', path: '/about-us' },
+        ],
+      });
+      return;
+    }
+
+    if (activeStaticPage === 'contact') {
+      updateDocumentSEO({
+        title: 'Contact Us — Editorial Inquiries | FASHION GRAVITI',
+        description: 'Get in touch with the Fashion Graviti editorial desk, press team, and contributors in Paris, Milan, and New York.',
+        canonicalPath: '/contact-us',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Contact Us', path: '/contact-us' },
+        ],
+      });
+      return;
+    }
+
+    if (activeStaticPage === 'privacy') {
+      updateDocumentSEO({
+        title: 'Privacy Policy — FASHION GRAVITI',
+        description: 'Learn how Fashion Graviti collects, handles, and protects your personal data in compliance with international privacy standards.',
+        canonicalPath: '/privacy-policy',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Privacy Policy', path: '/privacy-policy' },
+        ],
+      });
+      return;
+    }
+
+    if (activeStaticPage === 'terms') {
+      updateDocumentSEO({
+        title: 'Terms & Conditions — FASHION GRAVITI',
+        description: 'Review the terms of service, editorial copyright conditions, and usage policies for Fashion Graviti.',
+        canonicalPath: '/terms-and-conditions',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Terms and Conditions', path: '/terms-and-conditions' },
+        ],
+      });
+      return;
+    }
+
+    if (activeCategory !== 'all') {
+      const cat = FASHION_CATEGORIES.find((c) => c.id === activeCategory);
+      const catName = cat ? cat.name : activeCategory.replace(/-/g, ' ').toUpperCase();
+      updateDocumentSEO({
+        title: `${catName} — FASHION GRAVITI Editorial Archive`,
+        description: `Explore the latest ${catName.toLowerCase()} dispatches, trend analysis, and editorial critiques on Fashion Graviti.`,
+        canonicalPath: `/${activeCategory}`,
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: catName, path: `/${activeCategory}` },
+        ],
+      });
+      return;
+    }
+
+    // Default Home SEO
+    updateDocumentSEO({
+      title: 'FASHION GRAVITI — Fashion News, Fashion Trends and Celebrity Runway',
+      description: 'Curated runway dispatches, haute couture analysis, and luxury style reviews presented by the editors and critics of Fashion Graviti archive.',
+      canonicalPath: '/',
+      breadcrumbs: [{ name: 'Home', path: '/' }],
+    });
+  }, [selectedArticleForReader, selectedAuthorSlug, activeStaticPage, activeCategory]);
 
   // Dynamic Categories with updated article counts
   const dynamicCategories: FashionCategory[] = useMemo(() => {

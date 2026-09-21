@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { getAuthorSlug } from '../data/authors';
+import { updateDocumentSEO } from '../utils/seo';
 
 interface ArticleReaderModalProps {
   article: FashionArticle | null;
@@ -59,6 +60,33 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [article?.id]);
+
+  // Dynamic SEO & Structured Data for Article
+  useEffect(() => {
+    if (!article) return;
+    const authorSlug = getAuthorSlug(article.author.name);
+    const pubDate = article.publishedAt ? new Date(article.publishedAt).toISOString() : new Date().toISOString();
+    updateDocumentSEO({
+      title: `${article.title} — FASHION GRAVITI`,
+      description: article.subtitle || article.content.dropCapText.slice(0, 160),
+      canonicalPath: `/${article.slug}`,
+      image: article.coverImage,
+      type: 'article',
+      articleData: {
+        authorName: article.author.name,
+        authorUrl: `/author/${authorSlug}`,
+        publishedTime: pubDate,
+        section: article.category,
+        tags: article.tags,
+        faqs: article.content?.faqs?.map((f) => ({ question: f.question, answer: f.answer })),
+      },
+      breadcrumbs: [
+        { name: 'Home', path: '/' },
+        { name: article.category.replace(/-/g, ' ').toUpperCase(), path: `/${article.category}` },
+        { name: article.title, path: `/${article.slug}` },
+      ],
+    });
+  }, [article]);
 
   // Global window scroll progress
   useEffect(() => {
@@ -131,7 +159,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   };
 
   const handleShare = async () => {
-    const url = `${window.location.origin}/${article.slug}`;
+    const url = `https://fashiongraviti.com/${article.slug}`;
     if (navigator.share) {
       try {
         await navigator.share({

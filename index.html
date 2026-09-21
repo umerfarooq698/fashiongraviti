@@ -11,13 +11,16 @@
     <meta name="description" content="Curated runway dispatches, haute couture analysis, and luxury style reviews presented by the editors and critics of Fashion Graviti archive." />
     <meta name="keywords" content="fashion news, fashion trends, celebrity fashion, designers and brands, beauty, how to style, haute couture, runway" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://fashiongraviti.com/" />
     
     <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Fashion Graviti" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fashiongraviti.com/" />
     <meta property="og:title" content="FASHION GRAVITI — Fashion News, Fashion Trends and Celebrity Runway" />
     <meta property="og:description" content="Curated runway dispatches, haute couture analysis, and luxury style reviews presented by the editors and critics of Fashion Graviti archive." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -35,13 +38,34 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "NewsMediaOrganization",
-      "name": "Fashiongraviti",
-      "url": "https://fashiongraviti.com/",
-      "logo": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=85",
-      "description": "Ultra-luxury fashion publication covering runway collections, couture craftsmanship, celebrity style, and sartorial culture.",
-      "sameAs": [
-        "https://instagram.com/fashiongraviti"
+      "@graph": [
+        {
+          "@type": "NewsMediaOrganization",
+          "@id": "https://fashiongraviti.com/#organization",
+          "name": "Fashion Graviti",
+          "url": "https://fashiongraviti.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://fashiongraviti.com/#logo",
+            "url": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=85",
+            "caption": "Fashion Graviti Logo"
+          },
+          "description": "Ultra-luxury fashion publication covering runway collections, couture craftsmanship, celebrity style, and sartorial culture.",
+          "publishingPrinciples": "https://fashiongraviti.com/about-us",
+          "sameAs": [
+            "https://instagram.com/fashiongraviti"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://fashiongraviti.com/#website",
+          "url": "https://fashiongraviti.com/",
+          "name": "Fashion Graviti",
+          "description": "Curated runway dispatches, haute couture analysis, and luxury style reviews.",
+          "publisher": {
+            "@id": "https://fashiongraviti.com/#organization"
+          }
+        }
       ]
     }
     </script>
