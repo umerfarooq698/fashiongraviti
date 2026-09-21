@@ -210,36 +210,6 @@ export const Footer: React.FC<FooterProps> = ({
         <div>
           © 2026 FASHIONGRAVITI PUBLISHING GROUP. ALL RIGHTS RESERVED.
         </div>
-        <div className="flex items-center flex-wrap justify-center gap-x-6 gap-y-2 text-[10px]">
-          <a
-            href="/about-us"
-            onClick={handleAboutClick}
-            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
-          >
-            EDITORIAL INDEPENDENCE
-          </a>
-          <a
-            href="/contact-us"
-            onClick={handleContactClick}
-            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
-          >
-            CONTACT DESK
-          </a>
-          <a
-            href="/privacy-policy"
-            onClick={handlePrivacyClick}
-            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
-          >
-            PRIVACY POLICY
-          </a>
-          <a
-            href="/terms-and-conditions"
-            onClick={handleTermsClick}
-            className="hover:text-white cursor-pointer transition-colors uppercase no-underline text-zinc-400"
-          >
-            TERMS AND CONDITIONS
-          </a>
-        </div>
       </div>
     </footer>
   );
