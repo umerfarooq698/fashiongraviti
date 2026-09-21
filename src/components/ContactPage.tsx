@@ -115,25 +115,25 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
   return (
     <div className="w-full bg-noir text-white animate-fadeIn">
       {/* Hero Header Section */}
-      <section className="relative border-b-2 border-white/20 bg-noir-pure py-16 md:py-24 px-4 sm:px-8 lg:px-12 overflow-hidden">
+      <section className="relative border-b-2 border-white/20 bg-noir-pure py-12 sm:py-16 md:py-24 px-3.5 sm:px-8 lg:px-12 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-xs font-mono uppercase tracking-widest font-extrabold mb-6">
-            <Mail className="w-4 h-4 text-gold" />
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-[11px] sm:text-xs font-mono uppercase tracking-widest font-extrabold mb-4 sm:mb-6">
+            <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
             <span>CONTACT FASHION GRAVITI</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white uppercase leading-[1.1]">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white uppercase leading-[1.12] sm:leading-[1.1]">
             Connect with The Newsroom and Atelier
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
             Have an editorial tip, collection pitch, press release, or fact-checking inquiry? Reach out directly to our central newsroom desk.
           </p>
 
           {/* Central Email Action Card */}
-          <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-4 p-5 bg-black border-2 border-gold/50 shadow-2xl">
-            <div className="text-left">
-              <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider font-bold block">
+          <div className="mt-6 sm:mt-8 w-full sm:w-auto inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-black border-2 border-gold/50 shadow-2xl">
+            <div className="text-center sm:text-left">
+              <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 uppercase tracking-wider font-bold block">
                 Official Central Newsroom Desk
               </span>
               <a

@@ -503,6 +503,11 @@ export function App() {
         onSelectCategory={handleSelectCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        onNavigateAbout={handleNavigateAbout}
+        onNavigateContact={handleNavigateContact}
+        onOpenLookbook={() => setIsLookbookOpen(true)}
+        onOpenBookmarks={() => setIsBookmarksOpen(true)}
+        bookmarkedCount={bookmarkedArticles.length}
       />
 
       {/* 2. Runway Ticker Tape */}

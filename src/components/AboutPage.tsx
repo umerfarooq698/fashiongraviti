@@ -126,18 +126,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({
   return (
     <div className="w-full bg-noir text-white animate-fadeIn">
       {/* Hero Header Section */}
-      <section className="relative border-b-2 border-white/20 bg-noir-pure py-16 md:py-24 px-4 sm:px-8 lg:px-12 overflow-hidden">
+      <section className="relative border-b-2 border-white/20 bg-noir-pure py-12 sm:py-16 md:py-24 px-3.5 sm:px-8 lg:px-12 overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-xs font-mono uppercase tracking-widest font-extrabold mb-6">
-            <Sparkles className="w-4 h-4 text-gold" />
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-[11px] sm:text-xs font-mono uppercase tracking-widest font-extrabold mb-4 sm:mb-6">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
             <span>ABOUT FASHION GRAVITI</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.1] uppercase">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.12] sm:leading-[1.1] uppercase">
             The Independent Authority on Global Fashion and Runway Critique
           </h1>
 
-          <p className="mt-6 text-lg sm:text-xl font-editorial italic text-zinc-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl font-editorial italic text-zinc-200 max-w-3xl mx-auto leading-relaxed">
             "We document the intersection of haute couture craftsmanship, contemporary street culture, and revolutionary runway design with uncompromising editorial integrity."
           </p>
         </div>

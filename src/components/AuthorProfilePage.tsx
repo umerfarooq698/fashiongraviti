@@ -66,27 +66,27 @@ export const AuthorProfilePage: React.FC<AuthorProfilePageProps> = ({
       </div>
 
       {/* Author Hero Profile Header */}
-      <section className="relative border-b-2 border-white/20 bg-noir-pure py-12 md:py-16 px-4 sm:px-8 lg:px-12">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left">
+      <section className="relative border-b-2 border-white/20 bg-noir-pure py-8 sm:py-12 md:py-16 px-3.5 sm:px-8 lg:px-12">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 text-center md:text-left">
           {/* Avatar */}
           <div className="relative flex-shrink-0">
             <img
               src={author.avatar}
               alt={author.name}
-              className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-gold shadow-2xl"
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full object-cover border-4 border-gold shadow-2xl"
             />
             <div className="absolute -bottom-2 -right-2 bg-crimson p-1.5 rounded-full border-2 border-black text-white" title="Verified Fashion Graviti Author">
-              <Sparkles className="w-4 h-4 text-gold" />
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
             </div>
           </div>
 
           {/* Profile Bio Details */}
           <div className="flex-grow">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black border border-white/20 text-gold text-xs font-mono uppercase font-black mb-3">
+            <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 bg-black border border-white/20 text-gold text-[10px] sm:text-xs font-mono uppercase font-black mb-2.5 sm:mb-3">
               <span>{author.role}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black tracking-tight text-white uppercase leading-tight">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-serif font-black tracking-tight text-white uppercase leading-tight">
               {author.name}
             </h1>
 

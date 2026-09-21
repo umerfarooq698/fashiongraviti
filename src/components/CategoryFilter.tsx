@@ -35,85 +35,87 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   totalArticlesCount,
 }) => {
   return (
-    <section className="w-full bg-noir-card border-b-2 border-white/20 px-4 lg:px-12 py-8">
+    <section className="w-full bg-noir-card border-b-2 border-white/20 px-3 sm:px-6 lg:px-12 py-5 sm:py-8">
       {/* Magazine Desks Banner */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-white/10 pb-2">
           <div className="flex items-center space-x-2">
-            <Sparkles className="w-4 h-4 text-gold" />
-            <h3 className="text-sm font-mono uppercase tracking-widest text-white font-extrabold">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold flex-shrink-0" />
+            <h3 className="text-xs sm:text-sm font-mono uppercase tracking-wider sm:tracking-widest text-white font-extrabold">
               MAGAZINE DESKS AND EDITORIAL CATEGORIES
             </h3>
           </div>
-          <span className="text-xs font-mono font-bold text-gold uppercase bg-black px-3 py-1 border border-gold/40">
+          <span className="text-[10px] sm:text-xs font-mono font-bold text-gold uppercase bg-black px-2.5 sm:px-3 py-1 border border-gold/40 self-start sm:self-auto">
             {totalArticlesCount} PUBLISHED ARTICLES
           </span>
         </div>
 
-        {/* Magazine Category Cards Grid (Editorial Desks Only) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+        {/* Magazine Category Cards Grid (Responsive 2 cols on mobile -> 3 on tablet -> 6 on desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3.5">
           {categories
             .filter((cat) => cat.id !== 'all')
             .map((cat) => {
-            const isSelected = activeCategory === cat.id;
-            return (
-              <a
-                key={cat.id}
-                href={cat.id === 'all' ? '/' : `/${cat.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onSelectCategory(cat.id);
-                }}
-                className={`relative group cursor-pointer overflow-hidden border-2 transition-all duration-300 block no-underline ${
-                  isSelected
-                    ? 'border-gold shadow-xl scale-[1.02] bg-noir'
-                    : 'border-white/20 hover:border-white bg-noir-pure'
-                }`}
-              >
-                {/* Visual Image */}
-                <div className="h-28 sm:h-32 relative overflow-hidden bg-black">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 brightness-85 group-hover:brightness-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-                </div>
-
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-3 flex flex-col justify-end">
-
-                  <div>
-                    <h4 className={`text-xs sm:text-sm font-serif font-black uppercase tracking-tight leading-snug ${
-                      isSelected ? 'text-gold' : 'text-white'
-                    }`}>
-                      {cat.name}
-                    </h4>
-                    <p className="text-[10px] font-mono text-zinc-300 font-bold uppercase tracking-wider line-clamp-1 mt-0.5">
-                      {cat.tagline}
-                    </p>
+              const isSelected = activeCategory === cat.id;
+              return (
+                <a
+                  key={cat.id}
+                  href={cat.id === 'all' ? '/' : `/${cat.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onSelectCategory(cat.id);
+                  }}
+                  className={`relative group cursor-pointer overflow-hidden border-2 transition-all duration-300 block no-underline ${
+                    isSelected
+                      ? 'border-gold shadow-xl scale-[1.02] bg-noir'
+                      : 'border-white/20 hover:border-white bg-noir-pure'
+                  }`}
+                >
+                  {/* Visual Image */}
+                  <div className="h-24 sm:h-28 lg:h-32 relative overflow-hidden bg-black">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 brightness-85 group-hover:brightness-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   </div>
-                </div>
-              </a>
-            );
-          })}
+
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 p-2 sm:p-3 flex flex-col justify-end">
+                    <div>
+                      <h4 className={`text-xs sm:text-sm font-serif font-black uppercase tracking-tight leading-snug ${
+                        isSelected ? 'text-gold' : 'text-white'
+                      }`}>
+                        {cat.name}
+                      </h4>
+                      <p className="text-[9px] sm:text-[10px] font-mono text-zinc-300 font-bold uppercase tracking-wider line-clamp-1 mt-0.5">
+                        {cat.tagline}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
         </div>
       </div>
 
       {/* Secondary Bar: Topic Filter & Layout Switcher */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-4 border-t border-white/15">
-        {/* Topic Pills */}
-        <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar py-1">
-          <div className="flex items-center text-xs font-mono text-white font-extrabold mr-2 flex-shrink-0">
-            <SlidersHorizontal className="w-3.5 h-3.5 mr-1 text-gold" />
-            <span className="uppercase text-xs tracking-wider">AESTHETIC:</span>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 pt-4 border-t border-white/15">
+        {/* Topic Pills with Touch Inertia */}
+        <div 
+          className="flex items-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-1 scroll-smooth" 
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+          <div className="flex items-center text-[11px] sm:text-xs font-mono text-white font-extrabold mr-1 sm:mr-2 flex-shrink-0">
+            <SlidersHorizontal className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 text-gold" />
+            <span className="uppercase tracking-wider">AESTHETIC:</span>
           </div>
 
           {TOPICS.map((mood) => (
             <button
               key={mood}
               onClick={() => onSelectMood(mood)}
-              className={`text-xs font-mono uppercase px-3 py-1.5 transition-all whitespace-nowrap font-bold border ${
+              className={`text-[10px] sm:text-xs font-mono uppercase px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all whitespace-nowrap font-bold border flex-shrink-0 ${
                 activeMood === mood
                   ? 'bg-crimson text-white border-crimson shadow-md'
                   : 'bg-black/80 text-zinc-200 border-white/20 hover:border-white hover:text-white'
@@ -125,12 +127,12 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
         </div>
 
         {/* View Layout Mode Buttons */}
-        <div className="flex items-center space-x-2 flex-shrink-0 self-end md:self-auto">
-          <span className="text-xs font-mono uppercase text-white font-bold mr-1 hidden sm:inline">VIEW:</span>
+        <div className="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0 self-end md:self-auto">
+          <span className="text-[11px] sm:text-xs font-mono uppercase text-white font-bold mr-1 hidden sm:inline">VIEW:</span>
           
           <button
             onClick={() => onChangeLayout('editorial')}
-            className={`px-2.5 py-1.5 border flex items-center gap-1.5 text-xs font-mono font-bold transition-all ${
+            className={`px-2 sm:px-2.5 py-1 sm:py-1.5 border flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-mono font-bold transition-all ${
               layoutMode === 'editorial'
                 ? 'bg-white text-black border-white'
                 : 'border-white/20 text-zinc-300 hover:text-white hover:border-white'
@@ -143,12 +145,12 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
           <button
             onClick={() => onChangeLayout('magazine')}
-            className={`px-2.5 py-1.5 border flex items-center gap-1.5 text-xs font-mono font-bold transition-all ${
+            className={`px-2 sm:px-2.5 py-1 sm:py-1.5 border flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-mono font-bold transition-all ${
               layoutMode === 'magazine'
                 ? 'bg-white text-black border-white'
                 : 'border-white/20 text-zinc-300 hover:text-white hover:border-white'
             }`}
-            title="3-Column Grid"
+            title="Multi-Column Grid"
           >
             <Columns3 className="w-3.5 h-3.5" />
             <span className="hidden lg:inline">Grid</span>
@@ -156,7 +158,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
           <button
             onClick={() => onChangeLayout('compact')}
-            className={`px-2.5 py-1.5 border flex items-center gap-1.5 text-xs font-mono font-bold transition-all ${
+            className={`px-2 sm:px-2.5 py-1 sm:py-1.5 border flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-mono font-bold transition-all ${
               layoutMode === 'compact'
                 ? 'bg-white text-black border-white'
                 : 'border-white/20 text-zinc-300 hover:text-white hover:border-white'

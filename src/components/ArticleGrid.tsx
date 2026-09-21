@@ -37,17 +37,17 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
 
   if (articles.length === 0) {
     return (
-      <div className="w-full py-20 px-4 text-center border-b border-white/10 bg-noir-card">
-        <Sparkles className="w-8 h-8 text-gold mx-auto mb-4 animate-pulse-slow" />
-        <h3 className="text-2xl font-serif font-bold text-alabaster mb-2">
+      <div className="w-full py-16 sm:py-20 px-4 text-center border-b border-white/10 bg-noir-card">
+        <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-gold mx-auto mb-3 sm:mb-4 animate-pulse-slow" />
+        <h3 className="text-xl sm:text-2xl font-serif font-bold text-alabaster mb-2">
           No Curations Found in This Vault
         </h3>
-        <p className="text-zinc-400 font-sans text-sm max-w-md mx-auto mb-6 font-light">
+        <p className="text-zinc-400 font-sans text-xs sm:text-sm max-w-md mx-auto mb-6 font-light">
           "Fashion is not something that exists in dresses only. Fashion is in the sky, in the street, fashion has to do with ideas, the way we live, what is happening."
         </p>
         <button
           onClick={onResetFilters}
-          className="inline-flex items-center space-x-2 px-4 py-2 border border-white/20 hover:border-gold text-alabaster font-mono text-xs uppercase tracking-widest transition-colors"
+          className="inline-flex items-center space-x-2 px-4 py-2.5 border border-white/20 hover:border-gold text-alabaster font-mono text-xs uppercase tracking-wider sm:tracking-widest transition-colors"
         >
           <RefreshCcw className="w-3.5 h-3.5 mr-1 text-gold" />
           <span>Reset All Department and Aesthetic Filters</span>
@@ -67,7 +67,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
   /* Render according to layout mode                      */
   /* ---------------------------------------------------- */
   return (
-    <section className="w-full px-4 lg:px-12 py-10 bg-noir">
+    <section className="w-full px-3 sm:px-6 lg:px-12 py-6 sm:py-10 bg-noir">
       {layoutMode === 'compact' ? (
         <div className="border-t border-white/10">
           {displayedArticles.map((article) => (
@@ -86,7 +86,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
           ))}
         </div>
       ) : layoutMode === 'magazine' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {displayedArticles.map((article) => (
             <ArticleCard
               key={article.id}
@@ -104,7 +104,7 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
         </div>
       ) : (
         /* Asymmetric Editorial Spread Layout */
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {displayedArticles.map((article, idx) => (
             <React.Fragment key={article.id}>
               <ArticleCard
@@ -121,14 +121,14 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
 
               {/* Intermittent Editorial Quotation Break (after 3rd article) */}
               {idx === 2 && (
-                <div className="my-10 p-8 md:p-12 border-y border-white/10 bg-noir-card text-center relative overflow-hidden">
-                  <span className="text-[10px] font-mono tracking-mega-wide uppercase text-gold block mb-3">
+                <div className="my-6 sm:my-10 p-6 sm:p-8 md:p-12 border-y border-white/10 bg-noir-card text-center relative overflow-hidden">
+                  <span className="text-[9px] sm:text-[10px] font-mono tracking-wider sm:tracking-mega-wide uppercase text-gold block mb-2 sm:mb-3">
                     CURATOR'S SARTORIAL MANIFESTO // VOL. 08
                   </span>
-                  <blockquote className="text-xl sm:text-2xl md:text-3xl font-editorial italic text-alabaster max-w-3xl mx-auto leading-relaxed">
+                  <blockquote className="text-lg sm:text-2xl md:text-3xl font-editorial italic text-alabaster max-w-3xl mx-auto leading-relaxed">
                     "Style is a language spoken before the voice is ever heard. To craft a silhouette is to sculpt human presence in three-dimensional time."
                   </blockquote>
-                  <cite className="block mt-4 text-xs font-mono uppercase tracking-widest text-zinc-400 not-italic">
+                  <cite className="block mt-3 sm:mt-4 text-xs font-mono uppercase tracking-wider sm:tracking-widest text-zinc-400 not-italic">
                     By{' '}
                     <a
                       href="/author/aurelia-vance-sterling"
@@ -152,13 +152,13 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
 
       {/* Editorial Load More Action */}
       {hasMore && (
-        <div className="mt-14 pt-8 pb-4 text-center border-t border-white/10 flex flex-col items-center">
-          <p className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest mb-4">
+        <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 pb-4 text-center border-t border-white/10 flex flex-col items-center">
+          <p className="text-[10px] sm:text-[11px] font-mono text-zinc-400 uppercase tracking-wider sm:tracking-widest mb-3 sm:mb-4">
             Viewing {displayedArticles.length} of {articles.length} Editorial Stories
           </p>
           <button
             onClick={handleLoadMore}
-            className="group relative inline-flex items-center space-x-3 px-8 py-3.5 bg-black border border-white/20 hover:border-gold text-white font-mono text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:shadow-[0_0_25px_rgba(197,157,84,0.2)] active:scale-95"
+            className="group relative inline-flex items-center justify-center space-x-3 px-6 sm:px-8 py-3 sm:py-3.5 bg-black border border-white/20 hover:border-gold text-white font-mono text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] transition-all duration-300 hover:shadow-[0_0_25px_rgba(197,157,84,0.2)] active:scale-95 w-full sm:w-auto"
           >
             <span className="relative z-10 group-hover:text-gold transition-colors font-medium">
               Load More Stories
@@ -169,8 +169,8 @@ export const ArticleGrid: React.FC<ArticleGridProps> = ({
       )}
 
       {!hasMore && articles.length > 10 && (
-        <div className="mt-14 pt-8 pb-4 text-center border-t border-white/10">
-          <p className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest">
+        <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 pb-4 text-center border-t border-white/10">
+          <p className="text-[10px] sm:text-[11px] font-mono text-zinc-500 uppercase tracking-widest">
             All {articles.length} Editorial Stories Displayed
           </p>
         </div>

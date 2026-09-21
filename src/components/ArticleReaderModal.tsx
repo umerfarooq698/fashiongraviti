@@ -211,21 +211,21 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
       />
 
       {/* Sticky Editorial Action Bar directly below site header */}
-      <div className="sticky top-0 z-30 bg-black/95 backdrop-blur-md border-b-2 border-white/20 px-4 sm:px-8 lg:px-12 py-3 flex items-center justify-between shadow-xl">
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs font-mono">
+      <div className="sticky top-0 z-30 bg-black/95 backdrop-blur-md border-b-2 border-white/20 px-2.5 sm:px-8 lg:px-12 py-2 sm:py-3 flex items-center justify-between shadow-xl gap-1 sm:gap-4">
+        <div className="flex items-center space-x-1.5 sm:space-x-3 text-xs font-mono min-w-0">
           <button
             onClick={() => {
               if ('speechSynthesis' in window) window.speechSynthesis.cancel();
               onClose();
             }}
-            className="flex items-center space-x-1.5 text-xs font-mono font-extrabold text-white hover:text-gold transition-colors cursor-pointer"
+            className="flex items-center space-x-1 sm:space-x-1.5 text-xs font-mono font-extrabold text-white hover:text-gold transition-colors cursor-pointer flex-shrink-0"
           >
-            <ArrowLeft className="w-4 h-4 text-gold" />
+            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
             <span className="hidden sm:inline">BACK TO STORIES</span>
             <span className="sm:hidden">BACK</span>
           </button>
           
-          <span className="text-zinc-600">/</span>
+          <span className="text-zinc-600 flex-shrink-0">/</span>
           
           <a
             href={`/${article.category}`}
@@ -234,93 +234,93 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               if ('speechSynthesis' in window) window.speechSynthesis.cancel();
               onSelectCategory?.(article.category);
             }}
-            className="text-xs font-mono text-gold hover:text-white font-bold uppercase transition-colors cursor-pointer no-underline flex items-center gap-1"
+            className="text-xs font-mono text-gold hover:text-white font-bold uppercase transition-colors cursor-pointer no-underline truncate max-w-[100px] xs:max-w-[140px] sm:max-w-none"
           >
             <span>{article.categoryLabel}</span>
           </a>
         </div>
 
         {/* Action Icons */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-2.5 flex-shrink-0">
           {/* Web Speech Audio */}
           <button
             onClick={handleToggleAudio}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-bold border-2 transition-colors cursor-pointer ${
+            className={`flex items-center space-x-1 sm:space-x-1.5 p-1.5 sm:px-3 sm:py-1.5 text-xs font-mono font-bold border-2 transition-colors cursor-pointer ${
               isPlayingAudio 
                 ? 'border-gold text-gold bg-gold/20' 
                 : 'border-white/20 text-white hover:border-white hover:bg-white/10'
             }`}
             title="Narrate Article using Web Speech"
           >
-            {isPlayingAudio ? <Volume2 className="w-4 h-4 animate-pulse text-gold" /> : <VolumeX className="w-4 h-4" />}
+            {isPlayingAudio ? <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-pulse text-gold" /> : <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
             <span className="text-xs hidden md:inline">{isPlayingAudio ? 'STOP NARRATING' : 'LISTEN TO STORY'}</span>
           </button>
 
           {/* Like */}
           <button
             onClick={handleLike}
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-black border-2 border-white/20 hover:border-crimson text-white hover:text-crimson-light transition-colors cursor-pointer hover:bg-crimson/10"
+            className="flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 text-xs font-mono font-black border-2 border-white/20 hover:border-crimson text-white hover:text-crimson-light transition-colors cursor-pointer hover:bg-crimson/10"
           >
-            <Heart className="w-4 h-4 text-crimson fill-crimson" />
+            <Heart className="w-3.5 h-3.5 text-crimson fill-crimson" />
             <span>{article.likes}</span>
           </button>
 
           {/* Bookmark */}
           <button
             onClick={() => onToggleBookmark(article.id)}
-            className={`p-2 border-2 transition-all cursor-pointer ${
+            className={`p-1.5 sm:p-2 border-2 transition-all cursor-pointer ${
               isBookmarked 
                 ? 'bg-gold text-black border-gold' 
                 : 'border-white/20 text-white hover:border-white hover:bg-white/10'
             }`}
             title="Save to Vault"
           >
-            <Bookmark className="w-4 h-4 fill-current" />
+            <Bookmark className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
           </button>
 
           {/* Share */}
           <button
             onClick={handleShare}
-            className="p-2 border-2 border-white/20 text-white hover:border-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 border-2 border-white/20 text-white hover:border-white hover:bg-white/10 transition-colors cursor-pointer"
             title="Copy Story Link"
           >
-            {isCopied ? <Check className="w-4 h-4 text-green-400" /> : <Share2 className="w-4 h-4" />}
+            {isCopied ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400" /> : <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
           </button>
         </div>
       </div>
 
       {/* Main Editorial Article Body */}
-      <article className="px-4 sm:px-8 md:px-12 lg:px-16 py-10 max-w-5xl mx-auto">
+      <article className="px-3.5 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-10 max-w-4xl mx-auto">
         {/* Breadcrumbs Navigation */}
-        <div className="flex items-center space-x-2 text-xs font-mono text-zinc-400 uppercase mb-6">
+        <div className="flex items-center space-x-1.5 sm:space-x-2 text-[11px] sm:text-xs font-mono text-zinc-400 uppercase mb-4 sm:mb-6 overflow-hidden">
           <a 
             href="/"
             onClick={(e) => {
               e.preventDefault();
               onClose();
             }}
-            className="hover:text-gold transition-colors no-underline text-zinc-400"
+            className="hover:text-gold transition-colors no-underline text-zinc-400 flex-shrink-0"
           >
             HOME
           </a>
-          <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+          <ChevronRight className="w-3.5 h-3.5 text-zinc-600 flex-shrink-0" />
           <a 
             href={`/${article.category}`}
             onClick={(e) => {
               e.preventDefault();
               onSelectCategory?.(article.category);
             }}
-            className="hover:text-gold transition-colors no-underline text-gold font-bold"
+            className="hover:text-gold transition-colors no-underline text-gold font-bold truncate"
           >
             {article.categoryLabel}
           </a>
-          <ChevronRight className="w-3.5 h-3.5 text-zinc-600 hidden sm:inline" />
+          <ChevronRight className="w-3.5 h-3.5 text-zinc-600 hidden sm:inline flex-shrink-0" />
           <span className="text-zinc-500 truncate max-w-xs hidden sm:inline">{article.title}</span>
         </div>
 
         {/* Metadata Header */}
-        <div className="border-b-2 border-white/20 pb-8 mb-8">
-          <div className="flex flex-wrap items-center gap-3 text-xs font-mono uppercase mb-4">
+        <div className="border-b-2 border-white/20 pb-6 sm:pb-8 mb-6 sm:mb-8">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono uppercase mb-3 sm:mb-4">
             <a
               href={`/${article.category}`}
               onClick={(e) => {
@@ -328,22 +328,22 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                 onSelectCategory?.(article.category);
               }}
-              className="bg-crimson hover:bg-crimson-light px-3 py-1 text-white font-black shadow-md transition-colors cursor-pointer no-underline inline-flex items-center gap-1.5"
+              className="bg-crimson hover:bg-crimson-light px-2.5 sm:px-3 py-1 text-white font-black shadow-md transition-colors cursor-pointer no-underline inline-flex items-center gap-1.5 text-[11px] sm:text-xs"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold" />
               {article.categoryLabel}
             </a>
-            <span className="flex items-center gap-1 text-gold font-black">
-              <Clock className="w-4 h-4" />
+            <span className="flex items-center gap-1 text-gold font-black text-[11px] sm:text-xs">
+              <Clock className="w-3.5 h-3.5" />
               {article.readTime}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-white leading-[1.12] tracking-tight">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-white leading-[1.14] sm:leading-[1.12] tracking-tight">
             {article.title}
           </h1>
 
-          <p className="mt-5 text-xl sm:text-2xl font-editorial italic text-zinc-100 leading-relaxed font-semibold">
+          <p className="mt-3 sm:mt-5 text-base sm:text-xl md:text-2xl font-editorial italic text-zinc-100 leading-relaxed font-semibold">
             {article.subtitle}
           </p>
 

@@ -72,9 +72,9 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-12 pb-12 transition-colors">
+    <footer className="w-full bg-noir-pure text-alabaster border-t border-white/10 pt-8 sm:pt-12 pb-8 sm:pb-12 transition-colors">
       {/* Main Footer Links Grid */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/10 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 border-b border-white/10 pb-8 sm:pb-12">
         {/* Brand and Mission Statement (5 cols) */}
         <div className="lg:col-span-5">
           <a
@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({
               e.preventDefault();
               handleDepartmentClick('all');
             }}
-            className="text-3xl font-mono font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer no-underline block"
+            className="text-2xl sm:text-3xl font-mono font-black tracking-tight uppercase text-alabaster hover:text-gold transition-colors cursor-pointer no-underline block"
           >
             FASHION GRAVITI
           </a>
