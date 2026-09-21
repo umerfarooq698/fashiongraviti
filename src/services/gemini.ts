@@ -107,18 +107,18 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count precisely.
    - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use words like 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
    - Write a direct, authoritative fashion statement summarizing the article.
-3. WRITE FOR REAL READERS FIRST (ENGAGING AND ACCESSIBLE):
-   - Keep content useful, engaging, and easy to understand.
-   - Stay strictly relevant to the keyword and search intent.
-   - Provide practical styling advice, wardrobe formulas, silhouette analysis, fabric recommendations, and buying guidance.
+3. WRITE FOR REAL READERS FIRST (MAXIMUM READABILITY AND INFORMATIONAL VALUE):
+   - Every article MUST be deeply informational, highly readable, and immensely practical for real readers.
+   - Provide concrete, tangible fashion insights: specific material grades, textile weaves, leather tanning methods, tailoring measurements, outfit pairing formulas, and purchasing criteria.
+   - Completely avoid generic fluff, robotic filler, or vague generalities. Every sentence must offer sharp sartorial perspective and genuine reader value.
 4. CLEAR FOCUS AND NATURAL FLOW:
    - Keep every section focused on one clear idea. Do not mix unrelated points in the same paragraph or section.
    - Maintain a smooth, natural flow from one section to the next.
 5. SENTENCE AND PARAGRAPH STRUCTURE:
    - Use short and medium-length sentences. Avoid long, complicated run-on sentences.
-   - Keep paragraphs short (usually 2–4 sentences per paragraph).
-6. FRESH STRUCTURE AND HEADINGS (1000–1200 WORDS):
-   - Use a fresh, original structure and writing style every time. Never follow a fixed template or repeat previous patterns.
+   - Keep paragraphs short (usually 2–4 sentences per paragraph) for effortless mobile reading.
+6. FRESH AND DISTINCT STRUCTURE EVERY TIME (1000–1200 WORDS):
+   - Always produce completely different structures, distinct angles, unique subheadings, and fresh prose. Never repeat phrasing or boilerplate paragraphs from previous articles.
    - Use natural markdown H2 ("## Section Title") and H3 ("### Subsection Title") in "bodyParagraphs" to structure the article.
    - Use mostly paragraphs and occasional clean bullet points ("* Bullet point") when listing styling tips or materials.
    - Total article length must be in the 1000–1200 word range.
