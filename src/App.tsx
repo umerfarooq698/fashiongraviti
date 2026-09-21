@@ -18,8 +18,8 @@ import { Footer } from './components/Footer';
 import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v16';
-const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v4';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v20';
+const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
 
 export function App() {
   // Articles state with localStorage hydration
@@ -27,7 +27,10 @@ export function App() {
     const saved = localStorage.getItem(STORAGE_KEY_ARTICLES);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
       } catch (e) {
         console.error('Failed to parse saved articles:', e);
       }
@@ -45,7 +48,7 @@ export function App() {
         console.error('Failed to parse bookmarks:', e);
       }
     }
-    return ['article-01', 'article-03'];
+    return ['article-period-swimwear'];
   });
 
   // Filter & Search states
@@ -72,9 +75,17 @@ export function App() {
     localStorage.setItem(STORAGE_KEY_BOOKMARKS, JSON.stringify(bookmarkedIds));
   }, [bookmarkedIds]);
 
-  // Ensure dark class is applied
+  // Ensure dark class is applied and purge old database cache versions
   useEffect(() => {
     document.documentElement.classList.add('dark');
+    for (let i = 1; i <= 19; i++) {
+      try {
+        localStorage.removeItem(`fashiongraviti_articles_v${i}`);
+        localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
+      } catch {
+        // ignore
+      }
+    }
   }, []);
 
   // Listen to URL path (/category, /author/:slug, /title-slug, /about-us, /contact-us) and search params on mount & popstate
