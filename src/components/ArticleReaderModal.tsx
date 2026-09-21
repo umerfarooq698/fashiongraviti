@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import type { FashionArticle } from '../types/fashion';
 import { 
   Bookmark, 
@@ -86,6 +86,25 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
+
+  // Automatically calculate the center point of the article for secondary image placement
+  const secondaryImageIndex = useMemo(() => {
+    if (!article?.content?.secondaryImage || !article?.content?.bodyParagraphs?.length) return -1;
+    const total = article.content.bodyParagraphs.length;
+    const mid = Math.floor(total / 2);
+    // Prefer placing right before a major section heading (## ) near the middle (within ±3 items)
+    for (let offset = 0; offset <= 3; offset++) {
+      const idx = mid + offset;
+      if (idx < total && article.content.bodyParagraphs[idx]?.trim().startsWith('## ')) {
+        return idx;
+      }
+      const negIdx = mid - offset;
+      if (negIdx > 0 && article.content.bodyParagraphs[negIdx]?.trim().startsWith('## ')) {
+        return negIdx;
+      }
+    }
+    return mid;
+  }, [article]);
 
   if (!article) return null;
 
@@ -376,31 +395,49 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
           {article.content.bodyParagraphs.map((paragraph, index) => {
             const trimmed = paragraph.trim();
-            if (trimmed.startsWith('### ')) {
-              return (
-                <h3 key={index} className="text-lg sm:text-xl font-serif font-semibold text-gold mt-6 mb-2 tracking-wide">
-                  {trimmed.replace(/^###\s+/, '')}
-                </h3>
-              );
-            }
-            if (trimmed.startsWith('## ')) {
-              return (
-                <h2 key={index} className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10 tracking-tight">
-                  {trimmed.replace(/^##\s+/, '')}
-                </h2>
-              );
-            }
-            if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
-              return (
-                <li key={index} className="list-disc list-inside text-zinc-300 ml-2 font-normal leading-relaxed">
-                  {trimmed.replace(/^[*•-]\s+/, '')}
-                </li>
-              );
-            }
+            const isSecondaryImageTarget = index === secondaryImageIndex && article.content.secondaryImage;
+
             return (
-              <p key={index} className="leading-relaxed">
-                {paragraph}
-              </p>
+              <React.Fragment key={index}>
+                {/* Secondary Editorial / Atelier Image (Centered dynamically in the reading flow) */}
+                {isSecondaryImageTarget && (
+                  <div className="my-10 border border-white/20 overflow-hidden bg-black shadow-xl flex flex-col">
+                    <div className="relative w-full aspect-[16/9] overflow-hidden bg-zinc-950">
+                      <img
+                        src={article.content.secondaryImage!.url}
+                        alt={article.content.secondaryImage!.alt || "Editorial Atelier Detail"}
+                        className="w-full h-full object-cover object-top"
+                        loading="lazy"
+                      />
+                    </div>
+                    {article.content.secondaryImage!.caption && 
+                     !article.content.secondaryImage!.caption.toLowerCase().includes('unsplash') && 
+                     !article.content.secondaryImage!.caption.toLowerCase().includes('photo by') && (
+                      <p className="w-full px-3.5 py-1.5 bg-black/95 text-[11px] font-mono text-zinc-400 border-t border-white/10">
+                        {article.content.secondaryImage!.caption}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {trimmed.startsWith('### ') ? (
+                  <h3 className="text-lg sm:text-xl font-serif font-semibold text-gold mt-6 mb-2 tracking-wide">
+                    {trimmed.replace(/^###\s+/, '')}
+                  </h3>
+                ) : trimmed.startsWith('## ') ? (
+                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10 tracking-tight">
+                    {trimmed.replace(/^##\s+/, '')}
+                  </h2>
+                ) : trimmed.startsWith('* ') || trimmed.startsWith('- ') ? (
+                  <li className="list-disc list-inside text-zinc-300 ml-2 font-normal leading-relaxed">
+                    {trimmed.replace(/^[*•-]\s+/, '')}
+                  </li>
+                ) : (
+                  <p className="leading-relaxed">
+                    {paragraph}
+                  </p>
+                )}
+              </React.Fragment>
             );
           })}
 
@@ -423,8 +460,8 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             </div>
           )}
 
-          {/* Secondary Backstage / Studio Image (Unified 16:9 Ratio) */}
-          {article.content.secondaryImage && (
+          {/* Fallback Secondary Image if article had no bodyParagraphs */}
+          {secondaryImageIndex === -1 && article.content.secondaryImage && (
             <div className="my-8 border border-white/20 overflow-hidden bg-black shadow-xl flex flex-col">
               <div className="relative w-full aspect-[16/9] overflow-hidden bg-zinc-950">
                 <img

@@ -127,8 +127,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         role: 'Senior Fashion and Textile Innovation Columnist',
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-        alt: 'Tranquil luxury resort pool waters illustrating the hydrostatic resistance and quick-dry textile performance of period swimwear',
+        url: 'https://images.unsplash.com/photo-1570258028946-b9a55411d117?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+        alt: 'Editorial model wearing a supportive minimalist swimsuit by the coastal surf demonstrating active leakproof period swimwear performance',
       },
       conclusion: 'The arrival of period swimwear represents a long-overdue triumph in functional fashion design. By combining high-tech multi-layer textile membranes, chlorine-resistant fibers, and refined coastal silhouettes, these garments liberate women from seasonal anxiety. Embracing these high-performance suits ensures you never miss a pristine ocean wave, sun-soaked terrace lounge, or spontaneous swimming invitation.',
       faqs: [
