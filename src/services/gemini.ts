@@ -82,6 +82,16 @@ export function enforceTitle55to60(rawTitle: string): string {
 }
 
 /**
+ * Ensures Unsplash URLs are strictly cropped to 16:9 widescreen format (1600x900)
+ */
+export function formatUnsplash16x9(url: string): string {
+  if (!url) return url;
+  if (!url.includes('images.unsplash.com')) return url;
+  const baseUrl = url.split('?')[0];
+  return `${baseUrl}?auto=format&fit=crop&crop=top&w=1600&h=900&q=85`;
+}
+
+/**
  * Generates a full high-fashion editorial article using Gemini 3.6 Flash and Live Unsplash Imagery
  */
 export async function generateFashionArticleWithGemini(
@@ -265,7 +275,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
         year: 'numeric',
       }).toUpperCase(),
       readTime: '7 MIN READ',
-      coverImage: coverPhoto.url,
+      coverImage: formatUnsplash16x9(coverPhoto.url),
       coverImageCaption: coverPhoto.altDescription ? `Editorial Runway Presentation: ${coverPhoto.altDescription}` : undefined,
       coverImageAlt: coverPhoto.altDescription || `Curated high-fashion editorial styling for ${finalTitle}`,
       content: {
@@ -276,7 +286,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
           attribution: parsed.pullQuoteAttribution,
         },
         secondaryImage: {
-          url: secondaryPhoto.url,
+          url: formatUnsplash16x9(secondaryPhoto.url),
           caption: secondaryPhoto.altDescription ? `Atelier Detail: ${secondaryPhoto.altDescription}` : undefined,
           alt: secondaryPhoto.altDescription || `Atelier construction and craftsmanship detail for ${finalTitle}`,
         },
@@ -320,7 +330,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       },
       publishedAt: 'SEPTEMBER 19, 2026',
       readTime: '5 MIN READ',
-      coverImage: fallbackPhoto.url,
+      coverImage: formatUnsplash16x9(fallbackPhoto.url),
       coverImageCaption: undefined,
       coverImageAlt: fallbackPhoto.altDescription || 'Haute couture sculptural wool coat runway silhouette',
       content: {
@@ -334,7 +344,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
           attribution: 'Editorial Review Board',
         },
         secondaryImage: {
-          url: fallbackSecondary.url,
+          url: formatUnsplash16x9(fallbackSecondary.url),
           caption: undefined,
           alt: fallbackSecondary.altDescription || 'Atelier structural tailoring and fine textile craftsmanship',
         },

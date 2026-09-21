@@ -162,12 +162,12 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             e.preventDefault();
             onReadArticle(article);
           }}
-          className="lg:col-span-7 relative group cursor-pointer overflow-hidden min-h-[380px] lg:min-h-[580px] bg-black block"
+          className="lg:col-span-7 relative group cursor-pointer overflow-hidden aspect-[16/9] lg:aspect-auto min-h-0 lg:min-h-[540px] bg-black block"
         >
           <img
             src={article.coverImage}
             alt={article.coverImageAlt || article.title}
-            className="w-full h-full object-cover object-top lg:object-[center_10%] transform group-hover:scale-105 transition-transform duration-1000 ease-out brightness-95 group-hover:brightness-100"
+            className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-1000 ease-out brightness-95 group-hover:brightness-100"
           />
           {/* Subtle gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/80 lg:via-transparent lg:to-transparent pointer-events-none" />

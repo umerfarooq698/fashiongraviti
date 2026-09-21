@@ -180,7 +180,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             e.preventDefault();
             onReadArticle(article);
           }}
-          className="relative aspect-[4/3] overflow-hidden bg-black block"
+          className="relative aspect-[16/9] overflow-hidden bg-black block"
         >
           <img
             src={article.coverImage}
@@ -314,7 +314,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           e.preventDefault();
           onReadArticle(article);
         }}
-        className="md:col-span-5 relative min-h-[280px] md:min-h-[360px] overflow-hidden bg-black block"
+        className="md:col-span-5 relative aspect-[16/9] md:aspect-auto md:min-h-[300px] overflow-hidden bg-black block"
       >
         <img
           src={article.coverImage}

@@ -88,7 +88,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 21, 2026',
     readTime: '7 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&crop=top&w=1600&q=85',
+    coverImage: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageAlt: 'Model wearing a tailored black calfskin cafe racer mens leather jacket with polished silver hardware',
     content: {
       dropCapText: 'Few garments in menswear history command the visceral authority of mens leather jackets. Born from utilitarian necessity in early twentieth-century aviation and refined through decades of countercultural rebellion, this outerwear cornerstone now stands at the summit of modern luxury tailoring.',
@@ -119,7 +119,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         role: 'Senior Sartorial and Tailoring Critic',
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&crop=top&w=1400&q=85',
+        url: 'https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
         alt: 'Atelier craftsmanship closeup of full-grain black mens leather jackets showing heavy gauge asymmetrical zip construction',
       },
       conclusion: 'Investing in mens leather jackets represents a commitment to personal style longevity. By prioritizing uncompromised full-grain hides, restrained silhouettes, and impeccable shoulder fits, you secure an outerwear centerpiece that effortlessly transcends seasonal fads and matures with timeless distinction.',
@@ -184,7 +184,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 20, 2026',
     readTime: '7 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&crop=top&w=1600&q=85',
+    coverImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageAlt: 'Editorial model showcasing a soft summer color palette in a tailored dusty slate cashmere coat and cool muted silk layers',
     content: {
       dropCapText: 'The soft summer color palette represents the pinnacle of quiet luxury, celebrating subdued hues that whisper rather than shout. Situated at the harmonious intersection of coolness and delicate desaturation, this seasonal spectrum offers a serene approach to personal dressing that resonates deeply with timeless tailoring.',
@@ -208,7 +208,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         role: 'Avant-Garde and Heritage Brand Scholar',
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=85',
+        url: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
         alt: 'Atelier fabric swatches illustrating the soft summer color palette with heather wool and desaturated silk fabrics',
       },
       conclusion: 'Adopting a soft summer color palette is an investment in sartorial longevity. By prioritizing cool undertones, matte textiles, and harmonious pairings across slate grey, dusty rose, and muted sage, one builds a wardrobe that transcends fleeting fads and exudes lasting grace.',
@@ -273,7 +273,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 19, 2026',
     readTime: '8 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1779406275908-1dabe4083373?auto=format&fit=crop&crop=top&w=1600&q=85',
+    coverImage: 'https://images.unsplash.com/photo-1779406275908-1dabe4083373?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageAlt: 'Editorial model in authentic 1990s minimal tailoring featuring black column dress and leather blazer architecture',
     content: {
       dropCapText: 'The enduring power of 90s fashion lies in its unapologetic devotion to simplicity, immaculate tailoring, and effortless personal attitude. Three decades after its debut on international runways, the decade continues to define how modern women and men assemble their everyday wardrobes.',
@@ -310,7 +310,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         role: 'Atelier Review',
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1779406337904-b9c606ae8802?auto=format&fit=crop&crop=top&w=1600&q=85',
+        url: 'https://images.unsplash.com/photo-1779406337904-b9c606ae8802?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
         alt: 'Archival 1990s inspired relaxed brown leather jacket and straight-leg trousers editorial portrait',
       },
       conclusion: 'The lasting relevance of 90s fashion proves that immaculate tailoring, premium natural fabrics, and unpretentious simplicity never go out of style. By investing in versatile staple garments and focusing on clean proportions, you create a timeless wardrobe that feels effortlessly modern in any setting.',
@@ -362,11 +362,11 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 18, 2026',
     readTime: '6 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85',
+    coverImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'Look 34: Sculpted double-faced wool coat paired with cathedral silk faille on the Paris runway.',
     gallery: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=80',
+      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=80',
     ],
     content: {
       dropCapText: 'In breaking news from Paris Haute Couture Week, luxury houses delivered an uncompromising masterclass in architectural tailoring and dramatic modern craftsmanship.',
@@ -380,7 +380,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         role: 'Official Statement, 2026',
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=80',
+        url: 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
         caption: 'Backstage at the Grand Palais: Hand-pleated organza collars and bespoke oxidized silver jewelry.',
       },
       closingParagraphs: [
@@ -415,7 +415,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 16, 2026',
     readTime: '5 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'Unstructured double-breasted coat in un-dyed oatmeal baby alpaca.',
     content: {
       dropCapText: 'The trend landscape has shifted permanently. The world’s top tastemakers have retired loud monograms in favor of the quiet sophistication of rare fibers and bespoke cut.',
@@ -459,7 +459,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 14, 2026',
     readTime: '7 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'A-list celebrity wearing custom dramatic archival gown on the red carpet.',
     content: {
       dropCapText: 'Celebrity red carpet appearances have transcended standard glamour to become a high-stakes arena for artistic statements and museum-grade couture.',
@@ -499,7 +499,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 12, 2026',
     readTime: '6 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1200&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'Architectural atelier prototype showcasing raw titanium cantilever hardware.',
     content: {
       dropCapText: 'What makes a fashion brand truly iconic? It is the rare ability to maintain fierce creative independence while setting the global standard for craftsmanship.',
@@ -540,7 +540,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 10, 2026',
     readTime: '4 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'Backstage model receiving final glass-skin prep before the runway show.',
     content: {
       dropCapText: 'Backstage at Fashion Week, the beauty direction was unanimous: luminous skin that radiates health, paired with sculpted brows and deep berry stains.',
@@ -581,7 +581,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 08, 2026',
     readTime: '5 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1200&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'Expert layering demonstration: Textured wool overcoat over fine-knit merino turtleneck.',
     content: {
       dropCapText: 'Mastering the art of styling is about understanding balance, fabric weight, and how subtle proportions transform an everyday outfit into high fashion.',
@@ -622,7 +622,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     publishedAt: 'SEPTEMBER 06, 2026',
     readTime: '5 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1200&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageCaption: 'Bio-cultivated luxury jacket exhibited at the European Fashion News Symposium.',
     content: {
       dropCapText: 'In major industry news, fourteen leading European luxury fashion houses have committed to fully replacing synthetic linings with biodegradable, lab-cultivated bio-silks by 2027.',

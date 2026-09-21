@@ -348,14 +348,16 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           </div>
         </div>
 
-        {/* Full Bleed Hero Cover Image (Auto-Adjusted) */}
-        <div className="my-8 overflow-hidden bg-black/90 border-2 border-white/20 shadow-2xl flex flex-col items-center justify-center">
-          <img
-            src={article.coverImage}
-            alt={article.coverImageAlt || article.title}
-            className="w-full h-auto max-h-[750px] object-contain mx-auto"
-            loading="eager"
-          />
+        {/* Full Bleed Hero Cover Image (Unified 16:9 Ratio) */}
+        <div className="my-8 overflow-hidden bg-black border-2 border-white/20 shadow-2xl flex flex-col">
+          <div className="relative w-full aspect-[16/9] overflow-hidden bg-zinc-950">
+            <img
+              src={article.coverImage}
+              alt={article.coverImageAlt || article.title}
+              className="w-full h-full object-cover object-top"
+              loading="eager"
+            />
+          </div>
           {article.coverImageCaption && 
            !article.coverImageCaption.toLowerCase().includes('unsplash') && 
            !article.coverImageCaption.toLowerCase().includes('photo by') && (
@@ -421,15 +423,17 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             </div>
           )}
 
-          {/* Secondary Backstage / Studio Image (Auto-Adjusted) */}
+          {/* Secondary Backstage / Studio Image (Unified 16:9 Ratio) */}
           {article.content.secondaryImage && (
-            <div className="my-8 border border-white/20 overflow-hidden bg-black/90 shadow-xl flex flex-col items-center justify-center">
-              <img
-                src={article.content.secondaryImage.url}
-                alt={article.content.secondaryImage.alt || "Editorial Atelier Detail"}
-                className="w-full h-auto max-h-[650px] object-contain mx-auto"
-                loading="lazy"
-              />
+            <div className="my-8 border border-white/20 overflow-hidden bg-black shadow-xl flex flex-col">
+              <div className="relative w-full aspect-[16/9] overflow-hidden bg-zinc-950">
+                <img
+                  src={article.content.secondaryImage.url}
+                  alt={article.content.secondaryImage.alt || "Editorial Atelier Detail"}
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+              </div>
               {article.content.secondaryImage.caption && 
                !article.content.secondaryImage.caption.toLowerCase().includes('unsplash') && 
                !article.content.secondaryImage.caption.toLowerCase().includes('photo by') && (
