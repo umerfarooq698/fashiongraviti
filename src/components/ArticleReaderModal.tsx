@@ -147,7 +147,8 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
       setIsPlayingAudio(false);
     } else {
       window.speechSynthesis.cancel();
-      const textToRead = `${article.title}. ${article.subtitle}. By ${article.author.name}. ${article.content.dropCapText} ${article.content.bodyParagraphs.slice(0, 3).join(' ')}`;
+      const cleanForSpeech = (str: string) => str.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+      const textToRead = cleanForSpeech(`${article.title}. ${article.subtitle}. By ${article.author.name}. ${article.content.dropCapText} ${article.content.bodyParagraphs.slice(0, 3).join(' ')}`);
       const utterance = new SpeechSynthesisUtterance(textToRead);
       utterance.rate = 0.95;
       utterance.pitch = 1.0;
@@ -201,6 +202,59 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   const relatedArticles = allArticles
     .filter((a) => a.id !== article.id && a.category === article.category)
     .slice(0, 3);
+
+  // Helper to parse and render markdown links naturally in editorial text
+  const renderTextWithLinks = (text: string) => {
+    if (!text) return null;
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    if (!linkRegex.test(text)) {
+      return text;
+    }
+    linkRegex.lastIndex = 0;
+    const elements: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        elements.push(text.substring(lastIndex, match.index));
+      }
+      const anchorText = match[1];
+      const url = match[2];
+      const isInternal = url.startsWith('/');
+
+      elements.push(
+        <a
+          key={`inline-link-${match.index}-${url}`}
+          href={url}
+          onClick={(e) => {
+            if (isInternal) {
+              e.preventDefault();
+              const cleanSlug = url.replace(/^\//, '');
+              const target = allArticles.find((a) => a.slug === cleanSlug);
+              if (target) {
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                onSelectNextArticle(target);
+                window.history.pushState(null, '', url);
+              } else {
+                window.location.href = url;
+              }
+            }
+          }}
+          className="text-gold hover:text-white underline decoration-gold/50 hover:decoration-white font-medium transition-colors cursor-pointer"
+        >
+          {anchorText}
+        </a>
+      );
+      lastIndex = linkRegex.lastIndex;
+    }
+
+    if (lastIndex < text.length) {
+      elements.push(text.substring(lastIndex));
+    }
+
+    return elements;
+  };
 
   return (
     <section className="w-full bg-noir text-white relative animate-fadeIn pb-16">
@@ -418,7 +472,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
         <div className="space-y-6 text-base sm:text-lg font-sans text-zinc-200 leading-relaxed font-normal">
           {/* First paragraph with Drop-Cap */}
           <p className="drop-cap text-base sm:text-lg leading-relaxed text-zinc-100 font-normal">
-            {article.content.dropCapText}
+            {renderTextWithLinks(article.content.dropCapText)}
           </p>
 
           {article.content.bodyParagraphs.map((paragraph, index) => {
@@ -450,19 +504,19 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
                 {trimmed.startsWith('### ') ? (
                   <h3 className="text-lg sm:text-xl font-serif font-semibold text-gold mt-6 mb-2 tracking-wide">
-                    {trimmed.replace(/^###\s+/, '')}
+                    {renderTextWithLinks(trimmed.replace(/^###\s+/, ''))}
                   </h3>
                 ) : trimmed.startsWith('## ') ? (
                   <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10 tracking-tight">
-                    {trimmed.replace(/^##\s+/, '')}
+                    {renderTextWithLinks(trimmed.replace(/^##\s+/, ''))}
                   </h2>
                 ) : trimmed.startsWith('* ') || trimmed.startsWith('- ') ? (
                   <li className="list-disc list-inside text-zinc-300 ml-2 font-normal leading-relaxed">
-                    {trimmed.replace(/^[*•-]\s+/, '')}
+                    {renderTextWithLinks(trimmed.replace(/^[*•-]\s+/, ''))}
                   </li>
                 ) : (
                   <p className="leading-relaxed">
-                    {paragraph}
+                    {renderTextWithLinks(paragraph)}
                   </p>
                 )}
               </React.Fragment>
@@ -515,13 +569,13 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             if (trimmed.startsWith('## ')) {
               return (
                 <h2 key={index} className="text-xl sm:text-2xl font-serif font-bold text-white mt-8 mb-3 pt-4 border-t border-white/10">
-                  {trimmed.replace(/^##\s+/, '')}
+                  {renderTextWithLinks(trimmed.replace(/^##\s+/, ''))}
                 </h2>
               );
             }
             return (
               <p key={index} className="leading-relaxed">
-                {paragraph}
+                {renderTextWithLinks(paragraph)}
               </p>
             );
           })}
@@ -533,7 +587,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 Conclusion
               </h2>
               <p className="leading-relaxed">
-                {article.content.conclusion}
+                {renderTextWithLinks(article.content.conclusion)}
               </p>
             </div>
           )}
@@ -555,7 +609,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                       <span>{faq.question}</span>
                     </h4>
                     <p className="text-xs sm:text-sm font-sans text-zinc-300 leading-relaxed pl-5">
-                      {faq.answer}
+                      {renderTextWithLinks(faq.answer)}
                     </p>
                   </div>
                 ))}

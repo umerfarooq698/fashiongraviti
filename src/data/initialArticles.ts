@@ -94,7 +94,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
       bodyParagraphs: [
         '## The Evolution Of Military Prints In Modern Streetwear',
         'Camouflage has traveled a fascinating path from military surplus depots to the forefront of global street fashion. During the early nineties, skate communities and hip hop collectives adopted surplus tactical shorts for their durability, roomy pockets, and unapologetic anti establishment edge. What began as an accessible thrift store staple quickly caught the attention of visionary streetwear designers who recognized the graphic power of utilitarian patterns.',
-        'Today, camo jorts represent a permanent bridge between practical utility and high fashion casual wear. Instead of stiff, uncomfortable military issue gear, modern iterations are tailored from soft ring spun cotton twill and heavy duty ripstop denim. They offer the substantial presence of classic jeans while delivering the graphic excitement of an all over print. By wearing camouflage cutoffs, you inject personality and visual depth into an otherwise minimal warm weather wardrobe.',
+        'Today, camo [jorts](/jorts) represent a permanent bridge between practical utility and high fashion casual wear. Instead of stiff, uncomfortable military issue gear, modern iterations are tailored from soft ring spun cotton twill and heavy duty ripstop denim. They offer the substantial presence of classic jeans while delivering the graphic excitement of an all over print. By wearing camouflage cutoffs, you inject personality and visual depth into an otherwise minimal warm weather wardrobe.',
         '## Choosing Between Woodland Desert And Tiger Stripe Patterns',
         'Not all camouflage prints communicate the same aesthetic. The classic four color Woodland pattern, featuring deep forest green, chocolate brown, olive, and midnight black, remains the most iconic choice. Woodland camo carries an authentic vintage grit that pairs naturally with collegiate and workwear staples, grounding your lower half with warm earthy tones.',
         'If you prefer a lighter, more summer friendly palette, Desert Storm patterns offer a sun bleached alternative composed of sandy beige, soft khaki, and muted stone. Desert camo feels breezy and understated under bright sunlight, making it remarkably easy to integrate into minimalist wardrobes. Meanwhile, Tiger Stripe patterns introduce horizontal brushstroke graphics that channel vintage skate culture, perfect for anyone who wants a sharper graphic edge.',
@@ -194,13 +194,13 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
       dropCapText: 'While blue denim always has a place in summer rotations, black jorts carry a rebellious, sharper energy that completely transforms an outfit. Whether cut with clean stitched hems or raw frayed edges, dark denim cutoffs give your warm weather wardrobe an instant urban upgrade.',
       bodyParagraphs: [
         '## The Modern Appeal of Dark Denim Cutoffs',
-        'While blue denim shorts always have a place in summer rotations, black denim brings a rebellious, sharper energy that completely transforms an outfit. Blue shorts can sometimes feel too casual or dated, but a dark shade immediately introduces a sleek, modern tone that stands out on the street.',
+        'While blue [denim shorts](/jorts) always have a place in summer rotations, black denim brings a rebellious, sharper energy that completely transforms an outfit. Blue shorts can sometimes feel too casual or dated, but a dark shade immediately introduces a sleek, modern tone that stands out on the street.',
         'Black jorts combine the rugged durability of heavy jeans with the breezy comfort of warm weather cutoffs. The dark silhouette creates a clean, grounded base that contrasts naturally against crisp white tees, warm earth tones, and lightweight summer layers.',
         '## Choosing Between Washed Charcoal and Solid Pitch Black',
         'The wash you pick sets the tone for your entire look. A sun faded charcoal wash delivers an authentic vintage feel, featuring soft grey highlights along the seams and subtle fading across the thighs. It works effortlessly for casual coffee runs, skate sessions, and relaxed weekend meetups.',
         'In contrast, solid pitch black denim leans noticeably cleaner and more intentional. It offers a sharp, uniform surface that pairs seamlessly with tailored jackets and minimal leather accessories, giving you an outfit that transitions smoothly from day to night.',
         '## Nailing the Length and Roomy Silhouette',
-        'Proportion is essential when wearing wide denim shorts. The most flattering cut drops right at the top of your kneecap or slightly below, featuring a wide leg opening that gives your legs room to breathe and move freely.',
+        'Proportion is essential when wearing [wide denim shorts](/jorts). The most flattering cut drops right at the top of your kneecap or slightly below, featuring a wide leg opening that gives your legs room to breathe and move freely.',
         'Avoid tight cuts that cling to your thighs. A relaxed, wider cut creates clean vertical lines that balance your torso, preventing you from looking top heavy while giving the denim an effortless, natural drape when you walk.',
         '## Effortless Outfit Pairings for Warm Weather',
         'The easiest everyday formula starts with high contrast. Tuck a heavy boxy white crewneck tee into your black jorts and add a simple black leather belt. The stark monochrome contrast looks clean, deliberate, and timeless.',
@@ -288,7 +288,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     coverImage: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageAlt: 'Street style man wearing relaxed vintage wash wide leg denim jorts paired with leather loafers and a structured jacket in the city',
     content: {
-      dropCapText: 'For nearly a decade, summer menswear was held hostage by the tight mid thigh chino short. That era is officially behind us. Relaxed denim shorts have reclaimed modern street style, proving that masculine silhouettes look far more natural when clothes have room to drape, move, and breathe under the sun.',
+      dropCapText: 'For nearly a decade, summer menswear was held hostage by the tight mid thigh chino short. That era is officially behind us. Relaxed [denim shorts](/jorts) have reclaimed modern street style, proving that masculine silhouettes look far more natural when clothes have room to drape, move, and breathe under the sun.',
       bodyParagraphs: [
         '## The Rebellion Against Restrictive Tailoring',
         'For years, men accepted the mid thigh slim chino short as the default summer uniform, despite its glaring practical flaws. Narrow cuts clung uncomfortably to the quads, restricted sitting posture, and created an awkward top heavy imbalance for anyone with broad shoulders or an athletic build. That restrictive aesthetic felt more like an obligation than a deliberate style choice.',
@@ -300,7 +300,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         'Pulling off wide shorts requires an understanding of upper body proportions. Because the lower half carries considerable visual mass, throwing on an equally oversized, untucked sweatshirt can easily swallow your frame. The key to looking intentional rather than careless lies in anchoring your natural waistline.',
         'Securing the waist with a substantial one inch bridle leather belt establishes a distinct focal point. Tucking in a clean ribbed tank top, a boxy heavyweight cotton tee, or a crisp poplin dress shirt visually lengthens your legs while letting the generous drape of the denim flare outward with authority.',
         '## The Dialogue Between Raw Edges and Soft Tailoring',
-        'The most compelling way modern men are wearing wide denim shorts is through high low contrast. Instead of confining jorts to skate parks and beach boardwalks, forward thinking dressers are treating them like casual pleated trousers.',
+        'The most compelling way modern men are wearing wide denim shorts is through high low contrast. Instead of confining [jorts](/jorts) to skate parks and beach boardwalks, forward thinking dressers are treating them like casual pleated trousers.',
         'Pairing dark raw indigo shorts with an unlined lightweight wool or linen blazer creates an arresting juxtaposition. The sharp notch lapels and structured shoulders of the jacket elevate the rugged utilitarian nature of the denim, especially when layered over a fine gauge knit polo. It is an ensemble that navigates creative work studios, art gallery openings, and warm evening dinners with unforced sophistication.',
         '## Footwear Geometry Anchoring the Leg Line',
         'Footwear makes or breaks wide leg silhouettes. Featherweight running trainers or ultra thin canvas shoes look visually drowned beneath a twenty four inch hem circumference, causing your feet to disappear entirely.',
@@ -399,7 +399,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         'The wash of your denim sets the mood of your entire outfit. Having one or two good washes will cover almost every setting.',
         '* Vintage Mid-Stone Wash: This is the most versatile option. It has soft faded indigo tones, light wear around the seams, and an easygoing feel. It pairs well with basic white tees, vintage graphic shirts, and casual windbreakers.',
         '* Dark Raw Indigo: Dark, unwashed denim looks clean and deliberate. If you want to dress up your shorts with a crisp button-down shirt or an unstructured blazer, dark indigo gives you the neatest look.',
-        '* Washed Black and Charcoal: A muted dark gray or black pair adds an understated, urban edge. It works especially well in early autumn or for evening outings with black leather shoes or boots.',
+        '* Washed Black and Charcoal: A muted dark gray or [black pair](/black-jorts) adds an understated, urban edge. It works especially well in early autumn or for evening outings with black leather shoes or boots.',
         '* Light Bleach Blue: Perfect for high summer and beach days. Light blue denim with a frayed hem looks casual, relaxed, and sun-faded.',
         '## Five Easy Outfit Ideas that Always Work',
         'Because jorts have visual weight and a casual feel, the easiest way to style them is by pairing them with clean, slightly sharper pieces up top.',
@@ -445,7 +445,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         },
         {
           question: 'Can you dress up denim shorts for dinner or smart casual events?',
-          answer: 'Yes. Choose dark raw indigo or clean black shorts and pair them with an unbuttoned blazer, a crisp white button-down shirt, and leather loafers.',
+          answer: 'Yes. Choose dark raw indigo or clean [black shorts](/black-jorts) and pair them with an unbuttoned blazer, a crisp white button-down shirt, and leather loafers.',
         },
         {
           question: 'Why should I avoid stretch denim when buying jorts?',

@@ -189,6 +189,9 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
     - INFORMATION GAIN: Deliver original value that cannot be found by skimming generic search results. Include specific numbers (inseams in inches, denim weights in oz/GSM), technical trade-offs (why rigid cotton outlasts stretch elastane), and step-by-step DIY guidance.
     - HIGH DWELL TIME: Write engaging, crisp, enjoyable prose that keeps readers reading to the very last line, eliminating bounce rates.
     - ZERO SEARCH ENGINE GAMING: Write 100% for the human reader seeking genuine clothing advice, never for search bots. No keyword stuffing, no repetitive fluff.
+11. NATURAL INTERNAL LINKING (ONLY WHEN DIRECTLY RELEVANT):
+    - When mentioning related fashion topics that exist on Fashion Graviti (such as [jorts](/jorts), [black jorts](/black-jorts), [men jorts](/men-jorts), [camo jorts](/camo-jorts), or [period swimwear](/period-swimwear)), you may format that exact phrase as a markdown link.
+    - STRICT RULE: ONLY link naturally occurring words in context. NEVER force awkward words or insert unnatural sentences just to add a link. If a topic is not naturally mentioned in the flow of the article, do NOT link it.
 
 JSON Schema:
 {
