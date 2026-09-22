@@ -69,7 +69,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
     id: 'article-jorts-definitive-guide',
-    title: 'The Complete Guide to Jorts and How to Style Them Today',
+    title: 'How Wide-Leg Jorts Took Over Street Style and How to Wear Them',
     subtitle: 'Wide-leg denim shorts are everywhere again. Here is everything you need to know about getting the right fit, choosing the best denim wash, and putting together clean everyday outfits.',
     slug: 'jorts',
     category: 'fashion-trends',
