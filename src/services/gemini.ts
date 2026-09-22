@@ -193,6 +193,7 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
     - When mentioning related fashion topics that exist on Fashion Graviti (such as [jorts](/jorts), [black jorts](/black-jorts), [men jorts](/men-jorts), [camo jorts](/camo-jorts), or [period swimwear](/period-swimwear)), you may format that exact phrase as a markdown link.
     - STRICT RULE: ONLY link naturally occurring words in context. NEVER force awkward words or insert unnatural sentences just to add a link. If a topic is not naturally mentioned in the flow of the article, do NOT link it.
     - STRICT DEDUPLICATION RULE: NEVER link to the same article URL more than once within the same article! At most ONE internal link to any given target article per post.
+    - NEVER PLACE LINKS IN OPENING PARAGRAPHS OR INTRO: Internal links must NEVER be placed in the dropCapText or the first section of the article. Only place internal links deeper in the middle or later body sections after the reader is already engaged with the content.
 
 JSON Schema:
 {
