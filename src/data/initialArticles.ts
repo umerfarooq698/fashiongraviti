@@ -200,7 +200,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         'The wash you pick sets the tone for your entire look. A sun faded charcoal wash delivers an authentic vintage feel, featuring soft grey highlights along the seams and subtle fading across the thighs. It works effortlessly for casual coffee runs, skate sessions, and relaxed weekend meetups.',
         'In contrast, solid pitch black denim leans noticeably cleaner and more intentional. It offers a sharp, uniform surface that pairs seamlessly with tailored jackets and minimal leather accessories, giving you an outfit that transitions smoothly from day to night.',
         '## Nailing the Length and Roomy Silhouette',
-        'Proportion is essential when wearing [wide denim shorts](/jorts). The most flattering cut drops right at the top of your kneecap or slightly below, featuring a wide leg opening that gives your legs room to breathe and move freely.',
+        'Proportion is essential when wearing wide denim shorts. The most flattering cut drops right at the top of your kneecap or slightly below, featuring a wide leg opening that gives your legs room to breathe and move freely.',
         'Avoid tight cuts that cling to your thighs. A relaxed, wider cut creates clean vertical lines that balance your torso, preventing you from looking top heavy while giving the denim an effortless, natural drape when you walk.',
         '## Effortless Outfit Pairings for Warm Weather',
         'The easiest everyday formula starts with high contrast. Tuck a heavy boxy white crewneck tee into your black jorts and add a simple black leather belt. The stark monochrome contrast looks clean, deliberate, and timeless.',
@@ -288,7 +288,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     coverImage: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
     coverImageAlt: 'Street style man wearing relaxed vintage wash wide leg denim jorts paired with leather loafers and a structured jacket in the city',
     content: {
-      dropCapText: 'For nearly a decade, summer menswear was held hostage by the tight mid thigh chino short. That era is officially behind us. Relaxed [denim shorts](/jorts) have reclaimed modern street style, proving that masculine silhouettes look far more natural when clothes have room to drape, move, and breathe under the sun.',
+      dropCapText: 'For nearly a decade, summer menswear was held hostage by the tight mid thigh chino short. That era is officially behind us. Relaxed denim shorts have reclaimed modern street style, proving that masculine silhouettes look far more natural when clothes have room to drape, move, and breathe under the sun.',
       bodyParagraphs: [
         '## The Rebellion Against Restrictive Tailoring',
         'For years, men accepted the mid thigh slim chino short as the default summer uniform, despite its glaring practical flaws. Narrow cuts clung uncomfortably to the quads, restricted sitting posture, and created an awkward top heavy imbalance for anyone with broad shoulders or an athletic build. That restrictive aesthetic felt more like an obligation than a deliberate style choice.',
@@ -445,7 +445,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         },
         {
           question: 'Can you dress up denim shorts for dinner or smart casual events?',
-          answer: 'Yes. Choose dark raw indigo or clean [black shorts](/black-jorts) and pair them with an unbuttoned blazer, a crisp white button-down shirt, and leather loafers.',
+          answer: 'Yes. Choose dark raw indigo or clean black shorts and pair them with an unbuttoned blazer, a crisp white button-down shirt, and leather loafers.',
         },
         {
           question: 'Why should I avoid stretch denim when buying jorts?',
