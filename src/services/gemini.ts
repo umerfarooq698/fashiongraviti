@@ -5,7 +5,7 @@ import { getRandomUnsplashFashionPhoto, searchUnsplashPhotos } from './unsplash'
 const GEMINI_API_KEY = (import.meta.env.VITE_GEMINI_API_KEY as string) || '';
 
 const getApiUrl = () =>
-  `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`;
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
 const AUTHORS_LIST = [
   'Aurelia Vance-Sterling',
