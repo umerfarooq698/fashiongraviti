@@ -7,26 +7,25 @@ interface FashionGravitiLogoProps {
 }
 
 /**
- * VIP Luxury Emblem Mark for Fashion Graviti
- * Generated with Gemini AI: Interlocking 3D Haute Couture Monogram,
- * Celestial Gravitational Orbit Rings & Brushed Champagne Gold Needle
+ * VIP Luxury FG Monogram Emblem
+ * Generated with Gemini AI: Interlocking FG Monogram with Celestial Gravitational Orbit
  */
 export const FashionGravitiEmblem: React.FC<{ size?: number; className?: string }> = ({
-  size = 56,
+  size = 32,
   className = '',
 }) => {
   return (
     <div
       style={{ width: size, height: size }}
-      className={`relative inline-flex items-center justify-center rounded-full overflow-hidden flex-shrink-0 bg-black ring-1.5 ring-gold/50 shadow-[0_0_20px_rgba(197,157,84,0.35)] transition-all duration-300 hover:ring-gold hover:shadow-[0_0_25px_rgba(197,157,84,0.6)] ${className}`}
+      className={`relative inline-flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:scale-105 ${className}`}
       aria-label="Fashion Graviti VIP Emblem"
     >
       <img
-        src="/fashion-graviti-logo.jpg"
-        alt="Fashion Graviti VIP Emblem"
+        src="/fashion-graviti-emblem.png"
+        alt="Fashion Graviti VIP FG Emblem"
         width={size}
         height={size}
-        className="w-full h-full object-cover select-none pointer-events-none"
+        className="w-full h-full object-contain select-none pointer-events-none filter drop-shadow-[0_0_8px_rgba(197,157,84,0.45)]"
         loading="eager"
       />
     </div>
@@ -38,38 +37,21 @@ export const FashionGravitiLogo: React.FC<FashionGravitiLogoProps> = ({
   className = '',
   onClick,
 }) => {
-  // 1. MASTHEAD VARIANT (Hero presentation in Header)
+  // 1. MASTHEAD VARIANT (Hero presentation in Header - Haute Couture Wide Lockup)
   if (variant === 'masthead') {
     return (
       <div 
         onClick={onClick}
-        className={`group flex flex-col items-center justify-center cursor-pointer select-none transition-transform duration-300 ${className}`}
+        className={`group flex flex-col items-center justify-center cursor-pointer select-none transition-transform duration-300 py-1 ${className}`}
       >
-        {/* VIP AI Generated 3D Logo Showcase */}
-        <div className="relative mb-3 sm:mb-4 group-hover:scale-105 transition-transform duration-500 ease-out">
-          {/* Ambient Glow */}
-          <div className="absolute -inset-1.5 bg-gradient-to-r from-gold/30 via-crimson/20 to-gold/30 rounded-full blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-2 ring-gold/60 shadow-[0_0_35px_rgba(197,157,84,0.45)] bg-black">
-            <img
-              src="/fashion-graviti-logo.jpg"
-              alt="Fashion Graviti VIP Haute Couture Logo"
-              className="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
-              loading="eager"
-            />
-          </div>
-        </div>
-
-        {/* Brand Logotype Typography */}
-        <span className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-[-0.02em] uppercase text-white group-hover:text-gold transition-colors duration-200 drop-shadow-md leading-none">
-          FASHION GRAVITI
-        </span>
-
-        {/* Subtitle Crest Tag */}
-        <div className="mt-2 sm:mt-2.5 flex items-center space-x-3 text-[9px] sm:text-[11px] font-mono tracking-[0.3em] uppercase text-gold font-bold">
-          <span className="w-6 sm:w-10 h-px bg-gradient-to-r from-transparent to-gold" />
-          <span>HAUTE COUTURE ARCHIVE • EST. 2026</span>
-          <span className="w-6 sm:w-10 h-px bg-gradient-to-l from-transparent to-gold" />
+        {/* Seamless Haute Couture Masthead Logo */}
+        <div className="relative flex items-center justify-center w-full max-w-[320px] xs:max-w-[400px] sm:max-w-[560px] md:max-w-[700px] lg:max-w-[780px] transition-transform duration-300 group-hover:scale-[1.02]">
+          <img
+            src="/fashion-graviti-horizontal.png"
+            alt="FASHION GRAVITI - Haute Couture Archive"
+            className="w-full h-auto object-contain max-h-[75px] xs:max-h-[90px] sm:max-h-[115px] md:max-h-[135px] filter drop-shadow-[0_2px_20px_rgba(197,157,84,0.35)]"
+            loading="eager"
+          />
         </div>
       </div>
     );
@@ -80,13 +62,13 @@ export const FashionGravitiLogo: React.FC<FashionGravitiLogoProps> = ({
     return (
       <div
         onClick={onClick}
-        className={`flex items-center space-x-3 group cursor-pointer select-none ${className}`}
+        className={`flex items-center space-x-2.5 sm:space-x-3 group cursor-pointer select-none ${className}`}
       >
-        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden ring-1.5 ring-gold/50 shadow-[0_0_12px_rgba(197,157,84,0.35)] flex-shrink-0 bg-black group-hover:scale-105 transition-transform">
+        <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
           <img
-            src="/fashion-graviti-logo.jpg"
-            alt="Fashion Graviti VIP Logo"
-            className="w-full h-full object-cover"
+            src="/fashion-graviti-emblem.png"
+            alt="Fashion Graviti FG Emblem"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(197,157,84,0.4)]"
             loading="eager"
           />
         </div>
@@ -95,7 +77,7 @@ export const FashionGravitiLogo: React.FC<FashionGravitiLogoProps> = ({
             FASHION GRAVITI
           </span>
           <span className="text-[8px] font-mono tracking-widest text-gold uppercase mt-0.5 font-bold">
-            HAUTE RUNWAY
+            HAUTE COUTURE
           </span>
         </div>
       </div>
@@ -109,21 +91,21 @@ export const FashionGravitiLogo: React.FC<FashionGravitiLogoProps> = ({
         onClick={onClick}
         className={`flex flex-col items-start group cursor-pointer select-none ${className}`}
       >
-        <div className="flex items-center space-x-4 mb-3.5">
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden ring-2 ring-gold/60 shadow-[0_0_25px_rgba(197,157,84,0.35)] bg-black flex-shrink-0 group-hover:scale-105 group-hover:ring-gold transition-all duration-300">
+        <div className="flex items-center space-x-3.5 mb-3.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
             <img
-              src="/fashion-graviti-logo.jpg"
-              alt="Fashion Graviti VIP Haute Couture Logo"
-              className="w-full h-full object-cover"
+              src="/fashion-graviti-emblem.png"
+              alt="Fashion Graviti Haute Couture Emblem"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(197,157,84,0.4)]"
               loading="lazy"
             />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-serif font-black tracking-tight uppercase text-white group-hover:text-gold transition-colors block leading-tight">
+            <span className="text-xl sm:text-2xl font-serif font-black tracking-tight uppercase text-white group-hover:text-gold transition-colors block leading-tight">
               FASHION GRAVITI
             </span>
-            <span className="text-[10px] font-mono tracking-[0.25em] text-gold uppercase font-bold block mt-0.5">
-              PUBLISHING GROUP & ARCHIVE
+            <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.25em] text-gold uppercase font-bold block mt-0.5">
+              HAUTE COUTURE ARCHIVE • EST. 2026
             </span>
           </div>
         </div>

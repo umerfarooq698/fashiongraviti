@@ -75,9 +75,9 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               onSelectCategory('all');
             }}
-            className="flex items-center space-x-1.5 text-crimson-light font-bold hover:text-white transition-colors no-underline cursor-pointer flex-shrink-0"
+            className="flex items-center space-x-2 text-crimson-light font-bold hover:text-white transition-colors no-underline cursor-pointer flex-shrink-0"
           >
-            <FashionGravitiEmblem size={18} className="flex-shrink-0" />
+            <FashionGravitiEmblem size={20} className="flex-shrink-0" />
             <span>FASHION GRAVITI</span>
           </a>
           <span className="text-zinc-600">•</span>
