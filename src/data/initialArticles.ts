@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 7,
+    count: 8,
   },
   {
     id: 'fashion-news',
@@ -26,7 +26,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The biggest runway-to-street trends, color palettes, and must-have wardrobe shifts.',
     image: 'https://images.unsplash.com/photo-1717944105945-669b3dd77bfd?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 1,
+    count: 2,
   },
   {
     id: 'celebrity',
@@ -67,6 +67,93 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    id: 'article-black-jorts-tailoring',
+    title: 'Black jorts evolve through heavy denim weaving and raw cuts',
+    subtitle: 'Heavyweight sulfur dyed cotton weaves reshape contemporary dark tailoring, offering bold architectural drapes and refined raw edge finishes.',
+    slug: 'black-jorts',
+    category: 'fashion-trends',
+    categoryLabel: 'Fashion Trends',
+    season: 'SPRING / SUMMER 2026',
+    issueNumber: 'ISSUE NO. 13',
+    locationTag: 'TOKYO // SHIBUYA DISTRICT',
+    featured: true,
+    author: {
+      name: 'Renata Moreau Kroll',
+      role: 'Senior Fashion Critic',
+      location: 'Paris and Tokyo',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      instagram: '@renatamoreau',
+    },
+    publishedAt: 'SEPTEMBER 22, 2026',
+    readTime: '8 MIN READ',
+    coverImage: 'https://images.unsplash.com/photo-1779040623350-dfae823cc734?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+    coverImageAlt: 'Street style look featuring wide cut dark black jorts with clean raw hem detailing paired with heavy footwear outdoors',
+    content: {
+      dropCapText: 'The evolution of contemporary dark minimalism finds its ultimate expression in fourteen ounce black jorts crafted from Japanese shuttle loom denim. This garment bridges classical artisanal tailoring with unyielding industrial street aesthetics.',
+      bodyParagraphs: [
+        '## The Molecular Physics of Black Denim Weaves',
+        'Understanding the technical grandeur of black jorts begins at the loom interface where warp and weft intersect under massive mechanical tension. Unlike standardized mass market cotton shorts that rely on lightweight ten ounce plain weaves, luxury iterations utilize dense fourteen ounce right hand twill construction. The warp yarns undergo intensive ring spinning, creating subtle surface slubbing that catches directional light and adds tactile depth to an otherwise monochromatic surface. By employing antique shuttle looms operating at reduced speeds, master weavers preserve subtle tension variations within the cotton fibers, giving the finished textile a formidable structural memory.',
+        'This structural integrity is essential when extending denim into a wide knee length silhouette. Standard lightweight denim collapses inward under gravity, losing its intended architectural form and clinging awkwardly against the leg. High density fourteen ounce twill actively resists collapse, maintaining an exaggerated boxy geometry that holds away from the body. The heavy weight allows the hemline to hang with authoritative stiffness, establishing a clean horizontal line across the lower knee that defines contemporary dark tailoring.',
+        'Furthermore, the selection of long staple cotton fiber ensures that the high tension weave remains exceptionally durable over years of continuous wear. The natural twist of high grade cotton strands absorbs heavy tension during the weaving process without splitting, preventing surface pilling. As a result, the structural twill line stays crisp and pronounced, maintaining its crisp diagonal texture even after prolonged contact with urban environments.',
+        '## Dye Chemistry Sulfur Versus Reactive Coloration',
+        'The shade retention and fading profile of black jorts depend entirely on dye chemistry choice. Traditional sulfur dyeing saturates only the outer mantle of the ring spun cotton yarn while leaving the inner core white or pale grey. Under friction and washing, sulfur dyed black denim slowly reveals this inner core, producing an evocative vintage patina with chalky charcoal highlights along stress seams. This controlled degradation appeals directly to enthusiasts who view garment wear as a personalized chronicle of daily life.',
+        'Conversely, reactive black dye penetrates deep into the heart of the cellulose fiber, forming permanent covalent bonds that lock in color. Reactive black jorts offer an unyielding shade of pure pitch that resists fading even after repeated domestic laundering cycles. High luxury houses frequently combine both chemical methods in a process known as double sulfur over dyeing. This hybrid technique delivers an initial impression of deep pitch blackness while granting the garment the subtle ability to age gracefully across decades of utility.',
+        'The bath temperature and chemical fixatives used during the double dyeing process require exact thermal management inside the dye vessel. Excess heat can weaken individual cotton fibers, whereas insufficient temperature results in uneven color distribution along the twill valleys. When executed with master precision, the resulting fabric exhibits an extraordinarily dark tone that reflects minimal light, creating an intense optical shadow effect in sunlight.',
+        '## Architectural Drapery and Loom Weight Dynamics',
+        'Constructing long denim shorts demands strict geometric balance to prevent awkward pooling or stiff front flaring. Pattern makers achieve balance by lowering the crotch seam while maintaining a high rise waistband that locks securely onto the hips. The rigid waistband serves as the structural anchor from which the heavy fourteen ounce fabric descends. Internal seam tape and reinforced rear yokes distribute the physical weight across the lower back, ensuring that the silhouette remains perfectly centered during movement.',
+        'The treatment of the lower hem dictates the final mood and attitude of the piece. A clean blind stitched hem gives a refined tailors edge suitable for pairing with structured wool blazers and luxury leather footwear. Alternatively, an intentionally frayed raw edge creates a deliberate industrial contrast against sharp tailoring. When executing a raw hem, master craftspeople place a hidden lockstitch row two millimeters above the fringe to halt structural unraveling, keeping the raw threads uniform without compromising long term garment stability.',
+        'To achieve a fluid architectural drape, tailors often introduce subtle side seam shaping that curves inward toward the knee before opening outward slightly. This subtle contouring prevents the wide leg opening from appearing overly flat or rigid when viewed from the profile. The interplay between the stiff yarn weight and the contoured side seam generates an elegant kinetic movement as the wearer walks.',
+        '## Hardware Engineering and Industrial Edge Details',
+        'Every structural hardware component within high tier black jorts must match the massive physical weight of the denim twill. Standard lightweight aluminum zippers or fragile snap buttons fail under the shear stress generated by heavy cotton textiles. Designers select solid cast gunmetal shanks, heavy gauge brass zip flies, and reinforced copper rivets finished in matte black oxide. These heavy metal components ground the waist construction and provide satisfying tactile resistance during daily wear.',
+        'Pocket engineering also requires technical recalibration for long wide shorts. Deep front slash pockets are reinforced with double chain stitching along the internal cotton pocket bags to prevent unsightly sagging under heavy personal items. Rear patch pockets are positioned slightly lower and wider than standard denim trousers, maintaining harmonious proportion against the generous volume of the cut. This meticulous attention to internal pocket placement ensures that real world utility never disrupts the exterior drape.',
+        '## Monochrome Proportions and Structural Styling',
+        'Styling black jorts successfully relies on contrasting texture rather than color variations. Pairing dense, dry hand cotton twill with hyper soft fine gauge cashmere or fluid silk creates a captivating sensory dialogue. An oversized matte black leather jacket over a tucked heavyweight rib tee balances the lower volume, anchoring the wide stance of the jorts. The key to mastering this aesthetic is managing volume across vertical planes without introducing visual noise.',
+        'Footwear selection defines the structural base of the complete outfit. Chunky leather derby shoes with thick welted rubber soles or heavy lugged boots balance the dramatic hemline of wide black jorts. Exposed cotton socks in tonal charcoal or stark white create a crisp graphic break between the raw hem and the footwear welt. By adhering to strict monochrome discipline, the tactile qualities of the denim weave take center stage.',
+      ],
+      pullQuote: {
+        text: 'Dense fourteen ounce Japanese shuttle loom denim transforms short silhouettes from casual staples into architectural sculptures.',
+        attribution: 'Renata Moreau Kroll',
+        role: 'Senior Fashion Critic',
+      },
+      secondaryImage: {
+        url: 'https://images.unsplash.com/photo-1770795945712-ebe92e4ed235?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+        alt: 'Close up textural view of dark denim twill weave with durable industrial stitching',
+        caption: 'Close detail of fourteen ounce right hand twill denim featuring a raw lockstitched hem and matte black oxide hardware.',
+      },
+      conclusion: 'Black jorts have elevated beyond temporary streetwear interest into a permanent benchmark in dark textile engineering. Through rigorous material selection, advanced dye chemistry, and calculated architectural tailoring, this garment defines modern monochrome luxury.',
+      faqs: [
+        {
+          question: 'What weight of denim works best for black jorts?',
+          answer: 'Heavyweight fourteen ounce cotton twill delivers the best balance of structural drape, long term durability, and boxy silhouette form.',
+        },
+        {
+          question: 'How does sulfur dye differ from reactive black dye?',
+          answer: 'Sulfur dye fades softly along stress seams over time, whereas reactive dye locks covalently into fibers to remain deeply pitch black.',
+        },
+        {
+          question: 'Which footwear pairs best with wide black jorts?',
+          answer: 'Chunky leather derbies or heavy lugged boots provide the substantial weight needed to balance wide lower hemlines seamlessly.',
+        },
+      ],
+      designerCredits: [
+        {
+          house: 'Atelier Sombra',
+          garment: 'Raw Edge Heavyweight Denim Short',
+          materials: 'Fourteen ounce Japanese shuttle loom cotton, sulfur black dye, gunmetal shanks',
+        },
+        {
+          house: 'Noir Craft',
+          garment: 'Architectural Wide Cut Jort',
+          materials: 'Sixteen ounce double dyed cotton twill, matte black oxide rivets',
+        },
+      ],
+    },
+    tags: ['Black Jorts', 'Denim Tailoring', 'Monochrome Luxury', 'Textile Science', 'Menswear'],
+    mood: 'Avant-Garde',
+    likes: 421,
+    bookmarksCount: 168,
+  },
   {
     id: 'article-men-jorts-styling',
     title: 'Baggy Denim Shorts Have Reshaped Modern Menswear Silhouettes',
