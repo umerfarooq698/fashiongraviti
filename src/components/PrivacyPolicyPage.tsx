@@ -60,7 +60,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
         'Our platform integrates with the following third-party services, each governed by their own privacy policies:',
         '• Google Analytics (Google LLC): Traffic measurement and audience analytics.',
         '• Unsplash: Editorial photography. Images are served from Unsplash CDN under their license.',
-        '• Vercel: Hosting and content delivery network. Vercel may collect standard server logs.',
+        '• Cloud Infrastructure & CDN: Secure edge hosting and content delivery network which may collect standard server logs.',
         'We encourage you to review the privacy policies of these services directly. Fashion Graviti is not responsible for the data practices of third-party providers.',
       ],
     },
