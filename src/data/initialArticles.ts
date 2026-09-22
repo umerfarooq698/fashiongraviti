@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 8,
+    count: 9,
   },
   {
     id: 'fashion-news',
@@ -26,7 +26,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The biggest runway-to-street trends, color palettes, and must-have wardrobe shifts.',
     image: 'https://images.unsplash.com/photo-1717944105945-669b3dd77bfd?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 2,
+    count: 3,
   },
   {
     id: 'celebrity',
@@ -67,6 +67,96 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    id: 'article-camo-jorts-streetwear',
+    title: 'Camo jorts have become the biggest street trend this season',
+    subtitle: 'Camouflage denim cutoffs bring utility and edge to modern outfits. Balance bold printed patterns with plain neutral tees and retro sneakers.',
+    slug: 'camo-jorts',
+    category: 'fashion-trends',
+    categoryLabel: 'Fashion Trends',
+    season: 'SPRING / SUMMER 2026',
+    issueNumber: 'ISSUE NO. 14',
+    locationTag: 'NEW YORK // SOHO DISTRICT',
+    featured: true,
+    author: {
+      name: 'Julian Thorne Dumont',
+      role: 'Senior Menswear Editor',
+      location: 'Milan and New York',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+      instagram: '@julian_sartorial',
+    },
+    publishedAt: 'SEPTEMBER 22, 2026',
+    readTime: '7 MIN READ',
+    coverImage: 'https://images.unsplash.com/photo-1787181510660-a1f1efae64e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+    coverImageAlt: 'Streetwear aesthetic featuring relaxed camouflage cargo jorts with white top and sneakers outdoors',
+    content: {
+      dropCapText: 'Tactical prints have officially conquered warm weather pavement as camo jorts emerge as the definitive uniform for modern street style icons.',
+      bodyParagraphs: [
+        '## The Evolution Of Military Prints In Modern Streetwear',
+        'Military surplus aesthetics have fueled urban youth culture for decades, transitioning seamlessly from functional utility wear into high fashion runways and local skate spots. This relentless progression brings rugged surplus patterns directly to heavyweight denim and cotton twill silhouettes. Embracing this utilitarian wave means wearing oversized printed shorts that make a loud visual statement without sacrificing casual comfort.',
+        '## Choosing Between Woodland And Desert Patterns',
+        'Traditional woodland patterns rely on deep greens and rich browns that anchor your outfit with a classic vintage aesthetic. Desert palettes introduce sandy tans and muted greys that offer a softer visual weight for scorching afternoon temperatures. Selecting the right camouflage variant dictates the mood of your entire ensemble.',
+        '## Perfect Color Balance With Plain Neutral Tops',
+        'Heavy tactical patterns demand visual restraint from the rest of your outfit to avoid chaotic styling clashes. Pairing your printed bottoms with crisp white boxy t shirts or heavyweight black hoodies creates instant harmony. This effortless contrast lets the military print stand out as the undisputed focal point of your look.',
+        '## Embracing The Relaxed Baggy Fit',
+        'Modern streetwear demands generous proportions that drape past the knee with effortless slouchy attitude. Heavy duty ripstop cotton ensures these roomy silhouettes hold their structured shape while allowing total freedom of movement. Avoid overly slim cuts and lean fully into skater inspired proportions.',
+        '## Footwear Pairings For Maximum Impact',
+        'Grounding your camouflage shorts requires footwear that matches the bold energy of the lower half. Chunky skate sneakers and retro running shoes add nostalgic balance, while rugged leather boots introduce unexpected utilitarian contrast. Slip on foam clogs also work wonders for an effortless errand running aesthetic.',
+        '## Maintaining Your Favorite Ripstop Denim',
+        'Preserving the rich colors of your tactical shorts requires washing them inside out in cold water with mild detergent. Hang drying in the shade prevents fabric fading and protects the durable fibers from heat damage. Proper care guarantees your favorite printed bottoms stay crisp season after season.',
+      ],
+      pullQuote: {
+        text: 'Camo jorts bridge the gap between uncompromising utility and effortless youth culture swagger.',
+        attribution: 'Julian Thorne Dumont',
+        role: 'Senior Menswear Editor',
+      },
+      secondaryImage: {
+        url: 'https://images.unsplash.com/photo-1710241735650-409bdcf83321?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+        alt: 'Close up view of classic woodland camouflage pattern detailing',
+        caption: 'Textured woodland camouflage pattern on durable heavy duty cotton ripstop fabric.',
+      },
+      conclusion: 'Leaning into bold tactical prints elevates your warm weather wardrobe past boring basics. Pull on your favorite oversized tees and step outside with absolute confidence.',
+      faqs: [
+        {
+          question: 'What shoes match camo jorts?',
+          answer: 'Chunky skate sneakers and retro running shoes provide the best visual proportions.',
+        },
+        {
+          question: 'Are camo jorts in style?',
+          answer: 'Yes they dominate modern streetwear trends and relaxed warm weather menswear.',
+        },
+        {
+          question: 'How should camo shorts fit?',
+          answer: 'They should feature a relaxed baggy cut that rests right below the kneecap.',
+        },
+        {
+          question: 'What shirts wear best with camo?',
+          answer: 'Solid neutral tops in black, white, or heather grey create effortless visual balance.',
+        },
+      ],
+      designerCredits: [
+        {
+          house: 'Stussy Atelier',
+          garment: 'Big Ol Woodland Camo Cutoff',
+          materials: '100% Heavy Duty Cotton Ripstop with Reinforced Seams',
+        },
+        {
+          house: 'BAPE Studio',
+          garment: '1st Camo Relaxed Fit Short',
+          materials: 'Custom Printed Japanese Twill with Metal Hardware',
+        },
+        {
+          house: 'Rothco Heritage',
+          garment: 'Vintage Paratrooper Cargo Cutoff',
+          materials: 'Washed Cotton Poly Canvas with Brass Zip Fly',
+        },
+      ],
+    },
+    tags: ['Camo Jorts', 'Streetwear', 'Summer Outfits', 'Skater Style', 'Menswear'],
+    mood: 'Avant-Garde',
+    likes: 495,
+    bookmarksCount: 210,
+  },
   {
     id: 'article-black-jorts-tailoring',
     title: 'Black jorts have taken over modern street style this season',

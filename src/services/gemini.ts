@@ -236,9 +236,11 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     const GEMINI_MODELS_HIERARCHY = [
       'gemini-flash-latest',       // 1. Tested 200 OK (Latest ultra-fast model)
       'gemini-3.5-flash',          // 2. Tested 200 OK (Stable high-speed model)
-      'gemini-3.6-flash',          // 3. Next-gen experimental model
-      'gemini-3-flash-preview',    // 4. Preview fallback
-      'gemini-pro-latest',         // 5. Flagship fallback
+      'gemini-3.6-flash',          // 3. Next-gen model
+      'gemini-3.5-flash-lite',     // 4. Ultra-reliable lightweight model
+      'gemini-flash-lite-latest',  // 5. Flash-lite fallback
+      'gemini-3-flash-preview',    // 6. Preview fallback
+      'gemini-pro-latest',         // 7. Flagship fallback
     ];
 
   let rawContent = '';
