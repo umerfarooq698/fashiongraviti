@@ -124,7 +124,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* VIP Masthead Logo Lockup */}
+        {/* VIP Masthead Logo Lockup with Built-in Tagline */}
         <a 
           href="/"
           onClick={(e) => {
@@ -135,42 +135,6 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <FashionGravitiLogo variant="masthead" />
         </a>
-
-        {/* Clickable Department Links */}
-        <div className="mt-4 sm:mt-5 text-[11px] sm:text-xs md:text-sm font-sans font-bold tracking-wider sm:tracking-widest text-zinc-200 uppercase flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-          <a
-            href="/fashion-news"
-            onClick={(e) => {
-              e.preventDefault();
-              onSelectCategory('fashion-news');
-            }}
-            className="text-zinc-200 hover:text-gold transition-colors no-underline cursor-pointer"
-          >
-            Fashion News
-          </a>
-          <span className="text-crimson font-black">•</span>
-          <a
-            href="/fashion-trends"
-            onClick={(e) => {
-              e.preventDefault();
-              onSelectCategory('fashion-trends');
-            }}
-            className="text-zinc-200 hover:text-gold transition-colors no-underline cursor-pointer"
-          >
-            Fashion Trends
-          </a>
-          <span className="text-crimson font-black">•</span>
-          <a
-            href="/celebrity"
-            onClick={(e) => {
-              e.preventDefault();
-              onSelectCategory('celebrity');
-            }}
-            className="text-zinc-200 hover:text-gold transition-colors no-underline cursor-pointer"
-          >
-            Celebrity Fashion
-          </a>
-        </div>
       </div>
 
       {/* 3. Magazine Category Navigation Bar (Desktop & Horizontal Touch Scroll) */}
