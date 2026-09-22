@@ -168,6 +168,8 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - Keep paragraphs short (usually 2–4 sentences per paragraph) for effortless mobile reading.
 6. FRESH AND DISTINCT STRUCTURE EVERY TIME (1000–1200 WORDS):
    - ABSOLUTE BAN ON REPETITIVE LISTICLE PATTERNS: Never format every section as "Heading -> introductory sentence -> 3 bullet points with bold prefixes (* The X: description)". That is a repetitive AI template and is strictly forbidden!
+   - BAN REPETITIVE HEADINGS ACROSS ARTICLES: Never use the same generic headings like "The Origin Story", "Common Mistakes to Avoid", "Fabric and Wash Guide", or "Outfit Blueprints" in multiple articles. Every article must derive its headings organically and specifically from the unique nature of the subject item itself.
+   - 100% RELEVANT TO REAL CLOTHING AND WEARABLE OUTFITS: Never go off-topic with academic fluff or textbook science. Stay laser-focused on how clothes fit, how to pair garments, styling secrets, and real street looks.
    - Every article must adopt a distinct structure and rhythm. If the assigned archetype is Literary Editorial Essay, use ZERO bullet points. When bullet points are used in other archetypes, restrict them to a single section for technical specs, never the whole article.
    - Use natural markdown H2 ("## Section Title") and occasional H3 ("### Subsection Title") in "bodyParagraphs".
    - Total article length must be in the 1000–1200 word range.
