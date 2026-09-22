@@ -118,9 +118,21 @@ export async function generateFashionArticleWithGemini(
     ? `Write a detailed, completely unique 1000–1200 word high-fashion editorial article based on the keyword: "${promptOrTopic}". ${categoryConstraint}`
     : `Write a detailed, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
 
+  const EDITORIAL_FORMAT_LENSES = [
+    'EDITORIAL PERSPECTIVE: Subcultural Heritage and Practical Street Utility. Explore the subcultural origins, daily wearability, street candid utility, and outfit balance.',
+    'EDITORIAL PERSPECTIVE: Textile Science and Mill Craftsmanship. Dissect spinning mills, loom weaves, raw weights, natural fibers, and why synthetic versions fail.',
+    'EDITORIAL PERSPECTIVE: Proportional Silhouette Geometry. Focus on balancing volumes, tailored contrasts, breaking conventional styling rules, and grounding footwear formulas.',
+    'EDITORIAL PERSPECTIVE: Runway Translation and Wardrobe Foundation. Translate runway show presentations into realistic, elevated daily looks with essential accessories.'
+  ];
+  const chosenLens = EDITORIAL_FORMAT_LENSES[Math.floor(Math.random() * EDITORIAL_FORMAT_LENSES.length)];
+
   const systemInstruction = `
 You are the Chief Fashion Editor and Senior Luxury Columnist of "Fashion Graviti", an elite high-fashion publication (like Vogue, Harper's Bazaar, or The Gentlewoman).
 Generate a completely unique, thorough 1000–1200 word fashion article based strictly on the provided keyword in strict JSON format.
+
+ADOPT THIS UNIQUE EDITORIAL LENS FOR THIS ARTICLE:
+${chosenLens}
+Every article must have a completely distinct structure, original angle, and varied tone. Never repeat templates or boilerplate phrasing.
 
 MANDATORY EDITORIAL AND SEO GUIDELINES:
 1. HEADLINE ("title"):
@@ -206,36 +218,58 @@ Output ONLY valid JSON without markdown wrapping or backticks.
 `;
 
   try {
-    const response = await fetch(getApiUrl(), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: `${systemInstruction}\n\nTask: ${topicPrompt}`,
-              },
-            ],
-          },
-        ],
-      }),
-    });
+    const GEMINI_MODELS_HIERARCHY = [
+    'gemini-flash-latest',       // 1. Primary latest high-speed model
+    'gemini-pro-latest',         // 2. High-capability flagship model
+    'gemini-3.6-flash',          // 3. Next-gen experimental flash model
+    'gemini-2.5-flash-lite',     // 4. Stable lightweight model
+    'gemini-2.5-pro',            // 5. Deep reasoning fallback
+  ];
 
-    if (!response.ok) {
-      const errText = await response.text();
-      console.error('Gemini API error response:', errText);
-      throw new Error(`Gemini API error: ${response.status} ${response.statusText}`);
+  let rawContent = '';
+
+  for (const model of GEMINI_MODELS_HIERARCHY) {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: `${systemInstruction}\n\nTask: ${topicPrompt}`,
+                },
+              ],
+            },
+          ],
+        }),
+      });
+
+      if (!response.ok) {
+        console.warn(`Gemini model ${model} failed with HTTP status ${response.status}. Falling back to next model...`);
+        continue;
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (text) {
+        rawContent = text;
+        console.log(`Successfully generated article with Gemini model: ${model}`);
+        break;
+      }
+    } catch (err) {
+      console.warn(`Error generating with Gemini model ${model}:`, err);
     }
+  }
 
-    const data = await response.json();
-    const rawContent = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!rawContent) {
-      throw new Error('No content returned from Gemini API');
-    }
+  if (!rawContent) {
+    throw new Error('All models in Gemini fallback hierarchy failed to generate content.');
+  }
 
     // Clean JSON response
     const cleanJson = rawContent
