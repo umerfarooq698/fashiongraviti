@@ -127,8 +127,8 @@ export async function generateFashionArticleWithGemini(
     Structure: Fast paced cultural critique bridging fashion week runway moments directly to everyday street styling.
     Strict Rule: Contrast oversized silhouettes with tailoring through narrative storytelling and vivid street scenes. Avoid repeating identical bullet patterns in every section.`,
 
-    `WRITING FORMAT ARCHETYPE: ATELIER TEXTILE AND CRAFTSMANSHIP DEEP DIVE.
-    Structure: Technical material science meets high luxury critique. Dissect loom weaves, yarn weights, dye processes, and architectural drape in rich prose paragraphs.`,
+    `WRITING FORMAT ARCHETYPE: PRACTICAL WARDROBE INTEGRATION AND FIT BLUEPRINT.
+    Structure: Highly relevant, reader-first fashion guidance. Focus on actual outfit combinations, fit proportions, fabric weights, color washes, footwear pairings, and garment care. Keep every heading directly relevant to the clothes people actually wear.`,
 
     `WRITING FORMAT ARCHETYPE: WARDROBE PROPORTIONS AND SILHOUETTE ARCHITECTURE.
     Structure: Visual geometry, volume counterweights, and hemline lines explored through focused editorial paragraphs with natural transitions.`
@@ -154,9 +154,11 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count precisely.
    - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use words like 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
    - Write a direct, authoritative fashion statement summarizing the article.
-3. WRITE FOR REAL READERS FIRST (MAXIMUM READABILITY AND INFORMATIONAL VALUE):
+3. WRITE FOR REAL READERS FIRST (MAXIMUM READABILITY AND PRACTICAL VALUE):
    - Every article MUST be deeply informational, highly readable, and immensely practical for real readers.
-   - Provide concrete, tangible fashion insights: specific material grades, textile weaves, leather tanning methods, tailoring measurements, outfit pairing formulas, and purchasing criteria.
+   - HEADINGS MUST BE 100% RELEVANT TO CLOTHING AND STYLING: Never use pseudo-scientific or academic headings like "Molecular Physics", "Chemical Dynamics", or textbook jargon. Headings must directly address fit, washes, lengths, styling formulas, footwear, and practical wardrobe advice.
+   - NO REPETITIVE PHRASING OR SENTENCES: Do NOT repeat the same sentences, concepts, or adjectives across paragraphs. Keep every sentence fresh, punchy, and meaningful.
+   - Provide concrete fashion insights: specific material weights, tailoring measurements, outfit pairing formulas, color contrasts, and purchasing criteria.
    - Completely avoid generic fluff, robotic filler, or vague generalities. Every sentence must offer sharp sartorial perspective and genuine reader value.
 4. CLEAR FOCUS AND NATURAL FLOW:
    - Keep every section focused on one clear idea. Do not mix unrelated points in the same paragraph or section.
