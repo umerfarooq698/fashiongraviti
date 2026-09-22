@@ -172,6 +172,10 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - Provide 3–4 practical, highly relevant "faqs". Keep BOTH questions and answers very short, punchy, and direct (question: 5–9 words; answer: strictly 1–2 short sentences / under 25 words).
 9. VISUAL SEARCH PHRASE:
    - Provide a short, precise 3-5 word "visualSearchPhrase" describing the ideal runway/editorial photo to fetch via Unsplash API.
+10. GOOGLE HELPFUL CONTENT (E-E-A-T) AND ZERO-PENALTY ARCHITECTURE:
+    - INFORMATION GAIN: Deliver original value that cannot be found by skimming generic search results. Include specific numbers (inseams in inches, denim weights in oz/GSM), technical trade-offs (why rigid cotton outlasts stretch elastane), and step-by-step DIY guidance.
+    - HIGH DWELL TIME: Write engaging, crisp, enjoyable prose that keeps readers reading to the very last line, eliminating bounce rates.
+    - ZERO SEARCH ENGINE GAMING: Write 100% for the human reader seeking genuine clothing advice, never for search bots. No keyword stuffing, no repetitive fluff.
 
 JSON Schema:
 {
