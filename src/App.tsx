@@ -235,7 +235,7 @@ export function App() {
     if (activeStaticPage === 'about') {
       updateDocumentSEO({
         title: 'About Us — FASHION GRAVITI Editorial Archive',
-        description: 'Discover the vision, editorial standards, and critics behind Fashion Graviti — the premier archive for haute couture and runway critique.',
+        description: 'The editorial standards, vision, and critics behind Fashion Graviti, premier archive for haute couture and runway critique.',
         canonicalPath: '/about-us',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -261,7 +261,7 @@ export function App() {
     if (activeStaticPage === 'privacy') {
       updateDocumentSEO({
         title: 'Privacy Policy — FASHION GRAVITI',
-        description: 'Learn how Fashion Graviti collects, handles, and protects your personal data in compliance with international privacy standards.',
+        description: 'How Fashion Graviti collects, handles, and protects personal data in compliance with international privacy standards.',
         canonicalPath: '/privacy-policy',
         breadcrumbs: [
           { name: 'Home', path: '/' },
