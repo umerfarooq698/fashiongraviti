@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { FashionArticle, FashionCategory, FashionMood } from '../types/fashion';
 import { X, Sparkles, Send, RefreshCw, Wand2, Search, Camera } from 'lucide-react';
-import { generateFashionArticleWithGemini } from '../services/gemini';
+import { generateFashionArticleWithGemini, generateMetaSlug } from '../services/gemini';
 import { searchUnsplashPhotos, type UnsplashPhoto } from '../services/unsplash';
 
 interface CreateArticleModalProps {
@@ -141,7 +141,7 @@ export const CreateArticleModal: React.FC<CreateArticleModalProps> = ({
       id: `article-${Date.now()}`,
       title,
       subtitle: subtitle || 'An exclusive sartorial critique from the Fashiongraviti collective.',
-      slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+      slug: generateMetaSlug(title),
       category: selectedCategoryObj.id,
       categoryLabel: selectedCategoryObj.name,
       season,

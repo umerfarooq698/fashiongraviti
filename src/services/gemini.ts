@@ -17,6 +17,7 @@ const AUTHORS_LIST = [
 export interface GeminiGeneratedArticle {
   title: string;
   subtitle: string;
+  metaSlug?: string;
   category: 'fashion-news' | 'fashion-trends' | 'celebrity' | 'designers-brands' | 'beauty' | 'how-to-style';
   categoryLabel: string;
   authorName: string;
@@ -94,6 +95,27 @@ export function enforceTitle55to60(rawTitle: string): string {
     }
   }
   return title.replace(/:/g, '');
+}
+
+/**
+ * Generates an SEO meta URL slug from a title or topic.
+ * Keeps it descriptive (3 to 6 words), includes primary keywords, and removes unnecessary stop words.
+ * Never outputs just a raw single keyword.
+ */
+export function generateMetaSlug(titleOrTopic: string): string {
+  const stopWords = new Set([
+    'a', 'an', 'the', 'and', 'or', 'but', 'is', 'are', 'was', 'were', 
+    'have', 'has', 'had', 'been', 'to', 'in', 'on', 'at', 'by', 'for', 
+    'with', 'about', 'from', 'into', 'this', 'that', 'these', 'those'
+  ]);
+  const words = titleOrTopic
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .split(/\s+/)
+    .filter(w => w.length > 0 && !stopWords.has(w));
+  
+  const selected = words.slice(0, 5);
+  return selected.join('-') || `editorial-story-${Date.now()}`;
 }
 
 /**
@@ -190,15 +212,19 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
     - HIGH DWELL TIME: Write engaging, crisp, enjoyable prose that keeps readers reading to the very last line, eliminating bounce rates.
     - ZERO SEARCH ENGINE GAMING: Write 100% for the human reader seeking genuine clothing advice, never for search bots. No keyword stuffing, no repetitive fluff.
 11. NATURAL INTERNAL LINKING (ONLY WHEN DIRECTLY RELEVANT):
-    - When mentioning related fashion topics that exist on Fashion Graviti (such as [jorts](/jorts), [black jorts](/black-jorts), [men jorts](/men-jorts), [camo jorts](/camo-jorts), or [period swimwear](/period-swimwear)), you may format that exact phrase as a markdown link.
+    - When mentioning related fashion topics that exist on Fashion Graviti (such as [jorts](/why-wide-leg-jorts-are-everywhere-how-to-style), [black jorts](/black-jorts-modern-street-style-this-season), [men jorts](/baggy-denim-shorts-modern-menswear-silhouettes), [camo jorts](/camo-jorts-biggest-street-trend-this-season), or [period swimwear](/waterproof-period-swimwear-high-fashion-guide)), you may format that exact phrase as a markdown link.
     - STRICT RULE: ONLY link naturally occurring words in context. NEVER force awkward words or insert unnatural sentences just to add a link. If a topic is not naturally mentioned in the flow of the article, do NOT link it.
     - STRICT DEDUPLICATION RULE: NEVER link to the same article URL more than once within the same article! At most ONE internal link to any given target article per post.
     - NEVER PLACE LINKS IN OPENING PARAGRAPHS OR INTRO: Internal links must NEVER be placed in the dropCapText or the first section of the article. Only place internal links deeper in the middle or later body sections after the reader is already engaged with the content.
+12. META URL SLUG ("metaSlug"):
+    - LENGTH AND STRUCTURE: Generate a clean, descriptive 3 to 6 word meta URL slug (e.g. "camo-jorts-biggest-street-trend" or "black-jorts-modern-street-style-season").
+    - STRICT RULE: NEVER make the URL slug just the single raw keyword (e.g. do NOT output "camo-jorts" or "jorts"). The meta slug must always include contextual editorial words describing the article angle.
 
 JSON Schema:
 {
   "title": "Strictly 55-60 chars luxury headline with keyword and NO colon",
   "subtitle": "Direct authoritative summary (EXACTLY 140 chars, NO forbidden words)",
+  "metaSlug": "descriptive-3-to-6-word-meta-url-slug",
   "category": "fashion-news | fashion-trends | celebrity | designers-brands | beauty | how-to-style",
   "categoryLabel": "Fashion News | Fashion Trends | Celebrity | Designers And Brands | Beauty | How to Style",
   "authorName": "Aurelia Vance-Sterling | Julian Thorne-Dumont | Renata Moreau-Kroll | Soren Lindqvist-Kovac",
@@ -305,10 +331,10 @@ Output ONLY valid JSON without markdown wrapping or backticks.
 
     const articleId = `gemini-story-${Date.now()}`;
     const finalTitle = enforceTitle55to60(parsed.title);
-    const slug = finalTitle
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
+    const rawSlug = parsed.metaSlug 
+      ? parsed.metaSlug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      : '';
+    const slug = (rawSlug && rawSlug.length >= 6) ? rawSlug : generateMetaSlug(finalTitle);
 
     // Fetch live Unsplash imagery tailored to the topic, visualSearchPhrase, and category
     const searchKeywords = parsed.visualSearchPhrase

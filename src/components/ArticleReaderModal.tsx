@@ -231,7 +231,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             if (isInternal) {
               e.preventDefault();
               const cleanSlug = url.replace(/^\//, '');
-              const target = allArticles.find((a) => a.slug === cleanSlug);
+              const target = allArticles.find((a) => a.slug === cleanSlug || (a.legacySlugs && a.legacySlugs.includes(cleanSlug)));
               if (target) {
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                 onSelectNextArticle(target);

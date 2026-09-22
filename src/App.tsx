@@ -19,7 +19,7 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v34';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v35';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
 
 export function App() {
@@ -79,7 +79,7 @@ export function App() {
   // Ensure dark class is applied and purge old database cache versions
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 34; i++) {
       try {
         localStorage.removeItem(`fashiongraviti_articles_v${i}`);
         localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
@@ -159,7 +159,7 @@ export function App() {
 
       // 1. Direct query param fallback
       if (queryStory) {
-        matchedArticle = articles.find((a) => a.id === queryStory || a.slug === queryStory) || null;
+        matchedArticle = articles.find((a) => a.id === queryStory || a.slug === queryStory || (a.legacySlugs && a.legacySlugs.includes(queryStory))) || null;
       }
 
       // 2. Direct path slug matching (/category or /title-slug or /category/title-slug)
@@ -169,14 +169,14 @@ export function App() {
           if (categoryMap[seg]) {
             matchedCategory = categoryMap[seg];
           } else {
-            matchedArticle = articles.find((a) => a.slug === seg || a.id === seg) || null;
+            matchedArticle = articles.find((a) => a.slug === seg || a.id === seg || (a.legacySlugs && a.legacySlugs.includes(seg))) || null;
             if (matchedArticle) {
               matchedCategory = matchedArticle.category;
             }
           }
         } else if (segments.length >= 2) {
           const lastSeg = segments[segments.length - 1].toLowerCase();
-          matchedArticle = articles.find((a) => a.slug === lastSeg || a.id === lastSeg) || null;
+          matchedArticle = articles.find((a) => a.slug === lastSeg || a.id === lastSeg || (a.legacySlugs && a.legacySlugs.includes(lastSeg))) || null;
           if (matchedArticle) {
             matchedCategory = matchedArticle.category;
           } else if (categoryMap[segments[0].toLowerCase()]) {

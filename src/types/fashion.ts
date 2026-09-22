@@ -44,6 +44,7 @@ export interface FashionArticle {
   title: string;
   subtitle: string;
   slug: string;
+  legacySlugs?: string[];
   category: string;
   categoryLabel: string;
   season: string;
