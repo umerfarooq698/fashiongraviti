@@ -119,10 +119,19 @@ export async function generateFashionArticleWithGemini(
     : `Write a detailed, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
 
   const EDITORIAL_FORMAT_LENSES = [
-    'EDITORIAL PERSPECTIVE: Subcultural Heritage and Practical Street Utility. Explore the subcultural origins, daily wearability, street candid utility, and outfit balance.',
-    'EDITORIAL PERSPECTIVE: Textile Science and Mill Craftsmanship. Dissect spinning mills, loom weaves, raw weights, natural fibers, and why synthetic versions fail.',
-    'EDITORIAL PERSPECTIVE: Proportional Silhouette Geometry. Focus on balancing volumes, tailored contrasts, breaking conventional styling rules, and grounding footwear formulas.',
-    'EDITORIAL PERSPECTIVE: Runway Translation and Wardrobe Foundation. Translate runway show presentations into realistic, elevated daily looks with essential accessories.'
+    `WRITING FORMAT ARCHETYPE: LITERARY EDITORIAL ESSAY (ZERO BULLETS).
+    Structure: Pure continuous, flowing prose narrative in paragraphs under evocative headings.
+    Strict Rule: DO NOT use any bullet points, numbered lists, or listicles. Weave all advice, fabric details, outfit pairings, and styling philosophy directly into narrative sentences.`,
+
+    `WRITING FORMAT ARCHETYPE: RUNWAY TO STREET DISPATCH.
+    Structure: Fast paced cultural critique bridging fashion week runway moments directly to everyday street styling.
+    Strict Rule: Contrast oversized silhouettes with tailoring through narrative storytelling and vivid street scenes. Avoid repeating identical bullet patterns in every section.`,
+
+    `WRITING FORMAT ARCHETYPE: ATELIER TEXTILE AND CRAFTSMANSHIP DEEP DIVE.
+    Structure: Technical material science meets high luxury critique. Dissect loom weaves, yarn weights, dye processes, and architectural drape in rich prose paragraphs.`,
+
+    `WRITING FORMAT ARCHETYPE: WARDROBE PROPORTIONS AND SILHOUETTE ARCHITECTURE.
+    Structure: Visual geometry, volume counterweights, and hemline lines explored through focused editorial paragraphs with natural transitions.`
   ];
   const chosenLens = EDITORIAL_FORMAT_LENSES[Math.floor(Math.random() * EDITORIAL_FORMAT_LENSES.length)];
 
@@ -156,9 +165,9 @@ MANDATORY EDITORIAL AND SEO GUIDELINES:
    - Use short and medium-length sentences. Avoid long, complicated run-on sentences.
    - Keep paragraphs short (usually 2–4 sentences per paragraph) for effortless mobile reading.
 6. FRESH AND DISTINCT STRUCTURE EVERY TIME (1000–1200 WORDS):
-   - Always produce completely different structures, distinct angles, unique subheadings, and fresh prose. Never repeat phrasing or boilerplate paragraphs from previous articles.
-   - Use natural markdown H2 ("## Section Title") and H3 ("### Subsection Title") in "bodyParagraphs" to structure the article.
-   - Use mostly paragraphs and occasional clean bullet points ("* Bullet point") when listing styling tips or materials.
+   - ABSOLUTE BAN ON REPETITIVE LISTICLE PATTERNS: Never format every section as "Heading -> introductory sentence -> 3 bullet points with bold prefixes (* The X: description)". That is a repetitive AI template and is strictly forbidden!
+   - Every article must adopt a distinct structure and rhythm. If the assigned archetype is Literary Editorial Essay, use ZERO bullet points. When bullet points are used in other archetypes, restrict them to a single section for technical specs, never the whole article.
+   - Use natural markdown H2 ("## Section Title") and occasional H3 ("### Subsection Title") in "bodyParagraphs".
    - Total article length must be in the 1000–1200 word range.
 7. FORBIDDEN PHRASES, WORDS AND SYMBOLS:
    - ZERO HYPHENS OR DASHES (ABSOLUTE RULE): NEVER use the hyphen or dash symbol ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, designer credits, conclusions, or FAQs. Hyphens and dashes look artificial and AI-generated. Spell all words unhyphenated or with spaces (e.g. write 'quick dry' instead of 'quick-dry', 'high fashion' instead of 'high-fashion', 'ultrathin' or 'ultra thin' instead of 'ultra-thin', 'multilayer' or 'multi layer' instead of 'multi-layer', 'one piece' instead of 'one-piece', 'high waisted' instead of 'high-waisted', 'full grain' instead of 'full-grain'). Never use dashes to separate clauses in sentences; use commas, periods, or natural connective words instead.
@@ -187,16 +196,14 @@ JSON Schema:
   "dropCapText": "First sentence of the article, powerful and poetic (1-2 sentences)",
   "bodyParagraphs": [
     "## First Major Heading",
-    "Detailed analytical paragraph (2-4 sentences).",
-    "Second focused paragraph with styling insight.",
+    "Detailed analytical paragraph (2-4 sentences) exploring cultural and runway context.",
+    "Second focused paragraph with technical textile or fit insight.",
     "## Second Major Heading",
-    "Practical fashion advice paragraph.",
-    "* Styling rule or outfit combination",
-    "* Fabric or accessory detail",
-    "### Nuanced Subheading",
-    "Atelier construction and trend analysis paragraph.",
+    "Practical narrative paragraph explaining silhouette geometry and outfit pairings.",
+    "Subsequent paragraph detailing fabric weight or tailoring nuances in fluent prose.",
     "## Third Major Heading",
-    "Buying guidance and modern wardrobe integration paragraph."
+    "Nuanced street style critique connecting garment construction to daily wearability.",
+    "Closing analytical paragraph on wardrobe integration and longevity."
   ],
   "pullQuoteText": "Inspiring, quotable statement from the review",
   "pullQuoteAttribution": "Designer, Critic, or Atelier Council",
