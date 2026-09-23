@@ -18,7 +18,7 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v36';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v37';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
 
 export function App() {

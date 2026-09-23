@@ -284,8 +284,12 @@ async function run() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
-            parts: [{ text: `${userSystemInstruction}\n\nAssignment Task: Write a complete, original, reader-first 1000–1200 word fashion article based on the keyword "${topic}".` }]
-          }]
+            parts: [{ text: `${userSystemInstruction}\n\nCRITICAL WORD COUNT RULE: The entire article MUST be strictly between 1000 and 1200 words in total. Write at least 7 to 8 substantial sections with 2 to 3 detailed paragraphs each to ensure comprehensive editorial depth.\n\nAssignment Task: Write a complete, original, reader-first 1000–1200 word fashion editorial article on "${topic}".` }]
+          }],
+          generationConfig: {
+            maxOutputTokens: 8192,
+            temperature: 0.7
+          }
         })
       });
       if (res.ok) {
@@ -324,6 +328,14 @@ async function run() {
     return stripHyphensAndDashes(p);
   }));
 
+  const isJewelry = topic.toLowerCase().includes('bracelet') || topic.toLowerCase().includes('jewelry') || topic.toLowerCase().includes('ring') || topic.toLowerCase().includes('necklace') || topic.toLowerCase().includes('diamond');
+  const defaultCover = isJewelry
+    ? 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
+    : 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85';
+  const defaultSecondary = isJewelry
+    ? 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
+    : 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85';
+
   const finalArticle = {
     id: `article-${finalMetaSlug.slice(0, 30)}-${Date.now()}`,
     title: finalTitle,
@@ -334,7 +346,7 @@ async function run() {
     season: 'AUTUMN / WINTER 2026',
     issueNumber: 'ISSUE NO. 15',
     locationTag: `${author.location.split(' and ')[0].toUpperCase()} // EDITORIAL DESK`,
-    featured: false,
+    featured: true,
     author: {
       name: author.name,
       role: author.role,
@@ -343,22 +355,22 @@ async function run() {
       instagram: author.instagram,
     },
     publishedAt: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase(),
-    readTime: '10 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-    coverImageAlt: `High fashion editorial styling for ${finalTitle}`,
-    content: {
-      dropCapText: stripHyphensAndDashes(parsed.dropCapText),
-      bodyParagraphs: cleanedBody,
-      pullQuote: {
-        text: stripHyphensAndDashes(parsed.pullQuoteText),
-        attribution: stripHyphensAndDashes(parsed.pullQuoteAttribution || author.name),
-      },
-      secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-        caption: stripHyphensAndDashes(parsed.secondaryImageCaption || 'Atelier tailoring and textile craftsmanship detail.'),
-        alt: 'Close up view of editorial tailoring craftsmanship and fabric weave',
-      },
-      closingParagraphs: (parsed.closingParagraphs || []).map(p => stripHyphensAndDashes(p)),
+      readTime: '10 MIN READ',
+      coverImage: defaultCover,
+      coverImageAlt: `High fashion editorial styling for ${finalTitle}`,
+      content: {
+        dropCapText: stripHyphensAndDashes(parsed.dropCapText),
+        bodyParagraphs: cleanedBody,
+        pullQuote: {
+          text: stripHyphensAndDashes(parsed.pullQuoteText),
+          attribution: stripHyphensAndDashes(parsed.pullQuoteAttribution || author.name),
+        },
+        secondaryImage: {
+          url: defaultSecondary,
+          caption: stripHyphensAndDashes(parsed.secondaryImageCaption || 'Artisan jewelry craftsmanship and diamond setting detail.'),
+          alt: 'Close up view of fine jewelry craftsmanship and diamond setting',
+        },
+        closingParagraphs: (parsed.closingParagraphs || []).map(p => stripHyphensAndDashes(p)),
       conclusion: stripHyphensAndDashes(parsed.conclusion),
       faqs: (parsed.faqs || []).map(f => ({
         question: stripHyphensAndDashes(f.question),
@@ -396,6 +408,25 @@ async function run() {
 
   fs.writeFileSync(path.resolve(process.cwd(), 'scripts/last-gemini-article.json'), JSON.stringify(finalArticle, null, 2));
   console.log('Saved generated article to scripts/last-gemini-article.json');
+
+  // Insert into src/data/initialArticles.ts at the beginning of INITIAL_ARTICLES
+  const initialArticlesPath = path.resolve(process.cwd(), 'src/data/initialArticles.ts');
+  let fileContent = fs.readFileSync(initialArticlesPath, 'utf-8');
+
+  // Check if article with this id already exists
+  if (fileContent.includes(finalArticle.id)) {
+    console.log('Article already exists in initialArticles.ts, skipping prepend.');
+  } else {
+    const marker = 'export const INITIAL_ARTICLES: FashionArticle[] = [';
+    const markerIdx = fileContent.indexOf(marker);
+    if (markerIdx !== -1) {
+      const insertPos = markerIdx + marker.length;
+      const articleSnippet = `\n  ${JSON.stringify(finalArticle, null, 2)},\n`;
+      fileContent = fileContent.slice(0, insertPos) + articleSnippet + fileContent.slice(insertPos);
+      fs.writeFileSync(initialArticlesPath, fileContent, 'utf-8');
+      console.log('Successfully prepended new Gemini article to src/data/initialArticles.ts!');
+    }
+  }
 
   return finalArticle;
 }
