@@ -160,6 +160,13 @@ ORIGINALITY:
 * Possible angles may include styling, fit, proportions, fabrics, seasons, occasions, colours, footwear, accessories, buying advice, garment care, wardrobe use, layering, silhouettes, mistakes, or another relevant perspective.
 * Do not mechanically follow the same sequence of angles.
 * Never mention which angle was selected.
+* ZERO-PATTERN & STRUCTURAL ASYMMETRY MANDATE:
+  - An article must NEVER feel like a clone or formulaic twin of any other article in structure, rhythm, or formatting.
+  - Break predictable rhythms across articles:
+    * In Article A: Section 1 has 3 short paragraphs, Section 2 has 1 deep historical analysis, Section 4 has a 3-step bullet list.
+    * In Article B: Section 1 has 1 punchy statement + 1 narrative paragraph, Section 2 has a comparative H3 breakdown, zero bullets anywhere, but a styling tip box near the conclusion.
+    * In Article C: Pure long-form prose with varied cadence, zero callouts, and 2-point care checklist at the very end.
+  - Headings, paragraph counts, bullet locations, and formatting must NEVER follow the same architecture across assignments. Let the topic shape its own unique layout.
 
 HEADINGS:
 * Create one original H1 ("title").
