@@ -46,12 +46,19 @@ export function enforceTitle55to60(rawTitle) {
     }
   }
 
-  // Direct precision padding if needed
-  while (title.length < 55) {
-    title = `${title} Style`.replace(/\s+/g, ' ');
+  const singleWords = ['Today', 'Season', 'Guide', 'Notes', 'Trends', 'Mode', 'Looks', 'Edit'];
+  let wIdx = 0;
+  while (title.length < 55 && wIdx < singleWords.length) {
+    const nextWord = singleWords[wIdx++];
+    if (!title.toLowerCase().includes(nextWord.toLowerCase())) {
+      title = `${title} ${nextWord}`.replace(/\s+/g, ' ');
+    }
   }
   if (title.length > 60) {
-    title = title.slice(0, 58).trim();
+    let truncated = title.slice(0, 60);
+    const lastSpace = truncated.lastIndexOf(' ');
+    if (lastSpace >= 50) truncated = truncated.slice(0, lastSpace);
+    title = truncated;
   }
   return title;
 }

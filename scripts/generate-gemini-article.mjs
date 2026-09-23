@@ -15,113 +15,10 @@ if (!GEMINI_API_KEY) {
 
 const topic = process.argv[2] || 'camo jorts';
 const category = process.argv[3] || 'fashion-trends';
-const requestedArchetype = process.argv[4] || null;
 
-console.log(`Generating unique dynamic editorial for: "${topic}"...`);
+console.log(`Generating article for: "${topic}" using Google Gemini API...`);
 
-// 5 DISTINCT EDITORIAL ARCHETYPES TO PREVENT REPETITIVE PATTERNS
-const EDITORIAL_ARCHETYPES = [
-  {
-    id: 'cultural-critique',
-    name: 'THE RUNWAY TO STREET CULTURAL CRITIQUE',
-    tone: 'Edgy, observant, cultural critique bridging underground movements to elite ateliers.',
-    headingThemes: [
-      'The Underground Origins And Subcultural Identity',
-      'Challenging Conventional Proportions On The Pavement',
-      'The High Low Tension In Luxury Styling Today',
-      'Real World Wearability Beyond Runway Fantasy',
-      'The Shift From Fleeting Hype To Permanent Rotation',
-      'Curating Supporting Garments And Neutral Textures',
-      'The Future Silhouette Trajectory For Modern Wardrobes'
-    ],
-    titleStyles: [
-      'Bold cultural statement on how this garment shattered conventional fashion rules',
-      'Direct critique contrasting traditional tailoring against rebellious streetwear',
-      'Material and silhouette manifesto defining the season'
-    ]
-  },
-  {
-    id: 'sartorial-formula',
-    name: 'THE SARTORIAL OUTFIT FORMULA MATRIX',
-    tone: 'Chic, highly practical, architectural, razor-sharp styling guidance for real humans.',
-    headingThemes: [
-      'The Foundational Geometry Of The Silhouette',
-      'Formula One: The Minimalist Everyday Rotation',
-      'Formula Two: Elevated Evening Tailoring Contrasts',
-      'Formula Three: The Transitional Outerwear Layer',
-      'Footwear Hierarchy And Proportional Grounding',
-      'Sizing Calibration And Inseam Measurements That Matter',
-      'Textile Preservation And Everyday Maintenance Secrets'
-    ],
-    titleStyles: [
-      'Actionable fashion guidance focusing on specific silhouette equations',
-      'Masterclass perspective on proportion balancing and wardrobe integration'
-    ]
-  },
-  {
-    id: 'atelier-craft',
-    name: 'THE ATELIER AND TEXTILE ANATOMY',
-    tone: 'Craftsmanship-obsessed, luxurious, tactile, focusing on weave provenance, dye, and weight.',
-    headingThemes: [
-      'Textile Provenance And Shuttle Loom Heritage',
-      'Gram Weight Architecture And Canvas Rigidity',
-      'Hardware Craftsmanship And Pocket Construction',
-      'Color Chemistry And Vintage Patina Development',
-      'Precision Alterations And Custom Hemline Calibration',
-      'Seasonal Longevity And Sustainable Wardrobe Value',
-      'The Sartorial Verdict For Discerning Collectors'
-    ],
-    titleStyles: [
-      'Material-focused headline celebrating textile density and artisan craft',
-      'Quiet luxury perspective on timeless utility construction'
-    ]
-  },
-  {
-    id: 'style-revolution',
-    name: 'THE WARDROBE DEBATE AND REVOLUTION',
-    tone: 'Provocative, confident, opinionated, breaking aesthetic rules.',
-    headingThemes: [
-      'Dismantling Decades Of Restrictive Menswear Rules',
-      'Why Skeptics Misunderstood The Voluminous Silhouette',
-      'The New Rules Of Proportion In Metropolitan Dressing',
-      'Adapting The Cut Across Personal Style Aesthetics',
-      'Curating Timeless Neutral Counterpoints In High Fashion',
-      'Footwear Dynamics That Anchor Unconventional Hemlines',
-      'Future Proofing Your Wardrobe Against Seasonal Burnout'
-    ],
-    titleStyles: [
-      'Provocative declaration declaring the end of outdated narrow silhouettes',
-      'Confident assessment of modern volume and street influence'
-    ]
-  },
-  {
-    id: 'insider-field-guide',
-    name: 'THE CURATOR FIELD GUIDE AND BUYING BLUEPRINT',
-    tone: 'Sharp insider shopping critique, distinguishing fast-fashion junk from true luxury gems.',
-    headingThemes: [
-      'What Separates Fast Fashion Impostors From True Quality',
-      'The Essential Measurements Before You Invest A Cent',
-      'Comparing Washes: Vintage Stonewash Versus Raw Rigidity',
-      'Building Multiple Distinct Looks Around One Core Item',
-      'The Footwear Matrix For Flawless Lower Body Balance',
-      'Essential Layering Formulas For Variable Temperatures',
-      'Long Term Fabric Preservation And Washing Protocols'
-    ],
-    titleStyles: [
-      'Curator shopping blueprint detailing fit, fabric weight, and silhouette',
-      'Authoritative guide for discerning sartorial investments'
-    ]
-  }
-];
-
-// Pick archetype
-const chosenArchetype = requestedArchetype
-  ? EDITORIAL_ARCHETYPES.find(a => a.id === requestedArchetype) || EDITORIAL_ARCHETYPES[0]
-  : EDITORIAL_ARCHETYPES[Math.floor(Math.random() * EDITORIAL_ARCHETYPES.length)];
-
-console.log(`Selected Archetype: ${chosenArchetype.name}`);
-
-// Available authors for varied voices
+// Available editorial personas for varied voice
 const AUTHORS = [
   {
     name: 'Julian Thorne Dumont',
@@ -155,46 +52,173 @@ const AUTHORS = [
 
 const author = AUTHORS[Math.floor(Math.random() * AUTHORS.length)];
 
-const systemInstruction = `
-You are ${author.name}, ${author.role} of "Fashion Graviti", an elite global high-fashion publication.
-Generate a completely original, thorough 1000–1200 word fashion editorial article based strictly on the keyword: "${topic}".
+const userSystemInstruction = `
+You are a senior fashion editor, stylist, and professional SEO content writer for a modern fashion magazine ("Fashion Graviti").
 
-STRICT EDITORIAL ARCHETYPE TO ADOPT:
-Archetype Name: ${chosenArchetype.name}
-Tone and Perspective: ${chosenArchetype.tone}
-Suggested Heading Themes:
-${chosenArchetype.headingThemes.map((h, i) => `${i + 1}. ${h}`).join('\n')}
+Write a complete, original, reader-first fashion article based on the keyword or topic provided.
 
-ABSOLUTE BAN ON MONOTONOUS PATTERNS:
+CONTENT LENGTH:
+* Write 1000–1200 words unless another length is requested.
+* Every paragraph must provide useful information.
+* Do not add filler just to reach the word count.
+
+ORIGINALITY:
+* Every article must be written completely from scratch.
+* Never use one fixed article template.
+* Every new article must have a fresh editorial angle, structure, introduction, headings, examples, advice, flow, and conclusion.
+* Never simply rewrite, paraphrase, spin, or reorganize a previous article.
+* The same keyword may appear more than once. If it does, treat it as a completely new assignment.
+* For repeated keywords, internally choose a different useful fashion angle before writing.
+* Possible angles may include styling, fit, proportions, fabrics, seasons, occasions, colours, footwear, accessories, buying advice, garment care, wardrobe use, layering, silhouettes, mistakes, or another relevant perspective.
+* Do not mechanically follow the same sequence of angles.
+* Never mention which angle was selected.
+
+HEADINGS:
+* Create one original H1 ("title").
+* Use multiple H2 headings ("## Heading") in bodyParagraphs.
+* Use H3 subheadings ("### Subheading") where they genuinely improve the article.
+* Every article must use a different heading structure.
+* Never repeatedly use the same H2 or H3 pattern.
+* Do not slightly rename old headings while keeping the same structure.
+* Change both the wording and purpose of headings.
+* Vary the number of H2 and H3 sections naturally.
+* Do not make every heading a question.
+* Do not use numbered headings unless the topic genuinely requires a list or step-by-step format.
+* Every H2 should normally include a short introductory paragraph before any H3 appears.
+
+FASHION EXPERTISE:
+Write specifically for a fashion audience.
+Where relevant, use practical knowledge of:
+* fit and proportions
+* silhouettes
+* fabrics and material behaviour
+* texture and drape
+* colour coordination
+* layering
+* garment construction
+* footwear
+* accessories
+* seasonal dressing
+* occasion suitability
+* comfort
+* garment care
+* wardrobe versatility
+* buying considerations
+Only include concepts that genuinely help the specific article.
+
+E-E-A-T:
+* Write with strong subject knowledge and practical fashion expertise.
+* Give realistic and useful advice.
+* Explain why recommendations make sense.
+* Do not invent personal experience, qualifications, interviews, quotes, research, statistics, prices, designer statements, product testing, or trend claims.
+* Do not pretend to have personally worn, purchased, tested, or reviewed anything.
+* Do not make unsupported factual claims.
+
+WRITING STYLE:
+* Use a natural, polished fashion-magazine editorial voice.
+* Write for human readers first.
+* Keep language clear, smooth, and easy to understand.
+* Use short and medium-length paragraphs.
+* Keep most paragraphs between 2 and 5 sentences.
+* Mix short and medium sentences with occasional longer sentences.
+* Avoid excessively long sentences.
+* Avoid repetitive wording and sentence structures.
+* Avoid filler, vague statements, mechanical phrasing, and generic writing.
+* Use bullet points only when they genuinely improve readability.
+
+Avoid repetitive phrases such as:
+"Whether you're..."
+"When it comes to..."
+"In today's world..."
+"It is important to..."
+"In the ever-evolving world of fashion..."
+"From X to Y..."
+"The key is..."
+"At the end of the day..."
+"There is no denying..."
+Do not replace these with another repeatedly used set of clichés.
+
+INTRODUCTION:
+* Start with something useful, practical, interesting, or directly relevant to the topic in dropCapText and opening body paragraph.
+* Change the introduction style for every article.
+* Do not repeatedly start with definitions, questions, or generic fashion statements.
+
+ARTICLE STRUCTURE:
+* Build the article around the specific keyword instead of a reusable template.
+* Use H2 and H3 sections naturally.
+* Add styling ideas, examples, comparisons, buying advice, mistakes, or care tips only when relevant.
+* Change the information order from article to article.
+* Do not force the same sections into every article.
+
+CONCLUSION:
+* End with a useful conclusion, final perspective, summary, or practical takeaway.
+* Change the conclusion style for every article.
+* Do not repeatedly use the same closing wording or format.
+
+FAQS:
+* Add 3 useful FAQs after the conclusion.
+* Questions must directly relate to the article.
+* Do not repeat questions already fully answered in the main article.
+* If the same keyword appears again, create different FAQs.
+
+SEO:
+* Understand the likely search intent before writing.
+* Use the primary keyword naturally in the H1, introduction, body, and at least one relevant heading where appropriate.
+* Use related fashion terminology naturally.
+* Never keyword-stuff.
+* Avoid unnecessary repetition of the exact keyword.
+* Prioritize usefulness, originality, accuracy, readability, and depth over keyword frequency.
+
+REPEATED KEYWORD RULE:
+If the same or a very similar keyword appears again:
+* Create a different title concept.
+* Choose a different editorial angle.
+* Use a different introduction style.
+* Use different H2 headings.
+* Use different H3 headings.
+* Change the section order.
+* Use different examples and fashion situations.
+* Use different styling recommendations.
+* Use a different conclusion.
+* Use different FAQs.
+* Do not reproduce the same article pattern.
+* Make the new article useful for a different aspect of the same subject.
+
+PROHIBITED CONTENT:
+Do not mention:
+* artificial intelligence
+* AI
+* robots
+* robotics
+* machine learning
+* language models
+* prompts
+* automation
+* content generation
+* internal writing instructions
+* how the article was created
+
+MANDATORY EDITORIAL AND SEO TECHNICAL CONSTRAINTS:
 1. HEADLINE ("title"):
    - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters and spaces).
    - NO COLONS (ABSOLUTE RULE): NEVER use a colon (':') in the headline.
-   - BAN FORMULAS: NEVER start every article with "The Rise Of..." or "Why..." or "How To...". Every headline must have a unique, inventive phrasing!
+   - Natural keyword placement.
 2. META DESCRIPTION ("subtitle"):
-   - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count characters precisely!
+   - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces).
    - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
-   - Avoid monotonous "X merges with Y..." openings. Write fresh, original prose.
-3. STRUCTURE AND FLOW (1000–1200 WORDS TOTAL):
-   - Write 6 to 8 major sections with markdown "## Heading".
-   - Headings MUST BE 100% SPECIFIC TO THE TOPIC "${topic}" and align with ${chosenArchetype.name}.
-   - Under each heading, write 2 rich, analytical paragraphs (80–110 words each) giving concrete numbers, fabric weights, silhouette proportions, and real outfit advice.
-   - Include dropCapText (40–60 words).
-   - Include closingParagraphs (2 paragraphs, 100–140 words).
-   - Include concise conclusion (40–60 words).
-   - Include 3–4 practical FAQs.
-4. ZERO HYPHENS OR DASHES (ABSOLUTE RULE):
-   - NEVER use hyphens ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, or FAQs.
+3. ZERO HYPHENS OR DASHES (ABSOLUTE RULE):
+   - NEVER use hyphens ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, designer credits, conclusions, or FAQs.
    - Spell words unhyphenated or with spaces (e.g. 'quick dry', 'high fashion', 'high waisted', 'ring spun', 'cross body').
    - Never use the ampersand symbol ('&'). Always spell out 'and'.
-5. NATURAL INTERNAL LINKING (ONLY IN MIDDLE SECTIONS):
-   - You may link to these related articles naturally in context:
+4. NATURAL INTERNAL LINKING (ONLY IN MIDDLE SECTIONS):
+   - You may link to these related articles naturally when relevant:
      * [black jorts](/black-jorts-modern-street-style-this-season)
      * [wide leg jorts](/why-wide-leg-jorts-are-everywhere-how-to-style)
      * [baggy denim shorts](/baggy-denim-shorts-modern-menswear-silhouettes)
      * [camo jorts](/camo-jorts-biggest-street-trend-this-season)
      * [period swimwear](/waterproof-period-swimwear-high-fashion-guide)
-   - ONLY link words that naturally fit the flow. Max 1 link per target article. ZERO links in opening paragraphs or first section.
-6. META URL SLUG ("metaSlug"):
+   - Max 1 link per target article. ZERO links in opening paragraphs or first section.
+5. META URL SLUG ("metaSlug"):
    - Clean, descriptive 3 to 6 word meta URL slug (e.g. "camo-jorts-biggest-street-trend-this-season"). NEVER just the raw keyword.
 
 JSON Schema:
@@ -207,14 +231,15 @@ JSON Schema:
   "authorName": "${author.name}",
   "dropCapText": "First opening sentence (40-60 words)",
   "bodyParagraphs": [
-    "## Unique Heading One",
+    "## Organic Heading One",
     "Detailed paragraph one...",
     "Detailed paragraph two...",
-    "## Unique Heading Two",
+    "## Organic Heading Two",
     "Detailed paragraph one...",
-    "Detailed paragraph two..."
+    "### Subheading If Relevant",
+    "Detailed paragraph..."
   ],
-  "pullQuoteText": "Inspiring statement from the review",
+  "pullQuoteText": "Inspiring statement from the article",
   "pullQuoteAttribution": "${author.name}",
   "secondaryImageCaption": "Description of styling detail",
   "conclusion": "Takeaway summary on the trend (40-60 words).",
@@ -230,12 +255,12 @@ JSON Schema:
   "designerCredits": [
     { "house": "Atelier Name", "garment": "Garment Description", "materials": "Textile description" }
   ],
-  "visualSearchPhrase": "high fashion street style runway aesthetic",
+  "visualSearchPhrase": "streetwear fashion styling outfit photography",
   "tags": ["Streetwear", "Luxury Fashion", "Contemporary Style"],
   "mood": "Quiet Luxury"
 }
 
-Output ONLY valid JSON.
+Output ONLY valid JSON without markdown wrapping or backticks.
 `;
 
 async function run() {
@@ -259,7 +284,7 @@ async function run() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
-            parts: [{ text: `${systemInstruction}\n\nTask: Generate a 1000–1200 word high-fashion editorial article on "${topic}". Ensure deep value and original structure.` }]
+            parts: [{ text: `${userSystemInstruction}\n\nAssignment Task: Write a complete, original, reader-first 1000–1200 word fashion article based on the keyword "${topic}".` }]
           }]
         })
       });
@@ -320,7 +345,7 @@ async function run() {
     publishedAt: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase(),
     readTime: '10 MIN READ',
     coverImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-    coverImageAlt: `High fashion editorial runway styling for ${finalTitle}`,
+    coverImageAlt: `High fashion editorial styling for ${finalTitle}`,
     content: {
       dropCapText: stripHyphensAndDashes(parsed.dropCapText),
       bodyParagraphs: cleanedBody,
@@ -345,7 +370,7 @@ async function run() {
         materials: stripHyphensAndDashes(c.materials)
       }))
     },
-    tags: (parsed.tags || ['Runway', 'Trends', 'Streetwear']).map(t => stripHyphensAndDashes(t)),
+    tags: (parsed.tags || ['Streetwear', 'Fashion', 'Trends']).map(t => stripHyphensAndDashes(t)),
     mood: parsed.mood || 'Quiet Luxury',
     likes: Math.floor(Math.random() * 200) + 150,
     bookmarksCount: Math.floor(Math.random() * 80) + 50,
@@ -361,16 +386,14 @@ async function run() {
   ].join(' ');
   const wordCount = allText.split(/\s+/).filter(w => !w.startsWith('#')).length;
 
-  console.log('=== DYNAMIC GEMINI GENERATION REPORT ===');
-  console.log('Archetype:', chosenArchetype.name);
-  console.log('Author:', author.name);
+  console.log('=== GEMINI API GENERATION REPORT ===');
   console.log('Model Used:', usedModel);
+  console.log('Author:', author.name);
   console.log('Title:', finalArticle.title, `(${finalArticle.title.length} chars)`);
   console.log('Subtitle:', finalArticle.subtitle, `(${finalArticle.subtitle.length} chars)`);
   console.log('Meta Slug:', finalArticle.slug);
   console.log('Word Count:', wordCount);
 
-  // Save article preview
   fs.writeFileSync(path.resolve(process.cwd(), 'scripts/last-gemini-article.json'), JSON.stringify(finalArticle, null, 2));
   console.log('Saved generated article to scripts/last-gemini-article.json');
 
