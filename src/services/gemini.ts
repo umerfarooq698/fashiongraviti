@@ -202,17 +202,20 @@ E-E-A-T:
 * Do not pretend to have personally worn, purchased, tested, or reviewed anything.
 * Do not make unsupported factual claims.
 
-WRITING STYLE:
+WRITING STYLE AND DYNAMIC FORMATTING:
 * Use a natural, polished fashion-magazine editorial voice.
-* Write for human readers first.
-* Keep language clear, smooth, and easy to understand.
-* Use short and medium-length paragraphs.
-* Keep most paragraphs between 2 and 5 sentences.
-* Mix short and medium sentences with occasional longer sentences.
-* Avoid excessively long sentences.
-* Avoid repetitive wording and sentence structures.
+* Write for human readers first with maximum informational and practical value.
+* PARAGRAPH RHYTHM & OPTIMAL READABILITY:
+  - Mix paragraph lengths naturally: combine punchy 2-sentence takeaways (approx 35-45 words) with medium 3-4 sentence detailed explanations (approx 60-80 words).
+  - Never write monolithic blocks of identical paragraph count or uniform length under each heading.
+* DYNAMIC FORMATTING ELEMENTS (NO FIXED PATTERNS):
+  - Do NOT follow a mechanical template or repeating sequence across sections or articles.
+  - Naturally incorporate formatting variety ONLY where it genuinely aids reader comprehension:
+    * Curated bullet lists ('* ') when breaking down technical specifications, materials, or styling options.
+    * Standalone editorial tips or practical takeaways ('**Atelier Tip:** ...' or '**Styling Tip:** ...') when actionable advice benefits the reader.
+    * Distinct single-paragraph focus sections or comparative H3 subsections where appropriate.
+  - Never force all formatting elements into one place, and never place them in the same sequence across different articles. Let the subject matter dictate the natural layout.
 * Avoid filler, vague statements, mechanical phrasing, and generic writing.
-* Use bullet points only when they genuinely improve readability.
 
 Avoid repetitive phrases such as:
 "Whether you're..."

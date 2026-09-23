@@ -278,13 +278,22 @@ ASSIGNMENT TASK:
 Write a complete, original, reader-first 1000–1200 word high-fashion editorial article on "${topic}".
 
 REPEATED KEYWORD & ORIGINALITY RULE:
-If a similar subject exists in the archive (such as general styling of tennis bracelets), you MUST choose a completely distinct editorial angle:
-For "${topic}", write with prestigious fine jewelry authority focusing on Atelier Craftsmanship, Setting Engineering (four prong vs bezel vs channel settings), Carat Weight Proportions, Metal Alloy Metallurgy (platinum 950 vs 18k gold alloys), Articulation Link Flexibility, Clasp Security Mechanisms, and Investment Appraisal.
-Do NOT write about casual denim or weekend leisure wear.
+If a similar subject exists in the archive, you MUST choose a completely distinct editorial angle, heading structure, and fashion scenarios so there is zero overlap or repetition.
 
-CRITICAL WORD COUNT RULE:
-The total article word count MUST be strictly between 1000 and 1200 words.
-To achieve this authentic depth without filler, structure the body into 7 to 8 substantial H2 sections with 2 to 3 detailed, informative paragraphs each.`;
+CRITICAL WORD COUNT AND DYNAMIC FORMATTING RULE:
+* Total article word count MUST be strictly between 1000 and 1200 words.
+* PARAGRAPH RHYTHM & OPTIMAL READABILITY:
+  - Mix paragraph lengths naturally: combine punchy 2-sentence takeaways (approx 35-45 words) with medium 3-4 sentence detailed explanations (approx 60-80 words).
+  - Never output monolithic blocks of identical paragraph count or uniform length under each heading.
+* DYNAMIC FORMATTING ELEMENTS (NO FIXED PATTERNS):
+  - Do NOT follow a mechanical template or repeating sequence across sections or articles.
+  - Naturally incorporate formatting variety ONLY where it genuinely aids reader comprehension:
+    * Curated bullet lists ('* ') when breaking down technical specifications, materials, or styling options.
+    * Standalone editorial tips or practical takeaways ('**Atelier Tip:** ...' or '**Styling Tip:** ...') when actionable advice benefits the reader.
+    * Distinct single-paragraph focus sections or comparative H3 subsections where appropriate.
+  - Never force all formatting elements into one place, and never place them in the same sequence across different articles. Let the subject matter dictate the natural layout.
+* READER-FIRST DEPTH:
+  - Every paragraph must be informative, authoritative, and helpful to the reader. Provide actionable fashion intelligence, garment construction details, fit formulas, and material behaviors.`;
 
   for (const model of models) {
     try {

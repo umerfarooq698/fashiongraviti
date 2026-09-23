@@ -511,9 +511,16 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                     {renderTextWithLinks(trimmed.replace(/^##\s+/, ''))}
                   </h2>
                 ) : trimmed.startsWith('* ') || trimmed.startsWith('- ') ? (
-                  <li className="list-disc list-inside text-zinc-300 ml-2 font-normal leading-relaxed">
-                    {renderTextWithLinks(trimmed.replace(/^[*•-]\s+/, ''))}
-                  </li>
+                  <div className="flex items-start space-x-3 my-2.5 pl-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2.5 flex-shrink-0" />
+                    <span className="text-zinc-200 leading-relaxed font-normal">
+                      {renderTextWithLinks(trimmed.replace(/^[*•-]\s+/, ''))}
+                    </span>
+                  </div>
+                ) : (trimmed.toLowerCase().startsWith('**tip') || trimmed.toLowerCase().startsWith('**styling tip') || trimmed.toLowerCase().startsWith('**atelier tip') || trimmed.toLowerCase().startsWith('**quick tip') || trimmed.toLowerCase().startsWith('**key takeaway')) ? (
+                  <div className="my-6 p-4 sm:p-5 bg-noir-card border-l-2 border-gold/80 shadow-lg text-zinc-200 leading-relaxed">
+                    {renderTextWithLinks(paragraph)}
+                  </div>
                 ) : (
                   <p className="leading-relaxed">
                     {renderTextWithLinks(paragraph)}
