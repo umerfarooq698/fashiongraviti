@@ -257,16 +257,35 @@ Output ONLY valid JSON without markdown wrapping or backticks.
 
 async function run() {
   const models = [
-    'gemini-3.5-flash-lite',
-    'gemini-3.1-flash-lite',
-    'gemini-flash-lite-latest',
-    'gemini-3.6-flash',
     'gemini-3.7-flash',
-    'gemini-flash-latest'
+    'gemini-3.6-flash',
+    'gemini-3.5-flash-lite',
+    'gemini-3.1-flash-lite'
   ];
   let rawText = '';
   let usedModel = '';
+
+  const initialArticlesPath = path.resolve(process.cwd(), 'src/data/initialArticles.ts');
+  const fileContentBefore = fs.readFileSync(initialArticlesPath, 'utf-8');
+  const existingTitles = [...fileContentBefore.matchAll(/"title":\s*"([^"]+)"/g)].map(m => m[1]);
   
+  const dynamicPrompt = `${userSystemInstruction}
+
+EXISTING ARTICLES IN MAGAZINE ARCHIVE (DO NOT DUPLICATE THESE ANGLES OR REPEAT SIMILAR HEADINGS):
+${existingTitles.slice(0, 10).map(t => `- "${t}"`).join('\n')}
+
+ASSIGNMENT TASK:
+Write a complete, original, reader-first 1000–1200 word high-fashion editorial article on "${topic}".
+
+REPEATED KEYWORD & ORIGINALITY RULE:
+If a similar subject exists in the archive (such as general styling of tennis bracelets), you MUST choose a completely distinct editorial angle:
+For "${topic}", write with prestigious fine jewelry authority focusing on Atelier Craftsmanship, Setting Engineering (four prong vs bezel vs channel settings), Carat Weight Proportions, Metal Alloy Metallurgy (platinum 950 vs 18k gold alloys), Articulation Link Flexibility, Clasp Security Mechanisms, and Investment Appraisal.
+Do NOT write about casual denim or weekend leisure wear.
+
+CRITICAL WORD COUNT RULE:
+The total article word count MUST be strictly between 1000 and 1200 words.
+To achieve this authentic depth without filler, structure the body into 7 to 8 substantial H2 sections with 2 to 3 detailed, informative paragraphs each.`;
+
   for (const model of models) {
     try {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
@@ -276,7 +295,7 @@ async function run() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
-            parts: [{ text: `${userSystemInstruction}\n\nCRITICAL WORD COUNT RULE: The entire article MUST be strictly between 1000 and 1200 words in total. Write at least 7 to 8 substantial sections with 2 to 3 detailed paragraphs each to ensure comprehensive editorial depth.\n\nAssignment Task: Write a complete, original, reader-first 1000–1200 word fashion editorial article on "${topic}".` }]
+            parts: [{ text: dynamicPrompt }]
           }],
           generationConfig: {
             maxOutputTokens: 8192,
@@ -322,10 +341,10 @@ async function run() {
 
   const isJewelry = topic.toLowerCase().includes('bracelet') || topic.toLowerCase().includes('jewelry') || topic.toLowerCase().includes('ring') || topic.toLowerCase().includes('necklace') || topic.toLowerCase().includes('diamond');
   const defaultCover = isJewelry
-    ? 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
+    ? 'https://images.unsplash.com/photo-1705575518997-82a71bcc75a2?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
     : 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85';
   const defaultSecondary = isJewelry
-    ? 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
+    ? 'https://images.unsplash.com/photo-1763029513623-37d488cb97b1?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
     : 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85';
 
   const finalArticle = {
@@ -402,7 +421,6 @@ async function run() {
   console.log('Saved generated article to scripts/last-gemini-article.json');
 
   // Insert into src/data/initialArticles.ts at the beginning of INITIAL_ARTICLES
-  const initialArticlesPath = path.resolve(process.cwd(), 'src/data/initialArticles.ts');
   let fileContent = fs.readFileSync(initialArticlesPath, 'utf-8');
 
   // Check if article with this id already exists
