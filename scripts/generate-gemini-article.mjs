@@ -348,21 +348,43 @@ CRITICAL WORD COUNT AND DYNAMIC FORMATTING RULE:
     return stripHyphensAndDashes(p);
   }));
 
-  const isJewelry = topic.toLowerCase().includes('bracelet') || topic.toLowerCase().includes('jewelry') || topic.toLowerCase().includes('ring') || topic.toLowerCase().includes('necklace') || topic.toLowerCase().includes('diamond');
-  const defaultCover = isJewelry
+  const isGoldBracelet = topic.toLowerCase().includes('gold') && (topic.toLowerCase().includes('bracelet') || topic.toLowerCase().includes('bangle') || topic.toLowerCase().includes('cuff'));
+  const isJewelry = isGoldBracelet || topic.toLowerCase().includes('bracelet') || topic.toLowerCase().includes('jewelry') || topic.toLowerCase().includes('ring') || topic.toLowerCase().includes('necklace') || topic.toLowerCase().includes('diamond');
+  
+  const defaultCover = isGoldBracelet
+    ? 'https://images.unsplash.com/photo-1741071520904-37ef3c0fea09?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
+    : isJewelry
     ? 'https://images.unsplash.com/photo-1705575518997-82a71bcc75a2?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
     : 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85';
-  const defaultSecondary = isJewelry
+
+  const defaultSecondary = isGoldBracelet
+    ? 'https://images.unsplash.com/photo-1679156272446-30738eb5c4e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
+    : isJewelry
     ? 'https://images.unsplash.com/photo-1763029513623-37d488cb97b1?auto=format&fit=crop&crop=top&w=1600&h=900&q=85'
     : 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85';
+
+  const validCategories = ['fashion-news', 'fashion-trends', 'celebrity', 'designers-brands', 'beauty', 'how-to-style'];
+  let articleCategory = parsed.category || category;
+  if (!validCategories.includes(articleCategory)) {
+    articleCategory = 'how-to-style';
+  }
+
+  const categoryLabels = {
+    'fashion-news': 'Fashion News',
+    'fashion-trends': 'Fashion Trends',
+    'celebrity': 'Celebrity',
+    'designers-brands': 'Designers And Brands',
+    'beauty': 'Beauty',
+    'how-to-style': 'How to Style',
+  };
 
   const finalArticle = {
     id: `article-${finalMetaSlug.slice(0, 30)}-${Date.now()}`,
     title: finalTitle,
     subtitle: finalSubtitle,
     slug: finalMetaSlug,
-    category: parsed.category || category,
-    categoryLabel: parsed.categoryLabel || 'Fashion Trends',
+    category: articleCategory,
+    categoryLabel: categoryLabels[articleCategory] || 'How to Style',
     season: 'AUTUMN / WINTER 2026',
     issueNumber: 'ISSUE NO. 15',
     locationTag: `${author.location.split(' and ')[0].toUpperCase()} // EDITORIAL DESK`,
