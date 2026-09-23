@@ -203,12 +203,24 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
     .filter((a) => a.id !== article.id && a.category === article.category)
     .slice(0, 3);
 
-  // Helper to parse and render markdown links naturally in editorial text
+  // Helper to parse and render markdown links and bold formatting naturally in editorial text
   const renderTextWithLinks = (text: string) => {
     if (!text) return null;
+
+    const renderBoldSegment = (seg: string, segKey: string): React.ReactNode => {
+      if (!seg.includes('**')) return seg;
+      const parts = seg.split(/\*\*([^*]+)\*\*/g);
+      return parts.map((part, i) => {
+        if (i % 2 === 1) {
+          return <strong key={`${segKey}-b-${i}`} className="font-bold text-white">{part}</strong>;
+        }
+        return part;
+      });
+    };
+
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
     if (!linkRegex.test(text)) {
-      return text;
+      return renderBoldSegment(text, 'plain');
     }
     linkRegex.lastIndex = 0;
     const elements: React.ReactNode[] = [];
@@ -217,7 +229,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
     while ((match = linkRegex.exec(text)) !== null) {
       if (match.index > lastIndex) {
-        elements.push(text.substring(lastIndex, match.index));
+        elements.push(renderBoldSegment(text.substring(lastIndex, match.index), `txt-${lastIndex}`));
       }
       const anchorText = match[1];
       const url = match[2];
@@ -250,7 +262,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
     }
 
     if (lastIndex < text.length) {
-      elements.push(text.substring(lastIndex));
+      elements.push(renderBoldSegment(text.substring(lastIndex), `txt-${lastIndex}`));
     }
 
     return elements;
@@ -517,11 +529,22 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                       {renderTextWithLinks(trimmed.replace(/^[*•-]\s+/, ''))}
                     </span>
                   </div>
-                ) : (trimmed.toLowerCase().startsWith('**tip') || trimmed.toLowerCase().startsWith('**styling tip') || trimmed.toLowerCase().startsWith('**atelier tip') || trimmed.toLowerCase().startsWith('**quick tip') || trimmed.toLowerCase().startsWith('**key takeaway')) ? (
-                  <div className="my-6 p-4 sm:p-5 bg-noir-card border-l-2 border-gold/80 shadow-lg text-zinc-200 leading-relaxed">
-                    {renderTextWithLinks(paragraph)}
-                  </div>
-                ) : (
+                ) : trimmed.match(/^\*\*([^*]+)\*\*[:\s]*/) ? (() => {
+                  const match = trimmed.match(/^\*\*([^*]+)\*\*[:\s]*(.*)$/);
+                  const label = match ? match[1].replace(/:$/, '').trim() : 'EDITORIAL NOTE';
+                  const body = match ? match[2].trim() : trimmed;
+                  return (
+                    <div className="my-6 p-4 sm:p-5 bg-zinc-900/90 border-l-2 border-gold shadow-lg rounded-sm">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold font-bold mb-2">
+                        <Sparkles className="w-3.5 h-3.5 text-gold flex-shrink-0" />
+                        <span>{label}</span>
+                      </div>
+                      <p className="text-zinc-200 text-sm sm:text-base leading-relaxed font-normal m-0">
+                        {renderTextWithLinks(body)}
+                      </p>
+                    </div>
+                  );
+                })() : (
                   <p className="leading-relaxed">
                     {renderTextWithLinks(paragraph)}
                   </p>
