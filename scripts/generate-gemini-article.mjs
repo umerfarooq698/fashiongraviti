@@ -77,14 +77,20 @@ HEADINGS:
 * Create one original H1 ("title").
 * Use multiple H2 headings ("## Heading") in bodyParagraphs.
 * Use H3 subheadings ("### Subheading") where they genuinely improve the article.
-* Every article must use a different heading structure.
+* Every article must use a completely different heading style and structure.
+* ABSOLUTE BAN ON AI ROBOTIC HEADINGS AND CLICHE GERUNDS:
+  - NEVER start headings with robotic gerunds or predictable AI formulas:
+    "Decoding...", "Mastering...", "Navigating...", "Understanding...", "Curating...", "Harmonizing...", "Exploring...", "Demystifying...", "Unveiling...", "The Art of...", "The Rise of..."
+  - Headings must sound like an elite luxury magazine feature editor: punchy, stylish, confident, and conversational (e.g. "Solid Mass Versus Hollow Wire", "The 18 Karat Dilemma", "Real Gold Against Heavy Wool", "Why Stiff Links Ruin The Line", "Over The Cuff, Not Under").
 * Never repeatedly use the same H2 or H3 pattern.
 * Do not slightly rename old headings while keeping the same structure.
-* Change both the wording and purpose of headings.
 * Vary the number of H2 and H3 sections naturally.
 * Do not make every heading a question.
 * Do not use numbered headings unless the topic genuinely requires a list or step-by-step format.
-* Every H2 should normally include a short introductory paragraph before any H3 appears.
+* ANTI-MONOTONY RULE FOR BULLETS AND TIPS:
+  - NEVER place bullet points or tips in the same section or position across articles!
+  - If one article has bullets in the middle, the next must place them near the end, or have NO bullets at all.
+  - Never repeat structural layouts.
 
 FASHION EXPERTISE:
 Write specifically for a fashion audience.

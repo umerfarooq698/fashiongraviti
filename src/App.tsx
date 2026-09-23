@@ -18,7 +18,7 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v44';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v45';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
 
 export function App() {
@@ -77,7 +77,7 @@ export function App() {
   // Ensure dark class is applied and purge old database cache versions
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    for (let i = 1; i <= 43; i++) {
+    for (let i = 1; i <= 44; i++) {
       try {
         localStorage.removeItem(`fashiongraviti_articles_v${i}`);
         localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
