@@ -11,7 +11,6 @@ import { ArticleReaderModal } from './components/ArticleReaderModal';
 import { AuthorProfilePage } from './components/AuthorProfilePage';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
-import { CreateArticleModal } from './components/CreateArticleModal';
 import { LookbookDrawer } from './components/LookbookDrawer';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
 import { Footer } from './components/Footer';
@@ -19,7 +18,7 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v35';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v36';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
 
 export function App() {
@@ -62,7 +61,6 @@ export function App() {
   const [selectedArticleForReader, setSelectedArticleForReader] = useState<FashionArticle | null>(null);
   const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
   const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | 'privacy' | 'terms' | null>(null);
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
 
@@ -446,14 +444,6 @@ export function App() {
     );
   };
 
-  const handleCreateArticle = (newArticle: FashionArticle) => {
-    setArticles((prev) => [newArticle, ...prev]);
-    handleSelectCategory(newArticle.category);
-    setActiveMood('All Moods');
-    setSearchQuery('');
-    handleOpenArticle(newArticle);
-  };
-
   const handleClearAllBookmarks = () => {
     setBookmarkedIds([]);
   };
@@ -618,17 +608,8 @@ export function App() {
         onNavigateContact={handleNavigateContact}
         onNavigatePrivacy={handleNavigatePrivacy}
         onNavigateTerms={handleNavigateTerms}
-        onOpenCreateModal={() => setIsCreateModalOpen(true)}
         onOpenLookbook={() => setIsLookbookOpen(true)}
         onSelectTag={handleSelectTag}
-      />
-
-      {/* 8. Curator Studio Modal (Submit Post) */}
-      <CreateArticleModal
-        isOpen={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
-        categories={dynamicCategories}
-        onCreateArticle={handleCreateArticle}
       />
 
       {/* 9. Lookbook Drawer */}

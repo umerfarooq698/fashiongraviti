@@ -9,7 +9,6 @@ interface FooterProps {
   onNavigateContact?: () => void;
   onNavigatePrivacy?: () => void;
   onNavigateTerms?: () => void;
-  onOpenCreateModal?: () => void;
   onOpenLookbook?: () => void;
   onSelectTag?: (tag: string) => void;
 }

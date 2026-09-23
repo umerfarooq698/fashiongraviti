@@ -68,107 +68,107 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
-    id: 'article-camo-jorts-streetwear',
-    title: 'Camo jorts have become the biggest street trend this season',
-    subtitle: 'Camouflage denim cutoffs bring utility and edge to modern outfits. Balance bold printed patterns with plain neutral tees and retro sneakers.',
-    slug: 'camo-jorts-biggest-street-trend-this-season',
-    legacySlugs: ['camo-jorts'],
-    category: 'fashion-trends',
-    categoryLabel: 'Fashion Trends',
-    season: 'SPRING / SUMMER 2026',
-    issueNumber: 'ISSUE NO. 14',
-    locationTag: 'NEW YORK // SOHO DISTRICT',
-    featured: true,
-    author: {
-      name: 'Julian Thorne Dumont',
-      role: 'Senior Menswear Editor',
-      location: 'Milan and New York',
-      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
-      instagram: '@julian_sartorial',
-    },
-    publishedAt: 'SEPTEMBER 22, 2026',
-    readTime: '9 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1787181510660-a1f1efae64e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-    coverImageAlt: 'Streetwear aesthetic featuring relaxed camouflage cargo jorts with white top and sneakers outdoors',
-    content: {
-      dropCapText: 'Tactical prints have officially conquered warm weather pavement as camo jorts emerge as the definitive uniform for modern street style icons. By combining the rugged durability of military utility wear with relaxed skate proportions, these printed cutoffs inject instant attitude into everyday dressing.',
-      bodyParagraphs: [
-        '## The Evolution Of Military Prints In Modern Streetwear',
-        'Camouflage has traveled a fascinating path from military surplus depots to the forefront of global street fashion. During the early nineties, skate communities and hip hop collectives adopted surplus tactical shorts for their durability, roomy pockets, and unapologetic anti establishment edge. What began as an accessible thrift store staple quickly caught the attention of visionary streetwear designers who recognized the graphic power of utilitarian patterns.',
-        'Today, camo jorts represent a permanent bridge between practical utility and high fashion casual wear. Instead of stiff, uncomfortable military issue gear, modern iterations are tailored from soft ring spun cotton twill and heavy duty ripstop denim. They offer the substantial presence of classic jeans while delivering the graphic excitement of an all over print. By wearing camouflage cutoffs, you inject personality and visual depth into an otherwise minimal warm weather wardrobe.',
-        '## Choosing Between Woodland Desert And Tiger Stripe Patterns',
-        'Not all camouflage prints communicate the same aesthetic. The classic four color Woodland pattern, featuring deep forest green, chocolate brown, olive, and midnight black, remains the most iconic choice. Woodland camo carries an authentic vintage grit that pairs naturally with collegiate and workwear staples, grounding your lower half with warm earthy tones.',
-        'If you prefer a lighter, more summer friendly palette, Desert Storm patterns offer a sun bleached alternative composed of sandy beige, soft khaki, and muted stone. Desert camo feels breezy and understated under bright sunlight, making it remarkably easy to integrate into minimalist wardrobes. Meanwhile, Tiger Stripe patterns introduce horizontal brushstroke graphics that channel vintage skate culture, perfect for anyone who wants a sharper graphic edge.',
-        '## Perfect Color Balance With Plain Neutral Tops',
-        'Because camouflage is an inherently loud print, the rest of your outfit must exercise visual discipline to avoid sensory overload. The most common styling error is introducing competing patterns like stripes, plaids, or dense graphics. Camouflage commands the spotlight, which means your upper body layers should act as clean, balancing frames.',
-        'A heavyweight, boxy white crewneck t shirt is the ultimate companion to camo jorts. The stark purity of crisp white cotton provides a refreshing contrast against muted green and brown blotches, giving the entire silhouette a clean, intentional feel. Solid pitch black tees, heather grey sportswear crewnecks, and washed charcoal hoodies also work brilliantly, creating effortless harmony while allowing the printed denim to shine.',
-        'For days when you want to add layers without overheating, throw an unbuttoned lightweight black overshirt or an airy natural linen button down over a ribbed tank top. The open vertical lines break up upper body volume and elevate the casual bottom into a well composed street style statement.',
-        '## Mastering The Relaxed Baggy Silhouette',
-        'Proportion is the foundation of modern streetwear styling. Camo [jorts](/why-wide-leg-jorts-are-everywhere-how-to-style) look completely out of place when cut in a skinny or slim silhouette, which constricts movement and diminishes the rugged character of the print. The modern standard demands a relaxed, wide leg cut that sits comfortably at your natural waist and falls right at or slightly past the kneecap.',
-        'Look for a leg opening between twenty two and twenty five inches in circumference to ensure generous airflow around your calves. The wide hemline creates a balanced, grounded foundation that balances broader shoulders and oversized upper layers effortlessly. Choosing heavy duty twelve to fourteen ounce cotton ripstop fabric ensures the shorts maintain their structured, boxy shape without collapsing or clinging to your legs in the summer heat.',
-        '## Three Everyday Outfit Scenarios',
-        'Navigating daily life in camo jorts is straightforward once you understand how to match the occasion. For an easy weekend coffee run or creative studio day, pair faded woodland shorts with a tucked white boxy tee, a black leather belt with silver hardware, and clean retro court sneakers with white crew socks. The combination feels effortless yet completely put together.',
-        'For an outdoor concert or late afternoon rooftop hangout, lean into subtle street textures. Layer an unbuttoned olive workwear overshirt over a dark charcoal tank top, letting the shirt hems frame the waistline. Add a minimal silver chain necklace and slip into olive suede Boston clogs or leather fisherman sandals for a tactile, utilitarian mood.',
-        'When evening temperatures drop, transition the shorts into casual dinner territory with a fine gauge black knit polo and chunky black leather Derby shoes. The tailored knitwear collar and polished leather footwear create a striking high low contrast against the raw utilitarian hem, proving that camouflage can look genuinely sophisticated when balanced properly.',
-        '## Footwear Pairings For Maximum Visual Impact',
-        'Footwear serves as the anchor that completes any camouflage outfit. Because the printed shorts carry significant visual mass, featherweight running trainers or thin canvas slip ons look drowned beneath the wide leg opening. You need shoes with substantial welt profiles and tactile presence.',
-        'Chunky retro skate sneakers like adidas Campus or chunky court models provide authentic nineties skate proportions that feel right at home with baggy denim. If you prefer a more rugged aesthetic, six inch wheat nubuck work boots or black leather combat boots lean into the authentic military heritage of the print. During peak summer heat, closed toe suede mules and dark leather sandals offer breezy comfort while keeping your footwear line grounded.',
-        '## Maintaining Your Favorite Ripstop Denim',
-        'Camouflage denim requires thoughtful laundering to preserve its rich earthy tones and prevent premature fading along the seams. Always turn your shorts inside out before washing to shield the printed surface from abrasive friction against the washing machine drum.',
-        'Wash in cold water on a gentle cycle using mild detergent designed for dark garments, avoiding harsh bleach or chemical fabric softeners that break down durable ripstop threads. Skip the tumble dryer completely, as high heat shrinks the cotton fibers and warps the waistband. Hang your shorts to dry flat in a shaded, well ventilated spot to ensure the colors remain rich, crisp, and vibrant for years of continuous wear.',
-      ],
-      pullQuote: {
-        text: 'Camo jorts bridge the gap between uncompromising utility and effortless youth culture swagger.',
-        attribution: 'Julian Thorne Dumont',
-        role: 'Senior Menswear Editor',
-      },
-      secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1710241735650-409bdcf83321?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-        alt: 'Close up view of classic woodland camouflage pattern detailing',
-        caption: 'Textured woodland camouflage pattern on durable heavy duty cotton ripstop fabric.',
-      },
-      conclusion: 'Camo jorts have transcended their vintage surplus roots to become a true staple of contemporary street fashion. By balancing the bold print with clean neutral tops, choosing a generous knee grazing cut, and grounding the look with substantial footwear, you create an effortless summer aesthetic that stands out with genuine confidence.',
-      faqs: [
-        {
-          question: 'What color shirts go best with camo jorts?',
-          answer: 'Solid neutral tops in crisp white, pitch black, heather grey, or muted olive provide the cleanest visual balance.',
-        },
-        {
-          question: 'Should camo jorts fit baggy or slim?',
-          answer: 'Camo jorts should always feature a relaxed, baggy fit that falls right at or slightly past the kneecap.',
-        },
-        {
-          question: 'How do you wash camo shorts without fading them?',
-          answer: 'Turn them inside out, wash in cold water with gentle detergent, and always air dry away from direct sunlight.',
-        },
-        {
-          question: 'What footwear looks best with camouflage denim shorts?',
-          answer: 'Chunky skate sneakers, retro court shoes, six inch work boots, or suede mules provide the best proportional weight.',
-        },
-      ],
-      designerCredits: [
-        {
-          house: 'Stussy Atelier',
-          garment: 'Big Ol Woodland Camo Cutoff',
-          materials: '100% Heavy Duty Cotton Ripstop with Reinforced Seams',
-        },
-        {
-          house: 'BAPE Studio',
-          garment: '1st Camo Relaxed Fit Short',
-          materials: 'Custom Printed Japanese Twill with Metal Hardware',
-        },
-        {
-          house: 'Rothco Heritage',
-          garment: 'Vintage Paratrooper Cargo Cutoff',
-          materials: 'Washed Cotton Poly Canvas with Brass Zip Fly',
-        },
-      ],
-    },
-    tags: ['Camo Jorts', 'Streetwear', 'Summer Outfits', 'Skater Style', 'Menswear'],
-    mood: 'Avant-Garde',
-    likes: 495,
-    bookmarksCount: 210,
+  "id": "article-camo-jorts-streetwear",
+  "title": "The Rise Of Camo Jorts In Modern Luxury Streetwear Style",
+  "subtitle": "Military prints merge with relaxed tailoring as woodland patterns redefine contemporary casual style across global runways in modern luxury.",
+  "slug": "camo-jorts-biggest-street-trend-this-season",
+  "legacySlugs": [
+    "camo-jorts",
+    "camo-jorts-modern-luxury-streetwear-trend"
+  ],
+  "category": "fashion-trends",
+  "categoryLabel": "Fashion Trends",
+  "season": "SPRING / SUMMER 2026",
+  "issueNumber": "ISSUE NO. 14",
+  "locationTag": "NEW YORK // SOHO DISTRICT",
+  "featured": true,
+  "author": {
+    "name": "Julian Thorne Dumont",
+    "role": "Senior Menswear Editor",
+    "location": "Milan and New York",
+    "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+    "instagram": "@julian_sartorial"
   },
+  "publishedAt": "SEPTEMBER 23, 2026",
+  "readTime": "10 MIN READ",
+  "coverImage": "https://images.unsplash.com/photo-1787181510660-a1f1efae64e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+  "coverImageAlt": "Streetwear aesthetic featuring relaxed camouflage cargo jorts with white top and sneakers outdoors",
+  "content": {
+    "dropCapText": "The intersection of military utility and high end tailoring brings forth an unexpected hero piece for the upcoming season, challenging conventional menswear boundaries through oversized proportions, heavy weight twill constructions, and confident styling choices that elevate classic prints into true luxury territory.",
+    "bodyParagraphs": [
+      "## The Evolution Of Military Prints",
+      "Military motifs have long inhabited the peripheries of avant garde design, transitioning from battlefield necessity to deliberate stylistic subversion. Designers now look toward archive pieces from early twentieth century surplus stores, translating authentic woodland patterns into luxury cotton drills and heavy weight cotton canvases. This heritage infusion grants the garments an authentic weight, shifting perception away from novelty items and positioning them firmly within sophisticated wardrobes.",
+      "Textile innovation plays a pivotal role in this transformation, utilizing Japanese selvedge weaves and custom garment dye processes that soften rigid fabrics over time. The result is a tactile richness that rewards close inspection, satisfying the modern consumer who demands both historical reverence and immaculate craftsmanship from contemporary apparel.",
+      "## Proportions And Silhouette Engineering",
+      "Mastering the silhouette requires an intentional approach to volume and length, keeping hems grazing the knee or falling slightly below it. This generous cut creates a striking architectural contrast when paired with fitted knitwear or structured boxy blazers, establishing a balanced proportions game that defines elite streetwear today.",
+      "Tailors utilize clever darting and adjustable waist tabs to ensure the garment flatters the frame without losing its signature slouch. Every seam is reinforced with double needle stitching, promising structural integrity even when pockets are filled with everyday essentials, proving that utility and elegance can coexist seamlessly.",
+      "## Fabric Weights And Textile Construction",
+      "The tactile experience of premium apparel relies heavily on gram square meter specifications, with exceptional pieces utilizing robust fourteen ounce cotton twills that hold their sculptural shape effortlessly. This substantial fabric weight prevents unwanted sagging, ensuring the garment maintains a clean architectural line through countless wears and professional dry cleanings.",
+      "Garment washing techniques further elevate the texture, introducing subtle fading and stone washed softness that mimics vintage military gear. Discerning stylists often look toward the dark contrast found in [black jorts](/black-jorts-modern-street-style-this-season) to balance these textured surfaces. Artisans treat each batch individually, resulting in unique tonal variations that make every single pair an exclusive collector item for discerning fashion enthusiasts.",
+      "## Strategic Color Palette Integration",
+      "Balancing bold camouflage prints requires a carefully curated palette of neutral companions, allowing the signature woodland pattern to command attention without overwhelming the entire ensemble. Charcoal blacks, crisp ivories, and muted olive tones create a harmonious visual foundation, ensuring versatility across diverse social settings and urban environments.",
+      "When building a cohesive look, stylists often draw inspiration from the relaxed drape of [wide leg jorts](/why-wide-leg-jorts-are-everywhere-how-to-style) to bridge the gap between rugged utility and refined elegance. This thoughtful color coordination elevates the overall aesthetic, transforming a casual staple into an undeniable statement of modern taste.",
+      "## Footwear Pairings And Proportional Balance",
+      "Anchoring bold lower proportions demands deliberate footwear choices, ranging from sleek leather loafers to chunky trail running sneakers that add contemporary athletic energy. The objective is to create a dynamic tension between the rugged lower half and the sophisticated footwear selection, completing an outfit with uncompromising flair.",
+      "Low profile tennis shoes offer a clean, understated contrast, while heavy duty lug sole boots lean fully into the utilitarian heritage of the camouflage textile. Experimenting with these varied shoe silhouettes allows wearers to customize their look for distinct occasions, proving the remarkable versatility of this polarizing garment.",
+      "## Seasonal Transitions And Layering",
+      "Transitioning these statement pieces into cooler months involves creative layering, pairing them with oversized cashmere hoodies and heavy leather jackets for textural contrast. High fashion styling embraces unexpected combinations, wearing rugged printed shorts alongside sheer silk blouses or tailored trench coats to challenge seasonal norms.",
+      "Breathable yet substantial fabrics make these items ideal for transitional weather, bridging the gap between summer heat and autumn breezes with effortless grace. Incorporating textured socks and statement belts further enhances the transitional appeal, ensuring year round relevance in a forward thinking wardrobe.",
+      "## Garment Care And Longevity",
+      "Preserving the rich coloration and crisp structure of heavy weight cotton demands meticulous care routines, starting with gentle hand washing in cold water. Avoiding harsh detergents protects the intricate dye work, while line drying in shaded areas prevents fabric degradation and preserves the authentic vintage patina.",
+      "Storing the garments properly on wide wooden hangers maintains the waistband integrity and prevents unsightly creases, ensuring your investment remains in pristine condition for years. Treating the fabric with appropriate textile protectants also guards against unexpected urban elements, keeping your luxury pieces looking runway ready at all times."
+    ],
+    "pullQuote": {
+      "text": "True luxury lies in taking utilitarian staples and elevating them through immaculate tailoring and uncompromising textile choices.",
+      "attribution": "Julian Thorne Dumont"
+    },
+    "secondaryImage": {
+      "url": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+      "caption": "Styling heavy cotton woodland prints with minimalist leather accessories and oversized tailoring.",
+      "alt": "Close up view of tactical camouflage denim twill weave with reinforced stitching"
+    },
+    "closingParagraphs": [
+      "As contemporary fashion continues to dissolve the boundaries between utilitarian function and haute couture, versatile pieces like these printed shorts claim a permanent spot in the modern rotation. They invite wearers to experiment with proportions, textures, and heritage prints without ever sacrificing comfort or sophistication in their daily dressing rituals.",
+      "Ultimately, the enduring appeal of this trend rests in its fearless attitude, challenging conventional norms and rewarding those who style their wardrobe with confidence and deliberate intention. Embrace the woodland pattern as a neutral foundation, and watch how it transforms your entire approach to casual luxury dressing."
+    ],
+    "conclusion": "Camo jorts represent a bold evolution in luxury streetwear, successfully merging military utility with immaculate tailoring for the modern wardrobe.",
+    "faqs": [
+      {
+        "question": "How should luxury camouflage shorts fit?",
+        "answer": "They should sit comfortably on the natural waist with a relaxed, straight leg falling just below the knee."
+      },
+      {
+        "question": "What shoes work best with these shorts?",
+        "answer": "Pair them with chunky trail runners or sleek leather loafers to balance the rugged camouflage print."
+      },
+      {
+        "question": "Are these suitable for formal settings?",
+        "answer": "They are designed for elevated streetwear and casual luxury environments rather than formal occasions."
+      }
+    ],
+    "designerCredits": [
+      {
+        "house": "Bottega Veneta",
+        "garment": "Heavyweight Cotton Camouflage Shorts",
+        "materials": "14oz Japanese Selvedge Twill"
+      },
+      {
+        "house": "Balenciaga",
+        "garment": "Military Surplus Tailored Bermuda",
+        "materials": "Garment Dyed Cotton Canvas"
+      }
+    ]
+  },
+  "tags": [
+    "Camo Jorts",
+    "Streetwear",
+    "Denim Trends",
+    "Menswear"
+  ],
+  "mood": "Quiet Luxury",
+  "likes": 312,
+  "bookmarksCount": 148
+},
   {
     id: 'article-black-jorts-tailoring',
     title: 'Black jorts have taken over modern street style this season',
