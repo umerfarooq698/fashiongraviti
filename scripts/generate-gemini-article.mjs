@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { enforceTitle55to60, enforceSubtitle140, fixMarkdownUrls, stripHyphensAndDashes } from './editorial-formatters.mjs';
 
 // Read .env
 const envPath = path.resolve(process.cwd(), '.env');
@@ -14,144 +15,185 @@ if (!GEMINI_API_KEY) {
 
 const topic = process.argv[2] || 'camo jorts';
 const category = process.argv[3] || 'fashion-trends';
+const requestedArchetype = process.argv[4] || null;
 
-console.log(`Generating 100% authentic Google Gemini editorial for: "${topic}"...`);
+console.log(`Generating unique dynamic editorial for: "${topic}"...`);
 
-export function stripHyphensAndDashes(text) {
-  if (!text) return '';
-  let cleaned = text
-    .replace(/[—–]/g, ' ')
-    .replace(/\s+-\s+/g, ' ')
-    .replace(/(\b\w+)-(\w+\b)/g, '$1 $2')
-    .replace(/(\b\w+)-(\w+\b)/g, '$1 $2');
-  return cleaned.replace(/  +/g, ' ').trim();
-}
-
-export function enforceTitle55to60(rawTitle) {
-  let title = stripHyphensAndDashes(rawTitle || '')
-    .replace(/:/g, '')
-    .replace(/\s+/g, ' ')
-    .replace(/&/g, 'and')
-    .trim();
-
-  if (title.length >= 55 && title.length <= 60 && !title.includes(':')) {
-    return title;
+// 5 DISTINCT EDITORIAL ARCHETYPES TO PREVENT REPETITIVE PATTERNS
+const EDITORIAL_ARCHETYPES = [
+  {
+    id: 'cultural-critique',
+    name: 'THE RUNWAY TO STREET CULTURAL CRITIQUE',
+    tone: 'Edgy, observant, cultural critique bridging underground movements to elite ateliers.',
+    headingThemes: [
+      'The Underground Origins And Subcultural Identity',
+      'Challenging Conventional Proportions On The Pavement',
+      'The High Low Tension In Luxury Styling Today',
+      'Real World Wearability Beyond Runway Fantasy',
+      'The Shift From Fleeting Hype To Permanent Rotation',
+      'Curating Supporting Garments And Neutral Textures',
+      'The Future Silhouette Trajectory For Modern Wardrobes'
+    ],
+    titleStyles: [
+      'Bold cultural statement on how this garment shattered conventional fashion rules',
+      'Direct critique contrasting traditional tailoring against rebellious streetwear',
+      'Material and silhouette manifesto defining the season'
+    ]
+  },
+  {
+    id: 'sartorial-formula',
+    name: 'THE SARTORIAL OUTFIT FORMULA MATRIX',
+    tone: 'Chic, highly practical, architectural, razor-sharp styling guidance for real humans.',
+    headingThemes: [
+      'The Foundational Geometry Of The Silhouette',
+      'Formula One: The Minimalist Everyday Rotation',
+      'Formula Two: Elevated Evening Tailoring Contrasts',
+      'Formula Three: The Transitional Outerwear Layer',
+      'Footwear Hierarchy And Proportional Grounding',
+      'Sizing Calibration And Inseam Measurements That Matter',
+      'Textile Preservation And Everyday Maintenance Secrets'
+    ],
+    titleStyles: [
+      'Actionable fashion guidance focusing on specific silhouette equations',
+      'Masterclass perspective on proportion balancing and wardrobe integration'
+    ]
+  },
+  {
+    id: 'atelier-craft',
+    name: 'THE ATELIER AND TEXTILE ANATOMY',
+    tone: 'Craftsmanship-obsessed, luxurious, tactile, focusing on weave provenance, dye, and weight.',
+    headingThemes: [
+      'Textile Provenance And Shuttle Loom Heritage',
+      'Gram Weight Architecture And Canvas Rigidity',
+      'Hardware Craftsmanship And Pocket Construction',
+      'Color Chemistry And Vintage Patina Development',
+      'Precision Alterations And Custom Hemline Calibration',
+      'Seasonal Longevity And Sustainable Wardrobe Value',
+      'The Sartorial Verdict For Discerning Collectors'
+    ],
+    titleStyles: [
+      'Material-focused headline celebrating textile density and artisan craft',
+      'Quiet luxury perspective on timeless utility construction'
+    ]
+  },
+  {
+    id: 'style-revolution',
+    name: 'THE WARDROBE DEBATE AND REVOLUTION',
+    tone: 'Provocative, confident, opinionated, breaking aesthetic rules.',
+    headingThemes: [
+      'Dismantling Decades Of Restrictive Menswear Rules',
+      'Why Skeptics Misunderstood The Voluminous Silhouette',
+      'The New Rules Of Proportion In Metropolitan Dressing',
+      'Adapting The Cut Across Personal Style Aesthetics',
+      'Curating Timeless Neutral Counterpoints In High Fashion',
+      'Footwear Dynamics That Anchor Unconventional Hemlines',
+      'Future Proofing Your Wardrobe Against Seasonal Burnout'
+    ],
+    titleStyles: [
+      'Provocative declaration declaring the end of outdated narrow silhouettes',
+      'Confident assessment of modern volume and street influence'
+    ]
+  },
+  {
+    id: 'insider-field-guide',
+    name: 'THE CURATOR FIELD GUIDE AND BUYING BLUEPRINT',
+    tone: 'Sharp insider shopping critique, distinguishing fast-fashion junk from true luxury gems.',
+    headingThemes: [
+      'What Separates Fast Fashion Impostors From True Quality',
+      'The Essential Measurements Before You Invest A Cent',
+      'Comparing Washes: Vintage Stonewash Versus Raw Rigidity',
+      'Building Multiple Distinct Looks Around One Core Item',
+      'The Footwear Matrix For Flawless Lower Body Balance',
+      'Essential Layering Formulas For Variable Temperatures',
+      'Long Term Fabric Preservation And Washing Protocols'
+    ],
+    titleStyles: [
+      'Curator shopping blueprint detailing fit, fabric weight, and silhouette',
+      'Authoritative guide for discerning sartorial investments'
+    ]
   }
-  if (title.length > 60) {
-    let truncated = title.slice(0, 60);
-    const lastSpace = truncated.lastIndexOf(' ');
-    if (lastSpace >= 45) {
-      truncated = truncated.slice(0, lastSpace);
-    }
-    const candidates = [' Style', ' Notes', ' Trends', ' Report', ' Mode', ' Looks'];
-    for (const c of candidates) {
-      if ((truncated + c).length >= 55 && (truncated + c).length <= 60) {
-        return (truncated + c).replace(/:/g, '');
-      }
-    }
-    return title.slice(0, 60).replace(/:/g, '');
-  }
-  if (title.length < 55) {
-    const candidates = [
-      ' in Modern Luxury Style',
-      ' for Timeless Sartorial Poise',
-      ' in Contemporary Fashion',
-      ' for Understated Luxury',
-      ' in Modern Haute Couture',
-      ' and Modern Styling Notes',
-      ' for Refined Wardrobes',
-    ];
-    for (const c of candidates) {
-      const combo = `${title} ${c.trim()}`.replace(/\s+/g, ' ');
-      if (combo.length >= 55 && combo.length <= 60) {
-        return combo.replace(/:/g, '');
-      }
-    }
-  }
-  return title.replace(/:/g, '');
-}
+];
 
-export function enforceSubtitle140(rawSubtitle) {
-  let clean = stripHyphensAndDashes(rawSubtitle || '')
-    .replace(/&/g, 'and')
-    .replace(/\s+/g, ' ')
-    .trim();
+// Pick archetype
+const chosenArchetype = requestedArchetype
+  ? EDITORIAL_ARCHETYPES.find(a => a.id === requestedArchetype) || EDITORIAL_ARCHETYPES[0]
+  : EDITORIAL_ARCHETYPES[Math.floor(Math.random() * EDITORIAL_ARCHETYPES.length)];
 
-  // Remove forbidden words if any
-  const forbidden = [/\bdiscover\b/gi, /\blearn\b/gi, /\bread\b/gi, /\bcomprehensive\b/gi, /\bin depth\b/gi, /\bexplore\b/gi, /\bunlock\b/gi, /\bdelve\b/gi, /\bdive\b/gi];
-  forbidden.forEach(r => { clean = clean.replace(r, 'observe'); });
+console.log(`Selected Archetype: ${chosenArchetype.name}`);
 
-  if (clean.length === 140) return clean;
-  if (clean.length > 140) {
-    let cut = clean.slice(0, 140);
-    const lastSpace = cut.lastIndexOf(' ');
-    if (lastSpace >= 115) {
-      cut = cut.slice(0, lastSpace);
-    }
-    if (!cut.endsWith('.')) cut = cut.replace(/[,\s]+$/, '') + '.';
-    while (cut.length < 140) {
-      const diff = 140 - cut.length;
-      if (diff === 1) cut = cut.slice(0, -1) + ' .';
-      else cut = cut.slice(0, -1) + ' now.';
-    }
-    return cut.slice(0, 140);
+// Available authors for varied voices
+const AUTHORS = [
+  {
+    name: 'Julian Thorne Dumont',
+    role: 'Senior Menswear Editor',
+    location: 'Milan and New York',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    instagram: '@julian_sartorial'
+  },
+  {
+    name: 'Aurelia Vance Sterling',
+    role: 'Editor in Chief',
+    location: 'Paris and London',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    instagram: '@aurelia_couture'
+  },
+  {
+    name: 'Renata Moreau Kroll',
+    role: 'Senior Runway Critic',
+    location: 'Milan and Florence',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    instagram: '@renata_critique'
+  },
+  {
+    name: 'Soren Lindqvist Kovac',
+    role: 'Textile and Silhouette Architect',
+    location: 'Copenhagen and Tokyo',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    instagram: '@soren_atelier'
   }
-  // If shorter than 140
-  const endings = [
-    ' for a truly elevated and modern silhouette in everyday luxury styling.',
-    ' with timeless garment construction and confident proportions all season.',
-    ' to achieve authentic sartorial balance and relaxed streetwear refinement.',
-    ' across metropolitan streets and effortless warm weather fashion rotations.'
-  ];
-  clean = clean.replace(/\.$/, '');
-  for (const end of endings) {
-    const candidate = `${clean}${end}`;
-    if (candidate.length >= 135 && candidate.length <= 140) {
-      return candidate.padEnd(140, ' ');
-    }
-  }
-  let result = clean + ' for modern luxury styling today.';
-  if (result.length > 140) result = result.slice(0, 139) + '.';
-  return result.padEnd(140, ' ');
-}
+];
+
+const author = AUTHORS[Math.floor(Math.random() * AUTHORS.length)];
 
 const systemInstruction = `
-You are the Chief Fashion Editor and Senior Luxury Columnist of "Fashion Graviti", an elite high-fashion publication (like Vogue, Harper's Bazaar, or The Gentlewoman).
-Generate a completely unique, thorough, deeply informational 1000–1200 word fashion editorial article based strictly on the provided keyword in strict JSON format.
+You are ${author.name}, ${author.role} of "Fashion Graviti", an elite global high-fashion publication.
+Generate a completely original, thorough 1000–1200 word fashion editorial article based strictly on the keyword: "${topic}".
 
-CRITICAL REQUIREMENT ON WORD COUNT (1000–1200 WORDS):
-- Write at least 7 distinct major sections ("## Heading").
-- Under EACH heading, write 2 expansive, richly detailed paragraphs (80–110 words per paragraph).
-- Include comprehensive dropCapText (40–60 words).
-- Include 2 closing paragraphs (100–140 words).
-- Include conclusion (40–60 words).
-- Include 3–4 practical FAQs.
-- TOTAL COMBINED BODY WORD COUNT MUST BE BETWEEN 1000 AND 1200 WORDS.
+STRICT EDITORIAL ARCHETYPE TO ADOPT:
+Archetype Name: ${chosenArchetype.name}
+Tone and Perspective: ${chosenArchetype.tone}
+Suggested Heading Themes:
+${chosenArchetype.headingThemes.map((h, i) => `${i + 1}. ${h}`).join('\n')}
 
-MANDATORY EDITORIAL AND SEO GUIDELINES:
+ABSOLUTE BAN ON MONOTONOUS PATTERNS:
 1. HEADLINE ("title"):
-   - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters and spaces). Count characters precisely!
+   - LENGTH: MUST BE STRICTLY 55 TO 60 CHARACTERS LONG (including letters and spaces).
    - NO COLONS (ABSOLUTE RULE): NEVER use a colon (':') in the headline.
-   - Natural keyword placement. No clichés.
+   - BAN FORMULAS: NEVER start every article with "The Rise Of..." or "Why..." or "How To...". Every headline must have a unique, inventive phrasing!
 2. META DESCRIPTION ("subtitle"):
-   - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count precisely.
-   - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use words like 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
-3. PRACTICAL VALUE AND HIGH READABILITY:
-   - Headings must be 100% relevant to clothing, styling, fits, proportions, textile weights (oz / GSM), washes, shoe pairings, and garment care.
-   - Write for human fashion lovers and streetwear enthusiasts. Zero generic AI filler.
+   - LENGTH: MUST BE EXACTLY 140 CHARACTERS LONG (letters + spaces). Count characters precisely!
+   - ABSOLUTE BAN ON FORBIDDEN WORDS: NEVER use 'discover', 'learn', 'read', 'comprehensive', 'in depth', 'in-depth', 'explore', 'unlock', 'delve', 'dive'.
+   - Avoid monotonous "X merges with Y..." openings. Write fresh, original prose.
+3. STRUCTURE AND FLOW (1000–1200 WORDS TOTAL):
+   - Write 6 to 8 major sections with markdown "## Heading".
+   - Headings MUST BE 100% SPECIFIC TO THE TOPIC "${topic}" and align with ${chosenArchetype.name}.
+   - Under each heading, write 2 rich, analytical paragraphs (80–110 words each) giving concrete numbers, fabric weights, silhouette proportions, and real outfit advice.
+   - Include dropCapText (40–60 words).
+   - Include closingParagraphs (2 paragraphs, 100–140 words).
+   - Include concise conclusion (40–60 words).
+   - Include 3–4 practical FAQs.
 4. ZERO HYPHENS OR DASHES (ABSOLUTE RULE):
-   - NEVER use the hyphen or dash symbol ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, designer credits, conclusions, or FAQs.
-   - Spell all words unhyphenated or with spaces (e.g. 'quick dry', 'high fashion', 'high waisted', 'ring spun', 'military surplus', 'cross body').
-   - Never use dashes to separate clauses; use commas or periods.
+   - NEVER use hyphens ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, or FAQs.
+   - Spell words unhyphenated or with spaces (e.g. 'quick dry', 'high fashion', 'high waisted', 'ring spun', 'cross body').
    - Never use the ampersand symbol ('&'). Always spell out 'and'.
 5. NATURAL INTERNAL LINKING (ONLY IN MIDDLE SECTIONS):
-   - You may link to these related articles when directly relevant in context:
+   - You may link to these related articles naturally in context:
      * [black jorts](/black-jorts-modern-street-style-this-season)
      * [wide leg jorts](/why-wide-leg-jorts-are-everywhere-how-to-style)
      * [baggy denim shorts](/baggy-denim-shorts-modern-menswear-silhouettes)
-   - STRICT RULE: ONLY link naturally occurring words in context. NEVER force awkward words.
-   - STRICT DEDUPLICATION: At most 1 link per target URL.
-   - NEVER PLACE LINKS IN INTRO OR FIRST SECTION: Links must be in section 3, 4, or 5.
+     * [camo jorts](/camo-jorts-biggest-street-trend-this-season)
+     * [period swimwear](/waterproof-period-swimwear-high-fashion-guide)
+   - ONLY link words that naturally fit the flow. Max 1 link per target article. ZERO links in opening paragraphs or first section.
 6. META URL SLUG ("metaSlug"):
    - Clean, descriptive 3 to 6 word meta URL slug (e.g. "camo-jorts-biggest-street-trend-this-season"). NEVER just the raw keyword.
 
@@ -160,35 +202,20 @@ JSON Schema:
   "title": "Strictly 55-60 chars luxury headline with keyword and NO colon",
   "subtitle": "Direct authoritative summary (EXACTLY 140 chars, NO forbidden words)",
   "metaSlug": "descriptive-3-to-6-word-meta-url-slug",
-  "category": "fashion-trends",
+  "category": "${category}",
   "categoryLabel": "Fashion Trends",
-  "authorName": "Julian Thorne Dumont",
-  "dropCapText": "First sentence of the article (40-60 words)",
+  "authorName": "${author.name}",
+  "dropCapText": "First opening sentence (40-60 words)",
   "bodyParagraphs": [
-    "## Section One Heading",
+    "## Unique Heading One",
     "Detailed paragraph one...",
     "Detailed paragraph two...",
-    "## Section Two Heading",
-    "Detailed paragraph one...",
-    "Detailed paragraph two...",
-    "## Section Three Heading",
-    "Detailed paragraph one...",
-    "Detailed paragraph two...",
-    "## Section Four Heading",
-    "Detailed paragraph one...",
-    "Detailed paragraph two...",
-    "## Section Five Heading",
-    "Detailed paragraph one...",
-    "Detailed paragraph two...",
-    "## Section Six Heading",
-    "Detailed paragraph one...",
-    "Detailed paragraph two...",
-    "## Section Seven Heading",
+    "## Unique Heading Two",
     "Detailed paragraph one...",
     "Detailed paragraph two..."
   ],
-  "pullQuoteText": "Inspiring statement from the article",
-  "pullQuoteAttribution": "Julian Thorne Dumont",
+  "pullQuoteText": "Inspiring statement from the review",
+  "pullQuoteAttribution": "${author.name}",
   "secondaryImageCaption": "Description of styling detail",
   "conclusion": "Takeaway summary on the trend (40-60 words).",
   "faqs": [
@@ -203,8 +230,8 @@ JSON Schema:
   "designerCredits": [
     { "house": "Atelier Name", "garment": "Garment Description", "materials": "Textile description" }
   ],
-  "visualSearchPhrase": "streetwear camo cargo shorts outfit",
-  "tags": ["Camo Jorts", "Streetwear", "Denim Trends", "Menswear"],
+  "visualSearchPhrase": "high fashion street style runway aesthetic",
+  "tags": ["Streetwear", "Luxury Fashion", "Contemporary Style"],
   "mood": "Quiet Luxury"
 }
 
@@ -232,7 +259,7 @@ async function run() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
-            parts: [{ text: `${systemInstruction}\n\nTask: Generate a 1000–1200 word high-fashion editorial article on "${topic}". Ensure comprehensive word count and full coverage.` }]
+            parts: [{ text: `${systemInstruction}\n\nTask: Generate a 1000–1200 word high-fashion editorial article on "${topic}". Ensure deep value and original structure.` }]
           }]
         })
       });
@@ -263,49 +290,48 @@ async function run() {
   // Apply strict post-processing
   const finalTitle = enforceTitle55to60(parsed.title);
   const finalSubtitle = enforceSubtitle140(parsed.subtitle);
-  const finalMetaSlug = parsed.metaSlug || 'camo-jorts-biggest-street-trend-this-season';
+  const finalMetaSlug = parsed.metaSlug ? parsed.metaSlug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : 'editorial-fashion-guide';
   
-  // Format body paragraphs (clean dashes and hyphens)
-  const cleanedBody = (parsed.bodyParagraphs || []).map(p => {
+  // Format body paragraphs (clean dashes, fix markdown URLs)
+  const cleanedBody = fixMarkdownUrls((parsed.bodyParagraphs || []).map(p => {
     if (p.startsWith('## ')) return `## ${stripHyphensAndDashes(p.slice(3))}`;
     if (p.startsWith('### ')) return `### ${stripHyphensAndDashes(p.slice(4))}`;
     return stripHyphensAndDashes(p);
-  });
+  }));
 
   const finalArticle = {
-    id: `article-camo-jorts-streetwear`,
+    id: `article-${finalMetaSlug.slice(0, 30)}-${Date.now()}`,
     title: finalTitle,
     subtitle: finalSubtitle,
     slug: finalMetaSlug,
-    legacySlugs: ['camo-jorts'],
-    category: parsed.category || 'fashion-trends',
+    category: parsed.category || category,
     categoryLabel: parsed.categoryLabel || 'Fashion Trends',
-    season: 'SPRING / SUMMER 2026',
-    issueNumber: 'ISSUE NO. 14',
-    locationTag: 'NEW YORK // SOHO DISTRICT',
-    featured: true,
+    season: 'AUTUMN / WINTER 2026',
+    issueNumber: 'ISSUE NO. 15',
+    locationTag: `${author.location.split(' and ')[0].toUpperCase()} // EDITORIAL DESK`,
+    featured: false,
     author: {
-      name: 'Julian Thorne Dumont',
-      role: 'Senior Menswear Editor',
-      location: 'Milan and New York',
-      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
-      instagram: '@julian_sartorial',
+      name: author.name,
+      role: author.role,
+      location: author.location,
+      avatar: author.avatar,
+      instagram: author.instagram,
     },
-    publishedAt: 'SEPTEMBER 23, 2026',
+    publishedAt: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase(),
     readTime: '10 MIN READ',
-    coverImage: 'https://images.unsplash.com/photo-1787181510660-a1f1efae64e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-    coverImageAlt: 'Streetwear aesthetic featuring relaxed camouflage cargo jorts with white top and sneakers outdoors',
+    coverImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+    coverImageAlt: `High fashion editorial runway styling for ${finalTitle}`,
     content: {
       dropCapText: stripHyphensAndDashes(parsed.dropCapText),
       bodyParagraphs: cleanedBody,
       pullQuote: {
         text: stripHyphensAndDashes(parsed.pullQuoteText),
-        attribution: stripHyphensAndDashes(parsed.pullQuoteAttribution || 'Julian Thorne Dumont'),
+        attribution: stripHyphensAndDashes(parsed.pullQuoteAttribution || author.name),
       },
       secondaryImage: {
-        url: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-        caption: stripHyphensAndDashes(parsed.secondaryImageCaption || 'Tactical camouflage denim construction and pocket placement details.'),
-        alt: 'Close up view of tactical camouflage denim twill weave with reinforced stitching',
+        url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+        caption: stripHyphensAndDashes(parsed.secondaryImageCaption || 'Atelier tailoring and textile craftsmanship detail.'),
+        alt: 'Close up view of editorial tailoring craftsmanship and fabric weave',
       },
       closingParagraphs: (parsed.closingParagraphs || []).map(p => stripHyphensAndDashes(p)),
       conclusion: stripHyphensAndDashes(parsed.conclusion),
@@ -319,10 +345,10 @@ async function run() {
         materials: stripHyphensAndDashes(c.materials)
       }))
     },
-    tags: (parsed.tags || ['Camo Jorts', 'Streetwear', 'Denim Trends']).map(t => stripHyphensAndDashes(t)),
+    tags: (parsed.tags || ['Runway', 'Trends', 'Streetwear']).map(t => stripHyphensAndDashes(t)),
     mood: parsed.mood || 'Quiet Luxury',
-    likes: 312,
-    bookmarksCount: 148,
+    likes: Math.floor(Math.random() * 200) + 150,
+    bookmarksCount: Math.floor(Math.random() * 80) + 50,
   };
 
   // Word count check
@@ -335,46 +361,20 @@ async function run() {
   ].join(' ');
   const wordCount = allText.split(/\s+/).filter(w => !w.startsWith('#')).length;
 
-  console.log('=== GEMINI API GENERATION REPORT ===');
+  console.log('=== DYNAMIC GEMINI GENERATION REPORT ===');
+  console.log('Archetype:', chosenArchetype.name);
+  console.log('Author:', author.name);
   console.log('Model Used:', usedModel);
   console.log('Title:', finalArticle.title, `(${finalArticle.title.length} chars)`);
   console.log('Subtitle:', finalArticle.subtitle, `(${finalArticle.subtitle.length} chars)`);
   console.log('Meta Slug:', finalArticle.slug);
   console.log('Word Count:', wordCount);
 
-  // Update initialArticles.ts
-  const initialArticlesPath = path.resolve(process.cwd(), 'src/data/initialArticles.ts');
-  let fileContent = fs.readFileSync(initialArticlesPath, 'utf-8');
+  // Save article preview
+  fs.writeFileSync(path.resolve(process.cwd(), 'scripts/last-gemini-article.json'), JSON.stringify(finalArticle, null, 2));
+  console.log('Saved generated article to scripts/last-gemini-article.json');
 
-  // Replace article-camo-jorts-streetwear object
-  const startIdx = fileContent.indexOf("id: 'article-camo-jorts-streetwear'");
-  if (startIdx !== -1) {
-    const objStart = fileContent.lastIndexOf('{', startIdx);
-    // Find matching closing bracket
-    let depth = 0;
-    let objEnd = -1;
-    for (let i = objStart; i < fileContent.length; i++) {
-      if (fileContent[i] === '{') depth++;
-      else if (fileContent[i] === '}') {
-        depth--;
-        if (depth === 0) {
-          objEnd = i;
-          break;
-        }
-      }
-    }
-
-    if (objEnd !== -1) {
-      const articleJs = JSON.stringify(finalArticle, null, 2);
-      const updatedContent = fileContent.slice(0, objStart) + articleJs + fileContent.slice(objEnd + 1);
-      fs.writeFileSync(initialArticlesPath, updatedContent, 'utf-8');
-      console.log('Successfully updated src/data/initialArticles.ts with live Gemini generated article!');
-    } else {
-      console.error('Could not find object closing bracket');
-    }
-  } else {
-    console.error('Could not find article-camo-jorts-streetwear in initialArticles.ts');
-  }
+  return finalArticle;
 }
 
 run();

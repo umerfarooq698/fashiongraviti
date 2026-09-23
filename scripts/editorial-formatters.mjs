@@ -66,56 +66,60 @@ export function enforceSubtitle140(rawSubtitle) {
   const forbidden = [/\bdiscover\b/gi, /\blearn\b/gi, /\bread\b/gi, /\bcomprehensive\b/gi, /\bin depth\b/gi, /\bexplore\b/gi, /\bunlock\b/gi, /\bdelve\b/gi, /\bdive\b/gi];
   forbidden.forEach(r => { clean = clean.replace(r, 'observe'); });
 
-  // Remove trailing dangling punctuation / unfinished phrases like "for ."
-  clean = clean.replace(/\s+for\s*\.?$/i, '.').replace(/\s+to\s*\.?$/i, '.').replace(/\s+and\s*\.?$/i, '.');
+  // Remove broken trailing words or prepositions
+  clean = clean.replace(/\s+(?:for|to|and|in|with|of|styl|style)\s*\.?$/i, '.').replace(/[\s.,;:!-]+$/, '');
 
   if (clean.length === 140) return clean;
 
-  if (clean.length > 140) {
-    let cut = clean.slice(0, 140);
-    const lastSpace = cut.lastIndexOf(' ');
-    if (lastSpace >= 115) {
-      cut = cut.slice(0, lastSpace);
-    }
-    cut = cut.replace(/[,\s]+$/, '') + '.';
-    const paddingPool = [' now.', ' today.', ' this season.', ' in luxury style.'];
-    for (const p of paddingPool) {
-      const candidate = cut.replace(/\.$/, p);
-      if (candidate.length === 140) return candidate;
-    }
-    return cut.padEnd(140, ' ');
-  }
-
-  // If shorter than 140
-  clean = clean.replace(/\.$/, '');
-  const candidateEndings = [
-    ' for modern luxury styling today.',
-    ' with timeless garment construction.',
-    ' to achieve authentic sartorial balance.',
-    ' across metropolitan streets this year.',
-    ' in modern high fashion wardrobes now.',
-    ' with effortless streetwear refinement.',
-    ' for a truly elevated silhouette now.',
-    ' across contemporary fashion circuits.',
-    ' with understated sartorial confidence.'
+  const fillers = [
+    ' this year.', // 11
+    ' right now.', // 11
+    ' all season.', // 12
+    ' this season.', // 13
+    ' in modern style.', // 17
+    ' in luxury fashion.', // 19
+    ' across runways today.', // 22
+    ' for refined wardrobes.', // 23
+    ' across modern runways now.', // 27
+    ' for elevated street style.', // 27
+    ' to define modern wardrobes.', // 27
+    ' for contemporary street style.', // 32
+    ' to define your everyday silhouette.', // 37
+    ' for a truly elevated modern rotation.', // 39
+    ' to achieve authentic sartorial balance.', // 40
+    ' with timeless craftsmanship and modern poise.', // 46
+    ' to establish a sophisticated modern silhouette.' // 48
   ];
 
-  for (const end of candidateEndings) {
-    const candidate = `${clean}${end}`;
-    if (candidate.length === 140) {
-      return candidate;
+  // Try matching directly with fillers
+  for (const f of fillers) {
+    if (clean.length + f.length === 140) {
+      return clean + f;
     }
   }
 
-  // Precision pad to 140
-  let res = `${clean}.`;
-  while (res.length < 135) {
-    res = res.slice(0, -1) + ' in style.';
+  // If longer than 130, trim cleanly at space
+  let words = clean.split(' ');
+  while (words.length > 4) {
+    const base = words.join(' ');
+    for (const f of fillers) {
+      if (base.length + f.length === 140) {
+        return base + f;
+      }
+    }
+    words.pop();
   }
-  if (res.length > 140) {
-    res = res.slice(0, 139) + '.';
+
+  let final = `${clean}.`;
+  if (final.length > 140) {
+    let truncated = final.slice(0, 139);
+    const lastSpace = truncated.lastIndexOf(' ');
+    if (lastSpace >= 100) {
+      truncated = truncated.slice(0, lastSpace);
+    }
+    final = `${truncated}.`;
   }
-  return res.padEnd(140, ' ');
+  return final.padEnd(140, ' ');
 }
 
 // Fix markdown links in body
