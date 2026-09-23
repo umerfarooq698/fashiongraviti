@@ -298,17 +298,9 @@ MANDATORY TECHNICAL CONSTRAINTS:
    - NEVER use hyphens ('-'), en-dashes, or em-dashes ('—') anywhere in titles, subtitles, headings, body text, bullet points, image captions, designer credits, conclusions, or FAQs.
    - Spell words unhyphenated or with spaces (e.g. 'quick dry', 'high fashion', 'high waisted', 'ring spun', 'cross body').
    - Never use the ampersand symbol ('&'). Always spell out 'and'.
-4. NATURAL INTERNAL LINKING (ONLY IN MIDDLE SECTIONS):
-   - You may link to these related articles naturally in context:
-     * [black jorts](/black-jorts-modern-street-style-this-season)
-     * [wide leg jorts](/why-wide-leg-jorts-are-everywhere-how-to-style)
-     * [baggy denim shorts](/baggy-denim-shorts-modern-menswear-silhouettes)
-     * [camo jorts](/camo-jorts-biggest-street-trend-this-season)
-     * [period swimwear](/waterproof-period-swimwear-high-fashion-guide)
-   - Max 1 link per target article. ZERO links in opening paragraphs or first section.
-5. META URL SLUG ("metaSlug"):
+4. META URL SLUG ("metaSlug"):
    - Clean, descriptive 3 to 6 word meta URL slug (e.g. "camo-jorts-biggest-street-trend-this-season"). NEVER just the raw keyword.
-    - STRICT RULE: NEVER make the URL slug just the single raw keyword (e.g. do NOT output "camo-jorts" or "jorts"). The meta slug must always include contextual editorial words describing the article angle.
+   - STRICT RULE: NEVER make the URL slug just the single raw keyword (e.g. do NOT output "camo-jorts" or "jorts"). The meta slug must always include contextual editorial words describing the article angle.
 
 JSON Schema:
 {
