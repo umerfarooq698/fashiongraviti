@@ -15,7 +15,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { getAuthorSlug } from '../data/authors';
+import { getAuthorProfile, getAuthorSlug } from '../data/authors';
 import { updateDocumentSEO } from '../utils/seo';
 
 interface ArticleReaderModalProps {
@@ -426,7 +426,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               title={`View ${article.author.name}'s profile and curations`}
             >
               <img
-                src={article.author.avatar}
+                src={getAuthorProfile(article.author.name).avatar || article.author.avatar}
                 alt={article.author.name}
                 className="w-14 h-14 rounded-full object-cover border-2 border-gold group-hover:border-white transition-colors"
               />

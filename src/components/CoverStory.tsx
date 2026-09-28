@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FashionArticle } from '../types/fashion';
 import { ArrowUpRight, Bookmark, Clock, Heart, Sparkles } from 'lucide-react';
-import { getAuthorSlug } from '../data/authors';
+import { getAuthorProfile, getAuthorSlug } from '../data/authors';
 
 interface CoverStoryProps {
   article: FashionArticle;
@@ -101,7 +101,7 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
               title={`View ${article.author.name}'s profile and curations`}
             >
               <img
-                src={article.author.avatar}
+                src={getAuthorProfile(article.author.name).avatar || article.author.avatar}
                 alt={article.author.name}
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-gold group-hover:scale-105 transition-transform flex-shrink-0"
               />

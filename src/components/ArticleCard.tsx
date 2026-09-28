@@ -2,7 +2,7 @@ import React from 'react';
 import type { FashionArticle, ViewLayoutMode } from '../types/fashion';
 import { ArrowUpRight, Bookmark, Clock, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { getAuthorSlug } from '../data/authors';
+import { getAuthorProfile, getAuthorSlug } from '../data/authors';
 
 interface ArticleCardProps {
   article: FashionArticle;
@@ -260,7 +260,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               className="flex items-center space-x-2 text-zinc-300 hover:text-gold transition-colors no-underline group/author"
             >
               <img
-                src={article.author.avatar}
+                src={getAuthorProfile(article.author.name).avatar || article.author.avatar}
                 alt={article.author.name}
                 className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border border-gold flex-shrink-0"
               />
@@ -380,7 +380,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             title={`View ${article.author.name}'s profile`}
           >
             <img
-              src={article.author.avatar}
+              src={getAuthorProfile(article.author.name).avatar || article.author.avatar}
               alt={article.author.name}
               className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover border-2 border-gold group-hover/author:border-white transition-colors flex-shrink-0"
             />
