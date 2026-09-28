@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, X, Menu, Bookmark, Compass, Sparkles, ChevronRight, Info, Mail } from 'lucide-react';
 import type { FashionCategory } from '../types/fashion';
-import { FashionGravitiLogo, FashionGravitiEmblem } from './FashionGravitiLogo';
+import { FashionGravitiLogo } from './FashionGravitiLogo';
 
 interface HeaderProps {
   categories: FashionCategory[];
@@ -69,18 +69,6 @@ export const Header: React.FC<HeaderProps> = ({
       {/* 1. Top Edition Bar (Responsive across all screens) */}
       <div className="border-b border-white/10 px-3 sm:px-6 lg:px-12 py-1.5 sm:py-2 flex items-center justify-between text-[10px] sm:text-xs font-mono tracking-wider text-zinc-300">
         <div className="flex items-center space-x-2 sm:space-x-3 font-semibold truncate">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onSelectCategory('all');
-            }}
-            className="flex items-center space-x-2 text-crimson-light font-bold hover:text-white transition-colors no-underline cursor-pointer flex-shrink-0"
-          >
-            <FashionGravitiEmblem size={20} className="flex-shrink-0" />
-            <span>FASHION GRAVITI</span>
-          </a>
-          <span className="text-zinc-600">•</span>
           <span className="text-white font-medium truncate">
             <span className="hidden xs:inline">DAILY </span>EDITORIAL EDITION
           </span>
