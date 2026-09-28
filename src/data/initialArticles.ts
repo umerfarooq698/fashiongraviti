@@ -87,7 +87,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     "publishedAt": "SEPTEMBER 28, 2026",
     "readTime": "10 MIN READ",
-    "coverImage": "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+    "coverImage": "/editorial/sustainable-fashion-cover.jpg",
     "coverImageAlt": "Clothing racks with neutral toned garments in a sustainable fashion atelier",
     "content": {
       "dropCapText": "True sustainability in luxury fashion is never achieved through guilt driven shopping sprees or green branded shopping bags, but through disciplined fiber literacy, deliberate wardrobe curation, and the patient maintenance of clothes you already possess.",
@@ -191,7 +191,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   "publishedAt": "SEPTEMBER 24, 2026",
   "readTime": "10 MIN READ",
-  "coverImage": "https://images.unsplash.com/photo-1786052352007-1329ca4e4f7a?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+  "coverImage": "/editorial/pandora-bracelet-cover.jpg",
   "coverImageAlt": "High fashion editorial styling for Styling And Sizing Authentic Pandora Bracelets With Ease",
   "content": {
     "dropCapText": "A personalized charm bracelet only achieves genuine luxury when balanced proportions, mechanical clip security, and disciplined charm curation replace chaotic souvenir collecting on the wrist.",
