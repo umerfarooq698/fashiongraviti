@@ -87,40 +87,6 @@ export const Footer: React.FC<FooterProps> = ({
           >
             <FashionGravitiLogo variant="footer" />
           </a>
-          <p className="mt-3 text-xs font-mono text-gold tracking-widest uppercase font-bold flex flex-wrap items-center gap-1.5">
-            <a
-              href="/fashion-news"
-              onClick={(e) => {
-                e.preventDefault();
-                handleDepartmentClick('fashion-news');
-              }}
-              className="hover:text-white transition-colors no-underline cursor-pointer"
-            >
-              FASHION NEWS
-            </a>
-            <span>•</span>
-            <a
-              href="/fashion-trends"
-              onClick={(e) => {
-                e.preventDefault();
-                handleDepartmentClick('fashion-trends');
-              }}
-              className="hover:text-white transition-colors no-underline cursor-pointer"
-            >
-              FASHION TRENDS
-            </a>
-            <span>•</span>
-            <a
-              href="/celebrity"
-              onClick={(e) => {
-                e.preventDefault();
-                handleDepartmentClick('celebrity');
-              }}
-              className="hover:text-white transition-colors no-underline cursor-pointer"
-            >
-              CELEBRITY FASHION
-            </a>
-          </p>
         </div>
 
         {/* Departments Sitemap (4 cols) */}

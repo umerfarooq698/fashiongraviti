@@ -105,9 +105,6 @@ export const FashionGravitiLogo: React.FC<FashionGravitiLogoProps> = ({
             <span className="text-xl sm:text-2xl font-serif font-black tracking-tight uppercase text-white group-hover:text-gold transition-colors block leading-tight">
               FASHION GRAVITI
             </span>
-            <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.2em] text-zinc-300 uppercase font-bold block mt-0.5">
-              FASHION NEWS • FASHION TRENDS • CELEBRITY FASHION
-            </span>
           </div>
         </div>
         <p className="text-xs font-mono text-zinc-400 leading-relaxed max-w-md uppercase">
