@@ -62,11 +62,103 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'Practical luxury styling formulas, capsule wardrobes, layering techniques, and fit advice.',
     image: 'https://images.unsplash.com/photo-1575225395866-965c8c77727f?auto=format&fit=crop&w=1200&q=85',
     accent: '#5d6b5c',
-    count: 1,
+    count: 2,
   },
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-soft-summer-color-palette-guide-luxury-1790859500000",
+    "title": "The Soft Summer Color Palette Guide to Quiet Luxury Elegance",
+    "subtitle": "This elevated seasonal style guide offers expert advice on curating a wardrobe filled with muted shades and soft tones for effortless grace.",
+    "slug": "soft-summer-color-palette-guide-luxury",
+    "category": "how-to-style",
+    "categoryLabel": "How to Style",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 17",
+    "locationTag": "PARIS // COLOR ATELIER",
+    "featured": true,
+    "author": {
+      "name": "Renata Moreau Kroll",
+      "role": "Red Carpet and Celebrity Stylist Columnist",
+      "location": "Paris and Los Angeles",
+      "avatar": "/authors/renata-moreau-kroll.jpg",
+      "instagram": "@renata_stylecouture"
+    },
+    "publishedAt": "OCTOBER 1, 2026",
+    "readTime": "8 MIN READ",
+    "coverImage": "/editorial/soft-summer-palette-cover.jpg",
+    "coverImageAlt": "Model draped in soft summer color palette textiles of slate grey, dusty rose, and muted blue in Parisian daylight",
+    "content": {
+      "dropCapText": "Quiet luxury finds its ultimate expression in the delicate realm of the soft summer color palette, where cool undertones and muted hues create an aura of understated sartorial authority.",
+      "bodyParagraphs": [
+        "As fashion editors we continuously celebrate this understated palette for its innate, effortless elegance. The overall aesthetic avoids loud colors in favor of misty, blended, and highly refined tones. It speaks to a refined sensibility where luxury is whispered rather than loudly screamed.",
+        "True style icons understand that subdued color harmony creates the most lasting sartorial impression. Within the couture world, these misty shades define the essence of modern wardrobe minimalism. The soft summer look relies on a gentle, low contrast blend of cool colors. It is a unique seasonal space where softness meets cool sophistication with perfect poise.",
+        "## The Core Soft Summer Palette",
+        "Understanding the core colors of this palette requires an eye for subtle temperature variations. Every hue must possess a dusty quality that mimics the mist of early morning. Bright or highly saturated pigments will easily overwhelm the delicate beauty of this season.",
+        "### Muted Greys and Soft Charcoal",
+        "Muted greys form the reliable foundation of any successful soft summer wardrobe curation. Unlike harsh black, these cool greys respect the gentle natural coloring of your skin. You should look for heather grey, dove grey, and medium charcoal with cool undertones. These specific neutrals mimic the soft shadows found in a peaceful twilight landscape. A tailored charcoal coat provides the perfect structure without overpowering your delicate personal contrast.",
+        "### Dusty Slate and Powder Blue",
+        "Blue remains a vital color family for the classic soft summer skin tone. However, we must bypass energetic royal blues in favor of quiet, dusty alternatives. Dusty slate and powder blue offer a serene quality that enhances your natural beauty. These shades contain a hint of grey that softens the overall visual impact beautifully. Wearing a dusty slate suit communicates professional confidence alongside a refined artistic sensitivity.",
+        "### Velvet Rose and Smoky Plum",
+        "The pinks and purples of this palette are delightfully complex and highly romantic. Velvet rose provides a warm, flattering blush tone that perfectly mimics natural lip color. It is a mid tone pink that avoids looking too sweet or overly childish. Smoky plum offers a rich, darker option for formal wear and evening occasions. This purple contains heavy grey undertones which maintain the required low chroma aesthetic.",
+        "## Wardrobe Styling and Textures",
+        "Styling this delicate palette successfully involves more than just selecting the right colors. You must also consider how fabrics and structural shapes interact with ambient light. The goal is always to preserve the soft, blended quality of your season.",
+        "### Fabric Selection and Perceived Chroma",
+        "High quality fabrics play a critical role in how color is perceived visually. Shiny materials like polished satin can make soft colors appear far too bright. Therefore, we recommend choosing matte finishes that absorb light rather than reflecting it. Matte silk, fine cashmere, brushed suede, and washed linen are excellent choices here. The tactile texture of cashmere enhances the smoky depth of soft summer greys.",
+        "### The Sixty Thirty Ten Balance Rule",
+        "Creating a balanced outfit requires a strategic approach to color proportion and distribution. We highly recommend using the sixty thirty ten rule for your styling endeavors. Sixty percent of your look should consist of a dominant cool neutral shade. This is typically represented by a long coat, a suit, or a dress. Thirty percent represents your secondary color, which is often a dusty accent hue. Think of a beautiful velvet rose knit or a powder blue silk blouse. The final ten percent is reserved for a small, intentional pop of color.",
+        "## Key Style Takeaways",
+        "* Focus on cool toned neutrals like dove grey and soft charcoal for foundations.",
+        "* Avoid high contrast combinations like stark black and bright white near your face.",
+        "* Select matte fabrics like cashmere and suede to maintain a low chroma look.",
+        "* Embrace dusty pastel accent shades like velvet rose and slate blue for interest.",
+        "* Apply the sixty thirty ten rule to distribute your colors with balanced elegance."
+      ],
+      "pullQuote": {
+        "text": "True elegance does not announce itself with neon brightness, but whispers with the misty grace of muted slate and dusty rose.",
+        "attribution": "Renata Moreau Kroll"
+      },
+      "secondaryImage": {
+        "url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+        "caption": "Refined draping and tonal layering in soft cool seasonal color palettes",
+        "alt": "Haute couture editorial model showcasing muted tone layered garments"
+      },
+      "closingParagraphs": [
+        "Adopting the soft summer palette is an invitation to celebrate your authentic, natural beauty. By choosing muted, cool tones you create a wardrobe that feels cohesive and luxurious.",
+        "This thoughtful approach to color highlights your features with a gentle, sophisticated grace. You no longer need to rely on loud trends to make a statement. Your quiet confidence speaks through the harmonious blend of slate, rose, and grey."
+      ],
+      "conclusion": "Soft summer dressing is an art form rooted in restraint, tactile fiber quality, and low contrast tonal harmony.",
+      "faqs": [
+        {
+          "question": "Can A Soft Summer Wear Black?",
+          "answer": "Pure black is generally too harsh and heavy for your gentle personal coloring. It tends to drain the natural warmth and delicate vitality from your skin. Instead we highly recommend choosing soft charcoal or deep slate as your dark neutral. These alternatives provide the same sophisticated depth without the unwanted aging effect of black."
+        },
+        {
+          "question": "What Is The Difference Between Soft Summer And Soft Autumn?",
+          "answer": "Both seasons share a love for beautifully muted, low chroma wardrobe colors. However, the key distinction lies in the underlying temperature of their respective hues. Soft summer is cool toned and relies on a base of blue and grey. Soft autumn is warm toned and features earthy brown, olive, and gold undertones."
+        },
+        {
+          "question": "Which Metals And Jewelry Suit Soft Summer Best?",
+          "answer": "Your cool undertones are beautifully enhanced by metals that have a silver finish. Sterling silver, white gold, platinum, and pewter are excellent choices for your jewelry. We recommend choosing brushed or matte finishes rather than highly polished, shiny metals. This matches the soft, muted quality of your overall seasonal color profile perfectly."
+        },
+        {
+          "question": "Can Soft Summer Wear Pure White?",
+          "answer": "Stark, pure white is far too bright and clinical for your gentle coloring. It can easily make you look washed out or tired in natural light. Instead, you should choose soft off white, cream, alabaster, or cool light grey. These gentler alternatives harmonize beautifully with your delicate, cool skin undertones every time."
+        }
+      ]
+    },
+    "tags": [
+      "Color Analysis",
+      "Soft Summer",
+      "Quiet Luxury",
+      "Seasonal Color",
+      "Wardrobe Styling"
+    ],
+    "mood": "Quiet Luxury",
+    "likes": 342,
+    "bookmarksCount": 156
+  },
   {
     "id": "article-building-genuine-sustainable-wardrobe-purpose-1790595022761",
     "title": "Building A Genuine Sustainable Wardrobe With True Purpose",
