@@ -87,7 +87,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     "publishedAt": "OCTOBER 1, 2026",
     "readTime": "8 MIN READ",
-    "coverImage": "/editorial/soft-summer-palette-cover.jpg",
+    "coverImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
     "coverImageAlt": "Model draped in soft summer color palette textiles of slate grey, dusty rose, and muted blue in Parisian daylight",
     "content": {
       "dropCapText": "Quiet luxury finds its ultimate expression in the delicate realm of the soft summer color palette, where cool undertones and muted hues create an aura of understated sartorial authority.",
@@ -120,7 +120,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         "attribution": "Renata Moreau Kroll"
       },
       "secondaryImage": {
-        "url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+        "url": "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
         "caption": "Refined draping and tonal layering in soft cool seasonal color palettes",
         "alt": "Haute couture editorial model showcasing muted tone layered garments"
       },
