@@ -18,8 +18,8 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v49';
-const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v5';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v50';
+const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v6';
 
 export function App() {
   // Articles state with localStorage hydration
@@ -28,7 +28,7 @@ export function App() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       } catch (e) {
@@ -48,7 +48,7 @@ export function App() {
         console.error('Failed to parse bookmarks:', e);
       }
     }
-    return ['article-period-swimwear'];
+    return [];
   });
 
   // Filter & Search states
@@ -77,7 +77,7 @@ export function App() {
   // Ensure dark class is applied and purge old database cache versions
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    for (let i = 1; i <= 48; i++) {
+    for (let i = 1; i <= 49; i++) {
       try {
         localStorage.removeItem(`fashiongraviti_articles_v${i}`);
         localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
