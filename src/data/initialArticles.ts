@@ -116,7 +116,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         "### The Versatile Shirt Dress",
         "Shirt dresses borrow traditional elements from button-down collared shirts and extend them into a full garment. They often include a matching fabric belt to define the waist while maintaining a relaxed structure. You can wear these pieces with loafers for work or canvas sneakers for errands.",
         "### The Sleek Slip Dress",
-        "Slip dresses draw inspiration from vintage undergarments, featuring delicate spaghetti straps and smooth satin fabrics. They drape fluidly over the body to create a minimalist yet striking aesthetic. Layering a t-shirt underneath provides a casual nineties throwback look."
+        "Slip dresses draw inspiration from vintage undergarments, featuring delicate spaghetti straps and smooth satin fabrics. They drape fluidly over the body to create a minimalist yet striking aesthetic. When choosing muted shades, styling these dresses alongside the tones of the [soft summer color palette](/soft-summer-color-palette) delivers an understated, sophisticated evening look."
       ],
       "pullQuote": {
         "text": "Selecting the right dress silhouette comes down to understanding your personal comfort, body proportions, and the specific demands of the event you are attending.",
@@ -206,7 +206,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         "### Brushed Wools Versus Glossy Synthetics",
         "Textile choice alters the visual temperature and perceived saturation of any garment in real-world lighting. Matte materials like brushed wool, raw silk, and sueded cotton absorb directional light, enhancing muted tones. Conversely, shiny polyester finishes reflect harsh light, washing out delicate biological coloring.",
         "### Daily Dressing Combinations",
-        "Curating outfits within this chromatic range involves balancing low-contrast values across different separates. Pairing dusty periwinkle with soft cocoa creates an understated elegance suited for professional environments. Maintaining this tonal equilibrium ensures the entire ensemble respects the biological harmony of the wearer.",
+        "Curating outfits within this chromatic range involves balancing low-contrast values across different separates. Selecting foundational silhouettes like A-line or wrap cuts from classic [types of dresses](/types-of-dresses) in dusty periwinkle or soft cocoa creates an understated elegance suited for professional environments. Maintaining this tonal equilibrium ensures the entire ensemble respects the biological harmony of the wearer.",
         "## Hair Pigmentation And Salon Formulations",
         "### Eliminating Unwanted Brassiness",
         "Maintaining harmonious locks requires neutralizing accidental warmth introduced by sun exposure or chemical processing. Professional colorists utilize violet and blue correctors to preserve the natural ash-brown or soft taupe baseline. Protecting this cool dimension ensures the light summer hair color or softer variant remains completely balanced.",

@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({
     if (onNavigateAbout) {
       onNavigateAbout();
     } else {
-      window.history.pushState({}, '', '/about-us');
+      window.history.pushState({}, '', '/about');
       window.dispatchEvent(new PopStateEvent('popstate'));
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({
     if (onNavigateContact) {
       onNavigateContact();
     } else {
-      window.history.pushState({}, '', '/contact-us');
+      window.history.pushState({}, '', '/contact');
       window.dispatchEvent(new PopStateEvent('popstate'));
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({
     if (onNavigatePrivacy) {
       onNavigatePrivacy();
     } else {
-      window.history.pushState({}, '', '/privacy-policy');
+      window.history.pushState({}, '', '/privacy');
       window.dispatchEvent(new PopStateEvent('popstate'));
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
     if (onNavigateTerms) {
       onNavigateTerms();
     } else {
-      window.history.pushState({}, '', '/terms-and-conditions');
+      window.history.pushState({}, '', '/terms');
       window.dispatchEvent(new PopStateEvent('popstate'));
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({
           <ul className="space-y-2.5 text-xs font-mono">
             <li>
               <a
-                href="/about-us"
+                href="/about"
                 onClick={handleAboutClick}
                 className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
               >
@@ -129,7 +129,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <a
-                href="/contact-us"
+                href="/contact"
                 onClick={handleContactClick}
                 className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
               >
@@ -138,7 +138,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <a
-                href="/privacy-policy"
+                href="/privacy"
                 onClick={handlePrivacyClick}
                 className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
               >
@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <a
-                href="/terms-and-conditions"
+                href="/terms"
                 onClick={handleTermsClick}
                 className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
               >
