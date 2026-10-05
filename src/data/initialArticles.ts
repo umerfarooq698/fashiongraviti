@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 0,
+    count: 1,
   },
   {
     id: 'fashion-news',
@@ -26,7 +26,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The biggest runway-to-street trends, color palettes, and must-have wardrobe shifts.',
     image: 'https://images.unsplash.com/photo-1717944105945-669b3dd77bfd?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 0,
+    count: 1,
   },
   {
     id: 'celebrity',
@@ -66,7 +66,99 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   },
 ];
 
-export const INITIAL_ARTICLES: FashionArticle[] = [];
+export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-soft-summer-color-palette-1791199292794",
+    "title": "The Allure Of The Soft Summer Color Palette",
+    "subtitle": "Quiet luxury finds its true expression through muted tones and dusty hues that whisper elegance across every single modern wardrobe choice today",
+    "slug": "soft-summer-color-palette",
+    "category": "fashion-trends",
+    "categoryLabel": "Fashion Trends",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 18",
+    "locationTag": "PARIS // EDITORIAL DESK",
+    "featured": true,
+    "author": {
+      "name": "Aurelia Vance-Sterling",
+      "role": "Editor-in-Chief and Haute Couture Critic",
+      "location": "Paris and New York",
+      "avatar": "/authors/aurelia-vance-sterling.jpg",
+      "instagram": "@aurelia_vance"
+    },
+    "publishedAt": "OCTOBER 5, 2026",
+    "readTime": "8 MIN READ",
+    "coverImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+    "coverImageAlt": "The Allure Of The Soft Summer Color Palette editorial showcase in Parisian haute couture style",
+    "content": {
+      "dropCapText": "Quiet luxury finds its true expression through muted tones and dusty hues that whisper elegance across every single modern wardrobe choice today.",
+      "bodyParagraphs": [
+        "Fashion Graviti presents an exclusive look at the gentle spectrum that defines contemporary elegance. Modern style relies heavily on restraint rather than loud declarations of wealth or status. The visual language of cool toned beauty speaks through subtle shifts in saturation and shade. Every garment chosen reflects a commitment to understated refinement and timeless chic appeal. Designers across major fashion capitals now embrace these dusty aesthetics with remarkable devotion.",
+        "## The Essence Of Muted Tones",
+        "Subtle chromatic choices elevate everyday dressing into an art form of pure distinction. The soft summer color palette relies on low contrast pairings and hazy undertones. Silk blouses in dusty rose create an immediate sense of effortless grace and poise. Cashmere sweaters in powder blue offer tactile warmth wrapped in visual serenity today. Wardrobe curation becomes a meditative practice focused on harmony and natural beauty.",
+        "### Finding Your Palette Identity",
+        "Identifying your seasonal match requires careful observation of natural skin undertones and hair values. Cool pigments dominate this specific spectrum without ever feeling harsh or overwhelmingly stark. Silver jewelry complements these dusty shades far better than traditional warm yellow gold options. Fabric choices should prioritize matte textures like linen and wool over glossy finishes. Light absorption creates the signature hazy effect that defines this sophisticated visual identity.",
+        "## Integrating Dusty Hues Daily",
+        "Building a functional wardrobe around muted shades transforms your entire approach to dressing well. Core garments act as neutral foundations for more expressive seasonal pieces of clothing. Charcoal gray replaces harsh black for a softer approach to evening wear elegance. Pale lavender introduces a subtle touch of color without disrupting the overall chromatic balance. Accessories should follow the same muted rule to maintain total stylistic coherence everywhere.",
+        "## Key Style Takeaways",
+        "* Choose cool toned pastels over bright primary colors for superior daily versatility.",
+        "* Pair dusty rose with slate gray to create sophisticated tonal contrast easily.",
+        "* Prioritize matte fabrics that absorb light rather than highly reflective satin surfaces.",
+        "* Select silver hardware for accessories to harmonize with cool undertones naturally.",
+        "* Build foundational outfits using mid tone neutrals as your primary base layer.",
+        "## Frequently Asked Questions",
+        "### What defines the soft summer color palette?",
+        "This palette features cool undertones combined with low contrast and dusty or muted chromatic values.",
+        "### Can warm skin tones wear these shades?",
+        "Neutral skin variations can often pull off these colors if paired with correct makeup applications.",
+        "### Which metals look best with these tones?",
+        "Silver and white gold harmonize perfectly with the cool spectrum of dusty seasonal hues.",
+        "### How do I transition these clothes seasonally?",
+        "Layer lightweight cashmere over silk pieces during colder months to maintain texture and warmth."
+      ],
+      "pullQuote": {
+        "text": "True elegance never shouts for attention because its quiet power speaks volumes through every subtle hue.",
+        "attribution": "Aurelia Vance-Sterling"
+      },
+      "secondaryImage": {
+        "url": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+        "caption": "Editorial curation for soft summer color palette",
+        "alt": "High fashion editorial aesthetic for soft summer color palette"
+      },
+      "closingParagraphs": [
+        "Curating a timeless fashion presence requires patience, textile literacy, and an unwavering commitment to personal elegance.",
+        "As the modern wardrobe evolves, true sophistication remains rooted in harmonious proportions and deliberate curation."
+      ],
+      "conclusion": "Embracing muted aesthetics allows your personal style to achieve lasting sophistication and grace. Let these dusty tones redefine your daily wardrobe with quiet confidence.",
+      "faqs": [
+        {
+          "question": "What defines the soft summer color palette?",
+          "answer": "This palette features cool undertones combined with low contrast and dusty or muted chromatic values."
+        },
+        {
+          "question": "Can warm skin tones wear these shades?",
+          "answer": "Neutral skin variations can often pull off these colors if paired with correct makeup applications."
+        },
+        {
+          "question": "Which metals look best with these tones?",
+          "answer": "Silver and white gold harmonize perfectly with the cool spectrum of dusty seasonal hues."
+        },
+        {
+          "question": "How do I transition these clothes seasonally?",
+          "answer": "Layer lightweight cashmere over silk pieces during colder months to maintain texture and warmth."
+        }
+      ]
+    },
+    "tags": [
+      "Soft Summer",
+      "Quiet Luxury",
+      "Color Palette",
+      "Fashion Trends",
+      "Wardrobe Essentials"
+    ],
+    "mood": "Quiet Luxury",
+    "likes": 334,
+    "bookmarksCount": 62
+  },];
 
 export const LOOKBOOK_ITEMS: LookbookItem[] = [
   {
