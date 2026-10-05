@@ -119,14 +119,17 @@ Write an authentic, highly sophisticated editorial article on the exact keyword:
 CRITICAL EDITORIAL RULES:
 1. Title: Exactly between 55 and 60 characters long (count characters carefully, no colons : and no hyphens/dashes -).
 2. Subtitle: EXACTLY 140 characters long (count characters precisely including spaces). Do NOT use any of these words: discover, learn, read, explore, in-depth, comprehensive.
-3. Sentence Length: Keep sentences short, crisp, punchy, and readable (10 to 16 words per sentence). No long winding sentences.
+3. Paragraph & Sentence Brevity (VERY IMPORTANT):
+   - Every paragraph in bodyParagraphs MUST be short and punchy: exactly 1 to 2 sentences per paragraph (maximum 20 to 30 words per item).
+   - NEVER write big chunks or long paragraphs. Keep it light, airy, and easy to read.
+   - Sentences must be crisp and direct: 10 to 14 words per sentence.
 4. Structure:
    - Introduce the topic with quiet luxury authority.
    - Use natural human editorial H2 (##) and H3 (###) subheadings with zero AI gerund cliches (never start headings with Mastering, Navigating, Decoding, Understanding, Embracing).
    - Include a section: ## Key Style Takeaways (with 4-5 bullet points).
    - Do NOT put FAQs inside bodyParagraphs! Put all FAQs exclusively in the separate 'faqs' array below.
    - Conclude with an editorial summary.
-5. Content Word Count: STRICTLY between 1,000 and 1,200 words.
+5. Content Word Count: Between 900 and 1,100 words.
 6. Punctuation: ZERO hyphens, en-dashes, or em-dashes (-, —, –) anywhere in visible editorial prose or headings. (Write 'cool toned', 'sixty thirty ten', 'mid tone').
 7. Category: Choose the single best category id from: ['fashion-news', 'fashion-trends', 'celebrity', 'designers-brands', 'beauty', 'how-to-style'].
 8. CategoryLabel: Matching display name e.g. 'Fashion Trends', 'How to Style', 'Designers And Brands', 'Celebrity', 'Beauty', or 'Fashion News'.
@@ -138,8 +141,8 @@ Output strictly valid JSON:
   "category": "category-id",
   "categoryLabel": "Category Label",
   "readTime": "8 MIN READ",
-  "dropCapText": "string (one powerful opening sentence, max 25 words)",
-  "bodyParagraphs": ["array", "of", "markdown", "paragraphs", "with", "## H2", "and", "### H3", "and", "bullet points"],
+  "dropCapText": "string (one powerful opening sentence, max 20 words)",
+  "bodyParagraphs": ["array", "of", "short", "bite sized", "paragraphs (1-2 sentences each)", "with", "## H2", "and", "### H3", "and", "bullet points"],
   "pullQuoteText": "string (inspirational quote from author)",
   "faqs": [
     { "question": "Question string?", "answer": "Concise answer string." }
@@ -212,10 +215,40 @@ async function run() {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 
+  // Helper to ensure paragraphs are never bulky and have zero hyphens
+  const cleanBodyParagraphs = (paragraphs) => {
+    const result = [];
+    for (const item of (paragraphs || [])) {
+      if (typeof item !== 'string') continue;
+      // Sanitize hyphens and dashes
+      const sanitized = item.replace(/[—–]/g, ' ').replace(/\s+-\s+/g, ' ').trim();
+      if (!sanitized) continue;
+      
+      // Keep headings and bullet points intact
+      if (sanitized.startsWith('#') || sanitized.startsWith('*') || sanitized.startsWith('-')) {
+        result.push(sanitized);
+        continue;
+      }
+      
+      // Match individual sentences
+      const sentences = sanitized.match(/[^.!?]+[.!?]+(\s+|$)|[^.!?]+$/g);
+      if (!sentences || sentences.length <= 2) {
+        result.push(sanitized);
+      } else {
+        // Chunk into max 2 sentences per paragraph
+        for (let i = 0; i < sentences.length; i += 2) {
+          const chunk = sentences.slice(i, i + 2).join(' ').trim();
+          if (chunk) result.push(chunk);
+        }
+      }
+    }
+    return result;
+  };
+
   const newArticle = {
     id: `article-${slug}-${Date.now()}`,
-    title: generated.title,
-    subtitle: generated.subtitle,
+    title: (generated.title || '').replace(/[—–-]/g, ' ').trim(),
+    subtitle: (generated.subtitle || '').replace(/[—–-]/g, ' ').trim(),
     slug: slug,
     category: generated.category || 'how-to-style',
     categoryLabel: generated.categoryLabel || 'How to Style',
@@ -235,10 +268,10 @@ async function run() {
     coverImage: coverImage,
     coverImageAlt: `${generated.title} editorial showcase in Parisian haute couture style`,
     content: {
-      dropCapText: generated.dropCapText || 'Quiet luxury and refined sartorial elegance define the essential modern wardrobe.',
-      bodyParagraphs: generated.bodyParagraphs || [],
+      dropCapText: (generated.dropCapText || 'Quiet luxury and refined sartorial elegance define the essential modern wardrobe.').replace(/[—–]/g, ' '),
+      bodyParagraphs: cleanBodyParagraphs(generated.bodyParagraphs),
       pullQuote: {
-        text: generated.pullQuoteText || 'True style is never about excess, but the quiet confidence of proportion and restraint.',
+        text: (generated.pullQuoteText || 'True style is never about excess, but the quiet confidence of proportion and restraint.').replace(/[—–]/g, ' '),
         attribution: author.name
       },
       secondaryImage: {
