@@ -191,8 +191,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     "publishedAt": "OCTOBER 5, 2026",
     "readTime": "8 MIN READ",
-    "coverImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
-    "coverImageAlt": "The Allure Of The Soft Summer Color Palette editorial showcase in Parisian haute couture style",
+    "coverImage": "https://plus.unsplash.com/premium_photo-1770436962630-07e8b86c5f61?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+    "coverImageAlt": "Soft pastel fabric layers stacked neatly representing the soft summer color palette",
     "content": {
       "dropCapText": "Quiet luxury finds its true expression through muted tones and dusty hues that whisper elegance across every single modern wardrobe choice today.",
       "bodyParagraphs": [
@@ -231,9 +231,9 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         "attribution": "Aurelia Vance-Sterling"
       },
       "secondaryImage": {
-        "url": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
-        "caption": "Editorial curation for soft summer color palette",
-        "alt": "High fashion editorial aesthetic for soft summer color palette"
+        "url": "https://plus.unsplash.com/premium_photo-1758530085195-4e69700ea2ae?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+        "caption": "Fabric swatches and cool muted color palette for soft summer curation",
+        "alt": "Muted fabric swatches and soft summer color palette"
       },
       "closingParagraphs": [
         "Curating a timeless fashion presence requires patience, textile literacy, and an unwavering commitment to personal elegance.",

@@ -49,36 +49,63 @@ const AUTHORS = [
   }
 ];
 
-// Curated pool of high-res Unsplash editorial fashion imagery
-const EDITORIAL_IMAGES = [
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1676291055501-286c48bb186f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1741071520904-37ef3c0fea09?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1679156272446-30738eb5c4e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1705575518997-82a71bcc75a2?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1763029513623-37d488cb97b1?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1639065643006-e217c4fee12e?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1638617501607-5dfb8b079ebf?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1787181510660-a1f1efae64e7?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1779040623350-dfae823cc734?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1770795945712-ebe92e4ed235?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1538012924144-874bbdad28f5?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1640336437301-8368b53861ab?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1570258028946-b9a55411d117?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
-  'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
-  'https://images.unsplash.com/photo-1733322992706-1210ca79f4df?auto=format&fit=crop&w=1200&q=85',
-  'https://images.unsplash.com/photo-1717944105945-669b3dd77bfd?auto=format&fit=crop&w=1200&q=85',
-  'https://images.unsplash.com/photo-1742123316636-299eb108d83c?auto=format&fit=crop&w=1200&q=85',
-  'https://images.unsplash.com/photo-1673201229733-69d19c5c4a87?auto=format&fit=crop&w=1200&q=85',
-  'https://images.unsplash.com/photo-1604073788733-f01b27fe34cd?auto=format&fit=crop&w=1200&q=85',
-  'https://images.unsplash.com/photo-1575225395866-965c8c77727f?auto=format&fit=crop&w=1200&q=85'
-];
+// Dynamic high-res fashion imagery search
+async function resolveTopicImages(keyword, queries = []) {
+  console.log(`Searching dynamic topic-relevant images for: "${keyword}"...`);
+  const searchTerms = [...(queries || []), keyword, keyword.replace(/color palette|types of|guide|what is|can you wear/gi, '').trim()].filter(Boolean);
+  
+  for (const term of searchTerms) {
+    try {
+      const res = await fetch(`https://unsplash.com/napi/search/photos?query=${encodeURIComponent(term)}&per_page=6`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.results && data.results.length >= 2) {
+          console.log(`Found matching high-res Unsplash photos using: "${term}"`);
+          return {
+            cover: data.results[0].urls.regular,
+            secondary: data.results[1].urls.regular,
+            alt: data.results[0].alt_description || keyword
+          };
+        } else if (data.results && data.results.length === 1) {
+          return {
+            cover: data.results[0].urls.regular,
+            secondary: data.results[0].urls.regular,
+            alt: data.results[0].alt_description || keyword
+          };
+        }
+      }
+    } catch (e) {
+      console.warn('Unsplash fetch error:', e.message);
+    }
+  }
+
+  // Wikipedia fallback for celebrity or specific fashion designer / brand
+  try {
+    const wikiUrl = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&pithumbsize=1200&generator=search&gsrsearch=${encodeURIComponent(keyword)}&gsrlimit=3`;
+    const res = await fetch(wikiUrl);
+    if (res.ok) {
+      const data = await res.json();
+      if (data.query && data.query.pages) {
+        const pages = Object.values(data.query.pages).filter(p => p.thumbnail);
+        if (pages.length > 0) {
+          console.log(`Found matching Wikipedia photos for: "${keyword}"`);
+          return {
+            cover: pages[0].thumbnail.source,
+            secondary: pages[1] ? pages[1].thumbnail.source : pages[0].thumbnail.source,
+            alt: pages[0].title
+          };
+        }
+      }
+    }
+  } catch (e) {}
+
+  // Last safety fallback
+  return {
+    cover: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+    secondary: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&crop=top&w=1600&h=900&q=85',
+    alt: keyword
+  };
+}
 
 async function fetchKeywordsFromSheet() {
   console.log('Fetching keywords from Google Sheet...');
@@ -148,7 +175,8 @@ Output strictly valid JSON:
     { "question": "Question string?", "answer": "Concise answer string." }
   ],
   "conclusion": "string (2-3 concluding summary sentences)",
-  "tags": ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"]
+  "tags": ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"],
+  "imageSearchQueries": ["visual photography search phrase for main cover image", "visual search phrase for secondary fashion detail image"]
 }
 Output only raw JSON, nothing else.`;
 
@@ -206,9 +234,10 @@ async function run() {
   // Author assignment
   const author = AUTHORS[publishedKeywords.length % AUTHORS.length];
   
-  // Image selection
-  const coverImage = EDITORIAL_IMAGES[(publishedKeywords.length * 2) % EDITORIAL_IMAGES.length];
-  const secondaryImage = EDITORIAL_IMAGES[(publishedKeywords.length * 2 + 1) % EDITORIAL_IMAGES.length];
+  // Dynamic topic-relevant image search
+  const topicImages = await resolveTopicImages(nextKeyword, generated.imageSearchQueries || []);
+  const coverImage = topicImages.cover;
+  const secondaryImage = topicImages.secondary;
 
   const slug = nextKeyword
     .toLowerCase()
