@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /?search=*
+Disallow: /?tag=*
+Disallow: /tag/
+Disallow: /tags/
 
 Sitemap: https://fashiongraviti.com/sitemap.xml

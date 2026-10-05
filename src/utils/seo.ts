@@ -56,7 +56,13 @@ export function updateDocumentSEO(props: SEOProps): void {
 
   // 3. Primary Meta Tags
   setMeta('name', 'description', description);
-  setMeta('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+  const isTagOrSearch = typeof window !== 'undefined' && (
+    window.location.search.includes('tag=') || 
+    window.location.search.includes('search=') ||
+    window.location.pathname.startsWith('/tag/') ||
+    window.location.pathname.startsWith('/tags/')
+  );
+  setMeta('name', 'robots', isTagOrSearch ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
 
   // 4. Canonical Tag
   let canonicalTag = document.querySelector('link[rel="canonical"]');
