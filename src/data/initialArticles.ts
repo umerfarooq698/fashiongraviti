@@ -63,7 +63,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     image: 'https://images.unsplash.com/photo-1575225395866-965c8c77727f?auto=format&fit=crop&w=1200&q=85',
     accent: '#5d6b5c',
     count: 0,
-  },
+  }
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
@@ -245,7 +245,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     "mood": "Quiet Luxury",
     "likes": 334,
     "bookmarksCount": 62
-  },];
+  }
+];
 
 export const LOOKBOOK_ITEMS: LookbookItem[] = [
   {

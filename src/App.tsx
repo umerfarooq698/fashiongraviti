@@ -18,18 +18,21 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v50';
-const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v6';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v51';
+const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v7';
 
 export function App() {
-  // Articles state with localStorage hydration
+  // Articles state with localStorage hydration & automatic sync with deployed INITIAL_ARTICLES
   const [articles, setArticles] = useState<FashionArticle[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_ARTICLES);
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // Merge deployed INITIAL_ARTICLES that might not be in localStorage yet
+          const savedIds = new Set(parsed.map((a: FashionArticle) => a.id));
+          const newDeployed = INITIAL_ARTICLES.filter(a => !savedIds.has(a.id));
+          return [...newDeployed, ...parsed];
         }
       } catch (e) {
         console.error('Failed to parse saved articles:', e);
@@ -77,7 +80,7 @@ export function App() {
   // Ensure dark class is applied and purge old database cache versions
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    for (let i = 1; i <= 49; i++) {
+    for (let i = 1; i <= 50; i++) {
       try {
         localStorage.removeItem(`fashiongraviti_articles_v${i}`);
         localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
