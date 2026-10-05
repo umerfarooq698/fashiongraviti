@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 1,
+    count: 2,
   },
   {
     id: 'fashion-news',
@@ -26,7 +26,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The biggest runway-to-street trends, color palettes, and must-have wardrobe shifts.',
     image: 'https://images.unsplash.com/photo-1717944105945-669b3dd77bfd?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 1,
+    count: 2,
   },
   {
     id: 'celebrity',
@@ -67,6 +67,93 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-types-of-dresses-1791199697853",
+    "title": "The Ultimate Guide To Luxury Silhouettes",
+    "subtitle": "Elevate your personal wardrobe through exceptional tailoring while appreciating iconic shapes that define modern haute couture today.",
+    "slug": "types-of-dresses",
+    "category": "fashion-trends",
+    "categoryLabel": "Fashion Trends",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 19",
+    "locationTag": "PARIS // EDITORIAL DESK",
+    "featured": false,
+    "author": {
+      "name": "Julian Thorne-Dumont",
+      "role": "Senior Sartorial and Tailoring Critic",
+      "location": "Milan and London",
+      "avatar": "/authors/julian-thorne-dumont.jpg",
+      "instagram": "@julian_sartorial"
+    },
+    "publishedAt": "OCTOBER 5, 2026",
+    "readTime": "8 MIN READ",
+    "coverImage": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+    "coverImageAlt": "The Ultimate Guide To Luxury Silhouettes editorial showcase in Parisian haute couture style",
+    "content": {
+      "dropCapText": "The modern wardrobe thrives on architectural silhouettes and exquisite fabrications.",
+      "bodyParagraphs": [
+        "Fashion is an eternal dialogue between structure and fluidity. Every season brings new interpretations of classic garment categories. True elegance requires understanding which shapes elevate personal proportions. The world of couture offers endless possibilities for self expression. Women seek garments that tell stories without uttering single words.",
+        "## The Evolution Of Eveningwear",
+        "Evening attire remains the crown jewel of any luxury collection. Floor grazing gowns command attention in grand ballrooms globally. Silk velvet and heavy satin drape magnificently over female curves. Designers constantly reinvent traditional silhouettes for contemporary patrons. Every stitch reflects centuries of Italian and French atelier heritage.",
+        "### Slip Dresses For Modern Minimalists",
+        "The minimalist movement champions the effortless beauty of bias cut silk. These garments trace the body with quiet confidence and sensual grace. Layering delicate straps over bare skin creates understated glamour. Such pieces transition seamlessly from sunset cocktails to midnight galas. Simplicity often achieves the most powerful aesthetic impact.",
+        "### Structured Corset Gowns",
+        "Corsetry returns to prominence with renewed architectural precision and artistry. Boning constructs dramatic hourglass proportions that defy gravity itself. Contemporary iterations prioritize comfort alongside visual drama and regal poise. Rich brocades and embroidered tulle elevate these pieces into museum worthy artifacts. Confidence becomes the ultimate accessory when wearing such sculptural masterpieces.",
+        "## Daytime Elegance And Tailored Shirtwaists",
+        "Daywear demands versatility without sacrificing any measure of sophistication. The classic shirtwaist dress bridges professional polish and weekend ease. Crisp poplin and fine linen create breathable barriers against summer heat. Belted waists add definition to otherwise relaxed silhouettes.",
+        "### Wrap Dresses For Universal Appeal",
+        "The wrap silhouette flatters diverse body types with remarkable consistency. Invented decades ago, this design remains a staple of smart dressing. Adjustable ties permit custom fits that accommodate fluctuating daily comfort needs. Bold botanical prints or solid jewel tones transform the basic wrap into art.",
+        "## Key Style Takeaways",
+        "* Invest in timeless silhouettes rather than fleeting seasonal novelties.",
+        "* Prioritize premium natural fibers like silk and wool and cashmere.",
+        "* Tailor off the rack purchases for bespoke levels of fit.",
+        "* Balance voluminous skirts with fitted bodices for proportional harmony.",
+        "* Select versatile neutral shades as foundational wardrobe anchors."
+      ],
+      "pullQuote": {
+        "text": "True personal style is the translation of inner confidence into outer architecture.",
+        "attribution": "Julian Thorne-Dumont"
+      },
+      "secondaryImage": {
+        "url": "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+        "caption": "Editorial curation for types of dresses",
+        "alt": "High fashion editorial aesthetic for types of dresses"
+      },
+      "closingParagraphs": [
+        "Curating a timeless fashion presence requires patience, textile literacy, and an unwavering commitment to personal elegance.",
+        "As the modern wardrobe evolves, true sophistication remains rooted in harmonious proportions and deliberate curation."
+      ],
+      "conclusion": "Mastering various dress silhouettes transforms your approach to daily dressing completely. Embrace quality craftsmanship and intentional design choices to build an enduring wardrobe legacy.",
+      "faqs": [
+        {
+          "question": "What defines luxury dress craftsmanship?",
+          "answer": "Superior fabric selection combined with meticulous hand finished interior seams."
+        },
+        {
+          "question": "How do I choose the right neckline?",
+          "answer": "Match the neckline to your collarbone structure and desired level of formality."
+        },
+        {
+          "question": "Are bias cut garments difficult to maintain?",
+          "answer": "They require professional dry cleaning and careful hanging to prevent stretching."
+        },
+        {
+          "question": "What is the most versatile dress style?",
+          "answer": "The sheath dress adapts effortlessly from boardroom meetings to evening events."
+        }
+      ]
+    },
+    "tags": [
+      "Dresses",
+      "Haute Couture",
+      "Luxury Style",
+      "Fashion Trends",
+      "Wardrobe Essentials"
+    ],
+    "mood": "Quiet Luxury",
+    "likes": 187,
+    "bookmarksCount": 109
+  },
   {
     "id": "article-soft-summer-color-palette-1791199292794",
     "title": "The Allure Of The Soft Summer Color Palette",
