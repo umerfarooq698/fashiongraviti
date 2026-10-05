@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Building2, ShieldAlert, Clock, Copy, Check, Sparkles, Feather, Camera, FileText, CheckCircle2 } from 'lucide-react';
+import { Mail, Copy, Check, Feather, ShieldAlert, Sparkles, MessageSquare, Clock } from 'lucide-react';
 
 interface ContactPageProps {
   onNavigateHome?: () => void;
@@ -11,14 +11,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = 'Contact Fashion Graviti — Newsroom and Editorial Desks';
+    document.title = 'Contact Fashion Graviti — Editorial Desks and Reader Inquiries';
     
-    // Set 140-character Google-compliant meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        'Contact the Fashion Graviti newsroom for runway pitches, collection lookbooks, press relations, fact checking, and editorial collaborations.'
+        'Contact Fashion Graviti for editorial pitches, seasonal color analysis inquiries, fact-checking, and reader questions.'
       );
     }
   }, []);
@@ -29,112 +28,68 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
     setTimeout(() => setIsCopied(false), 2500);
   };
 
-  const editorialDesks = [
+  const contactSections = [
     {
       icon: <Feather className="w-5 h-5 text-gold" />,
-      title: 'Editorial Pitches and Essays',
-      email: 'info.fashiongraviti@gmail.com',
-      description: 'Proposals for runway critiques, designer monographs, fashion history retrospectives, and cultural style essays.',
-      guidelines: 'Include a 200-word synopsis, proposed word count (1000–1200 words), and samples of previous sartorial writing.',
-    },
-    {
-      icon: <Camera className="w-5 h-5 text-gold" />,
-      title: 'Press Releases and Lookbooks',
-      email: 'info.fashiongraviti@gmail.com',
-      description: 'Official luxury atelier announcements, seasonal lookbooks, campaign previews, and Paris/Milan fashion week invitations.',
-      guidelines: 'Attach high-resolution imagery links (300 DPI minimum), complete garment credits, and embargo dates if applicable.',
+      title: 'Editorial Inquiries And Story Pitches',
+      subjectLine: 'Editorial Pitch',
+      description:
+        'Our editorial desk is always open to well-researched pitches, styling perspectives, and trend critiques. If you are an independent fashion writer, stylist, or textile researcher with a story idea, we want to hear from you.',
+      details:
+        'When sending a pitch, please include a brief summary of your topic, why it matters to our readers, and links to any previously published work. Please write "Editorial Pitch" in your email subject line so it routes straight to our writing team. We review all pitches carefully and aim to respond to relevant proposals within two to three business days.',
     },
     {
       icon: <ShieldAlert className="w-5 h-5 text-gold" />,
-      title: 'Corrections and Fact-Checking',
-      email: 'info.fashiongraviti@gmail.com',
-      description: 'Requests for factual corrections, material composition updates, designer provenance verifications, and historical date clarifications.',
-      guidelines: 'Include the specific article title, URL, exact line of text, and primary reference documentation.',
+      title: 'Fact Checking And Corrections',
+      subjectLine: 'Correction Request',
+      description:
+        'Accuracy and transparency are foundational to everything we publish. If you spot a factual error in our seasonal color analysis data, an incorrect photo attribution, or an outdated styling recommendation, please bring it to our attention immediately.',
+      details:
+        'Please put "Correction Request" in your email subject line along with the article title and URL. Include the specific detail that needs review so our editorial staff can cross-check references and make the necessary updates swiftly.',
     },
     {
       icon: <Sparkles className="w-5 h-5 text-gold" />,
-      title: 'Luxury Partnerships and Projects',
-      email: 'info.fashiongraviti@gmail.com',
-      description: 'Inquiries regarding bespoke editorial curations, exhibition partnerships, and institutional cultural collaborations.',
-      guidelines: 'All commercial collaborations remain strictly delineated from our independent runway critique.',
+      title: 'Press, Media And Brand Collaborations',
+      subjectLine: 'Press Inquiry',
+      description:
+        'We regularly review collections from clothing labels, textile mills, and independent design ateliers whose values align with our focus on craftsmanship and enduring personal style.',
+      details:
+        'If you are a public relations representative or brand founder looking to share lookbooks, runway invitations, or interview opportunities with our critics, please email your media materials with the subject line "Press Inquiry".',
     },
     {
-      icon: <FileText className="w-5 h-5 text-gold" />,
-      title: 'Letters to the Editor-in-Chief',
-      email: 'info.fashiongraviti@gmail.com',
-      description: 'Direct commentary, critical responses to published essays, and general correspondence with our editorial board.',
-      guidelines: 'Letters may be selected for publication in upcoming seasonal digital issues with reader consent.',
-    },
-  ];
-
-  const bureaus = [
-    {
-      city: 'PARIS',
-      address: 'Place Vendôme, 75001 Paris, France',
-      hours: 'Mon - Fri: 09:00 - 18:00 CET',
-      focus: 'Haute Couture and Heritage Luxury Houses',
-    },
-    {
-      city: 'MILAN',
-      address: 'Via Montenapoleone, 20121 Milano, Italy',
-      hours: 'Mon - Fri: 09:00 - 18:00 CET',
-      focus: 'Menswear, Cashmere, and Tailoring Ateliers',
-    },
-    {
-      city: 'NEW YORK',
-      address: 'Madison Avenue, New York, NY 10022, USA',
-      hours: 'Mon - Fri: 09:00 - 17:30 EST',
-      focus: 'Contemporary Luxury and Celebrity Styling',
-    },
-    {
-      city: 'TOKYO',
-      address: 'Shibuya-ku, Tokyo 150-0001, Japan',
-      hours: 'Mon - Fri: 09:30 - 18:30 JST',
-      focus: 'Avant-Garde Design and Textile Engineering',
-    },
-  ];
-
-  const submissionSteps = [
-    {
-      step: '01',
-      title: 'Subject Line Precision',
-      detail: 'Label your email clearly (e.g., "[Pitch] Modern Tailoring in Paris AW26" or "[Correction] Article Title"). This ensures immediate routing to the relevant editor.',
-    },
-    {
-      step: '02',
-      title: 'Editorial Review',
-      detail: 'Our senior editors evaluate submissions based on critical depth, originality of voice, and strict alignment with our luxury editorial standards.',
-    },
-    {
-      step: '03',
-      title: 'Response and Follow-Up',
-      detail: 'You will receive a formal response within 24 to 48 business hours. During major Fashion Week seasons, please allow up to 72 hours for collection pitches.',
+      icon: <MessageSquare className="w-5 h-5 text-gold" />,
+      title: 'Reader Questions And General Inquiries',
+      subjectLine: 'Reader Inquiry',
+      description:
+        'We welcome questions about styling dilemmas, wardrobe building, and understanding seasonal palettes. Every message sent to our inbox is read and handled personally by our team without automated chatbots or generic canned replies.',
+      details:
+        'Our desk reviews reader correspondence Monday through Friday between 9:00 AM and 6:00 PM CET. During major fashion weeks, email volume can increase, so please allow 24 to 48 hours for a direct response.',
     },
   ];
 
   return (
     <div className="w-full bg-noir text-white animate-fadeIn">
-      {/* Hero Header Section */}
-      <section className="relative border-b-2 border-white/20 bg-noir-pure py-12 sm:py-16 md:py-24 px-3.5 sm:px-8 lg:px-12 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 bg-black border border-gold/40 text-gold text-[11px] sm:text-xs font-mono uppercase tracking-widest font-extrabold mb-4 sm:mb-6">
-            <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
-            <span>CONTACT FASHION GRAVITI</span>
+      {/* Header Section */}
+      <section className="relative border-b-2 border-white/20 bg-noir-pure py-12 sm:py-16 md:py-20 px-4 sm:px-8 lg:px-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-black border border-gold/40 text-gold text-[11px] sm:text-xs font-mono uppercase tracking-widest font-extrabold mb-4">
+            <Mail className="w-3.5 h-3.5 text-gold" />
+            <span>EDITORIAL CONTACT</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white uppercase leading-[1.12] sm:leading-[1.1]">
-            Connect with The Newsroom and Atelier
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white uppercase leading-tight">
+            Contact Fashion Graviti
           </h1>
 
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Have an editorial tip, collection pitch, press release, or fact-checking inquiry? Reach out directly to our central newsroom desk.
+          <p className="mt-4 text-base sm:text-lg font-sans text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+            At Fashion Graviti, we value direct, thoughtful communication with our readers, independent writers, and fashion industry professionals. Whether you have feedback on our color analysis reports, need clarification on a wardrobe guide, or want to pitch an original story, here is how you can reach our editorial team directly.
           </p>
 
-          {/* Central Email Action Card */}
-          <div className="mt-6 sm:mt-8 w-full sm:w-auto inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-black border-2 border-gold/50 shadow-2xl">
+          {/* Central Direct Email Box */}
+          <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-4 p-4 sm:p-5 bg-black border-2 border-gold/50 shadow-2xl">
             <div className="text-center sm:text-left">
-              <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 uppercase tracking-wider font-bold block">
-                Official Central Newsroom Desk
+              <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider font-bold block">
+                Official Email Address
               </span>
               <a
                 href="mailto:info.fashiongraviti@gmail.com"
@@ -148,7 +103,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
               <button
                 onClick={handleCopyEmail}
                 className="px-4 py-2 bg-noir-card border border-white/20 hover:border-gold text-xs font-mono uppercase tracking-wider text-white hover:text-gold transition-colors inline-flex items-center gap-2 cursor-pointer"
-                title="Copy Email to Clipboard"
+                title="Copy Email"
               >
                 {isCopied ? (
                   <>
@@ -158,7 +113,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Address</span>
+                    <span>Copy</span>
                   </>
                 )}
               </button>
@@ -168,162 +123,75 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome }) => {
                 className="px-4 py-2 bg-white text-black hover:bg-gold hover:text-black text-xs font-mono uppercase tracking-wider font-black transition-colors inline-flex items-center gap-2 no-underline"
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>Send Email</span>
+                <span>Write To Us</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Editorial Desks Directory */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
-            NEWSROOM DIRECTORY
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
-            Dedicated Department Desks
-          </h2>
-          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
-            Direct your correspondence to the appropriate editorial desk for rapid review
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {editorialDesks.map((desk, idx) => (
-            <div
+      {/* Content-Driven Editorial Desks */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-8 py-16">
+        <div className="space-y-12">
+          {contactSections.map((section, idx) => (
+            <article
               key={idx}
-              className="p-6 bg-noir-card border-2 border-white/15 hover:border-gold transition-all duration-300 flex flex-col justify-between"
+              className="p-6 sm:p-8 bg-noir-card border-2 border-white/15 hover:border-gold/60 transition-colors"
             >
-              <div>
-                <div className="p-3 bg-black border border-white/20 w-fit mb-4">
-                  {desk.icon}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-black border border-white/20">
+                  {section.icon}
                 </div>
-                <h3 className="text-lg font-serif font-bold text-white uppercase mb-1.5">
-                  {desk.title}
-                </h3>
-                <a
-                  href={`mailto:${desk.email}`}
-                  className="text-xs font-mono text-gold hover:text-white font-bold transition-colors underline block mb-3"
-                >
-                  {desk.email}
-                </a>
-                <p className="text-xs sm:text-sm font-sans text-zinc-300 font-medium leading-relaxed mb-4">
-                  {desk.description}
-                </p>
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-white uppercase tracking-tight">
+                  {section.title}
+                </h2>
               </div>
 
-              <div className="pt-4 border-t border-white/10 text-[11px] font-mono text-zinc-400 leading-relaxed">
-                <span className="text-gold uppercase font-bold block mb-1">Submission Notes:</span>
-                {desk.guidelines}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Global Bureaux and Operating Hours */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
-            GLOBAL LOCATIONS
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
-            Editorial Bureaux and Office Desks
-          </h2>
-          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
-            Our permanent presence across international luxury fashion capitals
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {bureaus.map((bureau, idx) => (
-            <div key={idx} className="p-6 bg-noir-card border border-white/15 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 text-gold font-mono text-xs font-black uppercase tracking-wider mb-2">
-                  <Building2 className="w-4 h-4 text-gold" />
-                  <span>{bureau.city} BUREAU</span>
-                </div>
-                <p className="text-xs font-mono text-white mb-2">
-                  {bureau.address}
-                </p>
-                <p className="text-xs font-sans text-zinc-400 leading-relaxed mb-3">
-                  {bureau.focus}
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-400 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-gold flex-shrink-0" />
-                <span>{bureau.hours}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Submission Protocol & Response SLA */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-16 border-b border-white/10">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-mono text-gold uppercase tracking-widest font-bold block mb-2">
-            EDITORIAL PROCESS
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase text-white">
-            How We Handle Incoming Dispatches
-          </h2>
-          <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
-            Transparent submission evaluation and fact-checking protocols
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {submissionSteps.map((step, idx) => (
-            <div key={idx} className="p-6 bg-noir-card border-2 border-white/15 relative">
-              <span className="text-3xl font-serif font-black text-gold/30 block mb-2">
-                {step.step}
-              </span>
-              <h3 className="text-base font-serif font-bold text-white uppercase mb-2">
-                {step.title}
-              </h3>
-              <p className="text-xs sm:text-sm font-sans text-zinc-300 leading-relaxed">
-                {step.detail}
+              <p className="text-sm sm:text-base font-sans text-zinc-200 leading-relaxed mb-4">
+                {section.description}
               </p>
-            </div>
+
+              <p className="text-sm sm:text-base font-sans text-zinc-300 leading-relaxed mb-6">
+                {section.details}
+              </p>
+
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+                <div className="flex items-center gap-2">
+                  <span className="text-zinc-400">Subject Line:</span>
+                  <span className="px-2 py-0.5 bg-black border border-gold/40 text-gold font-bold">
+                    [{section.subjectLine}]
+                  </span>
+                </div>
+                <a
+                  href={`mailto:info.fashiongraviti@gmail.com?subject=${encodeURIComponent(section.subjectLine)}`}
+                  className="text-gold hover:text-white underline font-bold transition-colors"
+                >
+                  info.fashiongraviti@gmail.com
+                </a>
+              </div>
+            </article>
           ))}
         </div>
-      </section>
 
-      {/* Bottom CTA Banner */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16">
-        <div className="p-8 sm:p-12 bg-noir-card border-2 border-white/20 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-2">
-              <CheckCircle2 className="w-4 h-4 text-gold" />
-              <span>COMMUNICATION COMMITMENT</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white uppercase">
-              Rigorous and Accessible Fashion Journalism
-            </h3>
-            <p className="text-sm font-sans text-zinc-300 mt-2 leading-relaxed font-medium">
-              We value thoughtful dialogue with designers, readers, and critics worldwide. All communications are handled with strict journalistic confidentiality.
-            </p>
+        {/* Operating Hours Note */}
+        <div className="mt-12 p-6 bg-black border border-white/20 text-center">
+          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase text-gold font-bold mb-2">
+            <Clock className="w-4 h-4 text-gold" />
+            <span>DESK HOURS</span>
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0">
-            <a
-              href="mailto:info.fashiongraviti@gmail.com"
-              className="px-6 py-3 bg-white text-black hover:bg-gold hover:text-black font-mono text-xs uppercase tracking-widest font-black transition-all text-center no-underline shadow-lg"
-            >
-              Email Central Desk
-            </a>
-            {onNavigateHome && (
+          <p className="text-xs sm:text-sm font-sans text-zinc-300 max-w-xl mx-auto leading-relaxed">
+            Our editorial desk reviews correspondence Monday through Friday from 9:00 AM to 6:00 PM CET. We do not use automated replies; every message is read directly by our team.
+          </p>
+          {onNavigateHome && (
+            <div className="mt-6">
               <button
                 onClick={onNavigateHome}
-                className="px-6 py-3 border-2 border-white/30 text-white hover:border-gold hover:text-gold font-mono text-xs uppercase tracking-widest font-black transition-all text-center cursor-pointer"
+                className="px-6 py-2.5 border border-white/30 text-white hover:border-gold hover:text-gold font-mono text-xs uppercase tracking-widest font-bold transition-all cursor-pointer"
               >
-                Front Page
+                Back To Homepage
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
     </div>
