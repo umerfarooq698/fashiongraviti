@@ -237,10 +237,10 @@ export function App() {
       updateDocumentSEO({
         title: 'About Us — FASHION GRAVITI Editorial Archive',
         description: 'The editorial standards, vision, and critics behind Fashion Graviti, premier archive for haute couture and runway critique.',
-        canonicalPath: '/about-us',
+        canonicalPath: '/about',
         breadcrumbs: [
           { name: 'Home', path: '/' },
-          { name: 'About Us', path: '/about-us' },
+          { name: 'About Us', path: '/about' },
         ],
       });
       return;
@@ -250,10 +250,10 @@ export function App() {
       updateDocumentSEO({
         title: 'Contact Us — Editorial Inquiries | FASHION GRAVITI',
         description: 'Get in touch with the Fashion Graviti editorial desk, press team, and contributors in Paris, Milan, and New York.',
-        canonicalPath: '/contact-us',
+        canonicalPath: '/contact',
         breadcrumbs: [
           { name: 'Home', path: '/' },
-          { name: 'Contact Us', path: '/contact-us' },
+          { name: 'Contact Us', path: '/contact' },
         ],
       });
       return;
@@ -263,10 +263,10 @@ export function App() {
       updateDocumentSEO({
         title: 'Privacy Policy — FASHION GRAVITI',
         description: 'How Fashion Graviti collects, handles, and protects personal data in compliance with international privacy standards.',
-        canonicalPath: '/privacy-policy',
+        canonicalPath: '/privacy',
         breadcrumbs: [
           { name: 'Home', path: '/' },
-          { name: 'Privacy Policy', path: '/privacy-policy' },
+          { name: 'Privacy Policy', path: '/privacy' },
         ],
       });
       return;
@@ -276,10 +276,10 @@ export function App() {
       updateDocumentSEO({
         title: 'Terms & Conditions — FASHION GRAVITI',
         description: 'Review the terms of service, editorial copyright conditions, and usage policies for Fashion Graviti.',
-        canonicalPath: '/terms-and-conditions',
+        canonicalPath: '/terms',
         breadcrumbs: [
           { name: 'Home', path: '/' },
-          { name: 'Terms and Conditions', path: '/terms-and-conditions' },
+          { name: 'Terms and Conditions', path: '/terms' },
         ],
       });
       return;
