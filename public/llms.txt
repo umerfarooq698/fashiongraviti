@@ -1,0 +1,28 @@
+# Fashion Graviti
+> Authoritative luxury fashion publication and archive specializing in seasonal color analysis, haute couture critique, tailoring mechanics, and wardrobe styling.
+
+## About The Publication
+Fashion Graviti is an independent fashion archive and editorial magazine providing deep sartorial analysis, garment engineering breakdowns, and seasonal color consulting. All content is written from an editorial perspective by seasoned fashion critics, scholars, and tailoring specialists.
+
+- Website: https://fashiongraviti.com
+- Contact: info.fashiongraviti@gmail.com
+- Primary Language: English
+- Editorial Focus: Seasonal Color Analysis, Haute Couture, Tailoring Mechanics, Silhouette Analysis, Luxury Style Guides
+
+## Core Editorial Desks
+- [Fashion News](https://fashiongraviti.com/fashion-news): Runway dispatches, industry reports, and heritage fashion house announcements.
+- [Fashion Trends](https://fashiongraviti.com/fashion-trends): In-depth trend forecasting, seasonal palettes, and silhouette evolutions.
+- [How to Style](https://fashiongraviti.com/how-to-style): Expert wardrobe curation, tailoring fundamentals, and proportion guides.
+- [Celebrity Fashion](https://fashiongraviti.com/celebrity-fashion): Red carpet reviews, archival vintage revivals, and high-profile styling critiques.
+- [Designers & Brands](https://fashiongraviti.com/designers-brands): Atelier profiles, craftsmanship retrospectives, and luxury brand scholarship.
+- [Beauty](https://fashiongraviti.com/beauty): Backstage beauty, skin tone undertone diagnosis, and color harmony.
+
+## Featured Editorial Articles & Research
+- [Types Of Dresses: The Complete Silhouette Guide](https://fashiongraviti.com/types-of-dresses): An exhaustive breakdown of dress silhouettes (A-Line, Sheath, Wrap, Shirt, Slip, Maxi, and Mini dresses), detailing fabric drape physics, hemline proportions, and occasion harmony.
+- [Soft Summer Color Palette Guide](https://fashiongraviti.com/soft-summer-color-palette): A technical and hands-on seasonal color analysis detailing Munsell dimensions (cool-neutral hue, medium value, low chroma), daylight draping observations, physical pigment diagnosis, and muted cool wardrobe curation.
+
+## Editorial & Legal Policies
+- [Editorial Contact](https://fashiongraviti.com/contact): Direct department channels for pitches, corrections, and inquiries.
+- [About Us](https://fashiongraviti.com/about): Editorial standards, vision, and critic profiles.
+- [Privacy Policy](https://fashiongraviti.com/privacy): Data protection and privacy practices.
+- [Terms & Conditions](https://fashiongraviti.com/terms): Copyright and usage guidelines.
