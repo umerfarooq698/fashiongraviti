@@ -124,7 +124,7 @@ CRITICAL EDITORIAL RULES:
    - Introduce the topic with quiet luxury authority.
    - Use natural human editorial H2 (##) and H3 (###) subheadings with zero AI gerund cliches (never start headings with Mastering, Navigating, Decoding, Understanding, Embracing).
    - Include a section: ## Key Style Takeaways (with 4-5 bullet points).
-   - Include a section: ## Frequently Asked Questions (with 4 direct H3 questions & answers).
+   - Do NOT put FAQs inside bodyParagraphs! Put all FAQs exclusively in the separate 'faqs' array below.
    - Conclude with an editorial summary.
 5. Content Word Count: STRICTLY between 1,000 and 1,200 words.
 6. Punctuation: ZERO hyphens, en-dashes, or em-dashes (-, —, –) anywhere in visible editorial prose or headings. (Write 'cool toned', 'sixty thirty ten', 'mid tone').

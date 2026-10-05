@@ -487,12 +487,31 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             {renderTextWithLinks(article.content.dropCapText)}
           </p>
 
-          {article.content.bodyParagraphs.map((paragraph, index) => {
-            const trimmed = paragraph.trim();
-            const isSecondaryImageTarget = index === secondaryImageIndex && article.content.secondaryImage;
+          {(() => {
+            // Filter out FAQ paragraphs from bodyParagraphs if dedicated faqs exist
+            const paragraphsToRender: string[] = [];
+            let inFaqSection = false;
 
-            return (
-              <React.Fragment key={index}>
+            for (const p of article.content.bodyParagraphs) {
+              const trimmed = p.trim().toLowerCase();
+              if (trimmed.startsWith('## frequently asked questions') || trimmed.startsWith('## faqs')) {
+                inFaqSection = true;
+                continue;
+              }
+              if (inFaqSection && trimmed.startsWith('## ')) {
+                inFaqSection = false;
+              }
+              if (!inFaqSection) {
+                paragraphsToRender.push(p);
+              }
+            }
+
+            return paragraphsToRender.map((paragraph, index) => {
+              const trimmed = paragraph.trim();
+              const isSecondaryImageTarget = index === secondaryImageIndex && article.content.secondaryImage;
+
+              return (
+                <React.Fragment key={index}>
                 {/* Secondary Editorial / Atelier Image (Centered dynamically in the reading flow) */}
                 {isSecondaryImageTarget && (
                   <div className="my-10 border border-white/20 overflow-hidden bg-black shadow-xl flex flex-col">
@@ -551,7 +570,8 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 )}
               </React.Fragment>
             );
-          })}
+          });
+        })()}
 
           {/* Pull Quote */}
           {article.content.pullQuote && (
