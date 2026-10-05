@@ -69,11 +69,11 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
     "id": "article-types-of-dresses-1791199697853",
-    "title": "The Ultimate Guide To Luxury Silhouettes",
-    "subtitle": "Elevate your personal wardrobe through exceptional tailoring while appreciating iconic shapes that define modern haute couture today.",
+    "title": "Types Of Dresses Every Woman Should Know In Luxury Fashion",
+    "subtitle": "Explore iconic dress silhouettes from flattering wrap designs to timeless slip styles curated for sophisticated modern wardrobe building today",
     "slug": "types-of-dresses",
-    "category": "fashion-trends",
-    "categoryLabel": "Fashion Trends",
+    "category": "how-to-style",
+    "categoryLabel": "How to Style",
     "season": "AUTUMN / WINTER 2026",
     "issueNumber": "ISSUE NO. 19",
     "locationTag": "PARIS // EDITORIAL DESK",
@@ -87,76 +87,81 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     "publishedAt": "OCTOBER 5, 2026",
     "readTime": "8 MIN READ",
-    "coverImage": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
-    "coverImageAlt": "The Ultimate Guide To Luxury Silhouettes editorial showcase in Parisian haute couture style",
+    "coverImage": "https://plus.unsplash.com/premium_photo-1674718918254-8f96b77c12d8?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+    "coverImageAlt": "Collection of luxury designer dresses arranged on an editorial showroom rack",
     "content": {
-      "dropCapText": "The modern wardrobe thrives on architectural silhouettes and exquisite fabrications.",
+      "dropCapText": "Understanding different types of dresses is the cornerstone of building an intentional, enduring wardrobe.",
       "bodyParagraphs": [
-        "Fashion is an eternal dialogue between structure and fluidity.",
-        "Every season brings new interpretations of classic garment categories.",
-        "True elegance requires understanding which shapes elevate personal proportions.",
-        "The world of couture offers endless possibilities for self expression and grace.",
-        "## The Evolution Of Eveningwear",
-        "Evening attire remains the crown jewel of any luxury collection.",
-        "Floor grazing gowns command attention across grand ballrooms globally.",
-        "Silk velvet and heavy satin drape magnificently over classic silhouettes.",
-        "Every stitch reflects centuries of French and Italian atelier heritage.",
-        "### Slip Dresses For Modern Minimalists",
-        "The minimalist movement champions the effortless beauty of bias cut silk.",
-        "These garments trace the body with quiet confidence and sensual grace.",
-        "Layering delicate straps creates understated glamour for sunset cocktails.",
-        "Simplicity often achieves the most powerful aesthetic impact.",
-        "### Structured Corset Gowns",
-        "Corsetry returns to prominence with renewed architectural precision and artistry.",
-        "Sculpted bodices construct dramatic hourglass proportions that celebrate form.",
-        "Rich brocades and embroidered tulle elevate these pieces into museum worthy artifacts.",
-        "Confidence becomes the ultimate accessory when wearing such sculptural masterpieces.",
-        "## Daytime Elegance And Tailored Shirtwaists",
-        "Daywear demands versatility without sacrificing any measure of sophistication.",
-        "The classic shirtwaist dress bridges professional polish and weekend ease.",
-        "Crisp poplin and fine linen create breathable barriers against warm climates.",
-        "Belted waists add subtle definition to otherwise relaxed silhouettes.",
-        "### Wrap Dresses For Universal Appeal",
-        "The wrap silhouette flatters diverse body types with remarkable consistency.",
-        "Adjustable ties permit custom fits that accommodate fluctuating daily comfort needs.",
-        "Solid jewel tones transform the basic wrap into quiet wearable art.",
+        "Every classic dress silhouette communicates a distinct mood, proportion, and aesthetic identity.",
+        "From tailored daytime workwear to evening galas, each design serves a deliberate sartorial purpose.",
+        "Fashion Graviti breaks down the most essential dress styles that form the foundation of luxury style.",
+        "## The Flattering Classics For Daily Wear",
+        "### The A Line Silhouette",
+        "The A line dress is fitted through the bodice and flares gently toward the hemline.",
+        "This balanced triangular shape effortlessly suits virtually every body type with timeless charm.",
+        "### The Tailored Shirt Dress",
+        "Borrowing crisp collar details from menswear, the shirt dress balances professional polish with ease.",
+        "Cinching the waist with a leather belt instantly transitions this silhouette from office to dinner.",
+        "### The Iconic Wrap Dress",
+        "Featuring a front closure wrapped across the torso, this design emphasizes natural curves effortlessly.",
+        "Adjustable ties make the wrap dress one of the most comfortable and universally flattering choices.",
+        "## Sleek Minimalist And Structured Silhouettes",
+        "### The Bias Cut Slip Dress",
+        "Popularized in the nineties, the bias cut slip dress drapes gracefully along body contours.",
+        "Crafted from fine silk or satin, it transitions seamlessly from daytime layering to evening elegance.",
+        "### The Architectural Sheath Dress",
+        "The sheath dress is a form fitting straight cut garment that hits at or below the knee.",
+        "Its clean lines and structured darting make it an essential staple for high stakes boardroom presence.",
+        "### The Straight Cut Shift Dress",
+        "The shift dress hangs loosely from the shoulders with minimal tailoring through the waistline.",
+        "Its boxy silhouette provides breezy ease and retro mid century charm for effortless movement.",
+        "## Dramatic Silhouettes For Evening And Occasions",
+        "### The Flowing Maxi Dress",
+        "Maxi dresses reach all the way down to ankle or floor length with dramatic flowing volume.",
+        "Whether rendered in airy chiffon or structured pleated jersey, this silhouette delivers effortless poise.",
+        "### The Form Hugging Bodycon",
+        "The modern bodycon embraces the figure tightly with supportive stretch knit textiles.",
+        "Pairing high necklines with sleek midi lengths gives this silhouette an elevated quiet luxury feel.",
+        "### The Sculpted Ball Gown",
+        "Featuring a fitted bodice and an expansive bell shaped skirt, the ball gown defines regal glamour.",
+        "This formal silhouette is reserved for white tie events, state dinners, and grand black tie galas.",
         "## Key Style Takeaways",
-        "* Invest in timeless silhouettes rather than fleeting seasonal novelties.",
-        "* Prioritize premium natural fibers like silk and wool and cashmere.",
-        "* Tailor off the rack purchases for bespoke levels of fit.",
-        "* Balance voluminous skirts with fitted bodices for proportional harmony.",
-        "* Select versatile neutral shades as foundational wardrobe anchors."
+        "* Choose A line and wrap dresses for universal comfort and instant proportional balance.",
+        "* Select structured sheath dresses for authoritative business and corporate engagements.",
+        "* Invest in high quality silk slip dresses for effortless day to night layering versatility.",
+        "* Match hemline length carefully with shoe heel height to maintain optimal posture and flow.",
+        "* Build a foundational collection of neutral dresses before adding seasonal printed designs."
       ],
       "pullQuote": {
-        "text": "True personal style is the translation of inner confidence into outer architecture.",
+        "text": "True personal style begins when you understand how each silhouette interacts with your posture and movement.",
         "attribution": "Julian Thorne-Dumont"
       },
       "secondaryImage": {
-        "url": "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
-        "caption": "Editorial curation for types of dresses",
-        "alt": "High fashion editorial aesthetic for types of dresses"
+        "url": "https://images.unsplash.com/photo-1784850227103-9397b78db67f?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
+        "caption": "Haute couture runway model presenting sculptural dress silhouette",
+        "alt": "Haute couture dress silhouette on runway showcase"
       },
       "closingParagraphs": [
-        "Curating a timeless fashion presence requires patience, textile literacy, and an unwavering commitment to personal elegance.",
-        "As the modern wardrobe evolves, true sophistication remains rooted in harmonious proportions and deliberate curation."
+        "Curating a versatile dress repertoire allows you to navigate every social and professional invitation with calm assurance.",
+        "By focusing on silhouette integrity and exquisite tailoring, your wardrobe becomes an enduring reflection of refined taste."
       ],
-      "conclusion": "Mastering various dress silhouettes transforms your approach to daily dressing completely. Embrace quality craftsmanship and intentional design choices to build an enduring wardrobe legacy.",
+      "conclusion": "Mastering the fundamental types of dresses transforms the daily ritual of dressing into effortless artistry. Select shapes that celebrate your individuality and enjoy the timeless confidence they deliver.",
       "faqs": [
         {
-          "question": "What defines luxury dress craftsmanship?",
-          "answer": "Superior fabric selection combined with meticulous hand finished interior seams."
+          "question": "What are the most essential types of dresses to own?",
+          "answer": "A well rounded capsule includes an A line dress, a tailored shirt dress, an architectural sheath, and a versatile silk slip dress."
         },
         {
-          "question": "How do I choose the right neckline?",
-          "answer": "Match the neckline to your collarbone structure and desired level of formality."
+          "question": "Which dress silhouette is most flattering for all body shapes?",
+          "answer": "The wrap dress and A line silhouette are universally flattering because they naturally define the waist without clinging uncomfortably."
         },
         {
-          "question": "Are bias cut garments difficult to maintain?",
-          "answer": "They require professional dry cleaning and careful hanging to prevent stretching."
+          "question": "What is the difference between a sheath and a shift dress?",
+          "answer": "A sheath dress is form fitting with waist darts, whereas a shift dress falls straight from the shoulders with minimal waist shaping."
         },
         {
-          "question": "What is the most versatile dress style?",
-          "answer": "The sheath dress adapts effortlessly from boardroom meetings to evening events."
+          "question": "How should I choose between a midi and a maxi dress?",
+          "answer": "Midi dresses hit at mid calf and work seamlessly for both professional and casual settings, while floor grazing maxi dresses offer effortless drama."
         }
       ]
     },

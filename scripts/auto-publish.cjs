@@ -144,14 +144,20 @@ async function callGemini(keyword) {
 Write an authentic, highly sophisticated editorial article on the exact keyword: '${keyword}'.
 
 CRITICAL EDITORIAL RULES:
-1. Title: Exactly between 55 and 60 characters long (count characters carefully, no colons : and no hyphens/dashes -).
+1. Target Keyword & Title Relevance (MOST CRITICAL RULE):
+   - The exact keyword '${keyword}' MUST be the direct, concrete subject of the entire article.
+   - The exact keyword '${keyword}' MUST appear naturally in the Title.
+   - Title MUST be between 55 and 60 characters long (count characters precisely, zero colons : and zero hyphens/dashes -).
+   - If the keyword is a list/guide (e.g. 'types of dresses', 'color palette'), cover the comprehensive list of actual styles, silhouettes, or shades systematically with clear H2 and H3 headings.
+   - If the keyword is a question (e.g. 'can you wear black to a wedding'), answer the question directly with clear styling etiquette rules.
+   - NEVER write vague or abstract fluff. Deliver the exact, highly practical, authoritative guide that a Google searcher is looking for.
 2. Subtitle: EXACTLY 140 characters long (count characters precisely including spaces). Do NOT use any of these words: discover, learn, read, explore, in-depth, comprehensive.
 3. Paragraph & Sentence Brevity (VERY IMPORTANT):
    - Every paragraph in bodyParagraphs MUST be short and punchy: exactly 1 to 2 sentences per paragraph (maximum 20 to 30 words per item).
    - NEVER write big chunks or long paragraphs. Keep it light, airy, and easy to read.
    - Sentences must be crisp and direct: 10 to 14 words per sentence.
 4. Structure:
-   - Introduce the topic with quiet luxury authority.
+   - Introduce the target keyword immediately in the opening drop cap sentence.
    - Use natural human editorial H2 (##) and H3 (###) subheadings with zero AI gerund cliches (never start headings with Mastering, Navigating, Decoding, Understanding, Embracing).
    - Include a section: ## Key Style Takeaways (with 4-5 bullet points).
    - Do NOT put FAQs inside bodyParagraphs! Put all FAQs exclusively in the separate 'faqs' array below.
