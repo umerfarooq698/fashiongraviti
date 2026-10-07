@@ -235,8 +235,8 @@ export function App() {
 
     if (activeStaticPage === 'about') {
       updateDocumentSEO({
-        title: 'About Us — FASHION GRAVITI Editorial Archive',
-        description: 'The editorial standards, vision, and critics behind Fashion Graviti, premier archive for haute couture and runway critique.',
+        title: 'About Our Editorial Team | Fashion Graviti',
+        description: 'Learn about Fashion Graviti, an independent publication reporting on runway collections, textile craftsmanship, and fashion history.',
         canonicalPath: '/about',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -248,8 +248,8 @@ export function App() {
 
     if (activeStaticPage === 'contact') {
       updateDocumentSEO({
-        title: 'Contact Us — Editorial Inquiries | FASHION GRAVITI',
-        description: 'Get in touch with the Fashion Graviti editorial desk, press team, and contributors in Paris, Milan, and New York.',
+        title: 'Contact Our Editorial Desk | Fashion Graviti',
+        description: 'Reach out to Fashion Graviti editors for article pitches, corrections, press releases, or general reader questions via email today.',
         canonicalPath: '/contact',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -261,8 +261,8 @@ export function App() {
 
     if (activeStaticPage === 'privacy') {
       updateDocumentSEO({
-        title: 'Privacy Policy — FASHION GRAVITI',
-        description: 'How Fashion Graviti collects, handles, and protects personal data in compliance with international privacy standards.',
+        title: 'Privacy Policy | Fashion Graviti Legal',
+        description: 'Read our official privacy statement explaining how Fashion Graviti collects, handles, and protects personal reader information.',
         canonicalPath: '/privacy',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -274,8 +274,8 @@ export function App() {
 
     if (activeStaticPage === 'terms') {
       updateDocumentSEO({
-        title: 'Terms & Conditions — FASHION GRAVITI',
-        description: 'Review the terms of service, editorial copyright conditions, and usage policies for Fashion Graviti.',
+        title: 'Terms and Conditions | Fashion Graviti Legal',
+        description: 'Review the website terms of service, article copyright rules, and publication usage policies governing the Fashion Graviti site.',
         canonicalPath: '/terms',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -302,8 +302,8 @@ export function App() {
 
     // Default Home SEO
     updateDocumentSEO({
-      title: 'FASHION GRAVITI — Fashion News, Fashion Trends and Celebrity Runway',
-      description: 'Curated runway dispatches, haute couture analysis, and luxury style reviews presented by the editors and critics of Fashion Graviti archive.',
+      title: 'Fashion Graviti | Runway News and Seasonal Style Trends',
+      description: 'Read runway reports, seasonal color palettes, and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.',
       canonicalPath: '/',
       breadcrumbs: [{ name: 'Home', path: '/' }],
     });
