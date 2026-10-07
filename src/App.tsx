@@ -21,6 +21,33 @@ import { updateDocumentSEO } from './utils/seo';
 const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v59';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v7';
 
+const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
+  'fashion-news': {
+    title: 'Fashion News | Fashion Graviti',
+    description: 'Read the latest clothing news, runway shows, and designer stories. Get fast updates on fashion week events, brand changes, and new outfits.',
+  },
+  'fashion-trends': {
+    title: 'Fashion Trends | Fashion Graviti',
+    description: 'See what clothing styles are popular right now. Find out which colors, prints, and fabrics are showing up in stores and on the street today.',
+  },
+  'celebrity': {
+    title: 'Celebrity Style | Fashion Graviti',
+    description: 'Check out what your favorite stars wear on the red carpet and in daily life. See photos and details about celebrity outfits and accessories.',
+  },
+  'designers-brands': {
+    title: 'Designers and Brands | Fashion Graviti',
+    description: 'Learn about the people and companies that make your clothes. Read stories on top fashion designers, new labels, and popular clothing brands.',
+  },
+  'beauty': {
+    title: 'Beauty | Fashion Graviti',
+    description: 'Find simple tips for skincare, makeup, and hair care. Read about popular beauty products and easy ways to build your daily routine at home.',
+  },
+  'how-to-style': {
+    title: 'How to Style | Fashion Graviti',
+    description: 'Get easy advice on how to put together outfits with clothes you already own. Learn simple tricks to match colors and wear items for any day.',
+  },
+};
+
 export function App() {
   // Articles state with localStorage hydration & automatic sync with deployed INITIAL_ARTICLES
   const [articles, setArticles] = useState<FashionArticle[]>(() => {
@@ -288,9 +315,12 @@ export function App() {
     if (activeCategory !== 'all') {
       const cat = FASHION_CATEGORIES.find((c) => c.id === activeCategory);
       const catName = cat ? cat.name : activeCategory.replace(/-/g, ' ').toUpperCase();
+      const seoData = CATEGORY_SEO[activeCategory];
       updateDocumentSEO({
-        title: `${catName} — FASHION GRAVITI Editorial Archive`,
-        description: `Explore the latest ${catName.toLowerCase()} dispatches, trend analysis, and editorial critiques on Fashion Graviti.`,
+        title: seoData ? seoData.title : `${catName} | Fashion Graviti`,
+        description: seoData
+          ? seoData.description
+          : `Read articles and updates in ${catName.toLowerCase()} on Fashion Graviti magazine.`,
         canonicalPath: `/${activeCategory}`,
         breadcrumbs: [
           { name: 'Home', path: '/' },
