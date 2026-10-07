@@ -277,9 +277,10 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     },
     "publishedAt": "OCTOBER 8, 2026",
     "readTime": "8 MIN READ",
-    "coverImage": "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&crop=top&w=1600&h=900&q=85",
-    "coverImageCaption": "Fine cartilage jewelry styling featuring delicate titanium and gold accents.",
-    "coverImageAlt": "Close up of elegant gold and titanium ear piercing jewelry in upper cartilage",
+    "coverImage": "/images/hidden-helix-jewelry-cover.jpg",
+    "coverImageCaption": "Close-up of fine gold and diamond hidden helix jewelry placed beneath the upper cartilage fold.",
+    "coverImageAlt": "Macro close-up of an ear with an elegant hidden helix cartilage piercing and floating gold diamond jewelry",
+    "metaDescription": "Learn how to choose hidden helix jewelry, understand ear cartilage anatomy, compare gold with titanium, and maintain healthy daily healing.",
     "content": {
       "dropCapText": "Hidden helix jewelry rests gracefully underneath the upper rim fold of the ear, creating the magical illusion of a floating charm. This refined placement tucks the decorative front beneath a protective canopy of skin and cartilage. As a result, the ornament appears suspended in midair rather than anchored directly to the edge of the ear. Fashion enthusiasts appreciate this sophisticated aesthetic for its subtle yet striking approach to modern fine jewelry styling.",
       "bodyParagraphs": [
@@ -309,9 +310,9 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
         "* Sleep on a travel pillow with a center cutout to avoid putting pressure on your fresh ear cartilage."
       ],
       "secondaryImage": {
-        "url": "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1200&q=85",
+        "url": "/images/hidden-helix-jewelry-styling.jpg",
         "caption": "Delicate gold and titanium pieces curated for upper ear cartilage piercings.",
-        "alt": "Fine jewelry gold studs and hoops for cartilage styling"
+        "alt": "Fine jewelry gold studs and cartilage piercing curation on an ear"
       },
       "faqs": [
         {

@@ -56,6 +56,7 @@ export interface FashionArticle {
   coverImage: string;
   coverImageCaption?: string;
   coverImageAlt?: string;
+  metaDescription?: string;
   gallery?: string[];
   content: {
     dropCapText: string;

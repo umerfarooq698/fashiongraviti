@@ -68,7 +68,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
     const pubDate = article.publishedAt ? new Date(article.publishedAt).toISOString() : new Date().toISOString();
     updateDocumentSEO({
       title: `${article.title} — FASHION GRAVITI`,
-      description: article.subtitle || article.content.dropCapText.slice(0, 160),
+      description: article.metaDescription || article.subtitle || article.content.dropCapText.slice(0, 160),
       canonicalPath: `/${article.slug}`,
       image: article.coverImage,
       type: 'article',
