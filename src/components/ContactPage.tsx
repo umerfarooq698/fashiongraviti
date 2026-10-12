@@ -8,15 +8,6 @@ interface ContactPageProps {
 export const ContactPage: React.FC<ContactPageProps> = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = 'Contact Fashion Graviti — Editorial Desk and Reader Inquiries';
-    
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        'content',
-        'Contact Fashion Graviti for editorial pitches, seasonal color analysis inquiries, fact-checking, and reader questions.'
-      );
-    }
   }, []);
 
   return (

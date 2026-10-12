@@ -8,14 +8,6 @@ interface TermsPageProps {
 export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHome }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = 'Terms and Conditions — Fashion Graviti';
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        'content',
-        'Fashion Graviti terms and conditions: usage rules, intellectual property, editorial standards, and legal disclaimers for our fashion publication.'
-      );
-    }
   }, []);
 
   const sections = [

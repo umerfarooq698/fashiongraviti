@@ -41,9 +41,15 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-white/10 pb-2">
           <div className="flex items-center space-x-2">
             <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold flex-shrink-0" />
-            <h3 className="text-xs sm:text-sm font-mono uppercase tracking-wider sm:tracking-widest text-white font-extrabold">
-              MAGAZINE DESKS AND EDITORIAL CATEGORIES
-            </h3>
+            {activeCategory === 'all' ? (
+              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-wider sm:tracking-widest text-white font-extrabold">
+                MAGAZINE DESKS AND EDITORIAL CATEGORIES
+              </h3>
+            ) : (
+              <h1 className="text-xs sm:text-sm font-mono uppercase tracking-wider sm:tracking-widest text-white font-extrabold">
+                {categories.find((c) => c.id === activeCategory)?.name || 'EDITORIAL'} — MAGAZINE DESK
+              </h1>
+            )}
           </div>
           <span className="text-[10px] sm:text-xs font-mono font-bold text-gold uppercase bg-black px-2.5 sm:px-3 py-1 border border-gold/40 self-start sm:self-auto">
             {totalArticlesCount} PUBLISHED ARTICLES

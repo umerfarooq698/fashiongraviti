@@ -8,14 +8,6 @@ interface PrivacyPolicyPageProps {
 export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigateHome }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = 'Privacy Policy — Fashion Graviti';
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        'content',
-        'Fashion Graviti privacy policy: how we collect, use, and protect your personal data in compliance with GDPR and Google guidelines.'
-      );
-    }
   }, []);
 
   const sections = [

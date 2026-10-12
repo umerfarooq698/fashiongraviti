@@ -37,7 +37,8 @@ export function updateDocumentSEO(props: SEOProps): void {
   const canonicalUrl = props.canonicalPath 
     ? `${SITE_DOMAIN}${props.canonicalPath.startsWith('/') ? '' : '/'}${props.canonicalPath}`
     : SITE_DOMAIN;
-  const image = props.image || DEFAULT_IMAGE;
+  const rawImage = props.image || DEFAULT_IMAGE;
+  const image = rawImage.startsWith('/') ? `${SITE_DOMAIN}${rawImage}` : rawImage;
   const type = props.type || 'website';
 
   // 1. Title

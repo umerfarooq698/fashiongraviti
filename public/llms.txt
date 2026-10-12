@@ -13,11 +13,12 @@ Fashion Graviti is an independent fashion archive and editorial magazine providi
 - [Fashion News](https://fashiongraviti.com/fashion-news): Runway dispatches, industry reports, and heritage fashion house announcements.
 - [Fashion Trends](https://fashiongraviti.com/fashion-trends): In-depth trend forecasting, seasonal palettes, and silhouette evolutions.
 - [How to Style](https://fashiongraviti.com/how-to-style): Expert wardrobe curation, tailoring fundamentals, and proportion guides.
-- [Celebrity Fashion](https://fashiongraviti.com/celebrity-fashion): Red carpet reviews, archival vintage revivals, and high-profile styling critiques.
+- [Celebrity](https://fashiongraviti.com/celebrity): Red carpet reviews, archival vintage revivals, and high-profile styling critiques.
 - [Designers & Brands](https://fashiongraviti.com/designers-brands): Atelier profiles, craftsmanship retrospectives, and luxury brand scholarship.
 - [Beauty](https://fashiongraviti.com/beauty): Backstage beauty, skin tone undertone diagnosis, and color harmony.
 
 ## Featured Editorial Articles & Research
+- [Hidden Helix Jewelry: Styling, Sizing, and Piercing Aftercare](https://fashiongraviti.com/hidden-helix-jewelry): An expert overview on hidden helix cartilage anatomy, ASTM F-136 implant-grade titanium vs solid 14k/18k gold, downsizing timelines, and daily saline aftercare.
 - [Types Of Dresses: The Complete Silhouette Guide](https://fashiongraviti.com/types-of-dresses): An exhaustive breakdown of dress silhouettes (A-Line, Sheath, Wrap, Shirt, Slip, Maxi, and Mini dresses), detailing fabric drape physics, hemline proportions, and occasion harmony.
 - [Soft Summer Color Palette Guide](https://fashiongraviti.com/soft-summer-color-palette): A technical and hands-on seasonal color analysis detailing Munsell dimensions (cool-neutral hue, medium value, low chroma), daylight draping observations, physical pigment diagnosis, and muted cool wardrobe curation.
 

@@ -53,16 +53,18 @@ export const CoverStory: React.FC<CoverStoryProps> = ({
             </div>
 
             {/* Title */}
-            <a 
-              href={`/${article.slug}`}
-              onClick={(e) => {
-                e.preventDefault();
-                onReadArticle(article);
-              }}
-              className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white leading-[1.14] sm:leading-[1.12] tracking-tight hover:text-gold transition-colors cursor-pointer drop-shadow-sm block no-underline"
-            >
-              {article.title}
-            </a>
+            <h1 className="m-0 p-0">
+              <a 
+                href={`/${article.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onReadArticle(article);
+                }}
+                className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white leading-[1.14] sm:leading-[1.12] tracking-tight hover:text-gold transition-colors cursor-pointer drop-shadow-sm block no-underline"
+              >
+                {article.title}
+              </a>
+            </h1>
 
             {/* Subtitle / Excerpt */}
             <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg font-sans text-zinc-100 leading-relaxed font-medium">

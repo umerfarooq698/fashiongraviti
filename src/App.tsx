@@ -18,7 +18,7 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v62';
+const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v63';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v7';
 
 const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
@@ -174,6 +174,7 @@ export function App() {
         'fashion-news': 'fashion-news',
         'fashion-trends': 'fashion-trends',
         'celebrity': 'celebrity',
+        'celebrity-fashion': 'celebrity',
         'designers-brands': 'designers-brands',
         'designers-and-brands': 'designers-brands',
         'beauty': 'beauty',
@@ -429,7 +430,7 @@ export function App() {
     setSelectedAuthorSlug(null);
     setSelectedArticleForReader(null);
     setSearchQuery('');
-    window.history.pushState({}, '', '/about-us');
+    window.history.pushState({}, '', '/about');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -438,7 +439,7 @@ export function App() {
     setSelectedAuthorSlug(null);
     setSelectedArticleForReader(null);
     setSearchQuery('');
-    window.history.pushState({}, '', '/contact-us');
+    window.history.pushState({}, '', '/contact');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -447,7 +448,7 @@ export function App() {
     setSelectedAuthorSlug(null);
     setSelectedArticleForReader(null);
     setSearchQuery('');
-    window.history.pushState({}, '', '/privacy-policy');
+    window.history.pushState({}, '', '/privacy');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -456,7 +457,7 @@ export function App() {
     setSelectedAuthorSlug(null);
     setSelectedArticleForReader(null);
     setSearchQuery('');
-    window.history.pushState({}, '', '/terms-and-conditions');
+    window.history.pushState({}, '', '/terms');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
