@@ -671,8 +671,10 @@ function buildHtmlDocument(templateHtml, { title, description, canonicalPath, og
     );
   }
 
-  // Inject pre-rendered semantic HTML into <div id="root">...</div>
-  html = html.replace('<div id="root"></div>', `<div id="root">${bodyHtml}\n    </div>`);
+  // Leave <div id="root"></div> completely empty for seamless, flash-free React mounting.
+  // Place the static pre-rendered archive right after <div id="root"></div> for search engine crawlers and bots.
+  const archiveHtml = `<div id="root"></div>\n    <div id="static-editorial-archive" class="static-editorial-archive">\n${bodyHtml}\n    </div>`;
+  html = html.replace('<div id="root"></div>', archiveHtml);
 
   return html;
 }

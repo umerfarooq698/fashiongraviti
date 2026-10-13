@@ -18,7 +18,6 @@ import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 import { updateDocumentSEO } from './utils/seo';
 
-const STORAGE_KEY_ARTICLES = 'fashiongraviti_articles_v66';
 const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v7';
 
 const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
@@ -144,24 +143,8 @@ function parseRouteFromURL(articlesList: FashionArticle[]): ParsedRoute {
 }
 
 export function App() {
-  // Articles state with localStorage hydration & automatic sync with deployed INITIAL_ARTICLES
-  const [articles, setArticles] = useState<FashionArticle[]>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY_ARTICLES);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Merge deployed INITIAL_ARTICLES that might not be in localStorage yet
-          const savedIds = new Set(parsed.map((a: FashionArticle) => a.id));
-          const newDeployed = INITIAL_ARTICLES.filter(a => !savedIds.has(a.id));
-          return [...newDeployed, ...parsed];
-        }
-      } catch (e) {
-        console.error('Failed to parse saved articles:', e);
-      }
-    }
-    return INITIAL_ARTICLES;
-  });
+  // Articles state directly initialized from INITIAL_ARTICLES for instant 0ms mount
+  const [articles, setArticles] = useState<FashionArticle[]>(INITIAL_ARTICLES);
 
   // Parse current route synchronously on Frame 0 before any render to eliminate content flash
   const initialRoute = useMemo(() => parseRouteFromURL(articles), []);
@@ -191,11 +174,6 @@ export function App() {
   const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | 'privacy' | 'terms' | null>(() => initialRoute.staticPage);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
-
-  // Sync articles to localStorage
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY_ARTICLES, JSON.stringify(articles));
-  }, [articles]);
 
   // Sync bookmarks to localStorage
   useEffect(() => {
