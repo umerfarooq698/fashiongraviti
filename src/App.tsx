@@ -48,6 +48,101 @@ const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
   },
 };
 
+interface ParsedRoute {
+  article: FashionArticle | null;
+  authorSlug: string | null;
+  staticPage: 'about' | 'contact' | 'privacy' | 'terms' | null;
+  category: string;
+  search: string;
+}
+
+const CATEGORY_MAP: Record<string, string> = {
+  'fashion-news': 'fashion-news',
+  'fashion-trends': 'fashion-trends',
+  'celebrity': 'celebrity',
+  'celebrity-fashion': 'celebrity',
+  'designers-brands': 'designers-brands',
+  'designers-and-brands': 'designers-brands',
+  'beauty': 'beauty',
+  'how-to-style': 'how-to-style',
+  'home': 'all',
+  'all': 'all',
+};
+
+function parseRouteFromURL(articlesList: FashionArticle[]): ParsedRoute {
+  if (typeof window === 'undefined') {
+    return { article: null, authorSlug: null, staticPage: null, category: 'all', search: '' };
+  }
+  const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  const segments = rawPath.split('/').filter(Boolean);
+  const params = new URLSearchParams(window.location.search);
+
+  const queryStory = params.get('story') || params.get('article');
+  const queryCat = params.get('category');
+  const search = params.get('search') || params.get('tag') || '';
+
+  // 1. Author profile page (/author/:slug)
+  if (segments.length >= 2 && segments[0].toLowerCase() === 'author') {
+    return {
+      article: null,
+      authorSlug: segments[1].toLowerCase(),
+      staticPage: null,
+      category: 'all',
+      search,
+    };
+  }
+
+  // 2. Static pages (/about, /contact, /privacy, /terms)
+  if (segments.length === 1) {
+    const seg = segments[0].toLowerCase();
+    if (seg === 'about-us' || seg === 'about') return { article: null, authorSlug: null, staticPage: 'about', category: 'all', search };
+    if (seg === 'contact-us' || seg === 'contact') return { article: null, authorSlug: null, staticPage: 'contact', category: 'all', search };
+    if (seg === 'privacy-policy' || seg === 'privacy') return { article: null, authorSlug: null, staticPage: 'privacy', category: 'all', search };
+    if (seg === 'terms-and-conditions' || seg === 'terms') return { article: null, authorSlug: null, staticPage: 'terms', category: 'all', search };
+  }
+
+  let matchedArticle: FashionArticle | null = null;
+  let matchedCategory = 'all';
+
+  if (queryStory) {
+    matchedArticle = articlesList.find((a) => a.id === queryStory || a.slug === queryStory || (a.legacySlugs && a.legacySlugs.includes(queryStory))) || null;
+  }
+
+  if (!matchedArticle && segments.length > 0) {
+    if (segments.length === 1) {
+      const seg = segments[0].toLowerCase();
+      if (CATEGORY_MAP[seg]) {
+        matchedCategory = CATEGORY_MAP[seg];
+      } else {
+        matchedArticle = articlesList.find((a) => a.slug === seg || a.id === seg || (a.legacySlugs && a.legacySlugs.includes(seg))) || null;
+        if (matchedArticle) {
+          matchedCategory = matchedArticle.category;
+        }
+      }
+    } else if (segments.length >= 2) {
+      const lastSeg = segments[segments.length - 1].toLowerCase();
+      matchedArticle = articlesList.find((a) => a.slug === lastSeg || a.id === lastSeg || (a.legacySlugs && a.legacySlugs.includes(lastSeg))) || null;
+      if (matchedArticle) {
+        matchedCategory = matchedArticle.category;
+      } else if (CATEGORY_MAP[segments[0].toLowerCase()]) {
+        matchedCategory = CATEGORY_MAP[segments[0].toLowerCase()];
+      }
+    }
+  }
+
+  if (queryCat && CATEGORY_MAP[queryCat.toLowerCase()]) {
+    matchedCategory = CATEGORY_MAP[queryCat.toLowerCase()];
+  }
+
+  return {
+    article: matchedArticle,
+    authorSlug: null,
+    staticPage: null,
+    category: matchedArticle ? matchedArticle.category : matchedCategory,
+    search,
+  };
+}
+
 export function App() {
   // Articles state with localStorage hydration & automatic sync with deployed INITIAL_ARTICLES
   const [articles, setArticles] = useState<FashionArticle[]>(() => {
@@ -68,6 +163,9 @@ export function App() {
     return INITIAL_ARTICLES;
   });
 
+  // Parse current route synchronously on Frame 0 before any render to eliminate content flash
+  const initialRoute = useMemo(() => parseRouteFromURL(articles), []);
+
   // Bookmarks state
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_BOOKMARKS);
@@ -81,16 +179,16 @@ export function App() {
     return [];
   });
 
-  // Filter & Search states
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  // Filter & Search states (Initialized synchronously from current URL)
+  const [activeCategory, setActiveCategory] = useState<string>(() => initialRoute.category);
   const [activeMood, setActiveMood] = useState<FashionMood>('All Moods');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>(() => initialRoute.search);
   const [layoutMode, setLayoutMode] = useState<ViewLayoutMode>('editorial');
 
-  // Modals & Static Pages states
-  const [selectedArticleForReader, setSelectedArticleForReader] = useState<FashionArticle | null>(null);
-  const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
-  const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | 'privacy' | 'terms' | null>(null);
+  // Modals & Static Pages states (Initialized synchronously from current URL)
+  const [selectedArticleForReader, setSelectedArticleForReader] = useState<FashionArticle | null>(() => initialRoute.article);
+  const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(() => initialRoute.authorSlug);
+  const [activeStaticPage, setActiveStaticPage] = useState<'about' | 'contact' | 'privacy' | 'terms' | null>(() => initialRoute.staticPage);
   const [isLookbookOpen, setIsLookbookOpen] = useState(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
 
@@ -104,137 +202,37 @@ export function App() {
     localStorage.setItem(STORAGE_KEY_BOOKMARKS, JSON.stringify(bookmarkedIds));
   }, [bookmarkedIds]);
 
-  // Ensure dark class is applied and purge old database cache versions
+  // Ensure dark class is applied and defer cache purge to background idle time
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    for (let i = 1; i <= 50; i++) {
-      try {
-        localStorage.removeItem(`fashiongraviti_articles_v${i}`);
-        localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
-      } catch {
-        // ignore
+    const timer = setTimeout(() => {
+      for (let i = 1; i <= 50; i++) {
+        try {
+          localStorage.removeItem(`fashiongraviti_articles_v${i}`);
+          localStorage.removeItem(`fashiongraviti_bookmarks_v${i}`);
+        } catch {
+          // ignore
+        }
       }
-    }
+    }, 2500);
+    return () => clearTimeout(timer);
   }, []);
 
-  // Listen to URL path (/category, /author/:slug, /title-slug, /about-us, /contact-us) and search params on mount & popstate
+  // Listen to browser popstate (back/forward navigation)
   useEffect(() => {
-    const syncStateFromURL = () => {
-      const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
-      const segments = rawPath.split('/').filter(Boolean);
-      const params = new URLSearchParams(window.location.search);
-
-      const queryStory = params.get('story') || params.get('article');
-      const queryCat = params.get('category');
-      const search = params.get('search') || params.get('tag');
-
-      // Check author profile page first
-      if (segments.length >= 2 && segments[0].toLowerCase() === 'author') {
-        setSelectedAuthorSlug(segments[1].toLowerCase());
-        setActiveStaticPage(null);
-        setSelectedArticleForReader(null);
-        setActiveCategory('all');
-        return;
-      }
-
-      setSelectedAuthorSlug(null);
-
-      // Check static pages
-      if (segments.length === 1) {
-        const seg = segments[0].toLowerCase();
-        if (seg === 'about-us' || seg === 'about') {
-          setActiveStaticPage('about');
-          setSelectedArticleForReader(null);
-          setActiveCategory('all');
-          return;
-        }
-        if (seg === 'contact-us' || seg === 'contact') {
-          setActiveStaticPage('contact');
-          setSelectedArticleForReader(null);
-          setActiveCategory('all');
-          return;
-        }
-        if (seg === 'privacy-policy' || seg === 'privacy') {
-          setActiveStaticPage('privacy');
-          setSelectedArticleForReader(null);
-          setActiveCategory('all');
-          return;
-        }
-        if (seg === 'terms-and-conditions' || seg === 'terms') {
-          setActiveStaticPage('terms');
-          setSelectedArticleForReader(null);
-          setActiveCategory('all');
-          return;
-        }
-      }
-
-      setActiveStaticPage(null);
-
-      const categoryMap: Record<string, string> = {
-        'fashion-news': 'fashion-news',
-        'fashion-trends': 'fashion-trends',
-        'celebrity': 'celebrity',
-        'celebrity-fashion': 'celebrity',
-        'designers-brands': 'designers-brands',
-        'designers-and-brands': 'designers-brands',
-        'beauty': 'beauty',
-        'how-to-style': 'how-to-style',
-        'home': 'all',
-        'all': 'all',
-      };
-
-      let matchedArticle: FashionArticle | null = null;
-      let matchedCategory = 'all';
-
-      // 1. Direct query param fallback
-      if (queryStory) {
-        matchedArticle = articles.find((a) => a.id === queryStory || a.slug === queryStory || (a.legacySlugs && a.legacySlugs.includes(queryStory))) || null;
-      }
-
-      // 2. Direct path slug matching (/category or /title-slug or /category/title-slug)
-      if (!matchedArticle && segments.length > 0) {
-        if (segments.length === 1) {
-          const seg = segments[0].toLowerCase();
-          if (categoryMap[seg]) {
-            matchedCategory = categoryMap[seg];
-          } else {
-            matchedArticle = articles.find((a) => a.slug === seg || a.id === seg || (a.legacySlugs && a.legacySlugs.includes(seg))) || null;
-            if (matchedArticle) {
-              matchedCategory = matchedArticle.category;
-            }
-          }
-        } else if (segments.length >= 2) {
-          const lastSeg = segments[segments.length - 1].toLowerCase();
-          matchedArticle = articles.find((a) => a.slug === lastSeg || a.id === lastSeg || (a.legacySlugs && a.legacySlugs.includes(lastSeg))) || null;
-          if (matchedArticle) {
-            matchedCategory = matchedArticle.category;
-          } else if (categoryMap[segments[0].toLowerCase()]) {
-            matchedCategory = categoryMap[segments[0].toLowerCase()];
-          }
-        }
-      }
-
-      // 3. Category query param fallback
-      if (queryCat && categoryMap[queryCat.toLowerCase()]) {
-        matchedCategory = categoryMap[queryCat.toLowerCase()];
-      }
-
-      if (matchedArticle) {
-        setSelectedArticleForReader(matchedArticle);
-        setActiveCategory(matchedArticle.category);
-      } else {
-        setSelectedArticleForReader(null);
-        setActiveCategory(matchedCategory);
-      }
-
-      if (search) {
-        setSearchQuery(search);
+    const handlePopState = () => {
+      const parsed = parseRouteFromURL(articles);
+      setSelectedAuthorSlug(parsed.authorSlug);
+      setActiveStaticPage(parsed.staticPage);
+      setSelectedArticleForReader(parsed.article);
+      setActiveCategory(parsed.category);
+      if (parsed.search) {
+        setSearchQuery(parsed.search);
       }
     };
 
-    syncStateFromURL();
-    window.addEventListener('popstate', syncStateFromURL);
-    return () => window.removeEventListener('popstate', syncStateFromURL);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, [articles]);
 
   // Dynamic SEO for Pages, Categories, Authors, and Home (when Reader modal is closed)
@@ -519,7 +517,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-noir text-alabaster selection:bg-crimson selection:text-white transition-colors duration-300 font-sans">
+    <div className="min-h-screen bg-noir text-alabaster selection:bg-crimson selection:text-white font-sans">
       {/* 1. Header Masthead & Navigation */}
       <Header
         categories={dynamicCategories}

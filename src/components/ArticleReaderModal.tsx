@@ -58,7 +58,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
 
   // Scroll to top whenever article changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [article?.id]);
 
   // Dynamic SEO & Structured Data for Article
