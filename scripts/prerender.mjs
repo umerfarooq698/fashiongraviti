@@ -88,7 +88,7 @@ const CATEGORY_SEO = {
     editorialEssay: [
       'The Fashion News desk at Fashion Graviti delivers direct, independent reporting from the capitals of global style—Paris, Milan, London, New York and Tokyo. Our editors track creative director appointments, heritage fashion house announcements, textile supply chain shifts and major runway presentations as they unfold each season.',
       'Unlike commercial aggregators, our newsroom prioritizes primary analysis of garment construction, atelier craftsmanship and the cultural forces shaping luxury retail and independent design labels. Every bulletin is fact-checked for collection dates, fabric provenance and designer attribution.',
-      'Readers rely on this department for comprehensive coverage of Haute Couture showcases, ready-to-wear debuts, exhibition retrospectives at leading costume institutes and emerging talent spotlights across international fashion weeks.',
+      'Readers rely on this department for detailed coverage of Haute Couture showcases, ready-to-wear debuts, exhibition retrospectives at leading costume institutes and emerging talent spotlights across international fashion weeks.',
     ],
   },
   'fashion-trends': {
