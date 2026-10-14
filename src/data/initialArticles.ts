@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights, and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 4,
+    count: 5,
   },
   {
     id: 'fashion-news',
@@ -26,7 +26,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The biggest runway-to-street trends, color palettes, and must-have wardrobe shifts.',
     image: 'https://images.unsplash.com/photo-1717944105945-669b3dd77bfd?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 1,
+    count: 2,
   },
   {
     id: 'celebrity',
@@ -67,6 +67,98 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-what-is-streetwear-1791980000000",
+    "title": "What is Streetwear: Origins, Culture, Styling, and Essential Guide",
+    "subtitle": "From counterculture skate roots and Tokyo Ura-Harajuku to high fashion runways, explore the complete guide to streetwear history, silhouettes, and styling.",
+    "slug": "what-is-streetwear",
+    "category": "fashion-trends",
+    "categoryLabel": "Fashion Trends",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 23",
+    "locationTag": "PARIS // EDITORIAL DESK",
+    "featured": false,
+    "author": {
+      "name": "Julian Thorne-Dumont",
+      "role": "Senior Sartorial and Tailoring Critic",
+      "location": "Milan and London",
+      "avatar": "/authors/julian-thorne-dumont.jpg",
+      "instagram": "@julian_sartorial"
+    },
+    "publishedAt": "OCTOBER 15, 2026",
+    "readTime": "11 MIN READ",
+    "coverImage": "/images/what-is-streetwear-guide.jpg",
+    "coverImageCaption": "Modern streetwear styling featuring high-waisted tan cargo jeans, a heavyweight hoodie, platform sneakers, and utility accessories on a Parisian boulevard.",
+    "coverImageAlt": "Chic woman wearing high-waisted tan cargo jeans and heavyweight hoodie in Paris",
+    "metaDescription": "Explore what is streetwear fashion, subcultural origins, luxury drops, and how to style cargo khaki trousers in our complete editorial guide.",
+    "content": {
+      "dropCapText": "To truly understand what is streetwear, one must look beyond casual graphic t-shirts and examine the rebellious spirit of global youth movements. While traditional fashion houses dictated trends from gilded Parisian salons downward to consumers, streetwear inverted that hierarchy entirely, creating a dynamic cultural movement that bubbled up from urban sidewalks, skate parks, and underground clubs into haute couture ateliers.",
+      "bodyParagraphs": [
+        "## Decoding the Foundations: What is Streetwear and What Does It Mean?",
+        "Asking what does streetwear mean or searching for a precise streetwear def reveals that the movement resists narrow categorization. If you seek a formal streetwear definition or ask a sartorial historian to define streetwear, they will describe a global design language rooted in casual luxury wardrobe pieces, comfort, subcultural identity, and anti-establishment sartorial codes. At its baseline, what is streetwear clothing? It encompasses relaxed utilitarian garments—from the signature heavyweight cotton hoodie and boxy-fit tees with drop-shoulder cuts to relaxed fit bottoms, oversized silhouettes, and wide-leg denim. Yet the true streetwear meaning transcends individual garments; it represents an authentic counterculture movement where community loyalty and sneakerhead culture outweigh traditional high-society exclusivity.",
+        "In every leading magazine streetwear publication and across digital outlets covering streetwear news today, this phenomenon reflects the democratization of luxury fashion. When readers browse a contemporary streetwear mag or follow breaking streetwear news, they discover that streetwear culture thrives on genuine human stories rather than corporate marketing boards.",
+        "## The Four Historic Pillars: Tracing Streetwear Origins",
+        "Examining streetwear origins requires mapping four distinct geographic and cultural epicenters that emerged during the late twentieth century:",
+        "* **1. Southern California Skate and Surf Culture (1980s):** The initial spark ignited when surfboard shaper Shawn Stussy began scribbling his family surname onto custom surfboards and cotton tees in Laguna Beach. This concrete skate aesthetic quickly merged with durable workwear heritage, establishing graphic apparel as a uniform of coastal rebellion.",
+        "* **2. New York Hip-Hop Fashion Movement (Late 1980s):** In uptown Manhattan, the pioneering atelier of Dapper Dan Harlem revolutionized the aesthetic by repurposing European luxury monogram prints into bespoke, oversized jackets for rap royalty. This bold East Coast energy permanently redefined urban dressing.",
+        "* **3. Tokyo Ura-Harajuku Scene (1990s):** In the quiet back-alleys of Harajuku, creative pioneers Hiroshi Fujiwara and NIGO BAPE pioneered underground boutique retail. They introduced hyper-curated, limited-edition drops and graphical camouflage, creating the blueprint for artificial scarcity and resale market hype.",
+        "* **4. The Modern Luxury Fashion Crossover (2017 to Present):** The tipping point arrived with the historic Supreme Louis Vuitton 2017 collaboration, which dissolved the boundary between high fashion and the pavement. Today, ready-to-wear streetwear anchors the contemporary runway narrative as haute couture meets streetwear and traditional runway ateliers adopt streetwear silhouettes at every major fashion week.",
+        "## Anatomy of Utilitarian Bottoms: Tan Cargo Jeans and Khaki Trousers",
+        "Among the most essential streetwear wardrobe essentials, utilitarian trousers have become the defining silhouette of modern street and style dressing. Originating from British Battle Dress 1938 military surplus apparel, trousers with tactical thigh pockets were originally designed to carry field gear. Today, they form the cornerstone of elevated casualwear and the core utilitarian aesthetic.",
+        "When curating an urban outfit, tan cargo jeans offer unmatched versatility by bridging rugged denim durability with tactical multi-pocket utility. Similarly, tailored cargo khaki trousers and relaxed khaki cargo jeans provide a refined alternative to conventional indigo jeans. These garments feature heavy ripstop cotton fabric or structured cotton canvas construction, complete with durable double-knee stitching that holds its architectural shape over years of daily wear. During the ongoing Y2K fashion revival, low-rise baggy bottoms have also regained prominence across street casual fashion styling.",
+        "## Street Women Style: Proportions and Street Style Fashion for Women",
+        "While early skatewear was largely marketed toward men, the evolution of street women style has fundamentally transformed modern fashion. Today, street women fashion and street style fashion for women represent the most innovative styling category on global fashion runways.",
+        "Mastering how to style street style requires understanding proportional styling rules that balance masculine volumes with refined tailoring. Consider these core streetwear styling formulas:",
+        "* **The Tight-Top Oversized-Bottom Formula:** Pair high-waisted tan cargo jeans or khaki cargo jeans with a cropped baby tee or sculpted ribbed tank, creating dynamic visual contrast that balances wide-leg volume.",
+        "* **The Tailored Blazer Pairing:** Drape an oversized structured wool blazer over a heavyweight hoodie and cargo khaki trousers, executing high-low fashion mixing that fuses formal atelier tailoring with relaxed skate elements.",
+        "* **The Fine Jewelry Accents:** Elevate casual street pieces with deliberate jewelry curation. Fastening a delicate [16 vs 18 inch necklace](/16-vs-18-inch-necklace) chain or showcasing upper cartilage piercings like [hidden helix jewelry](/hidden-helix-jewelry) introduces subtle refinement against rugged canvas textures.",
+        "* **Feminine Silhouette Contrast:** Contrast flowy garments such as silk midi [types of dresses](/types-of-dresses) with platform chunky sneakers and an oversized vintage leather bomber jacket.",
+        "## Streetwear Color Palettes and Material Architecture",
+        "Contemporary streetwear styl departs from loud 2010s neon graphics in favor of refined earth tone neutrals and transitional seasonal layers. Understated sandstone and beige hues, olive green cargo tones, and washed vintage black dominate modern seasonal collections. For wearers who style their wardrobes according to a [soft summer color palette](/soft-summer-color-palette), these desaturated, chalky tones harmonize effortlessly with cool, muted complexions.",
+        "Beyond colorways, authentic unisex utilitarian garments prioritize heavyweight fabrication over flimsy synthetic blends. Incorporating elements of gorpcore outdoor utility, weather-resistant outerwear, and techwear Gore-Tex, modern street designers create pieces that withstand urban elements. Complete the silhouette with foundational accessories: minimalist crossbody utility bags, bucket hats and beanies, and archival skate shoes.",
+        "## Streetwear Garment Care: Preserving Shape and Print Longevity",
+        "High-grade street clothing represents an investment that demands mindful garment maintenance. Follow these practical rules for proper streetwear garment care:",
+        "* **Cold Wash Hang Dry:** Always wash heavyweight hoodies and graphic tees inside out in cold water on a gentle cycle, then hang dry away from direct heat to prevent fabric shrinkage and graphic cracking.",
+        "* **Steam Instead of Direct Ironing:** Avoid placing hot iron plates directly onto rubberized graphics or tactical nylon pockets; use an upright handheld steamer to relax wrinkles naturally.",
+        "* **Spot Clean Heavy Canvas:** Preserve the natural wax or mineral finish on cargo trousers by spot cleaning with a damp microfiber cloth rather than submitting to harsh chemical dry cleaning.",
+        "## The Future: Streetwear Authenticity vs Commercialization",
+        "As streetwear enters its next era, the tension between underground streetwear authenticity vs commercialization defines editorial discourse. While mass-market fast-fashion chains produce generic knockoffs, true enthusiasts gravitate toward independent designers and sustainable capsule collections that honor community roots. Ultimately, what is streetwear fashion? It is an enduring sartorial philosophy that celebrates individuality, ease of movement, and the effortless poetry of the street."
+      ],
+      "secondaryImage": {
+        "url": "/images/streetwear-cargo-styling.jpg",
+        "caption": "Tactical tailoring in motion: relaxed khaki cargo jeans with deep flap pockets, paired with archival leather sneakers and a tailored drop-shoulder coat.",
+        "alt": "Close-up of relaxed khaki cargo jeans with utility pockets and retro sneakers"
+      },
+      "faqs": [
+        {
+          "question": "What is the true definition of streetwear?",
+          "answer": "Streetwear is a casual lifestyle aesthetic originating from California surf and skate culture, New York hip-hop, and Tokyo youth movements, characterized by comfortable staples, graphic identity, and limited-edition drops."
+        },
+        {
+          "question": "How do you style tan cargo jeans in women streetwear?",
+          "answer": "Balance the oversized volume of tan cargo jeans with a fitted ribbed top, platform sneakers, a structured cross-body bag, and layered gold jewelry."
+        },
+        {
+          "question": "What fabrics are best for quality streetwear hoodies?",
+          "answer": "Premium streetwear hoodies utilize 400 to 500 GSM 100% loopback cotton French terry with ribbed side gussets and reinforced double-needle stitching."
+        },
+        {
+          "question": "Why did luxury fashion houses embrace streetwear?",
+          "answer": "Luxury fashion houses embraced streetwear because youth culture and sneakerhead communities redefined modern status symbols, shifting luxury away from stiff eveningwear toward comfortable, high-impact casualwear."
+        }
+      ]
+    },
+    "tags": [
+      "Streetwear",
+      "What Is Streetwear",
+      "Streetwear Culture",
+      "Cargo Jeans",
+      "Fashion Trends"
+    ],
+    "mood": "Cyber-Street",
+    "likes": 412,
+    "bookmarksCount": 128
+  },
   {
     "id": "article-16-vs-18-inch-necklace-1791917000000",
     "title": "16 vs 18 Inch Necklace: Sizing Guide, Placement, and Styling",
