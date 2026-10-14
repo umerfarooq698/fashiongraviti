@@ -6,7 +6,7 @@
 export const SITE_DOMAIN = 'https://fashiongraviti.com';
 export const SITE_NAME = 'Fashion Graviti';
 export const DEFAULT_TITLE = 'Fashion Graviti | Runway News and Seasonal Style Trends';
-export const DEFAULT_DESCRIPTION = 'Read runway reports, seasonal color palettes, and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.';
+export const DEFAULT_DESCRIPTION = 'Read runway reports, seasonal color palettes and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.';
 export const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85';
 
 export interface SEOProps {
@@ -27,7 +27,7 @@ export interface SEOProps {
 }
 
 /**
- * Dynamically updates document title, canonical URL, meta tags, and JSON-LD schema
+ * Dynamically updates document title, canonical URL, meta tags and JSON-LD schema
  */
 export function updateDocumentSEO(props: SEOProps): void {
   const fullTitle = props.title 

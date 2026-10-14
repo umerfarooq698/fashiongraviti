@@ -53,7 +53,7 @@ const AUTHORS = [
     role: 'Editor-in-Chief and Haute Couture Critic',
     location: 'Paris, France',
     avatar: '/authors/aurelia-vance-sterling.jpg',
-    bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure, and the legacy of international fashion houses. With over fifteen years of frontline coverage at Paris Haute Couture Week and Milan ready-to-wear presentations, Aurelia specializes in garment construction, fine jewelry anatomy, seasonal color harmony, and archival fashion criticism.',
+    bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure and the legacy of international fashion houses. With over fifteen years of frontline coverage at Paris Haute Couture Week and Milan ready-to-wear presentations, Aurelia specializes in garment construction, fine jewelry anatomy, seasonal color harmony and archival fashion criticism.',
   },
   {
     name: 'Julian Thorne-Dumont',
@@ -61,7 +61,7 @@ const AUTHORS = [
     role: 'Senior Sartorial and Tailoring Critic',
     location: 'Milan, Italy',
     avatar: '/authors/julian-thorne-dumont.jpg',
-    bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction, and classic dress silhouettes. Julian analyzes structural patternmaking, canvas interlinings, fabric drape behavior, and timeless wardrobe architecture for both formal and daily dressing.',
+    bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction and classic dress silhouettes. Julian analyzes structural patternmaking, canvas interlinings, fabric drape behavior and timeless wardrobe architecture for both formal and daily dressing.',
   },
   {
     name: 'Renata Moreau-Kroll',
@@ -69,7 +69,7 @@ const AUTHORS = [
     role: 'Celebrity Style and Red Carpet Columnist',
     location: 'New York and Cannes',
     avatar: '/authors/renata-moreau-kroll.jpg',
-    bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing, and modern gala aesthetics. Renata documents the collaboration between Hollywood stylists, heritage couture houses, and contemporary jewelry ateliers across major international film festivals and awards seasons.',
+    bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing and modern gala aesthetics. Renata documents the collaboration between Hollywood stylists, heritage couture houses and contemporary jewelry ateliers across major international film festivals and awards seasons.',
   },
   {
     name: 'Soren Lindqvist-Kovac',
@@ -77,63 +77,63 @@ const AUTHORS = [
     role: 'Avant-Garde and Heritage Brand Scholar',
     location: 'Stockholm, Sweden',
     avatar: '/authors/soren-lindqvist-kovac.jpg',
-    bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism, and sustainable luxury innovation. Soren researches experimental bio-textiles, zero-waste pattern engineering, and the historical evolution of European and Japanese design houses.',
+    bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism and sustainable luxury innovation. Soren researches experimental bio-textiles, zero-waste pattern engineering and the historical evolution of European and Japanese design houses.',
   },
 ];
 
 const CATEGORY_SEO = {
   'fashion-news': {
     title: 'Fashion News | Fashion Graviti',
-    description: 'Read the latest clothing news, runway shows, and designer stories. Get fast updates on fashion week events, brand changes, and new outfits.',
+    description: 'Read the latest clothing news, runway shows and designer stories. Get fast updates on fashion week events, brand changes and new outfits.',
     editorialEssay: [
-      'The Fashion News desk at Fashion Graviti delivers direct, independent reporting from the capitals of global style—Paris, Milan, London, New York, and Tokyo. Our editors track creative director appointments, heritage fashion house announcements, textile supply chain shifts, and major runway presentations as they unfold each season.',
-      'Unlike commercial aggregators, our newsroom prioritizes primary analysis of garment construction, atelier craftsmanship, and the cultural forces shaping luxury retail and independent design labels. Every bulletin is fact-checked for collection dates, fabric provenance, and designer attribution.',
-      'Readers rely on this department for comprehensive coverage of Haute Couture showcases, ready-to-wear debuts, exhibition retrospectives at leading costume institutes, and emerging talent spotlights across international fashion weeks.',
+      'The Fashion News desk at Fashion Graviti delivers direct, independent reporting from the capitals of global style—Paris, Milan, London, New York and Tokyo. Our editors track creative director appointments, heritage fashion house announcements, textile supply chain shifts and major runway presentations as they unfold each season.',
+      'Unlike commercial aggregators, our newsroom prioritizes primary analysis of garment construction, atelier craftsmanship and the cultural forces shaping luxury retail and independent design labels. Every bulletin is fact-checked for collection dates, fabric provenance and designer attribution.',
+      'Readers rely on this department for comprehensive coverage of Haute Couture showcases, ready-to-wear debuts, exhibition retrospectives at leading costume institutes and emerging talent spotlights across international fashion weeks.',
     ],
   },
   'fashion-trends': {
     title: 'Fashion Trends | Fashion Graviti',
-    description: 'See what clothing styles are popular right now. Find out which colors, prints, and fabrics are showing up in stores and on the street today.',
+    description: 'See what clothing styles are popular right now. Find out which colors, prints and fabrics are showing up in stores and on the street today.',
     editorialEssay: [
-      'The Fashion Trends desk examines how runway concepts transition into everyday wardrobes through rigorous color theory, textile weight analysis, and silhouette forecasting. Rather than chasing fleeting micro-trends, our critics evaluate seasonal movements that offer lasting sartorial value.',
-      'From Munsell-based seasonal color palettes such as the Soft Summer spectrum to architectural outerwear proportions and tactile knitwear weaves, we break down the visual mechanics behind why certain hues, cuts, and textures resonate each season.',
-      'Each trend report provides clear, practical guidance on identifying flattering undertones, pairing fabric finishes like matte crepe with brushed wool, and adapting seasonal runway directions to real-world climates and occasions.',
+      'The Fashion Trends desk examines how runway concepts transition into everyday wardrobes through rigorous color theory, textile weight analysis and silhouette forecasting. Rather than chasing fleeting micro-trends, our critics evaluate seasonal movements that offer lasting sartorial value.',
+      'From Munsell-based seasonal color palettes such as the Soft Summer spectrum to architectural outerwear proportions and tactile knitwear weaves, we break down the visual mechanics behind why certain hues, cuts and textures resonate each season.',
+      'Each trend report provides clear, practical guidance on identifying flattering undertones, pairing fabric finishes like matte crepe with brushed wool and adapting seasonal runway directions to real-world climates and occasions.',
     ],
   },
   'celebrity': {
     title: 'Celebrity Style | Fashion Graviti',
     description: 'Check out what your favorite stars wear on the red carpet and in daily life. See photos and details about celebrity outfits and accessories.',
     editorialEssay: [
-      'The Celebrity Style desk documents red carpet couture, film festival premieres, Met Gala commissions, and off-duty street style with an emphasis on tailoring and styling craftsmanship. Our columnists examine the creative partnerships between leading actors, musicians, personal stylists, and historic fashion houses.',
-      'Beyond surface photography, we analyze custom gown engineering, archival vintage pulls from museum-grade collections, fine jewelry placements, and the sartorial storytelling behind major press tours and international awards ceremonies.',
+      'The Celebrity Style desk documents red carpet couture, film festival premieres, Met Gala commissions and off-duty street style with an emphasis on tailoring and styling craftsmanship. Our columnists examine the creative partnerships between leading actors, musicians, personal stylists and historic fashion houses.',
+      'Beyond surface photography, we analyze custom gown engineering, archival vintage pulls from museum-grade collections, fine jewelry placements and the sartorial storytelling behind major press tours and international awards ceremonies.',
       'Whether evaluating a custom column dress in Cannes or tailored wool coats on the streets of New York, our coverage highlights how celebrity wardrobe choices influence broader fashion trends and revive classic silhouettes.',
     ],
   },
   'designers-brands': {
     title: 'Designers and Brands | Fashion Graviti',
-    description: 'Learn about the people and companies that make your clothes. Read stories on top fashion designers, new labels, and popular clothing brands.',
+    description: 'Learn about the people and companies that make your clothes. Read stories on top fashion designers, new labels and popular clothing brands.',
     editorialEssay: [
-      'The Designers and Brands desk serves as an encyclopedic archive dedicated to heritage couture houses, bespoke tailoring ateliers, specialist jewelry makers, and boundary-pushing independent labels. We study the founding philosophies, signature patternmaking techniques, and material standards that define great fashion houses.',
-      'Our monographs explore how master tailors, goldsmiths, and creative directors preserve traditional handcraft while introducing modern technical innovations—from Italian wool mills in Biella to Parisian feather and embroidery workshops.',
+      'The Designers and Brands desk serves as an encyclopedic archive dedicated to heritage couture houses, bespoke tailoring ateliers, specialist jewelry makers and boundary-pushing independent labels. We study the founding philosophies, signature patternmaking techniques and material standards that define great fashion houses.',
+      'Our monographs explore how master tailors, goldsmiths and creative directors preserve traditional handcraft while introducing modern technical innovations—from Italian wool mills in Biella to Parisian feather and embroidery workshops.',
       'By understanding the history and construction standards of individual brands, readers can make informed investments in garments and accessories built for generational longevity.',
     ],
   },
   'beauty': {
     title: 'Beauty | Fashion Graviti',
-    description: 'Find simple tips for skincare, makeup, and hair care. Read about popular beauty products and easy ways to build your daily routine at home.',
+    description: 'Find simple tips for skincare, makeup and hair care. Read about popular beauty products and easy ways to build your daily routine at home.',
     editorialEssay: [
-      'The Beauty desk bridges backstage runway artistry with evidence-based daily skincare, hair styling, and cosmetic color harmony. Our editors consult dermatological research, professional makeup artists, and color analysts to demystify product formulations and application techniques.',
-      'We focus on how skin undertone, natural lip and eye pigmentation, and lighting conditions interact with foundation shades, lip colors, and hair tones—ensuring your beauty routine works in seamless harmony with your clothing palette.',
-      'From barrier-supportive skincare routines and biocompatible piercing aftercare to sculpted editorial hair and minimalist complexion finishes, every guide is written for clarity, safety, and everyday practicality.',
+      'The Beauty desk bridges backstage runway artistry with evidence-based daily skincare, hair styling and cosmetic color harmony. Our editors consult dermatological research, professional makeup artists and color analysts to demystify product formulations and application techniques.',
+      'We focus on how skin undertone, natural lip and eye pigmentation and lighting conditions interact with foundation shades, lip colors and hair tones—ensuring your beauty routine works in seamless harmony with your clothing palette.',
+      'From barrier-supportive skincare routines and biocompatible piercing aftercare to sculpted editorial hair and minimalist complexion finishes, every guide is written for clarity, safety and everyday practicality.',
     ],
   },
   'how-to-style': {
     title: 'How to Style | Fashion Graviti',
     description: 'Get easy advice on how to put together outfits with clothes you already own. Learn simple tricks to match colors and wear items for any day.',
     editorialEssay: [
-      'The How to Style desk provides actionable, anatomically grounded wardrobe advice for building a functional, cohesive personal style. Our styling guides cover dress silhouettes, fine jewelry curation, fabric layering, proportion balancing, and seasonal capsule planning.',
+      'The How to Style desk provides actionable, anatomically grounded wardrobe advice for building a functional, cohesive personal style. Our styling guides cover dress silhouettes, fine jewelry curation, fabric layering, proportion balancing and seasonal capsule planning.',
       'Whether selecting the right dress cut for a formal evening event, coordinating hidden helix cartilage jewelry with necklines and metal hardware, or combining muted cool tones for effortless daily outfits, our editors translate professional styling principles into clear steps.',
-      'Every tutorial emphasizes versatility, comfort, material quality, and proper fit so you can maximize the clothes and accessories you already own while shopping with confidence.',
+      'Every tutorial emphasizes versatility, comfort, material quality and proper fit so you can maximize the clothes and accessories you already own while shopping with confidence.',
     ],
   },
 };
@@ -356,7 +356,7 @@ function renderHomeBodyHtml(articles, categories) {
       </section>
       <section>
         <h2>About Fashion Graviti Publication</h2>
-        <p>Fashion Graviti is an independent fashion magazine and sartorial archive reporting on runway collections, seasonal color analysis, dress silhouettes, fine jewelry anatomy, and everyday wardrobe styling. Our critics and editors in Paris, Milan, New York, and Stockholm publish practical guides and in-depth textile critiques designed for enduring personal style.</p>
+        <p>Fashion Graviti is an independent fashion magazine and sartorial archive reporting on runway collections, seasonal color analysis, dress silhouettes, fine jewelry anatomy and everyday wardrobe styling. Our critics and editors in Paris, Milan, New York and Stockholm publish practical guides and in-depth textile critiques designed for enduring personal style.</p>
         <p>Explore our <a href="/about">About Us</a> page to meet our editorial board, visit our <a href="/contact">Contact Desk</a> for reader inquiries and story pitches, or review our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms and Conditions</a>.</p>
       </section>
     </main>
@@ -421,30 +421,30 @@ function renderAboutBodyHtml(articles, categories) {
       <nav aria-label="Breadcrumb"><a href="/">Home</a> &gt; <span>About Us</span></nav>
       <header>
         <h1>The Independent Authority on Global Fashion and Runway Critique</h1>
-        <p>We document the intersection of haute couture craftsmanship, contemporary street culture, and revolutionary runway design with uncompromising editorial integrity.</p>
+        <p>We document the intersection of haute couture craftsmanship, contemporary street culture and revolutionary runway design with uncompromising editorial integrity.</p>
       </header>
       <section>
         <h2>A Modern Standard for Fashion Journalism</h2>
-        <p>Founded in 2026, Fashion Graviti was established to bring critical rigor, textile analysis, and aesthetic reverence back to modern fashion publishing. In a digital environment saturated with superficial noise and fast-fashion consumerism, Fashion Graviti serves as an independent publication for discerning individuals who appreciate the artistry, history, and craft of tailoring.</p>
-        <p>Our correspondents attend premier runway showcases from Paris to Tokyo, reporting directly on the collections, designers, and cultural movements shaping modern luxury. Every critique, review, and trend dispatch published on our platform adheres to strict journalistic principles, providing readers with accurate analysis, practical wardrobe guidance, and authentic sartorial critique.</p>
+        <p>Founded in 2026, Fashion Graviti was established to bring critical rigor, textile analysis and aesthetic reverence back to modern fashion publishing. In a digital environment saturated with superficial noise and fast-fashion consumerism, Fashion Graviti serves as an independent publication for discerning individuals who appreciate the artistry, history and craft of tailoring.</p>
+        <p>Our correspondents attend premier runway showcases from Paris to Tokyo, reporting directly on the collections, designers and cultural movements shaping modern luxury. Every critique, review and trend dispatch published on our platform adheres to strict journalistic principles, providing readers with accurate analysis, practical wardrobe guidance and authentic sartorial critique.</p>
       </section>
       <section>
         <h2>What We Document</h2>
         <ul>
-          <li><a href="/fashion-news">Independent Runway Critique</a>: Firsthand reporting directly from international fashion week shows in Paris, Milan, London, and New York.</li>
-          <li><a href="/designers-brands">Haute Couture and Atelier Focus</a>: Dedicated examination of artisanal metiers, textile provenance, and bespoke craftsmanship.</li>
-          <li><a href="/fashion-trends">Trend Intelligence and Forecasting</a>: Decoding seasonal shifts, silhouette evolutions, and color palettes transitioning from runway presentations to everyday wardrobes.</li>
-          <li><a href="/celebrity">Celebrity and Red Carpet Culture</a>: Authoritative analysis of iconic red carpet moments, Met Gala couture, styling breakdowns, and archival vintage revivals.</li>
-          <li><a href="/beauty">Backstage Beauty and Skincare</a>: Practical cosmetic color harmony, skin undertone analysis, and healthy daily routines.</li>
-          <li><a href="/how-to-style">Wardrobe Styling and Fit Guides</a>: Complete silhouette breakdowns, fine jewelry styling, and capsule wardrobe building.</li>
+          <li><a href="/fashion-news">Independent Runway Critique</a>: Firsthand reporting directly from international fashion week shows in Paris, Milan, London and New York.</li>
+          <li><a href="/designers-brands">Haute Couture and Atelier Focus</a>: Dedicated examination of artisanal metiers, textile provenance and bespoke craftsmanship.</li>
+          <li><a href="/fashion-trends">Trend Intelligence and Forecasting</a>: Decoding seasonal shifts, silhouette evolutions and color palettes transitioning from runway presentations to everyday wardrobes.</li>
+          <li><a href="/celebrity">Celebrity and Red Carpet Culture</a>: Authoritative analysis of iconic red carpet moments, Met Gala couture, styling breakdowns and archival vintage revivals.</li>
+          <li><a href="/beauty">Backstage Beauty and Skincare</a>: Practical cosmetic color harmony, skin undertone analysis and healthy daily routines.</li>
+          <li><a href="/how-to-style">Wardrobe Styling and Fit Guides</a>: Complete silhouette breakdowns, fine jewelry styling and capsule wardrobe building.</li>
         </ul>
       </section>
       <section>
         <h2>Our Journalistic Standards</h2>
-        <p><strong>Editorial Independence:</strong> We maintain a strict firewall between editorial critiques and commercial advertisements. Garments, collections, and designers featured on Fashion Graviti are chosen purely on artistic merit and cultural relevance.</p>
-        <p><strong>Factual Accuracy and Provenance:</strong> Our writers and editors verify fabric compositions, collection season histories, designer credits, and runway dates prior to publication. Errors are corrected promptly with full transparency.</p>
-        <p><strong>Original Commentary and Insight:</strong> Every article reflects genuine perspective, historical fashion context, and professional analysis from writers with deep domain experience in luxury fashion and textile arts.</p>
-        <p><strong>Reader Feedback and Accountability:</strong> We welcome inquiries, feedback, and corrections directly from readers, designers, and industry professionals via our <a href="/contact">Contact Us</a> page or at info.fashiongraviti@gmail.com.</p>
+        <p><strong>Editorial Independence:</strong> We maintain a strict firewall between editorial critiques and commercial advertisements. Garments, collections and designers featured on Fashion Graviti are chosen purely on artistic merit and cultural relevance.</p>
+        <p><strong>Factual Accuracy and Provenance:</strong> Our writers and editors verify fabric compositions, collection season histories, designer credits and runway dates prior to publication. Errors are corrected promptly with full transparency.</p>
+        <p><strong>Original Commentary and Insight:</strong> Every article reflects genuine perspective, historical fashion context and professional analysis from writers with deep domain experience in luxury fashion and textile arts.</p>
+        <p><strong>Reader Feedback and Accountability:</strong> We welcome inquiries, feedback and corrections directly from readers, designers and industry professionals via our <a href="/contact">Contact Us</a> page or at info.fashiongraviti@gmail.com.</p>
       </section>
       <section>
         <h2>Senior Critics and Editors</h2>
@@ -461,12 +461,12 @@ function renderContactBodyHtml(articles, categories) {
       <nav aria-label="Breadcrumb"><a href="/">Home</a> &gt; <span>Contact Us</span></nav>
       <header>
         <h1>Contact Fashion Graviti</h1>
-        <p>At Fashion Graviti, we value direct, thoughtful communication with our readers, independent writers, and fashion industry professionals. Whether you have feedback on our color analysis reports, need clarification on a wardrobe guide, or want to pitch an original story, here is how you can reach our editorial team directly.</p>
+        <p>At Fashion Graviti, we value direct, thoughtful communication with our readers, independent writers and fashion industry professionals. Whether you have feedback on our color analysis reports, need clarification on a wardrobe guide, or want to pitch an original story, here is how you can reach our editorial team directly.</p>
       </header>
       <section>
         <h2>Editorial Inquiries and Story Pitches</h2>
-        <p>Our editorial desk is always open to well-researched pitches, styling perspectives, and trend critiques across <a href="/fashion-news">Fashion News</a>, <a href="/fashion-trends">Fashion Trends</a>, and <a href="/how-to-style">How to Style</a>. If you are an independent fashion writer, stylist, or textile researcher with a story idea, we want to hear from you.</p>
-        <p>When sending a pitch, please include a brief summary of your topic, why it matters to our readers, and links to any previously published work. Please write "Editorial Pitch" in your email subject line so it routes straight to our writing team. We review all pitches carefully and aim to respond to relevant proposals within two to three business days.</p>
+        <p>Our editorial desk is always open to well-researched pitches, styling perspectives and trend critiques across <a href="/fashion-news">Fashion News</a>, <a href="/fashion-trends">Fashion Trends</a> and <a href="/how-to-style">How to Style</a>. If you are an independent fashion writer, stylist, or textile researcher with a story idea, we want to hear from you.</p>
+        <p>When sending a pitch, please include a brief summary of your topic, why it matters to our readers and links to any previously published work. Please write "Editorial Pitch" in your email subject line so it routes straight to our writing team. We review all pitches carefully and aim to respond to relevant proposals within two to three business days.</p>
         <p>Email: <a href="mailto:info.fashiongraviti@gmail.com?subject=Editorial%20Pitch">info.fashiongraviti@gmail.com</a></p>
       </section>
       <section>
@@ -476,12 +476,12 @@ function renderContactBodyHtml(articles, categories) {
       </section>
       <section>
         <h2>Press, Media and Brand Collaborations</h2>
-        <p>We regularly review collections from clothing labels, textile mills, and independent design ateliers whose values align with our focus on craftsmanship and enduring personal style in our <a href="/designers-brands">Designers and Brands</a> and <a href="/celebrity">Celebrity</a> departments.</p>
+        <p>We regularly review collections from clothing labels, textile mills and independent design ateliers whose values align with our focus on craftsmanship and enduring personal style in our <a href="/designers-brands">Designers and Brands</a> and <a href="/celebrity">Celebrity</a> departments.</p>
         <p>If you are a public relations representative or brand founder looking to share lookbooks, runway invitations, or interview opportunities with our critics, please email your media materials with the subject line "Press Inquiry" to info.fashiongraviti@gmail.com.</p>
       </section>
       <section>
         <h2>Reader Questions and Response Times</h2>
-        <p>We welcome questions about styling dilemmas, wardrobe building, and understanding seasonal palettes. Every message sent to our inbox is read and handled personally by our team without automated chatbots or generic canned replies. Our desk reviews reader correspondence Monday through Friday between 9:00 AM and 6:00 PM CET. Please allow 24 to 48 hours for a direct response. Learn more about our team on our <a href="/about">About Us</a> page.</p>
+        <p>We welcome questions about styling dilemmas, wardrobe building and understanding seasonal palettes. Every message sent to our inbox is read and handled personally by our team without automated chatbots or generic canned replies. Our desk reviews reader correspondence Monday through Friday between 9:00 AM and 6:00 PM CET. Please allow 24 to 48 hours for a direct response. Learn more about our team on our <a href="/about">About Us</a> page.</p>
       </section>
     </main>
     ${renderFooterNav(categories, articles)}`;
@@ -494,16 +494,16 @@ function renderPrivacyBodyHtml(articles, categories) {
       <nav aria-label="Breadcrumb"><a href="/">Home</a> &gt; <span>Privacy Policy</span></nav>
       <header>
         <h1>Privacy Policy</h1>
-        <p>Transparency, reader trust, and data minimization are core to our publishing philosophy. Below is a clear breakdown of how Fashion Graviti handles information across our website.</p>
+        <p>Transparency, reader trust and data minimization are core to our publishing philosophy. Below is a clear breakdown of how Fashion Graviti handles information across our website.</p>
       </header>
       <section>
         <h2>1. Information We Collect</h2>
-        <p>Fashion Graviti collects only the minimum information necessary to operate and improve our editorial platform. When you visit our site, we automatically collect technical information including your IP address, browser type, operating system, pages visited, time spent on pages, and referring URLs via standard server logs and analytics tools.</p>
+        <p>Fashion Graviti collects only the minimum information necessary to operate and improve our editorial platform. When you visit our site, we automatically collect technical information including your IP address, browser type, operating system, pages visited, time spent on pages and referring URLs via standard server logs and analytics tools.</p>
         <p>We use first-party local storage and cookies to remember your preferences, such as bookmarked articles and display layout settings. If you contact us via email at info.fashiongraviti@gmail.com or through our <a href="/contact">Contact Us</a> page, we retain the correspondence including your email address and any content you choose to share. We do not collect payment information or sensitive personal data through our website.</p>
       </section>
       <section>
         <h2>2. How We Use Your Information</h2>
-        <p>We use the information we collect to operate and maintain the Fashion Graviti editorial platform, analyze site performance, improve the quality of our editorial content across departments like <a href="/how-to-style">How to Style</a> and <a href="/fashion-trends">Fashion Trends</a>, understand how readers navigate our publication, and respond to editorial inquiries. We do not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
+        <p>We use the information we collect to operate and maintain the Fashion Graviti editorial platform, analyze site performance, improve the quality of our editorial content across departments like <a href="/how-to-style">How to Style</a> and <a href="/fashion-trends">Fashion Trends</a>, understand how readers navigate our publication and respond to editorial inquiries. We do not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
       </section>
       <section>
         <h2>3. Cookies and Tracking Technologies</h2>
@@ -511,7 +511,7 @@ function renderPrivacyBodyHtml(articles, categories) {
       </section>
       <section>
         <h2>4. Third-Party Services and Data Security</h2>
-        <p>Our platform uses Google Fonts for typography, Unsplash and local editorial assets for photography, and Vercel for secure global content delivery over HTTPS/TLS encryption. We retain analytics data for up to 14 months and editorial email correspondence only as long as necessary to address your inquiry.</p>
+        <p>Our platform uses Google Fonts for typography, Unsplash and local editorial assets for photography and Vercel for secure global content delivery over HTTPS/TLS encryption. We retain analytics data for up to 14 months and editorial email correspondence only as long as necessary to address your inquiry.</p>
       </section>
       <section>
         <h2>5. Your Privacy Rights (GDPR and CCPA)</h2>
@@ -528,20 +528,20 @@ function renderTermsBodyHtml(articles, categories) {
       <nav aria-label="Breadcrumb"><a href="/">Home</a> &gt; <span>Terms and Conditions</span></nav>
       <header>
         <h1>Terms and Conditions</h1>
-        <p>Please read these terms carefully before using Fashion Graviti. These rules govern your access to our editorial articles, photography, and digital archives.</p>
+        <p>Please read these terms carefully before using Fashion Graviti. These rules govern your access to our editorial articles, photography and digital archives.</p>
       </header>
       <section>
         <h2>1. Acceptance of Terms</h2>
-        <p>By accessing and using fashiongraviti.com, you agree to be bound by these Terms and Conditions. Fashion Graviti reserves the right to modify these Terms at any time, and continued use of the site constitutes acceptance of the revised Terms.</p>
+        <p>By accessing and using fashiongraviti.com, you agree to be bound by these Terms and Conditions. Fashion Graviti reserves the right to modify these Terms at any time and continued use of the site constitutes acceptance of the revised Terms.</p>
       </section>
       <section>
         <h2>2. Intellectual Property and Copyright</h2>
-        <p>All original editorial content published on Fashion Graviti—including articles such as <a href="/hidden-helix-jewelry">Hidden Helix Jewelry</a>, <a href="/types-of-dresses">Types of Dresses</a>, and <a href="/soft-summer-color-palette">Soft Summer Color Palette</a>, headlines, subtitles, author biographies, and layout design—is protected by copyright and is the exclusive intellectual property of Fashion Graviti Publishing Group.</p>
+        <p>All original editorial content published on Fashion Graviti—including articles such as <a href="/hidden-helix-jewelry">Hidden Helix Jewelry</a>, <a href="/types-of-dresses">Types of Dresses</a> and <a href="/soft-summer-color-palette">Soft Summer Color Palette</a>, headlines, subtitles, author biographies and layout design—is protected by copyright and is the exclusive intellectual property of Fashion Graviti Publishing Group.</p>
         <p>You may link to our articles from other websites and quote short excerpts under 50 words for editorial commentary provided that proper attribution to Fashion Graviti with a direct URL link is included. Systematic scraping or reproduction without written consent is prohibited.</p>
       </section>
       <section>
         <h2>3. Use of the Site and Disclaimers</h2>
-        <p>You agree to use Fashion Graviti solely for lawful, personal, and non-commercial informational purposes. All content across <a href="/fashion-news">Fashion News</a>, <a href="/beauty">Beauty</a>, and <a href="/how-to-style">How to Style</a> is provided for general informational and styling purposes only and does not constitute professional medical, dermatological, legal, or financial advice.</p>
+        <p>You agree to use Fashion Graviti solely for lawful, personal and non-commercial informational purposes. All content across <a href="/fashion-news">Fashion News</a>, <a href="/beauty">Beauty</a> and <a href="/how-to-style">How to Style</a> is provided for general informational and styling purposes only and does not constitute professional medical, dermatological, legal, or financial advice.</p>
       </section>
       <section>
         <h2>4. External Links, Privacy and Governing Law</h2>
@@ -580,8 +580,8 @@ function renderAuthorBodyHtml(author, articles, categories) {
       </header>
       <section>
         <h2>Editorial Methodology and Background</h2>
-        <p>As ${escapeHtml(author.role)} at Fashion Graviti, ${escapeHtml(author.name)} contributes in-depth reporting, textile evaluations, and practical wardrobe analysis. Every feature undergoes strict editorial verification for material accuracy, historical context, and wearable styling application across international seasons.</p>
-        <p>Readers can explore ${escapeHtml(author.name)}'s latest dispatches below or browse all editorial desks including <a href="/how-to-style">How to Style</a>, <a href="/fashion-trends">Fashion Trends</a>, <a href="/fashion-news">Fashion News</a>, <a href="/celebrity">Celebrity</a>, <a href="/designers-brands">Designers and Brands</a>, and <a href="/beauty">Beauty</a>.</p>
+        <p>As ${escapeHtml(author.role)} at Fashion Graviti, ${escapeHtml(author.name)} contributes in-depth reporting, textile evaluations and practical wardrobe analysis. Every feature undergoes strict editorial verification for material accuracy, historical context and wearable styling application across international seasons.</p>
+        <p>Readers can explore ${escapeHtml(author.name)}'s latest dispatches below or browse all editorial desks including <a href="/how-to-style">How to Style</a>, <a href="/fashion-trends">Fashion Trends</a>, <a href="/fashion-news">Fashion News</a>, <a href="/celebrity">Celebrity</a>, <a href="/designers-brands">Designers and Brands</a> and <a href="/beauty">Beauty</a>.</p>
       </section>
       <section>
         <h2>${authorArticles.length > 0 ? `Articles by ${escapeHtml(author.name)}` : 'Featured Editorial Archive'}</h2>
@@ -704,7 +704,7 @@ function main() {
   const homeHtml = buildHtmlDocument(templateHtml, {
     title: 'Fashion Graviti | Runway News and Seasonal Style Trends',
     description:
-      'Read runway reports, seasonal color palettes, and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.',
+      'Read runway reports, seasonal color palettes and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.',
     canonicalPath: '/',
     ogType: 'website',
     bodyHtml: renderHomeBodyHtml(INITIAL_ARTICLES, FASHION_CATEGORIES),
@@ -798,7 +798,7 @@ function main() {
       path: '/about',
       title: 'About Our Editorial Team | Fashion Graviti',
       description:
-        'Learn about Fashion Graviti, an independent publication reporting on runway collections, textile craftsmanship, and fashion history.',
+        'Learn about Fashion Graviti, an independent publication reporting on runway collections, textile craftsmanship and fashion history.',
       bodyHtml: renderAboutBodyHtml(INITIAL_ARTICLES, FASHION_CATEGORIES),
     },
     {
@@ -812,14 +812,14 @@ function main() {
       path: '/privacy',
       title: 'Privacy Policy | Fashion Graviti Legal',
       description:
-        'Read our official privacy statement explaining how Fashion Graviti collects, handles, and protects personal reader information.',
+        'Read our official privacy statement explaining how Fashion Graviti collects, handles and protects personal reader information.',
       bodyHtml: renderPrivacyBodyHtml(INITIAL_ARTICLES, FASHION_CATEGORIES),
     },
     {
       path: '/terms',
       title: 'Terms and Conditions | Fashion Graviti Legal',
       description:
-        'Review the website terms of service, article copyright rules, and publication usage policies governing the Fashion Graviti site.',
+        'Review the website terms of service, article copyright rules and publication usage policies governing the Fashion Graviti site.',
       bodyHtml: renderTermsBodyHtml(INITIAL_ARTICLES, FASHION_CATEGORIES),
     },
   ];

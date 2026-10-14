@@ -25,28 +25,28 @@ export const AboutPage: React.FC<AboutPageProps> = ({
       role: 'Editor-in-Chief and Haute Couture Critic',
       location: 'Paris, France',
       avatar: '/authors/aurelia-vance-sterling.jpg',
-      bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure, and the legacy of international fashion houses.',
+      bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure and the legacy of international fashion houses.',
     },
     {
       name: 'Julian Thorne-Dumont',
       role: 'Senior Sartorial and Tailoring Critic',
       location: 'Milan, Italy',
       avatar: '/authors/julian-thorne-dumont.jpg',
-      bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction, and understated menswear silhouettes.',
+      bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction and understated menswear silhouettes.',
     },
     {
       name: 'Renata Moreau-Kroll',
       role: 'Celebrity Style and Red Carpet Columnist',
       location: 'New York and Cannes',
       avatar: '/authors/renata-moreau-kroll.jpg',
-      bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing, and modern gala aesthetics.',
+      bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing and modern gala aesthetics.',
     },
     {
       name: 'Soren Lindqvist-Kovac',
       role: 'Avant-Garde and Heritage Brand Scholar',
       location: 'Stockholm, Sweden',
       avatar: '/authors/soren-lindqvist-kovac.jpg',
-      bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism, and sustainable luxury innovation.',
+      bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism and sustainable luxury innovation.',
     },
   ];
 
@@ -55,25 +55,25 @@ export const AboutPage: React.FC<AboutPageProps> = ({
       icon: <Feather className="w-6 h-6 text-gold" />,
       title: 'Independent Runway Critique',
       category: 'fashion-news',
-      description: 'Firsthand reporting directly from international fashion week shows in Paris, Milan, London, and New York, uninfluenced by commercial bias.',
+      description: 'Firsthand reporting directly from international fashion week shows in Paris, Milan, London and New York, uninfluenced by commercial bias.',
     },
     {
       icon: <Sparkles className="w-6 h-6 text-gold" />,
       title: 'Haute Couture and Atelier Focus',
       category: 'designers-brands',
-      description: 'Dedicated examination of artisanal metiers, textile provenance, and bespoke craftsmanship from the world’s leading luxury fashion houses.',
+      description: 'Dedicated examination of artisanal metiers, textile provenance and bespoke craftsmanship from the world’s leading luxury fashion houses.',
     },
     {
       icon: <Compass className="w-6 h-6 text-gold" />,
       title: 'Trend Intelligence and Forecasting',
       category: 'fashion-trends',
-      description: 'Decoding seasonal shifts, silhouette evolutions, and color palettes transitioning from runway presentations to everyday wardrobes.',
+      description: 'Decoding seasonal shifts, silhouette evolutions and color palettes transitioning from runway presentations to everyday wardrobes.',
     },
     {
       icon: <Award className="w-6 h-6 text-gold" />,
       title: 'Celebrity and Red Carpet Culture',
       category: 'celebrity',
-      description: 'Authoritative analysis of iconic red carpet moments, Met Gala couture, styling breakdowns, and archival vintage revivals.',
+      description: 'Authoritative analysis of iconic red carpet moments, Met Gala couture, styling breakdowns and archival vintage revivals.',
     },
   ];
 
@@ -81,22 +81,22 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     {
       icon: <Scale className="w-5 h-5 text-gold" />,
       title: 'Editorial Independence',
-      description: 'We maintain a strict firewall between editorial critiques and commercial advertisements. Garments, collections, and designers featured on Fashion Graviti are chosen purely on artistic merit and cultural relevance.',
+      description: 'We maintain a strict firewall between editorial critiques and commercial advertisements. Garments, collections and designers featured on Fashion Graviti are chosen purely on artistic merit and cultural relevance.',
     },
     {
       icon: <ShieldCheck className="w-5 h-5 text-gold" />,
       title: 'Factual Accuracy and Provenance',
-      description: 'Our writers and editors verify fabric compositions, collection season histories, designer credits, and runway dates prior to publication. Errors are corrected promptly with full transparency.',
+      description: 'Our writers and editors verify fabric compositions, collection season histories, designer credits and runway dates prior to publication. Errors are corrected promptly with full transparency.',
     },
     {
       icon: <BookOpen className="w-5 h-5 text-gold" />,
       title: 'Original Commentary and Insight',
-      description: 'Every article reflects genuine perspective, historical fashion context, and professional analysis from writers with deep domain experience in luxury fashion and textile arts.',
+      description: 'Every article reflects genuine perspective, historical fashion context and professional analysis from writers with deep domain experience in luxury fashion and textile arts.',
     },
     {
       icon: <Mail className="w-5 h-5 text-gold" />,
       title: 'Reader Feedback and Accountability',
-      description: 'We welcome inquiries, feedback, and corrections directly from readers, designers, and industry professionals at info.fashiongraviti@gmail.com.',
+      description: 'We welcome inquiries, feedback and corrections directly from readers, designers and industry professionals at info.fashiongraviti@gmail.com.',
     },
   ];
 
@@ -109,7 +109,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     {
       city: 'MILAN',
       address: 'Via Montenapoleone, 20121 Milano, Italy',
-      focus: 'Menswear, Cashmere, and Tailoring Ateliers',
+      focus: 'Menswear, Cashmere and Tailoring Ateliers',
     },
     {
       city: 'NEW YORK',
@@ -138,7 +138,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           </h1>
 
           <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl font-editorial italic text-zinc-200 max-w-3xl mx-auto leading-relaxed">
-            "We document the intersection of haute couture craftsmanship, contemporary street culture, and revolutionary runway design with uncompromising editorial integrity."
+            "We document the intersection of haute couture craftsmanship, contemporary street culture and revolutionary runway design with uncompromising editorial integrity."
           </p>
         </div>
       </section>
@@ -157,13 +157,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
           <div className="md:col-span-8 space-y-5 text-base sm:text-lg font-sans text-zinc-200 leading-relaxed font-medium">
             <p className="drop-cap text-xl sm:text-2xl text-white font-semibold leading-relaxed">
-              Founded in 2026, <strong>FASHION GRAVITI</strong> was established to bring critical rigor, textile analysis, and aesthetic reverence back to modern fashion publishing.
+              Founded in 2026, <strong>FASHION GRAVITI</strong> was established to bring critical rigor, textile analysis and aesthetic reverence back to modern fashion publishing.
             </p>
             <p>
-              In a digital environment saturated with superficial noise and fast-fashion consumerism, Fashion Graviti serves as an independent publication for discerning individuals who appreciate the artistry, history, and craft of tailoring. Our correspondents attend premier runway showcases from Paris to Tokyo, reporting directly on the collections, designers, and cultural movements shaping modern luxury.
+              In a digital environment saturated with superficial noise and fast-fashion consumerism, Fashion Graviti serves as an independent publication for discerning individuals who appreciate the artistry, history and craft of tailoring. Our correspondents attend premier runway showcases from Paris to Tokyo, reporting directly on the collections, designers and cultural movements shaping modern luxury.
             </p>
             <p>
-              Every critique, review, and trend dispatch published on our platform adheres to strict journalistic principles, providing readers with accurate analysis, practical wardrobe guidance, and authentic sartorial critique.
+              Every critique, review and trend dispatch published on our platform adheres to strict journalistic principles, providing readers with accurate analysis, practical wardrobe guidance and authentic sartorial critique.
             </p>
           </div>
         </div>
@@ -221,7 +221,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             Our Journalistic Standards
           </h2>
           <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">
-            Built on editorial rigor, verified sourcing, and complete independence
+            Built on editorial rigor, verified sourcing and complete independence
           </p>
         </div>
 
@@ -341,7 +341,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               Get in Touch with Our Newsroom
             </h3>
             <p className="text-sm font-sans text-zinc-300 mt-2 leading-relaxed font-medium">
-              For story pitches, press credentials, corrections, and editorial feedback, email our central newsroom desk directly:
+              For story pitches, press credentials, corrections and editorial feedback, email our central newsroom desk directly:
             </p>
             <a
               href="mailto:info.fashiongraviti@gmail.com"

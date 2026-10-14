@@ -1,9 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
+export function stripOxfordCommas(text) {
+  if (!text) return '';
+  return text
+    .replace(/,\s+and\b/gi, ' and')
+    .replace(/,\s+&\b/g, ' &');
+}
+
 export function stripHyphensAndDashes(text) {
   if (!text) return '';
-  let cleaned = text
+  let cleaned = stripOxfordCommas(text)
     .replace(/[—–]/g, ' ')
     .replace(/\s+-\s+/g, ' ')
     .replace(/(\b\w+)-(\w+\b)/g, '$1 $2')

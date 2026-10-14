@@ -15,7 +15,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
     role: 'Editor-in-Chief and Haute Couture Critic',
     avatar: '/authors/aurelia-vance-sterling.jpg',
     instagram: '@aurelia_vance',
-    bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure, and the legacy of international fashion houses.',
+    bio: 'Paris-based editor and couture historian examining Parisian atelier craftsmanship, runway structure and the legacy of international fashion houses.',
   },
   'julian-thorne-dumont': {
     name: 'Julian Thorne-Dumont',
@@ -23,7 +23,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
     role: 'Senior Sartorial and Tailoring Critic',
     avatar: '/authors/julian-thorne-dumont.jpg',
     instagram: '@julian_sartorial',
-    bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction, and understated menswear silhouettes.',
+    bio: 'Milan and Savile Row correspondent focusing on bespoke tailoring, rare natural textiles, cashmere construction and understated menswear silhouettes.',
   },
   'renata-moreau-kroll': {
     name: 'Renata Moreau-Kroll',
@@ -31,7 +31,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
     role: 'Celebrity Style and Red Carpet Columnist',
     avatar: '/authors/renata-moreau-kroll.jpg',
     instagram: '@renata_moreau',
-    bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing, and modern gala aesthetics.',
+    bio: 'New York and Cannes red carpet analyst tracking celebrity styling partnerships, archival red carpet dressing and modern gala aesthetics.',
   },
   'soren-lindqvist-kovac': {
     name: 'Soren Lindqvist-Kovac',
@@ -39,7 +39,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
     role: 'Avant-Garde and Heritage Brand Scholar',
     avatar: '/authors/soren-lindqvist-kovac.jpg',
     instagram: '@soren_fashionarch',
-    bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism, and sustainable luxury innovation.',
+    bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism and sustainable luxury innovation.',
   },
 };
 

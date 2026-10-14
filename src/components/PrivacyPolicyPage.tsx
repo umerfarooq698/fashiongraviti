@@ -16,7 +16,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
       title: '1. Information We Collect',
       content: [
         'Fashion Graviti collects only the minimum information necessary to operate and improve our editorial platform. The types of information we may collect include:',
-        '• Usage Data: When you visit our site, we automatically collect technical information including your IP address, browser type, operating system, pages visited, time spent on pages, and referring URLs. This data is collected via server logs and analytics tools.',
+        '• Usage Data: When you visit our site, we automatically collect technical information including your IP address, browser type, operating system, pages visited, time spent on pages and referring URLs. This data is collected via server logs and analytics tools.',
         '• Cookies and Tracking Technologies: We use first-party cookies to remember your preferences (such as bookmarked articles and display settings). We also use Google Analytics, which may set third-party cookies to measure site traffic.',
         '• Voluntarily Submitted Information: If you contact us via email at info.fashiongraviti@gmail.com, we retain the correspondence including your email address and any content you choose to share.',
         'We do not collect names, payment information, or sensitive personal data through our website.',
@@ -30,8 +30,8 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
         '• To operate and maintain the Fashion Graviti editorial platform.',
         '• To analyze site performance and improve the quality of our editorial content.',
         '• To understand how readers navigate and use our publication.',
-        '• To respond to editorial inquiries, press submissions, and correspondence sent to our newsroom.',
-        '• To detect, prevent, and address technical issues or potential abuse.',
+        '• To respond to editorial inquiries, press submissions and correspondence sent to our newsroom.',
+        '• To detect, prevent and address technical issues or potential abuse.',
         'We do not sell, rent, or trade your personal information to any third parties for marketing purposes.',
       ],
     },
@@ -61,7 +61,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
       title: '5. Data Security',
       content: [
         'We take reasonable technical and organizational measures to protect the information we hold against unauthorized access, alteration, disclosure, or destruction.',
-        'Our site is served over HTTPS (SSL/TLS encryption) to protect data in transit. However, no method of electronic transmission or storage is completely secure, and we cannot guarantee absolute data security.',
+        'Our site is served over HTTPS (SSL/TLS encryption) to protect data in transit. However, no method of electronic transmission or storage is completely secure and we cannot guarantee absolute data security.',
         'We retain usage data only as long as necessary for the purposes described in this policy and as required by applicable law.',
       ],
     },
@@ -117,7 +117,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
           </p>
 
           <p className="mt-6 text-base sm:text-lg font-sans text-zinc-200 max-w-3xl leading-relaxed font-medium">
-            Fashion Graviti ("we", "our", or "us") operates the fashion editorial publication at fashiongraviti.com. This Privacy Policy explains what data we collect, why we collect it, and how we protect it. We are committed to full transparency and your right to privacy.
+            Fashion Graviti ("we", "our", or "us") operates the fashion editorial publication at fashiongraviti.com. This Privacy Policy explains what data we collect, why we collect it and how we protect it. We are committed to full transparency and your right to privacy.
           </p>
         </div>
       </section>

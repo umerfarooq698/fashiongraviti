@@ -24,7 +24,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
             Contact Fashion Graviti
           </h1>
           <p className="text-base sm:text-lg text-zinc-300 leading-relaxed font-normal">
-            At Fashion Graviti, we value direct, thoughtful communication with our readers, independent writers, and fashion industry professionals. Whether you have feedback on our color analysis reports, need clarification on a wardrobe guide, or want to pitch an original story, here is how you can reach our editorial team directly.
+            At Fashion Graviti, we value direct, thoughtful communication with our readers, independent writers and fashion industry professionals. Whether you have feedback on our color analysis reports, need clarification on a wardrobe guide, or want to pitch an original story, here is how you can reach our editorial team directly.
           </p>
         </header>
 
@@ -37,10 +37,10 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
               Editorial Inquiries And Story Pitches
             </h2>
             <p className="text-base text-zinc-300 mb-4 leading-relaxed">
-              Our editorial desk is always open to well-researched pitches, styling perspectives, and trend critiques. If you are an independent fashion writer, stylist, or textile researcher with a story idea, we want to hear from you.
+              Our editorial desk is always open to well-researched pitches, styling perspectives and trend critiques. If you are an independent fashion writer, stylist, or textile researcher with a story idea, we want to hear from you.
             </p>
             <p className="text-base text-zinc-300 mb-4 leading-relaxed">
-              When sending a pitch, please include a brief summary of your topic, why it matters to our readers, and links to any previously published work. Please write <strong className="text-white font-semibold">"Editorial Pitch"</strong> in your email subject line so it routes straight to our writing team. We review all pitches carefully and aim to respond to relevant proposals within two to three business days.
+              When sending a pitch, please include a brief summary of your topic, why it matters to our readers and links to any previously published work. Please write <strong className="text-white font-semibold">"Editorial Pitch"</strong> in your email subject line so it routes straight to our writing team. We review all pitches carefully and aim to respond to relevant proposals within two to three business days.
             </p>
             <p className="text-sm font-mono text-gold pt-2">
               Email:{' '}
@@ -81,7 +81,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
               Press, Media And Brand Collaborations
             </h2>
             <p className="text-base text-zinc-300 mb-4 leading-relaxed">
-              We regularly review collections from clothing labels, textile mills, and independent design ateliers whose values align with our focus on craftsmanship and enduring personal style.
+              We regularly review collections from clothing labels, textile mills and independent design ateliers whose values align with our focus on craftsmanship and enduring personal style.
             </p>
             <p className="text-base text-zinc-300 mb-4 leading-relaxed">
               If you are a public relations representative or brand founder looking to share lookbooks, runway invitations, or interview opportunities with our critics, please email your media materials with the subject line <strong className="text-white font-semibold">"Press Inquiry"</strong>.
@@ -103,7 +103,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
               Reader Questions And Response Times
             </h2>
             <p className="text-base text-zinc-300 mb-4 leading-relaxed">
-              We welcome questions about styling dilemmas, wardrobe building, and understanding seasonal palettes. Every message sent to our inbox is read and handled personally by our team without automated chatbots or generic canned replies.
+              We welcome questions about styling dilemmas, wardrobe building and understanding seasonal palettes. Every message sent to our inbox is read and handled personally by our team without automated chatbots or generic canned replies.
             </p>
             <p className="text-base text-zinc-300 mb-4 leading-relaxed">
               Our desk reviews reader correspondence Monday through Friday between 9:00 AM and 6:00 PM CET. During major fashion weeks, email volume can increase, so please allow 24 to 48 hours for a direct response.

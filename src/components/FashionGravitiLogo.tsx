@@ -108,7 +108,7 @@ export const FashionGravitiLogo: React.FC<FashionGravitiLogoProps> = ({
           </div>
         </div>
         <p className="text-xs font-mono text-zinc-400 leading-relaxed max-w-md uppercase">
-          The international fashion authority documenting craftsmanship, celebrity styling, and contemporary runway design.
+          The international fashion authority documenting craftsmanship, celebrity styling and contemporary runway design.
         </p>
       </div>
     );

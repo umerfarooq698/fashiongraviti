@@ -23,11 +23,11 @@ const STORAGE_KEY_BOOKMARKS = 'fashiongraviti_bookmarks_v7';
 const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
   'fashion-news': {
     title: 'Fashion News | Fashion Graviti',
-    description: 'Read the latest clothing news, runway shows, and designer stories. Get fast updates on fashion week events, brand changes, and new outfits.',
+    description: 'Read the latest clothing news, runway shows and designer stories. Get fast updates on fashion week events, brand changes and new outfits.',
   },
   'fashion-trends': {
     title: 'Fashion Trends | Fashion Graviti',
-    description: 'See what clothing styles are popular right now. Find out which colors, prints, and fabrics are showing up in stores and on the street today.',
+    description: 'See what clothing styles are popular right now. Find out which colors, prints and fabrics are showing up in stores and on the street today.',
   },
   'celebrity': {
     title: 'Celebrity Style | Fashion Graviti',
@@ -35,11 +35,11 @@ const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
   },
   'designers-brands': {
     title: 'Designers and Brands | Fashion Graviti',
-    description: 'Learn about the people and companies that make your clothes. Read stories on top fashion designers, new labels, and popular clothing brands.',
+    description: 'Learn about the people and companies that make your clothes. Read stories on top fashion designers, new labels and popular clothing brands.',
   },
   'beauty': {
     title: 'Beauty | Fashion Graviti',
-    description: 'Find simple tips for skincare, makeup, and hair care. Read about popular beauty products and easy ways to build your daily routine at home.',
+    description: 'Find simple tips for skincare, makeup and hair care. Read about popular beauty products and easy ways to build your daily routine at home.',
   },
   'how-to-style': {
     title: 'How to Style | Fashion Graviti',
@@ -213,7 +213,7 @@ export function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, [articles]);
 
-  // Dynamic SEO for Pages, Categories, Authors, and Home (when Reader modal is closed)
+  // Dynamic SEO for Pages, Categories, Authors and Home (when Reader modal is closed)
   useEffect(() => {
     if (selectedArticleForReader) {
       // Reader modal handles article-specific SEO
@@ -240,7 +240,7 @@ export function App() {
     if (activeStaticPage === 'about') {
       updateDocumentSEO({
         title: 'About Our Editorial Team | Fashion Graviti',
-        description: 'Learn about Fashion Graviti, an independent publication reporting on runway collections, textile craftsmanship, and fashion history.',
+        description: 'Learn about Fashion Graviti, an independent publication reporting on runway collections, textile craftsmanship and fashion history.',
         canonicalPath: '/about',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -266,7 +266,7 @@ export function App() {
     if (activeStaticPage === 'privacy') {
       updateDocumentSEO({
         title: 'Privacy Policy | Fashion Graviti Legal',
-        description: 'Read our official privacy statement explaining how Fashion Graviti collects, handles, and protects personal reader information.',
+        description: 'Read our official privacy statement explaining how Fashion Graviti collects, handles and protects personal reader information.',
         canonicalPath: '/privacy',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -279,7 +279,7 @@ export function App() {
     if (activeStaticPage === 'terms') {
       updateDocumentSEO({
         title: 'Terms and Conditions | Fashion Graviti Legal',
-        description: 'Review the website terms of service, article copyright rules, and publication usage policies governing the Fashion Graviti site.',
+        description: 'Review the website terms of service, article copyright rules and publication usage policies governing the Fashion Graviti site.',
         canonicalPath: '/terms',
         breadcrumbs: [
           { name: 'Home', path: '/' },
@@ -310,7 +310,7 @@ export function App() {
     // Default Home SEO
     updateDocumentSEO({
       title: 'Fashion Graviti | Runway News and Seasonal Style Trends',
-      description: 'Read runway reports, seasonal color palettes, and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.',
+      description: 'Read runway reports, seasonal color palettes and daily wardrobe advice written by independent fashion critics at Fashion Graviti magazine.',
       canonicalPath: '/',
       breadcrumbs: [{ name: 'Home', path: '/' }],
     });

@@ -36,13 +36,20 @@ export interface GeminiGeneratedArticle {
 }
 
 /**
- * Strips hyphens, en-dashes, and em-dashes from editorial text to avoid artificial or AI-sounding prose.
+ * Strips hyphens, en-dashes and em-dashes from editorial text to avoid artificial or AI-sounding prose.
  * Converts compound words (e.g. "quick-dry" -> "quick dry", "high-fashion" -> "high fashion")
  * and converts em-dashes / spaced dashes into natural flow.
  */
+export function stripOxfordCommas(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/,\s+and\b/gi, ' and')
+    .replace(/,\s+&\b/g, ' &');
+}
+
 export function stripHyphensAndDashes(text: string): string {
   if (!text) return '';
-  let cleaned = text
+  let cleaned = stripOxfordCommas(text)
     .replace(/[—–]/g, ' ')
     .replace(/\s+-\s+/g, ' ')
     .replace(/(\b\w+)-(\w+\b)/g, '$1 $2')
@@ -99,7 +106,7 @@ export function enforceTitle55to60(rawTitle: string): string {
 
 /**
  * Generates an SEO meta URL slug from a title or topic.
- * Keeps it descriptive (3 to 6 words), includes primary keywords, and removes unnecessary stop words.
+ * Keeps it descriptive (3 to 6 words), includes primary keywords and removes unnecessary stop words.
  * Never outputs just a raw single keyword.
  */
 export function generateMetaSlug(titleOrTopic: string): string {
@@ -141,7 +148,7 @@ export async function generateFashionArticleWithGemini(
     : `Write a detailed, completely unique 1000–1200 word breaking high-fashion runway editorial article. ${categoryConstraint}`;
 
   const systemInstruction = `
-You are a senior fashion editor, stylist, and professional SEO content writer for a modern fashion magazine ("Fashion Graviti").
+You are a senior fashion editor, stylist and professional SEO content writer for a modern fashion magazine ("Fashion Graviti").
 
 Write a complete, original, reader-first fashion article based on the keyword or topic provided.
 
@@ -153,7 +160,7 @@ CONTENT LENGTH:
 ORIGINALITY:
 * Every article must be written completely from scratch.
 * Never use one fixed article template.
-* Every new article must have a fresh editorial angle, structure, introduction, headings, examples, advice, flow, and conclusion.
+* Every new article must have a fresh editorial angle, structure, introduction, headings, examples, advice, flow and conclusion.
 * Never simply rewrite, paraphrase, spin, or reorganize a previous article.
 * The same keyword may appear more than once. If it does, treat it as a completely new assignment.
 * For repeated keywords, internally choose a different useful fashion angle before writing.
@@ -165,8 +172,8 @@ ORIGINALITY:
   - Break predictable rhythms across articles:
     * In Article A: Section 1 has 3 short paragraphs, Section 2 has 1 deep historical analysis, Section 4 has a 3-step bullet list.
     * In Article B: Section 1 has 1 punchy statement + 1 narrative paragraph, Section 2 has a comparative H3 breakdown, zero bullets anywhere, but a styling tip box near the conclusion.
-    * In Article C: Pure long-form prose with varied cadence, zero callouts, and 2-point care checklist at the very end.
-  - Headings, paragraph counts, bullet locations, and formatting must NEVER follow the same architecture across assignments. Let the topic shape its own unique layout.
+    * In Article C: Pure long-form prose with varied cadence, zero callouts and 2-point care checklist at the very end.
+  - Headings, paragraph counts, bullet locations and formatting must NEVER follow the same architecture across assignments. Let the topic shape its own unique layout.
 
 HEADINGS:
 * Create one original H1 ("title").
@@ -176,7 +183,7 @@ HEADINGS:
 * ABSOLUTE BAN ON AI ROBOTIC HEADINGS AND CLICHE GERUNDS:
   - NEVER start headings with robotic gerunds or predictable AI formulas:
     "Decoding...", "Mastering...", "Navigating...", "Understanding...", "Curating...", "Harmonizing...", "Exploring...", "Demystifying...", "Unveiling...", "The Art of...", "The Rise of..."
-  - Headings must sound like an elite luxury magazine feature editor: punchy, stylish, confident, and conversational (e.g. "Solid Mass Versus Hollow Wire", "The 18 Karat Dilemma", "Real Gold Against Heavy Wool", "Why Stiff Links Ruin The Line", "Over The Cuff, Not Under").
+  - Headings must sound like an elite luxury magazine feature editor: punchy, stylish, confident and conversational (e.g. "Solid Mass Versus Hollow Wire", "The 18 Karat Dilemma", "Real Gold Against Heavy Wool", "Why Stiff Links Ruin The Line", "Over The Cuff, Not Under").
 * Never repeatedly use the same H2 or H3 pattern.
 * Do not slightly rename old headings while keeping the same structure.
 * Vary the number of H2 and H3 sections naturally.
@@ -227,8 +234,8 @@ WRITING STYLE AND DYNAMIC FORMATTING:
     * Curated bullet lists ('* ') when breaking down technical specifications, materials, or styling options.
     * Standalone editorial tips or practical takeaways ('**Atelier Tip:** ...' or '**Styling Tip:** ...') when actionable advice benefits the reader.
     * Distinct single-paragraph focus sections or comparative H3 subsections where appropriate.
-  - Never force all formatting elements into one place, and never place them in the same sequence across different articles. Let the subject matter dictate the natural layout.
-* Avoid filler, vague statements, mechanical phrasing, and generic writing.
+  - Never force all formatting elements into one place and never place them in the same sequence across different articles. Let the subject matter dictate the natural layout.
+* Avoid filler, vague statements, mechanical phrasing and generic writing.
 
 Avoid repetitive phrases such as:
 "Whether you're..."
@@ -267,11 +274,11 @@ FAQS:
 
 SEO:
 * Understand the likely search intent before writing.
-* Use the primary keyword naturally in the H1, introduction, body, and at least one relevant heading where appropriate.
+* Use the primary keyword naturally in the H1, introduction, body and at least one relevant heading where appropriate.
 * Use related fashion terminology naturally.
 * Never keyword-stuff.
 * Avoid unnecessary repetition of the exact keyword.
-* Prioritize usefulness, originality, accuracy, readability, and depth over keyword frequency.
+* Prioritize usefulness, originality, accuracy, readability and depth over keyword frequency.
 
 REPEATED KEYWORD RULE:
 If the same or a very similar keyword appears again:
@@ -317,6 +324,9 @@ MANDATORY TECHNICAL CONSTRAINTS:
 4. META URL SLUG ("metaSlug"):
    - Clean, descriptive 3 to 6 word meta URL slug (e.g. "camo-jorts-biggest-street-trend-this-season"). NEVER just the raw keyword.
    - STRICT RULE: NEVER make the URL slug just the single raw keyword (e.g. do NOT output "camo-jorts" or "jorts"). The meta slug must always include contextual editorial words describing the article angle.
+5. ZERO OXFORD COMMAS (ABSOLUTE RULE):
+   - NEVER use a comma before 'and' or '&' anywhere in titles, subtitles, headings, body text, or FAQs (e.g. write "Origins, Culture, Styling and Guide", NEVER "Styling, and Guide").
+   - In lists, always write "item A, item B and item C", NEVER "item A, item B, and item C".
 
 JSON Schema:
 {
@@ -434,7 +444,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
       : '';
     const slug = (rawSlug && rawSlug.length >= 6) ? rawSlug : generateMetaSlug(finalTitle);
 
-    // Fetch live Unsplash imagery tailored to the topic, visualSearchPhrase, and category
+    // Fetch live Unsplash imagery tailored to the topic, visualSearchPhrase and category
     const searchKeywords = parsed.visualSearchPhrase
       ? parsed.visualSearchPhrase
       : promptOrTopic
@@ -531,7 +541,7 @@ Output ONLY valid JSON without markdown wrapping or backticks.
     return {
       id: articleId,
       title: enforceTitle55to60(promptOrTopic ? `${promptOrTopic} Editorial Runway Analysis` : 'Autumn Runway Bulletin Modern Proportions and Atelier Art'),
-      subtitle: 'Inside the newest couture collections exploring sculptural tailoring, rare natural fibers, and contemporary luxury.',
+      subtitle: 'Inside the newest couture collections exploring sculptural tailoring, rare natural fibers and contemporary luxury.',
       slug: `editorial-analysis-${Date.now()}`,
       category: (targetCategory as any) || 'fashion-news',
       categoryLabel: 'Fashion News',
@@ -586,8 +596,8 @@ Output ONLY valid JSON without markdown wrapping or backticks.
 export async function askGeminiFashionStylist(question: string): Promise<string> {
   const systemPrompt = `
 You are the AI Chief Sartorial Stylist at "Fashion Graviti", an elite high-fashion publication.
-Answer the user's styling question with authoritative, elegant, and practical luxury fashion advice.
-Keep responses concise, chic, and insightful (2-3 concise paragraphs or bullet points).
+Answer the user's styling question with authoritative, elegant and practical luxury fashion advice.
+Keep responses concise, chic and insightful (2-3 concise paragraphs or bullet points).
 `;
 
   try {

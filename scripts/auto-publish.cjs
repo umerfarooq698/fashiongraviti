@@ -154,7 +154,7 @@ CRITICAL EDITORIAL RULES:
 2. Subtitle: EXACTLY 140 characters long (count characters precisely including spaces). Do NOT use any of these words: discover, learn, read, explore, in-depth, comprehensive.
 3. Paragraph & Sentence Brevity (VERY IMPORTANT):
    - Every paragraph in bodyParagraphs MUST be short and punchy: exactly 1 to 2 sentences per paragraph (maximum 20 to 30 words per item).
-   - NEVER write big chunks or long paragraphs. Keep it light, airy, and easy to read.
+   - NEVER write big chunks or long paragraphs. Keep it light, airy and easy to read.
    - Sentences must be crisp and direct: 10 to 14 words per sentence.
 4. Structure:
    - Introduce the target keyword immediately in the opening drop cap sentence.
@@ -315,7 +315,7 @@ async function run() {
         alt: `High fashion editorial aesthetic for ${nextKeyword}`
       },
       closingParagraphs: [
-        'Curating a timeless fashion presence requires patience, textile literacy, and an unwavering commitment to personal elegance.',
+        'Curating a timeless fashion presence requires patience, textile literacy and an unwavering commitment to personal elegance.',
         'As the modern wardrobe evolves, true sophistication remains rooted in harmonious proportions and deliberate curation.'
       ],
       conclusion: generated.conclusion || 'Understated luxury speaks through authentic craftsmanship and effortless daily poise.',

@@ -17,14 +17,14 @@ export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHom
       content: [
         'By accessing and using fashiongraviti.com ("the Site"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to all of these Terms, you must not use or access this Site.',
         'Fashion Graviti ("we", "our", or "us") reserves the right to modify these Terms at any time. Continued use of the Site after changes are posted constitutes your acceptance of the revised Terms.',
-        'These Terms apply to all visitors, readers, contributors, and others who access or use the Site.',
+        'These Terms apply to all visitors, readers, contributors and others who access or use the Site.',
       ],
     },
     {
       icon: <Copyright className="w-5 h-5 text-gold" />,
       title: '2. Intellectual Property and Copyright',
       content: [
-        'All original editorial content published on Fashion Graviti — including articles, headlines, subtitles, pull quotes, author biographies, editorial commentary, and layout design — is protected by copyright and is the exclusive intellectual property of Fashion Graviti Publishing Group.',
+        'All original editorial content published on Fashion Graviti — including articles, headlines, subtitles, pull quotes, author biographies, editorial commentary and layout design — is protected by copyright and is the exclusive intellectual property of Fashion Graviti Publishing Group.',
         'You may not reproduce, distribute, modify, transmit, display, publish, or create derivative works from any content on this Site without explicit prior written permission from Fashion Graviti.',
         '• Linking: You may link to our articles from other websites, provided you do not frame our content or imply editorial endorsement without permission.',
         '• Attribution: If you quote short excerpts (under 50 words) for editorial commentary or review, proper attribution to Fashion Graviti with a direct URL link is required.',
@@ -35,7 +35,7 @@ export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHom
       icon: <ScrollText className="w-5 h-5 text-gold" />,
       title: '3. Use of the Site',
       content: [
-        'You agree to use Fashion Graviti solely for lawful, personal, and non-commercial purposes. You must not:',
+        'You agree to use Fashion Graviti solely for lawful, personal and non-commercial purposes. You must not:',
         '• Use the Site in any way that violates any applicable local, national, or international law or regulation.',
         '• Scrape, crawl, or systematically copy editorial content using automated tools without prior written consent.',
         '• Attempt to gain unauthorized access to our server infrastructure, backend systems, or editorial databases.',
@@ -60,7 +60,7 @@ export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHom
       title: '5. Third-Party Links and External Content',
       content: [
         'Our editorial content may contain links to third-party websites, brands, designer platforms, or external publications. These links are provided for informational context only.',
-        'Fashion Graviti has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites. Linking to a website does not constitute an editorial endorsement or commercial partnership.',
+        'Fashion Graviti has no control over and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites. Linking to a website does not constitute an editorial endorsement or commercial partnership.',
         'We encourage you to review the terms and privacy policies of any third-party site you visit via links on this platform.',
       ],
     },
@@ -68,7 +68,7 @@ export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHom
       icon: <FileText className="w-5 h-5 text-gold" />,
       title: '6. Submitted Content and Editorial Pitches',
       content: [
-        'When you submit editorial pitches, press releases, lookbooks, or correspondence to info.fashiongraviti@gmail.com, you grant Fashion Graviti a non-exclusive, royalty-free license to review, reference, and respond to your submission.',
+        'When you submit editorial pitches, press releases, lookbooks, or correspondence to info.fashiongraviti@gmail.com, you grant Fashion Graviti a non-exclusive, royalty-free license to review, reference and respond to your submission.',
         'Submissions do not guarantee publication. Fashion Graviti retains full editorial discretion over all published content.',
         'You must not submit content that is defamatory, plagiarized, misleading, or violates any applicable law or third-party intellectual property rights.',
         'By submitting content, you confirm that you hold all necessary rights to the material you provide and that your submission does not infringe on any third-party rights.',
@@ -90,7 +90,7 @@ export const TermsAndConditionsPage: React.FC<TermsPageProps> = ({ onNavigateHom
         '• Email: info.fashiongraviti@gmail.com',
         '• Subject Line Format: "[LEGAL]" or "[CORRECTION]" followed by the article title and specific concern.',
         '• Response Time: We aim to review and respond to all legal and correction requests within 5 business days.',
-        'Fashion Graviti is committed to editorial transparency, factual accuracy, and responsible journalism.',
+        'Fashion Graviti is committed to editorial transparency, factual accuracy and responsible journalism.',
       ],
     },
   ];
