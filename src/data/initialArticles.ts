@@ -434,7 +434,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
   },
   {
     "id": "article-soft-summer-color-palette-1791199292794",
-    "title": "Decoding The Nuances Of Muted Summer Hues",
+    "title": "The Nuances Of Muted Summer Hues",
     "subtitle": "An advanced textile and pigment analysis examining the cooling elegance, desaturated undertones and sophisticated textile choices of the soft summer color palette.",
     "slug": "soft-summer-color-palette",
     "category": "fashion-trends",

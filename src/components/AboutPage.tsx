@@ -67,7 +67,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
       icon: <Compass className="w-6 h-6 text-gold" />,
       title: 'Trend Intelligence and Forecasting',
       category: 'fashion-trends',
-      description: 'Decoding seasonal shifts, silhouette evolutions and color palettes transitioning from runway presentations to everyday wardrobes.',
+      description: 'Analyzing seasonal shifts, silhouette evolutions and color palettes transitioning from runway presentations to everyday wardrobes.',
     },
     {
       icon: <Award className="w-6 h-6 text-gold" />,
