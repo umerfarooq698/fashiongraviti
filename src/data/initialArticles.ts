@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 5,
+    count: 6,
   },
   {
     id: 'fashion-news',
@@ -62,11 +62,96 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'Practical luxury styling formulas, capsule wardrobes, layering techniques and fit advice.',
     image: 'https://images.unsplash.com/photo-1575225395866-965c8c77727f?auto=format&fit=crop&w=1200&q=85',
     accent: '#5d6b5c',
-    count: 3,
+    count: 4,
   }
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-best-black-dresses-for-women-1792074000000",
+    "title": "Best Black Dresses for Women: Styles, Fabrics and Designers",
+    "subtitle": "A practical styling guide to high quality black dresses, timeless silhouettes, fabric weights and visionary Black female clothing designers.",
+    "slug": "best-black-dresses-for-women",
+    "category": "how-to-style",
+    "categoryLabel": "How to Style",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 24",
+    "locationTag": "PARIS // EDITORIAL DESK",
+    "featured": false,
+    "author": {
+      "name": "Aurelia Vance-Sterling",
+      "role": "Editor-in-Chief and Haute Couture Critic",
+      "location": "Paris and New York",
+      "avatar": "/authors/aurelia-vance-sterling.jpg",
+      "instagram": "@aurelia_vance"
+    },
+    "publishedAt": "OCTOBER 15, 2026",
+    "readTime": "11 MIN READ",
+    "coverImage": "/images/best-black-dresses-for-women.jpg",
+    "coverImageCaption": "Minimalist luxury in motion: an architectural black midi dress with a sculpted neckline, paired with fine gold accents in an evening courtyard.",
+    "coverImageAlt": "Elegant woman wearing an architectural black midi dress with fine jewelry in a courtyard",
+    "metaDescription": "Review the best black dresses for women, highlighting luxury fabrics, timeless silhouettes and visionary Black female fashion designers.",
+    "content": {
+      "dropCapText": "Every woman knows the quiet confidence that comes from slipping into an exceptional black dress. Far from being a plain or safe choice, the shade black acts as a sharp frame for fabric quality, seam precision and personal attitude. Finding the best black dresses for women means looking beyond fast-fashion racks to discover pieces with real structural integrity, superior natural textiles and distinct creative voices.",
+      "bodyParagraphs": [
+        "## Beyond the Basic LBD: Why Fabric Weight and Cut Matter",
+        "When shopping across clothing rails or browsing online collections, black dresses black dresses can often look identical on a screen until you touch the cloth and examine the cut. A true high quality black dress separates itself immediately through tactile weight, clean architectural lines, durable textile density and precise architectural tailoring. Cheap polyester absorbs room light unevenly, picks up static and turns shiny along pressed seams after three washes. In contrast, brands committed to sustainable fabric construction rely on breathable natural fibers, fine double-faced wool, rich silk charmeuse and structured crepe de chine that drape with natural poise and achieve a flawless garment drape.",
+        "Textile drape physics determine how a garment moves when you walk into a room. A tailored sheath dress or a sculptural midi dress cut from heavy wool crepe holds a sculpted waistline and structured shoulder pads without pinching. For warmer evenings, fluid liquid satin and lightweight silk organza overlay catch dim ambient light, giving depth to a sophisticated monochrome palette. When you invest in timeless silhouettes, you are building an essential capsule wardrobe staple and a reliable capsule wardrobe foundation that stays relevant season after season.",
+        "## The Essential Silhouettes: Finding Your Proportions",
+        "Different occasions demand different cuts, but three primary silhouettes anchor modern investment dressing:",
+        "**The Architectural Midi Dress:** Designed with a boatneck collar, subtle square neckline or sweetheart neckline, this cut is the backbone of modern power dressing. With discreet French seams and a blind hem finish, it facilitates an effortless seasonal wardrobe transition and offers day to night versatility that moves easily from daytime boardrooms to evening dinners.",
+        "**The Bias Cut Silk Slip Dress:** Popularized in nineties minimalism, a bias cut silk slip dress skims curves without clinging tightly. The diagonal grain of the fabric gives it natural stretch, making it ideal for cocktail hour attire when paired with minimalist kitten heels, or layered under a trench coat for a casual high-low styling balance.",
+        "**The Dramatic Column Maxi:** For black-tie gala dresses and formal galas, an ankle-sweeping evening gown with subtle side slits or an asymmetrical hemline creates an unbroken vertical line that delivers understated elegance.",
+        "## Visionary Black Designers Redefining the Black Dress",
+        "Some of the most exciting, culturally grounded black clothing designers in modern fashion are reshaping luxury through fresh perspectives on silhouette and craft. Supporting black owned luxury brands and adding their pieces to your curated luxury edit introduces extraordinary artistry into your wardrobe.",
+        "Leading black female fashion designers have transformed modern luxury by blending cultural heritage with couture standards. Designer Anifa Mvuemba Hanifa changed international digital fashion presentation while creating breathtaking knitwear and structured dresses with extended size inclusivity, ensuring flattering body proportions for women of every shape.",
+        "Similarly, Brooklyn-based designer Fe Noel infuses her Grenadian heritage into resort wear and evening collections defined by flowing drama and artisanal corset bodice construction. In London, Grace Wales Bonner bridges European tailoring with Afro-Atlantic intellectual storytelling, crafting ready-to-wear pieces with hand-finished atelier details. And while Carly Cushnie paused her namesake label, her legacy of razor-sharp cutouts and sculptural draping continues to inspire contemporary womenswear labels.",
+        "When searching for a truly unique black dress for women, turning to black female clothing designers ensures you wear clothing that celebrates craftsmanship rather than generic mass production. These modern luxury ateliers bring fresh energy to designer fashion black collections, creating red carpet couture that stands apart from standard department store offerings.",
+        "## How to Style a Chic Black Fashion Dress",
+        "When styling chic black dresses, successful monochrome styling requires balancing visual textures so an all-black outfit never looks flat. Use these practical rules to style your favorite black fashion dress:",
+        "First, balance your neckline with thoughtful minimalist jewelry pairing or statement jewelry accents. A square or sweetheart neckline pairs naturally with a tiered [16 vs 18 inch necklace](/16-vs-18-inch-necklace) chain stack. For higher crew or boatneck cuts, keep the chest clean and showcase ear styling with cartilage studs like [hidden helix jewelry](/hidden-helix-jewelry).",
+        "Second, mix contrasting textures. Combine a matte crepe finish dress with patent leather pumps, or layer an oversized leather jacket over sheer lace panels. If you love casual street style, ground a black dress with low-profile skate shoes or boots as seen in our guide to [what is streetwear](/what-is-streetwear).",
+        "Third, contrast shapes. If your wardrobe features fluid, lightweight [types of dresses](/types-of-dresses), balance them with structured tailoring or a defined belt.",
+        "Fourth, coordinate with your natural undertones. While true black is deep and cool, wearers whose coloring suits a muted [soft summer color palette](/soft-summer-color-palette) can soften an all-black look with charcoal accents, brushed silver jewelry or a soft smoky eye.",
+        "## Garment Care and Fabric Preservation",
+        "High-grade garments demand thoughtful upkeep to protect their deep noir pigment and tailored structure. Follow these basic practices for garment construction details and wardrobe longevity:",
+        "Always check the interior tags for dry cleaning care recommendations, especially on garments with fully lined interior construction, boning or silk linings. Between wears, use a gentle handheld steamer for garment steamer preservation instead of pressing hot irons directly against delicate crepe or liquid satin. Store your unique black dresses on wide, contoured wooden hangers to protect the shoulder shape from stretching, ensuring your timeless investment pieces remain in pristine condition for years."
+      ],
+      "secondaryImage": {
+        "url": "/images/luxury-black-dress-tailoring.jpg",
+        "caption": "Detailed craftsmanship: heavy double-faced wool crepe construction with hand-finished seam architecture and subtle fine jewelry styling.",
+        "alt": "Close-up of luxury black dress showing double-faced wool crepe texture and gold necklace"
+      },
+      "faqs": [
+        {
+          "question": "How do you choose a high quality black dress?",
+          "answer": "Look for tightly woven natural fibers like silk, wool crepe or heavy viscose, along with French seams, a clean blind hem finish and fully lined interior construction."
+        },
+        {
+          "question": "What shoes work best with a designer little black dress?",
+          "answer": "Minimalist kitten heels and pointed-toe slingbacks offer effortless evening wear, while leather loafers or sleek ankle boots provide daytime practicality."
+        },
+        {
+          "question": "Why should you buy from Black female fashion designers?",
+          "answer": "Black female fashion designers like Anifa Mvuemba of Hanifa and Felisha Noel bring innovative structural draping, size inclusivity and independent craftsmanship that enrich luxury fashion."
+        },
+        {
+          "question": "How do you keep black clothing from fading?",
+          "answer": "Wash dark garments inside out in cold water, avoid direct harsh sunlight when drying and rely on professional steamers rather than high-heat flat irons."
+        }
+      ]
+    },
+    "tags": [
+      "Black Dresses",
+      "Little Black Dress",
+      "Black Designers",
+      "Luxury Fashion",
+      "How to Style"
+    ],
+    "mood": "Opulent Minimalism",
+    "likes": 428,
+    "bookmarksCount": 139
+  },
   {
     "id": "article-what-is-streetwear-1791980000000",
     "title": "What is Streetwear: Origins, Culture, Styling and Wardrobe Guide",
