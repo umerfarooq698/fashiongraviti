@@ -8,7 +8,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'The complete stream of fashion news, style guides, celebrity spotlights and brand exclusives.',
     image: 'https://images.unsplash.com/photo-1603122630570-7fd434d470d0?auto=format&fit=crop&w=1200&q=85',
     accent: '#8f121d',
-    count: 6,
+    count: 7,
   },
   {
     id: 'fashion-news',
@@ -35,7 +35,7 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
     description: 'Celebrity street style, film festival red carpets, cover star profiles and stylist breakdowns.',
     image: 'https://images.unsplash.com/photo-1742123316636-299eb108d83c?auto=format&fit=crop&w=1200&q=85',
     accent: '#c59d54',
-    count: 0,
+    count: 1,
   },
   {
     id: 'designers-brands',
@@ -67,6 +67,102 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 ];
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-kylie-jenner-fantasy-bra-1792493000000",
+    "title": "Kylie Jenner Fantasy Bra: Inside the $50M Victoria's Secret Design",
+    "subtitle": "A detailed breakdown of the Jacob & Co. 75-carat yellow diamond masterpiece, runway history, front-row reactions and celebrity style.",
+    "slug": "kylie-jenner-fantasy-bra",
+    "category": "celebrity",
+    "categoryLabel": "Celebrity",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 25",
+    "locationTag": "LOS ANGELES // RED CARPET DESK",
+    "featured": true,
+    "author": {
+      "name": "Renata Moreau-Kroll",
+      "role": "Celebrity Style and Red Carpet Columnist",
+      "location": "New York and Cannes",
+      "avatar": "/authors/renata-moreau-kroll.jpg",
+      "instagram": "@renata_style"
+    },
+    "publishedAt": "OCTOBER 20, 2026",
+    "readTime": "10 MIN READ",
+    "coverImage": "/images/kylie-jenner-fantasy-bra.jpg",
+    "coverImageCaption": "Kylie Jenner walks the 2026 Victoria's Secret Fashion Show runway in Los Angeles wearing the $50 million Jacob & Co. Fantasy Bra and white feathered wings.",
+    "coverImageAlt": "Kylie Jenner wearing the 50 million dollar Jacob & Co. Fantasy Bra with feathered wings on the Victoria's Secret runway",
+    "metaDescription": "Explore the $50 million Kylie Jenner fantasy bra from the 2026 Victoria's Secret Fashion Show, featuring Jacob & Co. craftsmanship and 1,373 carats of diamonds.",
+    "content": {
+      "dropCapText": "When the lights went up for the Victoria's Secret Fashion Show 2026 in Los Angeles, the headline look of the night was an extreme high-jewelry commission. The fantasy bra kylie jenner walked down the runway in combined 18-karat gold with thousands of untreated diamonds, ending an eight-year absence for the house signature showpiece.",
+      "bodyParagraphs": [
+        "## The $50 Million Jacob & Co. Commission: Carats, Weight and Metalwork",
+        "The runway return at Sony Pictures Studios in Culver City centered on a single jewelry piece valued at 50 million dollars. Built by New York jeweler Jacob Arabo, the bespoke jacob and co fantasy bra replaced silk cups with an articulated gold framework set with rare natural stones, blurring the lines between red carpet jewelry and high jewelry lingerie.",
+        "### Carat Breakdown and the 75.54-Carat Yellow Diamond Centerpiece",
+        "At the center of the 50 million fantasy bra sits a single 75.54-carat yellow diamond. Graded as a natural fancy vivid yellow diamond, gem cutters used a modified radiant-cut diamond shape to concentrate the yellow body color. Surrounding this diamond centerpiece are 4410 natural diamonds that push the total diamond weight beyond 1373 carats. The cups also feature custom angel-cut diamonds from Jacob and Co that sit flush along the supporting bands, while each specialized gemstone setting eliminates snag points against the skin.",
+        "### Building a Four-Pound Bra Without Fabric",
+        "Produced within a handcrafted atelier in Midtown Manhattan, the piece is a true no fabric bra constructed entirely on an articulated gold armature and flexible diamond armature. Taking cues from the brand Rare Touch collection, the frame uses interlocking 18k white gold and 18k yellow gold joints that bend with the ribs. A team of 15 jewelers put over 1000 hours craftsmanship into joining 3218 components, producing a four pound bra that flexes like mesh while carrying solid metal weight, standing as an extreme example of haute joaillerie.",
+        "## Runway Precedent and the Non-Angel Casting Decision",
+        "For nearly thirty years, the Victoria's Secret showpiece belonged strictly to contract Angels who had walked multiple seasons for the company. Jenner stepping onto the catwalk challenged thirty years of runway hierarchy, introducing the first non-angel fantasy bra to closed-door casting traditions.",
+        "### Historical Values: Comparing Elsa Hosk and Gisele Bündchen",
+        "This reveal marked the first appearance of the concept after an eight-year hiatus, following the 2018 Elsa Hosk fantasy bra. Historically, the highest price record belonged to the 2000 Gisele Bundchen red hot fantasy bra valued at $15 million. The 2026 piece now stands as the most expensive fantasy bra ever built, changing the scale of fine jewelry craftsmanship seen on an American runway.",
+        "### Catwalk Reaction: Did She Earn Her Wings?",
+        "The casting choice sparked sharp debate among fashion editors and former runway models, triggering a heated supermodel debate across media outlets. Traditionally, talent spent seasons walking secondary segments before they earned their wings, prompting serious high fashion critique over whether a celebrity runway debut should receive the closing look. The broader fashion industry reaction reflected this division, though brand executives noted that Jenner generated global audience reach that traditional runway models no longer achieve on broadcast television.",
+        "## Front-Row Attention, Family Life and New Business Projects",
+        "Aside from the diamond total, the presentation drew attention because of the personal details surrounding the Jenner family, with cameras capturing lively front row reactions throughout the evening.",
+        "### Front-Row Presence: Timothée Chalamet and Kris Jenner",
+        "Actor Timothée Chalamet sat directly beside kris jenner front row, watching the runway walk from prime seats. Entertainment outlets focused heavily on the kylie jenner timothee chalamet relationship, noting how the pair support each other during major public appearances. Cell phone footage showing timothée chalamet kylie jenner reactions spread quickly online, keeping public interest high in kylie jenner and timothee chalamet as a modern pop culture crossover. Commentators following timothee chalamet and kylie jenner pointed out that their public appearance turned into a viral fashion moment across entertainment feeds.",
+        "### Motherhood, Daily Life and Smart Glasses",
+        "Away from fashion week, Jenner manages multiple consumer brands while raising her children. Recent profiles covering the kylie jenner kids—daughter Stormi Webster and son Aire Webster—note how she schedules her work around family routines. Earlier this year, she also stepped into consumer hardware by partnering with Meta on the kylie jenner meta glasses, marketed as the Meta Starfire Kylie Edition AI glasses. These oval smart glasses pair everyday optical wear with voice-driven wearable fashion tech, showing how Jenner links her personal brand with emerging technology while running her luxury diamond atelier partnerships.",
+        "## Runway Styling: Wings, Footwear and Visual Proportion",
+        "Styling a four-pound piece of diamond jewelry on a walking model required simple supporting garments so the jewelry remained clear to the audience.",
+        "### Feathered Wings and the Shimmering Silver Miniskirt",
+        "To frame the Jacob Arabo metalwork, stylists added white feathered angel wings that curved over both shoulders. The bottom half of the look was kept minimal: a micro-length shimmering silver miniskirt with matching undergarments, worn with clear heels to lengthen the leg line without adding competing colors or patterns. This clean base kept attention directly on the chest piece, unlike couture lingerie that relies on heavy lace or beadwork, contrasting red-carpet volume against daily jewelry choices like a delicate [16 vs 18 inch necklace](/16-vs-18-inch-necklace) or cartilage accents like [hidden helix jewelry](/hidden-helix-jewelry).",
+        "### Lighting and Stage Movement at Culver City",
+        "The staging at the Culver City runway used clean white spotlights that caught the stone facets as Jenner walked the length of the platform. The moving gold joints let the piece shift naturally with her stride, proving that statement jewelry can function as a genuine runway showstopper and transform the presentation into an unforgettable catwalk spectacle.",
+        "## What the Return Means for Victoria's Secret Retail Business",
+        "The 2026 presentation was part of a multi-year effort by Victoria's Secret to re-establish public interest in its annual runway show, serving as the anchor for the broader lingerie revival.",
+        "### Rebuilding Relevance After Years Off the Air",
+        "After cancelling the event in 2019 following dropping ratings and internal reviews, the company returned to a live audience format in California, marking a high-profile runway comeback for the brand. Tying kylie jenner victoria secret branding to the show and hiring an independent luxury diamond atelier helped the brand generate massive coverage across fashion week headlines during the victorias secret fashion show 2026.",
+        "### The Long-Term Viability of Seven-Figure Showpieces",
+        "Partnering with Jacob and Co showed that extreme jewelry commissions still command public interest. The presentation proved that the fantasy bra kylie jenner wore on stage and the broader phenomenon of the kylie jenner fantasy bra remain among the most potent commercial tools in fashion publicity, ensuring that high-dollar jewelry commissions will remain part of future brand productions."
+      ],
+      "secondaryImage": {
+        "url": "/images/jacob-co-fantasy-bra-detail.jpg",
+        "caption": "Macro craftsmanship: the central 75.54-carat radiant-cut Fancy Vivid Yellow diamond framed by articulated 18k gold mesh and natural white diamonds.",
+        "alt": "Close-up of the Jacob & Co. 50 million dollar Fantasy Bra yellow diamond centerpiece and gold mesh"
+      },
+      "faqs": [
+        {
+          "question": "How much is Kylie Jenner's Fantasy Bra worth?",
+          "answer": "The piece is valued at $50 million USD, officially making it the most expensive Fantasy Bra in Victoria's Secret history."
+        },
+        {
+          "question": "Who created the 2026 Fantasy Bra?",
+          "answer": "It was designed and hand-assembled by jeweler Jacob Arabo of New York high-jewelry house Jacob & Co."
+        },
+        {
+          "question": "What is the central yellow stone in the bra?",
+          "answer": "The centerpiece is a natural 75.54-carat radiant-cut Fancy Vivid Yellow diamond valued on its own at approximately $22 million."
+        },
+        {
+          "question": "Has a non-Angel ever worn the Fantasy Bra before?",
+          "answer": "No, Kylie Jenner is the first non-Angel celebrity to wear the Fantasy Bra in the thirty-year history of the Victoria's Secret runway."
+        }
+      ]
+    },
+    "tags": [
+      "Kylie Jenner",
+      "Fantasy Bra",
+      "Victoria's Secret",
+      "Jacob & Co",
+      "High Jewelry",
+      "Diamonds",
+      "Runway 2026",
+      "Timothée Chalamet"
+    ],
+    "mood": "Opulent Minimalism",
+    "likes": 512,
+    "bookmarksCount": 184
+  },
   {
     "id": "article-best-black-dresses-for-women-1792074000000",
     "title": "Best Black Dresses for Women: Styles, Fabrics and Designers",
