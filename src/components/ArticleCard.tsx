@@ -305,7 +305,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         <img
           src={article.coverImage}
           alt={article.coverImageAlt || article.title}
-          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-noir-card/80 via-transparent to-transparent" />
       </a>
