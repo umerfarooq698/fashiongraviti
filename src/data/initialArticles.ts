@@ -66,7 +66,126 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
   }
 ];
 
-export const INITIAL_ARTICLES: FashionArticle[] = [  {
+export const INITIAL_ARTICLES: FashionArticle[] = [
+  {
+    "id": "article-what-is-cocktail-attire-1792670000000",
+    "title": "What is Cocktail Attire for Men and Women at Weddings and Evening Parties",
+    "subtitle": "A complete breakdown of cocktail dress codes, tailoring rules, fabric choices, hemlines and footwear for weddings and evening celebrations.",
+    "slug": "what-is-cocktail-attire",
+    "category": "how-to-style",
+    "categoryLabel": "How to Style",
+    "season": "AUTUMN / WINTER 2026",
+    "issueNumber": "ISSUE NO. 27",
+    "locationTag": "LONDON // EDITORIAL DESK",
+    "featured": true,
+    "author": {
+      "name": "Julian Thorne-Dumont",
+      "role": "Senior Sartorial and Tailoring Critic",
+      "location": "Milan and London",
+      "avatar": "/authors/julian-thorne-dumont.jpg",
+      "instagram": "@julian_sartorial"
+    },
+    "publishedAt": "OCTOBER 22, 2026",
+    "readTime": "9 MIN READ",
+    "coverImage": "/images/cocktail-attire-hero.jpg",
+    "coverImageCaption": "Chic cocktail attire featuring an elegant evening dress with refined accessories at a celebratory reception.",
+    "coverImageAlt": "Woman dressed in chic cocktail attire at an evening celebration",
+    "metaDescription": "Learn what is cocktail attire for men and women with clear rules on suits, ties, dresses, hemlines, fabrics and wedding guest etiquette.",
+    "content": {
+      "dropCapText": "An invitation with a cocktail attire dress code is really asking for one thing: look sharp and festive without wearing a tuxedo or an evening gown. It sits in that comfortable middle ground where you dress up with intention, but you can still sit, mingle and dance without feeling trapped in rigid formal clothes.",
+      "bodyParagraphs": [
+        "The confusion usually starts because people either underdress in office chinos or overdress in a full dinner suit. Once you understand how fabrics, cuts and hemlines work together, putting an outfit together becomes straightforward.",
+        "So what is cocktail attire in practical daily life? At its foundation, the cocktail dress code calls for clean tailoring and refined party fabrics. You leave casual cotton and denim in the closet, stepping into clothes that honor the occasion while letting you move easily through a long evening of conversation.",
+        "## Tuxedo Jackets Versus Standard Cocktail Suits",
+        "When people receive an evening invitation, their first instinct is often to ask what is a tuxedo and whether they need to rent one. The short answer is no. A tuxedo belongs to black tie, not cocktail attire.",
+        "### Satin Lapels and Formal Construction",
+        "Understanding what is a tuxedo jacket makes the boundary clear. A tuxedo jacket has shiny satin or grosgrain facing on the lapels, matching satin buttons and trousers with a silk braid running down the outer leg seam. The jacket lapel usually comes in a curved shawl lapel or a pointed peak lapel.",
+        "If you show up to a cocktail wedding in a tuxedo, you look like you are in the wedding party or heading to a white-glove gala. You end up feeling awkward because the satin trim pushes you straight into black tie dress code territory. Cocktail attire calls for a high-twist wool tailored suit cut from the same self-facing fabric from collar to hem, with horn or matte buttons. That clean, matte wool gives you all the evening polish you need without crossing into black tie territory.",
+        "### From Victorian Origins to the Modern Dinner Coat",
+        "The shift toward relaxed evening tailoring actually began in Victorian cocktail attire and the informal gatherings of nineteenth-century London. In the 1860s, British gentlemen tired of stiff white tie tailcoats put on a velvet smoking jacket to relax after dinner. By 1865, Savile Row tailors Henry Poole and Company cut a short blue silk jacket for the Prince of Wales to wear at informal country house dinners, creating the first tailless dinner jacket.",
+        "That design evolved into the modern dinner jacket, which laid the groundwork for today's semi-formal attire. The modern cocktail suit took the comfort of the dinner coat and stripped away the satin lapels, giving men a sharp, versatile suit they can wear from early afternoon through late evening.",
+        "## What is Cocktail Attire for Men at Weddings and Evening Parties",
+        "When men ask what is cocktail attire for men, the foundation is always a dark, two-piece tailored suit. In fact, when researching what is cocktail attire men often ask if a navy blazer with khaki trousers works. It does not. Broken separates belong to smart casual crossover dressing. A true cocktail dress code requires matching jacket and trousers.",
+        "### Suit Colors and Fabric Quality",
+        "Stick to dark, quiet neutrals: charcoal grey, deep navy, or midnight blue. A navy suit or charcoal grey suit provides the cleanest backdrop for evening light. Midnight blue is particularly effective because under indoor artificial evening lights, it actually looks richer and deeper than true black.",
+        "In colder months, a heavyweight wool twill or a dark velvet blazer in forest green or deep burgundy works well if paired with dark wool trousers. For warm summer weddings, opt for a lightweight tropical wool or a breathable linen suit blend that keeps its pressed shape. Pair the suit with a crisp dress shirt in plain white or pale blue cotton poplin, featuring a crisp collar that stands up neatly under your jacket lapels.",
+        "### Do You Need a Tie for Cocktail Attire",
+        "The question searchers ask most often is: do you need a tie for cocktail attire? At traditional church weddings and formal evening receptions, a necktie is still the safest choice. A dark silk necktie in woven grenadine, matte silk twill, or knitted silk anchors the collar and gives your tailoring a clean center line.",
+        "However, contemporary cocktail events increasingly accept a clean open collar if the rest of your outfit is immaculate. If you go without a tie, make sure your shirt has a stiff collar band that does not collapse under your jacket lapel. Unbutton only the top collar button. Always tuck a clean white linen or patterned silk pocket square into your breast pocket to balance the visual space.",
+        "### Leather Shoes and Finishing Details",
+        "For footwear, stick to leather dress shoes in black or dark espresso brown. Cap-toe oxford shoes and derby shoes are the standard choices, while double monk strap shoes and polished leather loafers add personality.",
+        "Always wear dark dress socks that match your trousers so no bare ankle shows when you sit down. Steer clear of patent leather shoes, which belong strictly with tuxedos. Leave casual rubber-soled sneakers at home.",
+        "## What is Cocktail Attire for Women Across Receptions and Dinners",
+        "When a woman opens an invitation and wonders what is cocktail attire for women or what is cocktail attire for a woman, the answer comes down to fabric quality and hemline height. You are aiming for an outfit that feels celebratory and refined without dragging on the floor.",
+        "### Hemlines and Dress Cuts",
+        "The defining mark of a cocktail dress is length. A full floor-sweeping gown belongs to black tie galas, while an ultra-short mini dress feels too casual for a wedding. The proper length lands anywhere from just above the knee to mid-calf. That includes the classic knee-length dress, the flowing midi dress and the elegant tea-length dress.",
+        "The little black dress remains the most reliable option in women's fashion history. As explored across the silhouettes in our collection of [best black dresses for women](/best-black-dresses-for-women), a clean sheath or silk slip dress in black wool crepe or heavy matte jersey looks right in almost any room. If you prefer color, rich jewel tones like emerald green, sapphire blue, ruby and deep plum bring warmth to evening lighting. Choose fabrics with rich textures: silk twill, velvet, silk chiffon and fluid satin that move naturally as you walk.",
+        "### The Flapper Era and the Retro Silhouette",
+        "The history behind this silhouette explains its purpose. In the nineteenth century, formal evening social customs revolved around heavy, restrictive floor-length tea gown designs. When private drinking moved into speakeasies during 1920s Prohibition, women needed dresses that were lighter and easier to move in.",
+        "Designers introduced the knee-length flapper dress and the cocktail retro dress, cut with shorter hems and drop waists that allowed women to dance freely. That shift created the modern cocktail dress definition: a knee-length or midi party dress designed specifically for early evening drinks and social conversation.",
+        "### Tailored Pantsuits and Evening Separates",
+        "You do not have to wear a dress to meet the code. A sharp tailored pantsuit in dark velvet, fluid crepe, or emerald wool looks sharp and confident. An evening dressy jumpsuit with wide legs and a defined waistline is another great alternative.",
+        "For footwear, pointed kitten heels, sleek pumps and strappy sandals lengthen the leg without sacrificing comfort. If you are attending an outdoor garden wedding, block heels prevent your shoes from sinking into wet lawn turf. Complete the look with a small evening clutch bag and one or two pieces of statement jewelry, such as bold crystal drop earrings or a sculptural bracelet.",
+        "## What is Cocktail Attire for a Wedding and the Denim Rule",
+        "Weddings are where cocktail dress codes appear most often. Understanding what is cocktail attire for a wedding means factoring in the ceremony location and the time of day.",
+        "### Outdoor Receptions Versus Evening Ballrooms",
+        "An outdoor wedding styling scenario in June calls for lighter colors and breathable fabrics. Men can wear a steel blue or light grey suit with a pastel silk tie, while women can wear a printed floral midi dress in airy silk or chiffon.",
+        "For evening receptions in city ballrooms or historic venues after six o'clock, shift to darker tones like navy, charcoal, black, velvet and jewel-toned crepe that look striking under chandeliers and candlelight.",
+        "### Can You Wear Jeans for Cocktail Attire",
+        "A question that gets asked constantly is: can you wear jeans for cocktail attire or is cocktail attire jeans ever acceptable? The short, direct answer is no. Jeans are never acceptable for a cocktail event, no matter how much they cost or how dark the wash is.",
+        "Even expensive raw selvedge denim or tailored black designer jeans fail the dress code etiquette test. Denim is a heavy cotton twill with contrast stitching, metal rivets and visible patch pockets that belong to casual workwear. Cocktail dressing relies on the clean drape of worsted wool, silk, or tailored dress trousers. Swapping denim for proper dress trousers shows respect for the couple and the venue.",
+        "## Frequently Asked Questions About Cocktail Attire",
+        "Here are direct answers to common questions about cocktail dressing.",
+        "### What is the simple definition of cocktail attire?",
+        "Cocktail attire is a semi-formal dress code requiring dark tailored suits for men and knee-length or midi dresses, tailored pantsuits, or dressy jumpsuits for women.",
+        "### Can you wear jeans for cocktail attire?",
+        "No. Even clean dark designer denim is too casual for cocktail events; always wear tailored wool trousers or dress pants instead.",
+        "### Do you need a tie for cocktail attire?",
+        "A necktie is recommended for traditional weddings, but you can skip the tie if your dress shirt has a crisp, structured collar paired with a silk pocket square.",
+        "### Is a tuxedo acceptable for cocktail attire?",
+        "No. A tuxedo with satin lapels is meant strictly for black tie events, making it overly formal for a standard cocktail dress code.",
+        "### What is cocktail attire? How does it differ from smart casual?",
+        "Smart casual allows broken separates like chinos and casual jackets, whereas cocktail attire requires a matching tailored suit for men and cocktail dresses or structured evening tailoring for women."
+      ],
+      "secondaryImage": {
+        "url": "/images/cocktail-attire-detail.jpg",
+        "caption": "Evening tailoring: a tailored dark suit, crisp dress shirt and matching necktie at a formal reception.",
+        "alt": "Man wearing a tailored dark suit and tie at an evening reception"
+      },
+      "faqs": [
+        {
+          "question": "What is the simple definition of cocktail attire?",
+          "answer": "Cocktail attire is a semi-formal dress code requiring dark tailored suits for men and knee-length or midi dresses, tailored pantsuits, or dressy jumpsuits for women."
+        },
+        {
+          "question": "Can you wear jeans for cocktail attire?",
+          "answer": "No. Even clean dark designer denim is too casual for cocktail events; always wear tailored wool trousers or dress pants instead."
+        },
+        {
+          "question": "Do you need a tie for cocktail attire?",
+          "answer": "A necktie is recommended for traditional weddings, but you can skip the tie if your dress shirt has a crisp, structured collar paired with a silk pocket square."
+        },
+        {
+          "question": "Is a tuxedo acceptable for cocktail attire?",
+          "answer": "No. A tuxedo with satin lapels is meant strictly for black tie events, making it overly formal for a standard cocktail dress code."
+        },
+        {
+          "question": "What is cocktail attire? How does it differ from smart casual?",
+          "answer": "Smart casual allows broken separates like chinos and casual jackets, whereas cocktail attire requires a matching tailored suit for men and cocktail dresses or structured evening tailoring for women."
+        }
+      ]
+    },
+    "tags": [
+      "Cocktail Attire",
+      "Dress Codes",
+      "Wedding Guest",
+      "How to Style",
+      "Menswear Tailoring"
+    ],
+    "mood": "Quiet Luxury",
+    "likes": 198,
+    "bookmarksCount": 86
+  },  {
     "id": "article-how-to-style-leopard-print-1792660000000",
     "title": "How to Style Leopard Print Jackets Bags Hoodies and Swimwear",
     "subtitle": "Practical styling formulas for wearing animal print coats, streetwear hoodies, bags and swimwear with effortless balance.",
