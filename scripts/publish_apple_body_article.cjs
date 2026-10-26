@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const { articleObj, allKeywords, competitorKeywords, userKeywords } = require('./build_apple_body_article.cjs');
+const { articleObj, allKeywords } = require('./rebuild_apple_body_human.cjs');
 
-console.log("=== RUNNING PRE-PUBLISH AUDITS ON APPLE BODY ARTICLE ===");
+console.log("=== RUNNING PRE-PUBLISH AUDITS ON REBUILT ARTICLE ===");
 
 const fullText = [
   articleObj.title,
@@ -106,7 +106,7 @@ if (!fs.existsSync(heroPath) || !fs.existsSync(detailPath)) {
 }
 console.log("PASS: Both 1200x675 image files exist on disk!");
 
-const newArticle = {
+const updatedArticle = {
   id: `article-apple-shaped-body-${Date.now()}`,
   title: articleObj.title,
   subtitle: articleObj.subtitle,
@@ -140,54 +140,25 @@ const newArticle = {
   }
 };
 
-// 1. Insert into src/data/initialArticles.ts
+// 1. Update in src/data/initialArticles.ts (replace the previous apple body article)
 const initialArticlesPath = path.join(__dirname, '..', 'src', 'data', 'initialArticles.ts');
 let content = fs.readFileSync(initialArticlesPath, 'utf8');
 
-const declMatch = content.match(/export const INITIAL_ARTICLES:\s*FashionArticle\[\]\s*=\s*\[/);
-if (!declMatch) {
-  console.error("Could not find initialArticles declaration");
-  process.exit(1);
-}
-const insertIndex = declMatch.index + declMatch[0].length;
-const serializedArticle = '\n  ' + JSON.stringify(newArticle, null, 2).replace(/\n/g, '\n  ') + ',';
-content = content.slice(0, insertIndex) + serializedArticle + content.slice(insertIndex);
-fs.writeFileSync(initialArticlesPath, content, 'utf8');
-console.log("Successfully inserted article into src/data/initialArticles.ts!");
-
-// 2. Update public/sitemap.xml
-const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
-let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-if (!sitemap.includes('/apple-shaped-body')) {
-  const newSitemapEntry = `  <url>
-    <loc>https://fashiongraviti.com/apple-shaped-body</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-</urlset>`;
-  sitemap = sitemap.replace('</urlset>', newSitemapEntry);
-  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-  console.log("Successfully updated public/sitemap.xml!");
+// Replace existing apple-shaped-body article
+const regex = /\{\s*"id":\s*"article-apple-shaped-body-[\s\S]*?\n  \},/;
+if (regex.test(content)) {
+  const serializedArticle = JSON.stringify(updatedArticle, null, 2).replace(/\n/g, '\n  ') + ',';
+  content = content.replace(regex, serializedArticle);
+  fs.writeFileSync(initialArticlesPath, content, 'utf8');
+  console.log("Successfully replaced article in src/data/initialArticles.ts!");
+} else {
+  // If not found by regex, prepend
+  const declMatch = content.match(/export const INITIAL_ARTICLES:\s*FashionArticle\[\]\s*=\s*\[/);
+  const insertIndex = declMatch.index + declMatch[0].length;
+  const serializedArticle = '\n  ' + JSON.stringify(updatedArticle, null, 2).replace(/\n/g, '\n  ') + ',';
+  content = content.slice(0, insertIndex) + serializedArticle + content.slice(insertIndex);
+  fs.writeFileSync(initialArticlesPath, content, 'utf8');
+  console.log("Successfully inserted article into src/data/initialArticles.ts!");
 }
 
-// 3. Update public/llms.txt
-const llmsPath = path.join(__dirname, '..', 'public', 'llms.txt');
-let llms = fs.readFileSync(llmsPath, 'utf8');
-if (!llms.includes('/apple-shaped-body')) {
-  const newLlmsEntry = `- [How to Dress an Apple Shaped Body with Confidence and Balance](https://fashiongraviti.com/apple-shaped-body): Practical advice on selecting empire dresses, wrap cuts, mid-rise bootcut jeans and open layers that flatter an apple figure.\n`;
-  llms = llms + newLlmsEntry;
-  fs.writeFileSync(llmsPath, llms, 'utf8');
-  console.log("Successfully updated public/llms.txt!");
-}
-
-// 4. Update scripts/published-keywords.json
-const pubKwPath = path.join(__dirname, 'published-keywords.json');
-let pubKws = JSON.parse(fs.readFileSync(pubKwPath, 'utf8'));
-if (!pubKws.includes('apple shaped body')) {
-  pubKws.push('apple shaped body');
-  fs.writeFileSync(pubKwPath, JSON.stringify(pubKws, null, 2), 'utf8');
-  console.log("Successfully updated scripts/published-keywords.json!");
-}
-
-console.log("\nALL PUBLISHING STEPS COMPLETED SUCCESSFULLY!");
+console.log("\nALL REBUILD & PUBLISHING STEPS COMPLETED SUCCESSFULLY!");
