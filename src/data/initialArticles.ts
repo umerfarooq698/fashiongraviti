@@ -68,6 +68,121 @@ export const FASHION_CATEGORIES: FashionCategory[] = [
 
 export const INITIAL_ARTICLES: FashionArticle[] = [
   {
+    "id": "article-hailee-steinfeld-bikini-1793190317146",
+    "title": "Why the Hailee Steinfeld Bikini Style Works So Well on Real Coastal Holidays",
+    "subtitle": "An observational breakdown on how the actress blends seventies nostalgia, athletic cuts, terry cloth layers and minimalist beach jewelry for sunny getaways",
+    "slug": "hailee-steinfeld-bikini",
+    "category": "celebrity",
+    "categoryLabel": "Celebrity Style",
+    "season": "Spring / Summer 2026",
+    "issueNumber": "ISSUE 47",
+    "locationTag": "Los Cabos, Mexico",
+    "featured": false,
+    "author": {
+      "name": "Elena Rostova",
+      "role": "Senior Fashion Editor",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80"
+    },
+    "publishedAt": "2026-10-28",
+    "readTime": "11 min read",
+    "coverImage": "/images/hailee-steinfeld-bikini-hero.jpg",
+    "coverImageCaption": "A sun-drenched coastal holiday featuring a vibrant two-piece swimsuit by the water.",
+    "coverImageAlt": "Woman in red two piece swimsuit relaxing on a seaside lounger",
+    "metaDescription": "Discover how Hailee Steinfeld styles bikinis, cover-ups and resort wear with relaxed California ease. Learn her favorite swimwear cuts, prints and layering tips.",
+    "tags": [
+      "Hailee Steinfeld",
+      "Swimwear",
+      "Bikini Style",
+      "Celebrity Vacation",
+      "Resort Wear",
+      "Summer Fashion"
+    ],
+    "mood": "Quiet Luxury",
+    "likes": 215,
+    "bookmarksCount": 128,
+    "content": {
+      "dropCapText": "Most celebrity vacation photos look like elaborate commercial productions with professional wind machines, taped hemlines and stiff poses that would fall apart after five minutes in actual ocean water. That artificial feeling is exactly why the hailee steinfeld bikini aesthetic stands out whenever paparazzi capture her lounging on a Mexican balcony or swimming off a coastal boat. Her swimwear wardrobe looks like something she actually packed herself, threw into a duffel bag and pulled on to spend a whole afternoon under the sun.",
+      "bodyParagraphs": [
+        "Having grown up along the Southern California coastline, Steinfeld approaches beachwear with relaxed authenticity rather than runway stiffness. Looking closely at hailee steinfeld swimsuits reveals a clear philosophy: she prioritizes clean lines, classic triangle tops, comfortable fabrics and clever layering pieces that make sense between swims.",
+        "## The California Roots of Her Coastal Aesthetic",
+        "Understanding her swimwear choices starts with recognizing her background. Growing up in the greater Los Angeles area gave her an early appreciation for relaxed beach days where function matters as much as appearance. Her beach looks never feel over-curated or precious.",
+        "Whether relaxing with family or taking a private holiday, she gravitates toward authentic california beach style. That means soft terry textures, worn-in cotton, simple hair clips and durable swimwear that stays in place if a wave knocks you over. You rarely catch her wearing heavy makeup or stiff platform sandals on the sand. Everything stays grounded and natural, capturing a true sun soaked beach aesthetic that feels lived-in and authentic.",
+        "The California coastal philosophy prioritizes utility just as much as appearance. When you grow up around the Pacific Ocean, you quickly learn that waves have force and saltwater breaks down cheap elastic within a single summer. Steinfeld choices mirror the laid-back habits of Malibu and Venice locals who treat their swimwear like a second skin rather than a fragile display piece. Her pieces look comfortable enough for paddleboarding or walking along rocky tide pools, which instantly separates her aesthetic from influencers who only pose beside hotel fountains.",
+        "### Athletic Cuts and Classic Solid Colorways",
+        "One hallmark of her personal rotation is a preference for athletic cut bikinis that offer support without looking like Olympic competition suits. She regularly steps out in bold primary color swimsuits that pop against clear blue water and pale sand.",
+        "Her crimson red triangle bikini spotted during trips to Los Cabos remains the definitive example of cabo vacation style done right. The clean silhouette, free of distracting ruffles or plastic hardware, relies entirely on rich pigment and precise tailoring. Similarly, she frequently rotates in a classic black two piece with a supportive scoop neck bikini top, proving that simple fundamentals beat flashy gimmicks on hot summer days.",
+        "### Balancing Cheeky Bottoms with Clean Tops",
+        "Bottom cuts in her wardrobe generally favor high cut bikini bottoms that sit higher on the hip bones, creating a long visual line down the legs. Paired with minimalist cheeky bikini bottoms or classic side tie bikini bottoms, the proportion feels balanced rather than revealing for the sake of shock value.",
+        "When she chooses a string bikini top, she keeps the bottom simple and streamlined. This prevents her beach looks from feeling cluttered, giving each piece room to breathe under bright midday sunshine.",
+        "## Breaking Down the Frankies Bikinis Collaboration",
+        "While many celebrity brand partnerships involve slapping a famous name onto pre-made garments, Steinfeld took a hands-on approach when designing her frankies bikinis collection alongside founder Francesca Aiello. Having known Aiello since childhood, their creative process drew directly from shared memories of growing up in California.",
+        "The capsule centered around a distinct retro seventies aesthetic, pulling patterns, colorways and cuts from vintage family photographs and retro surf culture. The result was a nostalgic celebration of retro poolside glamour that felt personal rather than corporate.",
+        "### Nostalgic Seventies Florals and Bandeau Tops",
+        "The standout element of the collection was a series of custom retro floral print bikini sets featuring warm peach, sky blue and butter yellow tones. These whimsical floral prints captured a playful mood reminiscent of vintage coastal postcards.",
+        "Beyond floral motifs, the line introduced pastel color blocking across bandeau bikini tops and strapless bikini top silhouettes. Strapless styles often cause frustration because they slip down easily, but these versions included gentle side boning and structured seams that stay secure while sunbathing.",
+        "### Mixing Matching Sets with Chiffon Wraps",
+        "Another thoughtful aspect of the design was versatility. Steinfeld wanted customers to mix and match individual pieces rather than forcing rigid combinations. A single printed halter neck swimsuit or strapless top could pair with different bottoms depending on personal comfort.",
+        "To make transitions from the beach to lunch easy and quick, the collaboration included coordinated chiffon wrap skirts and airy viscose chiffon cover ups. These sheer, lightweight wraps tied easily around the hips, providing modest coverage that moved gracefully in ocean breezes without feeling heavy or hot.",
+        "### Terry Cloth Textures and Sustainable Materials",
+        "Fabric choice played a major role in distinguishing the line from ordinary nylon swimsuits. A custom terry cloth beach dress became an instant favorite for poolside lounging, offering plush absorbency straight out of the water.",
+        "Terry cloth has a rich history in mid-century resort wear, originally popularized in the late sixties and early seventies as the ultimate fabric for coastal relaxation. By reviving thick, loop-textured terry cloth in pastel tones, Steinfeld and Aiello solved a real beach dilemma: having something soft and absorbent to pull on immediately after drying off with a towel, without needing to change into stiff dry clothes.",
+        "The collection also prioritized sustainable swimwear fabrics, utilizing recycled nylon and eco-conscious viscose. Incorporating rich ribbed swimwear texture gave solid colors added dimension, keeping even the simplest two piece swimsuit feeling tactile and luxurious.",
+        "## Vacation Layering from Ocean Dips to Seaside Lunches",
+        "The difference between someone who looks stylish on holiday and someone who looks messy usually comes down to cover-ups. Steinfeld treats her summer resort wear as an integral part of her overall outfit rather than a last-minute afterthought stuffed into a beach bag. Finding versatile swimwear layering pieces lets her move comfortably between the sand and outdoor lounges.",
+        "Her beach day outfit formulas rely on loose silhouettes that slide on over damp skin without sticking or bunching, letting her walk straight from a beach lounger into a casual open-air cafe without feeling underdressed.",
+        "### Oversized Button Downs and Breezy Cover Ups",
+        "Her most frequent layering move involves throwing lightweight button up shirts over a bikini top. A crisp white or pale blue oversized linen cover up worn unbuttoned with the sleeves rolled up to the elbows looks instantly refined.",
+        "Linen works particularly well in humid coastal climates because the natural flax fibers allow air to circulate freely around damp skin. A loose, men-style linen shirt also provides broad physical sun coverage across your shoulders and back during the peak UV hours between noon and three in the afternoon, keeping you cool while preventing sunburn.",
+        "She also embraces textural variety with crochet beachwear coverups that allow the bright colors of her swimsuit to peek through. Matching poolside loungewear sets made from airy cotton gauze or waffle knit provide another comfortable option for long afternoons reading in the shade.",
+        "### Sun Protection with Bucket Hats and Minimalist Eyewear",
+        "Smart sun protection is woven directly into her style. Instead of treating hats as a chore, she uses beach bucket hats in canvas or crochet to add a youthful edge to simple swimsuits.",
+        "For more formal seaside lunches, wide-brim straw sun hats offer classic glamour while shielding her shoulders from harsh UV rays. Her minimalist sunglasses styling sticks to slim wire frames or clean rectangular acetate lenses in tortoiseshell or solid black, avoiding oversized rhinestones or distracting logos.",
+        "## Translating Celebrity Beachwear into Real World Holidays",
+        "It is easy to admire celebrity summer vacation fashion in magazines, but the real test is figuring out how to adapt those aesthetics for your own suitcase. Examining her poolside styling tips shows that looking put together by the water comes down to fit, proportion and comfort rather than unattainable runway concepts.",
+        "Building a chic vacation packing list begins with identifying your personal body preferences and selecting flattering swimwear silhouettes that make you feel relaxed. When you feel physically supported by your swimsuit, genuine swimsuit body confidence naturally follows.",
+        "### Choosing the Right Cut for Your Body",
+        "Not everyone feels comfortable in a tiny string top. The Steinfeld wardrobe reflects that reality by including diverse silhouettes. If you have a fuller bust or prefer extra lift, structured underwire bikini tops provide all-day security without digging into your neck.",
+        "For women who prefer more midriff coverage, a sleek one piece maillot swimsuit with a high-cut leg or low back delivers the same retro charm as a two-piece. The secret is finding matching swim sets that balance your upper and lower proportions cleanly.",
+        "### Accessories That Hold Up Around Sand and Saltwater",
+        "Beach accessories need to survive exposure to sun, saltwater and sunscreen. Heavy metal necklaces or fragile costume jewelry can tarnish or turn your skin green after one swim.",
+        "Steinfeld relies on simple gold beach jewelry styling, choosing water-resistant huggie earrings, thin gold chains and braided cords that stay put in the water. For carrying essentials, spacious straw tote beach bags and woven canvas bags keep towels, books and sunscreen organized while adding natural coastal texture.",
+        "### Transitioning from the Beach to Evening Dinner",
+        "When an afternoon by the water turns into evening reservations at an upscale resort restaurant, guests often need to shift gears from swimwear into dressier territory. Packing a couple of versatile dresses helps you navigate evening dress codes, following principles similar to [what is cocktail attire](/what-is-cocktail-attire) where polished linen separates, silk slip dresses or tailored jumpsuits replace casual swimwear.",
+        "Keeping your tropical holiday wardrobe centered on coastal chic beachwear with interchangeable neutral tones and low rise bikini bottoms ensures you always have something comfortable to wear from sunrise coffee to late-night beach walks.",
+        "Proper swimwear care is another practical secret that keeps these pieces looking fresh across multiple vacations. Saltwater and pool chlorine degrade delicate elastane fibers if left to dry under direct sunlight. Rinsing your bikinis in fresh cold water immediately after swimming, avoiding harsh machine spin cycles and drying them flat in the shade preserves their original elasticity and keeps the colors rich season after season.",
+        "## Frequently Asked Questions About Hailee Steinfeld Swimwear Style",
+        "Here are clear direct answers to common questions about her vacation fashion and swimwear choices."
+      ],
+      "secondaryImage": {
+        "url": "/images/hailee-steinfeld-bikini-detail.jpg",
+        "caption": "Detailed close-up of retro 1970s floral printed swimwear fabric inspired by the Frankies Bikinis collection.",
+        "alt": "Close-up detail of retro floral bikini fabric pattern"
+      },
+      "faqs": [
+        {
+          "question": "What swimwear brand does Hailee Steinfeld collaborate with?",
+          "answer": "Hailee Steinfeld collaborated with Frankies Bikinis, co-designing a popular 1970s vintage-inspired collection featuring retro floral prints and terry cloth resortwear."
+        },
+        {
+          "question": "What is Hailee Steinfeld signature bikini style?",
+          "answer": "Her signature look features athletic triangle and bandeau bikini tops paired with high-cut cheeky bottoms in bold primary colors like bright red or vintage floral prints."
+        },
+        {
+          "question": "How does Hailee Steinfeld style beach cover-ups?",
+          "answer": "She prefers relaxed layering pieces like oversized white linen button-down shirts, terry cloth mini dresses, chiffon wrap skirts and lightweight bucket hats."
+        },
+        {
+          "question": "What kind of beach accessories does she wear on vacation?",
+          "answer": "She keeps her accessories minimal and practical, wearing water-resistant small gold hoop earrings, retro sunglasses and woven straw tote bags."
+        },
+        {
+          "question": "Where does Hailee Steinfeld typically go on beach holidays?",
+          "answer": "She is frequently photographed enjoying sunny coastal getaways in tropical destinations like Los Cabos, Mexico, Miami and coastal Southern California."
+        }
+      ]
+    }
+  },
+  {
     "id": "article-apple-shaped-body-1793014102202",
     "title": "How to Dress an Apple Shaped Body with Real Balance and Comfort",
     "subtitle": "A realistic breakdown on solving waistband pinching, dressing a fuller midsection and styling everyday outfits that highlight your legs and neckline",
