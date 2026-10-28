@@ -133,8 +133,8 @@ const newArticle = {
     bodyParagraphs: articleObj.content.bodyParagraphs,
     secondaryImage: {
       url: '/images/hailee-steinfeld-bikini-detail.jpg',
-      caption: 'Detailed close-up of retro 1970s floral printed swimwear fabric inspired by the Frankies Bikinis collection.',
-      alt: 'Close-up detail of retro floral bikini fabric pattern'
+      caption: 'Hailee Steinfeld enjoying an active ocean paddle boarding session in Hawaii wearing an athletic red bikini.',
+      alt: 'Hailee Steinfeld paddle boarding in a red bikini on vacation in Hawaii'
     },
     faqs: articleObj.content.faqs
   }

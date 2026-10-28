@@ -86,8 +86,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     "publishedAt": "2026-10-28",
     "readTime": "11 min read",
     "coverImage": "/images/hailee-steinfeld-bikini-hero.jpg",
-    "coverImageCaption": "A sun-drenched coastal holiday featuring a vibrant two-piece swimsuit by the water.",
-    "coverImageAlt": "Woman in red two piece swimsuit relaxing on a seaside lounger",
+    "coverImageCaption": "Hailee Steinfeld modeling a retro striped bikini and matching shirt from her 1970s-inspired Frankies Bikinis collaboration.",
+    "coverImageAlt": "Hailee Steinfeld lounging in a striped bikini with retro vinyl records",
     "metaDescription": "Discover how Hailee Steinfeld styles bikinis, cover-ups and resort wear with relaxed California ease. Learn her favorite swimwear cuts, prints and layering tips.",
     "tags": [
       "Hailee Steinfeld",
@@ -155,8 +155,8 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
       ],
       "secondaryImage": {
         "url": "/images/hailee-steinfeld-bikini-detail.jpg",
-        "caption": "Detailed close-up of retro 1970s floral printed swimwear fabric inspired by the Frankies Bikinis collection.",
-        "alt": "Close-up detail of retro floral bikini fabric pattern"
+        "caption": "Hailee Steinfeld enjoying an active ocean paddle boarding session in Hawaii wearing an athletic red bikini.",
+        "alt": "Hailee Steinfeld paddle boarding in a red bikini on vacation in Hawaii"
       },
       "faqs": [
         {
