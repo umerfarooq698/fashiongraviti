@@ -154,6 +154,16 @@ export const Footer: React.FC<FooterProps> = ({
                 Terms and Conditions
               </a>
             </li>
+            <li>
+              <a
+                href="/rss.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-400 hover:text-gold transition-colors uppercase font-bold cursor-pointer no-underline block"
+              >
+                RSS Feed
+              </a>
+            </li>
             {onOpenLookbook && (
               <li>
                 <button

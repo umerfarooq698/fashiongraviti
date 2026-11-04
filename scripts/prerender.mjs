@@ -16,6 +16,31 @@ function escapeHtml(str = '') {
     .replace(/"/g, '&quot;');
 }
 
+function escapeXmlAttr(str = '') {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function cleanCdata(str = '') {
+  return String(str).replace(/\]\]>/g, ']]]]><![CDATA[>');
+}
+
+function toRfc822(dateInput) {
+  const d = new Date(dateInput);
+  if (isNaN(d.getTime())) return new Date().toUTCString();
+  return d.toUTCString();
+}
+
+function getImageMime(url = '') {
+  if (url.endsWith('.png')) return 'image/png';
+  if (url.endsWith('.webp')) return 'image/webp';
+  return 'image/jpeg';
+}
+
 function renderInlineMarkdownLinks(text = '') {
   const escaped = escapeHtml(text);
   return escaped.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label, href) => {
@@ -209,6 +234,7 @@ function renderFooterNav(categories, articles) {
           <li><a href="/contact">Contact Us</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms and Conditions</a></li>
+          <li><a href="/rss.xml">RSS Feed</a></li>
         </ul>
       </section>
       <p>© 2026 Fashion Graviti Publishing Group. All rights reserved.</p>
@@ -896,7 +922,73 @@ ${sitemapUrls
   fs.writeFileSync(path.join(ROOT_DIR, 'public/sitemap.xml'), sitemapXml, 'utf-8');
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapXml, 'utf-8');
 
-  console.log(`✓ Pre-rendered ${generatedCount} static HTML routes and updated sitemap.xml (${sitemapUrls.length} canonical URLs).`);
+  // 7. Generate valid RSS 2.0 XML in both public/ and dist/
+  const rssXml = generateRssFeed(INITIAL_ARTICLES);
+  fs.writeFileSync(path.join(ROOT_DIR, 'public/rss.xml'), rssXml, 'utf-8');
+  fs.writeFileSync(path.join(DIST_DIR, 'rss.xml'), rssXml, 'utf-8');
+
+  console.log(`✓ Pre-rendered ${generatedCount} static HTML routes and updated sitemap.xml (${sitemapUrls.length} URLs).`);
+  console.log(`✓ Generated valid RSS 2.0 feed (rss.xml) with ${INITIAL_ARTICLES.length} published articles.`);
+}
+
+function generateRssFeed(articles) {
+  const sorted = [...articles].sort((a, b) => {
+    const ta = new Date(a.publishedAt).getTime() || 0;
+    const tb = new Date(b.publishedAt).getTime() || 0;
+    return tb - ta;
+  });
+
+  const lastBuildDate = toRfc822(sorted[0]?.publishedAt);
+
+  const itemsXml = sorted
+    .map((a) => {
+      const url = `${SITE_DOMAIN}/${a.slug}`;
+      const pubDate = toRfc822(a.publishedAt);
+      const desc = a.metaDescription || a.subtitle || '';
+      const authorName = a.author?.name || 'Fashion Graviti Editorial';
+      const category = a.categoryLabel || a.category || 'Fashion';
+      const cover = a.coverImage ? (a.coverImage.startsWith('http') ? a.coverImage : `${SITE_DOMAIN}${a.coverImage}`) : '';
+      const enclosure = cover ? `\n      <enclosure url="${escapeXmlAttr(cover)}" length="0" type="${getImageMime(cover)}" />` : '';
+      const mediaContent = cover ? `\n      <media:content url="${escapeXmlAttr(cover)}" medium="image" />` : '';
+
+      return `    <item>
+      <title><![CDATA[${cleanCdata(a.title)}]]></title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <description><![CDATA[${cleanCdata(desc)}]]></description>
+      <pubDate>${pubDate}</pubDate>
+      <category><![CDATA[${cleanCdata(category)}]]></category>
+      <dc:creator><![CDATA[${cleanCdata(authorName)}]]></dc:creator>
+      <author>editorial@fashiongraviti.com (${escapeXmlAttr(authorName)})</author>${enclosure}${mediaContent}
+    </item>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Fashion Graviti</title>
+    <link>${SITE_DOMAIN}</link>
+    <description>The Authority on Style, Runway Insights and Contemporary Elegance</description>
+    <language>en-us</language>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
+    <atom:link href="${SITE_DOMAIN}/rss.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>${SITE_DOMAIN}/fashion-graviti-horizontal-logo.png</url>
+      <title>Fashion Graviti</title>
+      <link>${SITE_DOMAIN}</link>
+    </image>
+    <copyright>Copyright ${new Date().getFullYear()} Fashion Graviti. All rights reserved.</copyright>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    <generator>Fashion Graviti Custom Pre-Renderer</generator>
+${itemsXml}
+  </channel>
+</rss>
+`;
 }
 
 main();
