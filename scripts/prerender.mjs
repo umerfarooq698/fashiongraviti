@@ -29,10 +29,28 @@ function cleanCdata(str = '') {
   return String(str).replace(/\]\]>/g, ']]]]><![CDATA[>');
 }
 
+function parseDateSafe(dateInput) {
+  if (!dateInput) return new Date();
+  const str = String(dateInput).trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(str)) {
+    return new Date(`${str}T00:00:00Z`);
+  }
+  const d = new Date(`${str} UTC`);
+  if (!isNaN(d.getTime())) return d;
+  const fallback = new Date(str);
+  return isNaN(fallback.getTime()) ? new Date() : fallback;
+}
+
 function toRfc822(dateInput) {
-  const d = new Date(dateInput);
-  if (isNaN(d.getTime())) return new Date().toUTCString();
-  return d.toUTCString();
+  return parseDateSafe(dateInput).toUTCString();
+}
+
+function toIsoDate(dateInput) {
+  return parseDateSafe(dateInput).toISOString().replace(/\.\d{3}Z$/, '+00:00');
+}
+
+function toYmdDate(dateInput) {
+  return parseDateSafe(dateInput).toISOString().slice(0, 10);
 }
 
 function getImageMime(url = '') {
@@ -103,6 +121,22 @@ const AUTHORS = [
     location: 'Stockholm, Sweden',
     avatar: '/authors/soren-lindqvist-kovac.jpg',
     bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism and sustainable luxury innovation. Soren researches experimental bio-textiles, zero-waste pattern engineering and the historical evolution of European and Japanese design houses.',
+  },
+  {
+    name: 'Elena Rostova',
+    slug: 'elena-rostova',
+    role: 'Senior Fashion Editor',
+    location: 'New York and Los Angeles',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+    bio: 'Senior fashion editor specializing in practical wardrobe styling, proportion balance, seasonal resort wear and celebrity off-duty dressing. Elena translates runway silhouettes and celebrity vacation aesthetics into clear, wearable outfit advice for everyday life.',
+  },
+  {
+    name: 'Genevieve Delacroix',
+    slug: 'genevieve-delacroix',
+    role: 'Senior Bridal and Haute Couture Editor',
+    location: 'Paris and London',
+    avatar: '/authors/renata-moreau-kroll.jpg',
+    bio: 'Paris and London bridal couture specialist covering bespoke wedding gowns, atelier silk construction and heritage bridal design houses. Genevieve reports on modern bridal silhouettes, veil engineering and archival couture craftsmanship.',
   },
 ];
 
@@ -745,6 +779,8 @@ function main() {
     const rawImg = article.coverImage || '';
     const fullImg = rawImg.startsWith('/') ? `${SITE_DOMAIN}${rawImg}` : rawImg;
     const description = article.metaDescription || article.subtitle;
+    const publishedIso = toIsoDate(article.publishedAt);
+    const schemaType = article.category === 'fashion-news' ? 'NewsArticle' : 'Article';
     const schemaGraph = [
       {
         '@type': 'BreadcrumbList',
@@ -755,22 +791,26 @@ function main() {
         ],
       },
       {
-        '@type': 'NewsArticle',
+        '@type': schemaType,
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
         headline: article.title,
         description,
         image: [fullImg],
-        datePublished: '2026-10-08T00:00:00+00:00',
-        dateModified: '2026-10-08T00:00:00+00:00',
+        datePublished: publishedIso,
+        dateModified: publishedIso,
         author: {
           '@type': 'Person',
           name: article.author.name,
           url: `${SITE_DOMAIN}/author/${authorSlug}`,
         },
         publisher: {
-          '@type': 'NewsMediaOrganization',
+          '@type': 'Organization',
           name: 'Fashion Graviti',
           url: SITE_DOMAIN,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${SITE_DOMAIN}/fashion-graviti-horizontal-logo.png`,
+          },
         },
       },
     ];
@@ -878,30 +918,46 @@ function main() {
   }
 
   // 6. Generate clean sitemap.xml in both public/ and dist/
+  const latestArticleDate = INITIAL_ARTICLES.length > 0
+    ? INITIAL_ARTICLES.map((a) => toYmdDate(a.publishedAt)).sort().reverse()[0]
+    : toYmdDate(new Date());
+
   const sitemapUrls = [
-    { loc: `${SITE_DOMAIN}/`, lastmod: '2026-10-13', changefreq: 'daily', priority: '1.0' },
+    { loc: `${SITE_DOMAIN}/`, lastmod: latestArticleDate, changefreq: 'daily', priority: '1.0' },
     ...INITIAL_ARTICLES.map((a) => ({
       loc: `${SITE_DOMAIN}/${a.slug}`,
-      lastmod: '2026-10-13',
+      lastmod: toYmdDate(a.publishedAt),
       changefreq: 'weekly',
       priority: '0.9',
     })),
-    ...FASHION_CATEGORIES.filter((c) => c.id !== 'all').map((c) => ({
-      loc: `${SITE_DOMAIN}/${c.id}`,
-      lastmod: '2026-10-13',
-      changefreq: 'daily',
-      priority: '0.8',
-    })),
-    { loc: `${SITE_DOMAIN}/about`, lastmod: '2026-10-13', changefreq: 'monthly', priority: '0.6' },
-    { loc: `${SITE_DOMAIN}/contact`, lastmod: '2026-10-13', changefreq: 'monthly', priority: '0.6' },
-    { loc: `${SITE_DOMAIN}/privacy`, lastmod: '2026-10-13', changefreq: 'monthly', priority: '0.4' },
-    { loc: `${SITE_DOMAIN}/terms`, lastmod: '2026-10-13', changefreq: 'monthly', priority: '0.4' },
-    ...AUTHORS.map((au) => ({
-      loc: `${SITE_DOMAIN}/author/${au.slug}`,
-      lastmod: '2026-10-13',
-      changefreq: 'monthly',
-      priority: '0.6',
-    })),
+    ...FASHION_CATEGORIES.filter((c) => c.id !== 'all').map((c) => {
+      const catArticles = INITIAL_ARTICLES.filter((a) => a.category === c.id);
+      const catLastmod = catArticles.length > 0
+        ? catArticles.map((a) => toYmdDate(a.publishedAt)).sort().reverse()[0]
+        : latestArticleDate;
+      return {
+        loc: `${SITE_DOMAIN}/${c.id}`,
+        lastmod: catLastmod,
+        changefreq: 'daily',
+        priority: '0.8',
+      };
+    }),
+    { loc: `${SITE_DOMAIN}/about`, lastmod: latestArticleDate, changefreq: 'monthly', priority: '0.6' },
+    { loc: `${SITE_DOMAIN}/contact`, lastmod: latestArticleDate, changefreq: 'monthly', priority: '0.6' },
+    { loc: `${SITE_DOMAIN}/privacy`, lastmod: latestArticleDate, changefreq: 'monthly', priority: '0.4' },
+    { loc: `${SITE_DOMAIN}/terms`, lastmod: latestArticleDate, changefreq: 'monthly', priority: '0.4' },
+    ...AUTHORS.map((au) => {
+      const auArticles = INITIAL_ARTICLES.filter((a) => getAuthorSlug(a.author.name) === au.slug);
+      const auLastmod = auArticles.length > 0
+        ? auArticles.map((a) => toYmdDate(a.publishedAt)).sort().reverse()[0]
+        : latestArticleDate;
+      return {
+        loc: `${SITE_DOMAIN}/author/${au.slug}`,
+        lastmod: auLastmod,
+        changefreq: 'monthly',
+        priority: '0.6',
+      };
+    }),
   ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>

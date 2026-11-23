@@ -41,6 +41,22 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
     instagram: '@soren_fashionarch',
     bio: 'Stockholm-trained design scholar analyzing modernist fashion architecture, Scandinavian minimalism and sustainable luxury innovation.',
   },
+  'elena-rostova': {
+    name: 'Elena Rostova',
+    slug: 'elena-rostova',
+    role: 'Senior Fashion Editor',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+    instagram: '@elena_rostova_style',
+    bio: 'Senior fashion editor specializing in practical wardrobe styling, proportion balance, seasonal resort wear and celebrity off-duty dressing.',
+  },
+  'genevieve-delacroix': {
+    name: 'Genevieve Delacroix',
+    slug: 'genevieve-delacroix',
+    role: 'Senior Bridal and Haute Couture Editor',
+    avatar: '/authors/renata-moreau-kroll.jpg',
+    instagram: '@genevieve_bridal',
+    bio: 'Paris and London bridal couture specialist covering bespoke wedding gowns, atelier silk construction and heritage bridal design houses.',
+  },
 };
 
 // Aliases for historical backwards compatibility

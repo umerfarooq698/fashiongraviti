@@ -122,8 +122,10 @@ export function updateDocumentSEO(props: SEOProps): void {
           : `${SITE_DOMAIN}${props.articleData.authorUrl.startsWith('/') ? '' : '/'}${props.articleData.authorUrl}`)
       : undefined;
 
+    const schemaType = props.articleData.section === 'fashion-news' ? 'NewsArticle' : 'Article';
+
     schemaGraph.push({
-      '@type': 'NewsArticle',
+      '@type': schemaType,
       'mainEntityOfPage': {
         '@type': 'WebPage',
         '@id': canonicalUrl,
@@ -131,20 +133,20 @@ export function updateDocumentSEO(props: SEOProps): void {
       'headline': props.title || fullTitle,
       'description': description,
       'image': [image],
-      'datePublished': props.articleData.publishedTime || '2026-09-21T00:00:00+00:00',
-      'dateModified': props.articleData.publishedTime || '2026-09-21T00:00:00+00:00',
+      'datePublished': props.articleData.publishedTime || '2026-10-28T00:00:00+00:00',
+      'dateModified': props.articleData.publishedTime || '2026-10-28T00:00:00+00:00',
       'author': {
         '@type': 'Person',
         'name': props.articleData.authorName || 'Fashion Graviti Editors',
         ...(authorUrl ? { 'url': authorUrl } : {}),
       },
       'publisher': {
-        '@type': 'NewsMediaOrganization',
+        '@type': 'Organization',
         'name': SITE_NAME,
         'url': SITE_DOMAIN,
         'logo': {
           '@type': 'ImageObject',
-          'url': DEFAULT_IMAGE,
+          'url': `${SITE_DOMAIN}/fashion-graviti-horizontal-logo.png`,
         },
       },
       'keywords': props.articleData.tags || [],
