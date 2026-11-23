@@ -81,7 +81,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     "author": {
       "name": "Elena Rostova",
       "role": "Senior Fashion Editor",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80"
+      "avatar": "/authors/elena-rostova.jpg"
     },
     "publishedAt": "2026-10-28",
     "readTime": "11 min read",
@@ -196,7 +196,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     "author": {
       "name": "Elena Rostova",
       "role": "Senior Fashion Editor",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80"
+      "avatar": "/authors/elena-rostova.jpg"
     },
     "publishedAt": "2026-10-26",
     "readTime": "12 min read",
@@ -309,7 +309,7 @@ export const INITIAL_ARTICLES: FashionArticle[] = [
     "author": {
       "name": "Elena Rostova",
       "role": "Senior Fashion Editor",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80"
+      "avatar": "/authors/elena-rostova.jpg"
     },
     "publishedAt": "2026-10-25",
     "readTime": "11 min read",

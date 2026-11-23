@@ -127,7 +127,7 @@ const AUTHORS = [
     slug: 'elena-rostova',
     role: 'Senior Fashion Editor',
     location: 'New York and Los Angeles',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+    avatar: '/authors/elena-rostova.jpg',
     bio: 'Senior fashion editor specializing in practical wardrobe styling, proportion balance, seasonal resort wear and celebrity off-duty dressing. Elena translates runway silhouettes and celebrity vacation aesthetics into clear, wearable outfit advice for everyday life.',
   },
   {

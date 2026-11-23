@@ -45,7 +45,7 @@ export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {
     name: 'Elena Rostova',
     slug: 'elena-rostova',
     role: 'Senior Fashion Editor',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+    avatar: '/authors/elena-rostova.jpg',
     instagram: '@elena_rostova_style',
     bio: 'Senior fashion editor specializing in practical wardrobe styling, proportion balance, seasonal resort wear and celebrity off-duty dressing.',
   },
